@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -121,5 +120,4 @@ model_googlerpc_status.go
 model_password_password_type.go
 model_protobuf_any.go
 response.go
-test/api_customer_test.go
 utils.go
