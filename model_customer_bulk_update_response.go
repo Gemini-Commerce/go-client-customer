@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CustomerBulkUpdateResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomerBulkUpdateResponse{}
-
 // CustomerBulkUpdateResponse struct for CustomerBulkUpdateResponse
 type CustomerBulkUpdateResponse struct {
 	CustomerIds []string `json:"customerIds,omitempty"`
@@ -41,7 +38,7 @@ func NewCustomerBulkUpdateResponseWithDefaults() *CustomerBulkUpdateResponse {
 
 // GetCustomerIds returns the CustomerIds field value if set, zero value otherwise.
 func (o *CustomerBulkUpdateResponse) GetCustomerIds() []string {
-	if o == nil || IsNil(o.CustomerIds) {
+	if o == nil || isNil(o.CustomerIds) {
 		var ret []string
 		return ret
 	}
@@ -51,15 +48,15 @@ func (o *CustomerBulkUpdateResponse) GetCustomerIds() []string {
 // GetCustomerIdsOk returns a tuple with the CustomerIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerBulkUpdateResponse) GetCustomerIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.CustomerIds) {
-		return nil, false
+	if o == nil || isNil(o.CustomerIds) {
+    return nil, false
 	}
 	return o.CustomerIds, true
 }
 
 // HasCustomerIds returns a boolean if a field has been set.
 func (o *CustomerBulkUpdateResponse) HasCustomerIds() bool {
-	if o != nil && !IsNil(o.CustomerIds) {
+	if o != nil && !isNil(o.CustomerIds) {
 		return true
 	}
 
@@ -72,19 +69,11 @@ func (o *CustomerBulkUpdateResponse) SetCustomerIds(v []string) {
 }
 
 func (o CustomerBulkUpdateResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CustomerBulkUpdateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CustomerIds) {
+	if !isNil(o.CustomerIds) {
 		toSerialize["customerIds"] = o.CustomerIds
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCustomerBulkUpdateResponse struct {

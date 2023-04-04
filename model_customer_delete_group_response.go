@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CustomerDeleteGroupResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomerDeleteGroupResponse{}
-
 // CustomerDeleteGroupResponse struct for CustomerDeleteGroupResponse
 type CustomerDeleteGroupResponse struct {
 	GroupId *string `json:"groupId,omitempty"`
@@ -41,7 +38,7 @@ func NewCustomerDeleteGroupResponseWithDefaults() *CustomerDeleteGroupResponse {
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise.
 func (o *CustomerDeleteGroupResponse) GetGroupId() string {
-	if o == nil || IsNil(o.GroupId) {
+	if o == nil || isNil(o.GroupId) {
 		var ret string
 		return ret
 	}
@@ -51,15 +48,15 @@ func (o *CustomerDeleteGroupResponse) GetGroupId() string {
 // GetGroupIdOk returns a tuple with the GroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerDeleteGroupResponse) GetGroupIdOk() (*string, bool) {
-	if o == nil || IsNil(o.GroupId) {
-		return nil, false
+	if o == nil || isNil(o.GroupId) {
+    return nil, false
 	}
 	return o.GroupId, true
 }
 
 // HasGroupId returns a boolean if a field has been set.
 func (o *CustomerDeleteGroupResponse) HasGroupId() bool {
-	if o != nil && !IsNil(o.GroupId) {
+	if o != nil && !isNil(o.GroupId) {
 		return true
 	}
 
@@ -72,19 +69,11 @@ func (o *CustomerDeleteGroupResponse) SetGroupId(v string) {
 }
 
 func (o CustomerDeleteGroupResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CustomerDeleteGroupResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.GroupId) {
+	if !isNil(o.GroupId) {
 		toSerialize["groupId"] = o.GroupId
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCustomerDeleteGroupResponse struct {

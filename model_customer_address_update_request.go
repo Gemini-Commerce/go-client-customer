@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CustomerAddressUpdateRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomerAddressUpdateRequest{}
-
 // CustomerAddressUpdateRequest struct for CustomerAddressUpdateRequest
 type CustomerAddressUpdateRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -45,7 +42,7 @@ func NewCustomerAddressUpdateRequestWithDefaults() *CustomerAddressUpdateRequest
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerAddressUpdateRequest) GetTenantId() string {
-	if o == nil || IsNil(o.TenantId) {
+	if o == nil || isNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -55,15 +52,15 @@ func (o *CustomerAddressUpdateRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressUpdateRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TenantId) {
-		return nil, false
+	if o == nil || isNil(o.TenantId) {
+    return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerAddressUpdateRequest) HasTenantId() bool {
-	if o != nil && !IsNil(o.TenantId) {
+	if o != nil && !isNil(o.TenantId) {
 		return true
 	}
 
@@ -77,7 +74,7 @@ func (o *CustomerAddressUpdateRequest) SetTenantId(v string) {
 
 // GetCustomerId returns the CustomerId field value if set, zero value otherwise.
 func (o *CustomerAddressUpdateRequest) GetCustomerId() string {
-	if o == nil || IsNil(o.CustomerId) {
+	if o == nil || isNil(o.CustomerId) {
 		var ret string
 		return ret
 	}
@@ -87,15 +84,15 @@ func (o *CustomerAddressUpdateRequest) GetCustomerId() string {
 // GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressUpdateRequest) GetCustomerIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CustomerId) {
-		return nil, false
+	if o == nil || isNil(o.CustomerId) {
+    return nil, false
 	}
 	return o.CustomerId, true
 }
 
 // HasCustomerId returns a boolean if a field has been set.
 func (o *CustomerAddressUpdateRequest) HasCustomerId() bool {
-	if o != nil && !IsNil(o.CustomerId) {
+	if o != nil && !isNil(o.CustomerId) {
 		return true
 	}
 
@@ -109,7 +106,7 @@ func (o *CustomerAddressUpdateRequest) SetCustomerId(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CustomerAddressUpdateRequest) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -119,15 +116,15 @@ func (o *CustomerAddressUpdateRequest) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressUpdateRequest) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *CustomerAddressUpdateRequest) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -141,7 +138,7 @@ func (o *CustomerAddressUpdateRequest) SetId(v string) {
 
 // GetAddress returns the Address field value if set, zero value otherwise.
 func (o *CustomerAddressUpdateRequest) GetAddress() CustomerAddressEntity {
-	if o == nil || IsNil(o.Address) {
+	if o == nil || isNil(o.Address) {
 		var ret CustomerAddressEntity
 		return ret
 	}
@@ -151,15 +148,15 @@ func (o *CustomerAddressUpdateRequest) GetAddress() CustomerAddressEntity {
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressUpdateRequest) GetAddressOk() (*CustomerAddressEntity, bool) {
-	if o == nil || IsNil(o.Address) {
-		return nil, false
+	if o == nil || isNil(o.Address) {
+    return nil, false
 	}
 	return o.Address, true
 }
 
 // HasAddress returns a boolean if a field has been set.
 func (o *CustomerAddressUpdateRequest) HasAddress() bool {
-	if o != nil && !IsNil(o.Address) {
+	if o != nil && !isNil(o.Address) {
 		return true
 	}
 
@@ -173,7 +170,7 @@ func (o *CustomerAddressUpdateRequest) SetAddress(v CustomerAddressEntity) {
 
 // GetFieldMask returns the FieldMask field value if set, zero value otherwise.
 func (o *CustomerAddressUpdateRequest) GetFieldMask() []string {
-	if o == nil || IsNil(o.FieldMask) {
+	if o == nil || isNil(o.FieldMask) {
 		var ret []string
 		return ret
 	}
@@ -183,15 +180,15 @@ func (o *CustomerAddressUpdateRequest) GetFieldMask() []string {
 // GetFieldMaskOk returns a tuple with the FieldMask field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressUpdateRequest) GetFieldMaskOk() ([]string, bool) {
-	if o == nil || IsNil(o.FieldMask) {
-		return nil, false
+	if o == nil || isNil(o.FieldMask) {
+    return nil, false
 	}
 	return o.FieldMask, true
 }
 
 // HasFieldMask returns a boolean if a field has been set.
 func (o *CustomerAddressUpdateRequest) HasFieldMask() bool {
-	if o != nil && !IsNil(o.FieldMask) {
+	if o != nil && !isNil(o.FieldMask) {
 		return true
 	}
 
@@ -204,31 +201,23 @@ func (o *CustomerAddressUpdateRequest) SetFieldMask(v []string) {
 }
 
 func (o CustomerAddressUpdateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CustomerAddressUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TenantId) {
+	if !isNil(o.TenantId) {
 		toSerialize["tenantId"] = o.TenantId
 	}
-	if !IsNil(o.CustomerId) {
+	if !isNil(o.CustomerId) {
 		toSerialize["customerId"] = o.CustomerId
 	}
-	if !IsNil(o.Id) {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Address) {
+	if !isNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.FieldMask) {
+	if !isNil(o.FieldMask) {
 		toSerialize["fieldMask"] = o.FieldMask
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCustomerAddressUpdateRequest struct {

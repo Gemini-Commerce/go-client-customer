@@ -15,9 +15,6 @@ import (
 	"time"
 )
 
-// checks if the CustomerGroupResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomerGroupResponse{}
-
 // CustomerGroupResponse struct for CustomerGroupResponse
 type CustomerGroupResponse struct {
 	Id *string `json:"id,omitempty"`
@@ -49,7 +46,7 @@ func NewCustomerGroupResponseWithDefaults() *CustomerGroupResponse {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CustomerGroupResponse) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -59,15 +56,15 @@ func (o *CustomerGroupResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerGroupResponse) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *CustomerGroupResponse) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -81,7 +78,7 @@ func (o *CustomerGroupResponse) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CustomerGroupResponse) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -91,15 +88,15 @@ func (o *CustomerGroupResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerGroupResponse) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CustomerGroupResponse) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -113,7 +110,7 @@ func (o *CustomerGroupResponse) SetName(v string) {
 
 // GetCustomerIds returns the CustomerIds field value if set, zero value otherwise.
 func (o *CustomerGroupResponse) GetCustomerIds() []string {
-	if o == nil || IsNil(o.CustomerIds) {
+	if o == nil || isNil(o.CustomerIds) {
 		var ret []string
 		return ret
 	}
@@ -123,15 +120,15 @@ func (o *CustomerGroupResponse) GetCustomerIds() []string {
 // GetCustomerIdsOk returns a tuple with the CustomerIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerGroupResponse) GetCustomerIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.CustomerIds) {
-		return nil, false
+	if o == nil || isNil(o.CustomerIds) {
+    return nil, false
 	}
 	return o.CustomerIds, true
 }
 
 // HasCustomerIds returns a boolean if a field has been set.
 func (o *CustomerGroupResponse) HasCustomerIds() bool {
-	if o != nil && !IsNil(o.CustomerIds) {
+	if o != nil && !isNil(o.CustomerIds) {
 		return true
 	}
 
@@ -145,7 +142,7 @@ func (o *CustomerGroupResponse) SetCustomerIds(v []string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *CustomerGroupResponse) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -155,15 +152,15 @@ func (o *CustomerGroupResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerGroupResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
-		return nil, false
+	if o == nil || isNil(o.CreatedAt) {
+    return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *CustomerGroupResponse) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -177,7 +174,7 @@ func (o *CustomerGroupResponse) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *CustomerGroupResponse) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -187,15 +184,15 @@ func (o *CustomerGroupResponse) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerGroupResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
-		return nil, false
+	if o == nil || isNil(o.UpdatedAt) {
+    return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *CustomerGroupResponse) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -209,7 +206,7 @@ func (o *CustomerGroupResponse) SetUpdatedAt(v time.Time) {
 
 // GetGrn returns the Grn field value if set, zero value otherwise.
 func (o *CustomerGroupResponse) GetGrn() string {
-	if o == nil || IsNil(o.Grn) {
+	if o == nil || isNil(o.Grn) {
 		var ret string
 		return ret
 	}
@@ -219,15 +216,15 @@ func (o *CustomerGroupResponse) GetGrn() string {
 // GetGrnOk returns a tuple with the Grn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerGroupResponse) GetGrnOk() (*string, bool) {
-	if o == nil || IsNil(o.Grn) {
-		return nil, false
+	if o == nil || isNil(o.Grn) {
+    return nil, false
 	}
 	return o.Grn, true
 }
 
 // HasGrn returns a boolean if a field has been set.
 func (o *CustomerGroupResponse) HasGrn() bool {
-	if o != nil && !IsNil(o.Grn) {
+	if o != nil && !isNil(o.Grn) {
 		return true
 	}
 
@@ -241,7 +238,7 @@ func (o *CustomerGroupResponse) SetGrn(v string) {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *CustomerGroupResponse) GetCode() string {
-	if o == nil || IsNil(o.Code) {
+	if o == nil || isNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -251,15 +248,15 @@ func (o *CustomerGroupResponse) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerGroupResponse) GetCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.Code) {
-		return nil, false
+	if o == nil || isNil(o.Code) {
+    return nil, false
 	}
 	return o.Code, true
 }
 
 // HasCode returns a boolean if a field has been set.
 func (o *CustomerGroupResponse) HasCode() bool {
-	if o != nil && !IsNil(o.Code) {
+	if o != nil && !isNil(o.Code) {
 		return true
 	}
 
@@ -273,7 +270,7 @@ func (o *CustomerGroupResponse) SetCode(v string) {
 
 // GetCustomerCount returns the CustomerCount field value if set, zero value otherwise.
 func (o *CustomerGroupResponse) GetCustomerCount() string {
-	if o == nil || IsNil(o.CustomerCount) {
+	if o == nil || isNil(o.CustomerCount) {
 		var ret string
 		return ret
 	}
@@ -283,15 +280,15 @@ func (o *CustomerGroupResponse) GetCustomerCount() string {
 // GetCustomerCountOk returns a tuple with the CustomerCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerGroupResponse) GetCustomerCountOk() (*string, bool) {
-	if o == nil || IsNil(o.CustomerCount) {
-		return nil, false
+	if o == nil || isNil(o.CustomerCount) {
+    return nil, false
 	}
 	return o.CustomerCount, true
 }
 
 // HasCustomerCount returns a boolean if a field has been set.
 func (o *CustomerGroupResponse) HasCustomerCount() bool {
-	if o != nil && !IsNil(o.CustomerCount) {
+	if o != nil && !isNil(o.CustomerCount) {
 		return true
 	}
 
@@ -304,40 +301,32 @@ func (o *CustomerGroupResponse) SetCustomerCount(v string) {
 }
 
 func (o CustomerGroupResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CustomerGroupResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.CustomerIds) {
+	if !isNil(o.CustomerIds) {
 		toSerialize["customerIds"] = o.CustomerIds
 	}
-	if !IsNil(o.CreatedAt) {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !IsNil(o.UpdatedAt) {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if !IsNil(o.Grn) {
+	if !isNil(o.Grn) {
 		toSerialize["grn"] = o.Grn
 	}
-	if !IsNil(o.Code) {
+	if !isNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
-	if !IsNil(o.CustomerCount) {
+	if !isNil(o.CustomerCount) {
 		toSerialize["customerCount"] = o.CustomerCount
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCustomerGroupResponse struct {

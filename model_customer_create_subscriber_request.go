@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CustomerCreateSubscriberRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomerCreateSubscriberRequest{}
-
 // CustomerCreateSubscriberRequest struct for CustomerCreateSubscriberRequest
 type CustomerCreateSubscriberRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -42,7 +39,7 @@ func NewCustomerCreateSubscriberRequestWithDefaults() *CustomerCreateSubscriberR
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerCreateSubscriberRequest) GetTenantId() string {
-	if o == nil || IsNil(o.TenantId) {
+	if o == nil || isNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -52,15 +49,15 @@ func (o *CustomerCreateSubscriberRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateSubscriberRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TenantId) {
-		return nil, false
+	if o == nil || isNil(o.TenantId) {
+    return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerCreateSubscriberRequest) HasTenantId() bool {
-	if o != nil && !IsNil(o.TenantId) {
+	if o != nil && !isNil(o.TenantId) {
 		return true
 	}
 
@@ -74,7 +71,7 @@ func (o *CustomerCreateSubscriberRequest) SetTenantId(v string) {
 
 // GetSubscriber returns the Subscriber field value if set, zero value otherwise.
 func (o *CustomerCreateSubscriberRequest) GetSubscriber() CustomerSubscriberRequest {
-	if o == nil || IsNil(o.Subscriber) {
+	if o == nil || isNil(o.Subscriber) {
 		var ret CustomerSubscriberRequest
 		return ret
 	}
@@ -84,15 +81,15 @@ func (o *CustomerCreateSubscriberRequest) GetSubscriber() CustomerSubscriberRequ
 // GetSubscriberOk returns a tuple with the Subscriber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateSubscriberRequest) GetSubscriberOk() (*CustomerSubscriberRequest, bool) {
-	if o == nil || IsNil(o.Subscriber) {
-		return nil, false
+	if o == nil || isNil(o.Subscriber) {
+    return nil, false
 	}
 	return o.Subscriber, true
 }
 
 // HasSubscriber returns a boolean if a field has been set.
 func (o *CustomerCreateSubscriberRequest) HasSubscriber() bool {
-	if o != nil && !IsNil(o.Subscriber) {
+	if o != nil && !isNil(o.Subscriber) {
 		return true
 	}
 
@@ -105,22 +102,14 @@ func (o *CustomerCreateSubscriberRequest) SetSubscriber(v CustomerSubscriberRequ
 }
 
 func (o CustomerCreateSubscriberRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CustomerCreateSubscriberRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TenantId) {
+	if !isNil(o.TenantId) {
 		toSerialize["tenantId"] = o.TenantId
 	}
-	if !IsNil(o.Subscriber) {
+	if !isNil(o.Subscriber) {
 		toSerialize["subscriber"] = o.Subscriber
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCustomerCreateSubscriberRequest struct {

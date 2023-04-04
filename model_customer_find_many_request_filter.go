@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CustomerFindManyRequestFilter type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomerFindManyRequestFilter{}
-
 // CustomerFindManyRequestFilter struct for CustomerFindManyRequestFilter
 type CustomerFindManyRequestFilter struct {
 	Newsletter *bool `json:"newsletter,omitempty"`
@@ -41,7 +38,7 @@ func NewCustomerFindManyRequestFilterWithDefaults() *CustomerFindManyRequestFilt
 
 // GetNewsletter returns the Newsletter field value if set, zero value otherwise.
 func (o *CustomerFindManyRequestFilter) GetNewsletter() bool {
-	if o == nil || IsNil(o.Newsletter) {
+	if o == nil || isNil(o.Newsletter) {
 		var ret bool
 		return ret
 	}
@@ -51,15 +48,15 @@ func (o *CustomerFindManyRequestFilter) GetNewsletter() bool {
 // GetNewsletterOk returns a tuple with the Newsletter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerFindManyRequestFilter) GetNewsletterOk() (*bool, bool) {
-	if o == nil || IsNil(o.Newsletter) {
-		return nil, false
+	if o == nil || isNil(o.Newsletter) {
+    return nil, false
 	}
 	return o.Newsletter, true
 }
 
 // HasNewsletter returns a boolean if a field has been set.
 func (o *CustomerFindManyRequestFilter) HasNewsletter() bool {
-	if o != nil && !IsNil(o.Newsletter) {
+	if o != nil && !isNil(o.Newsletter) {
 		return true
 	}
 
@@ -72,19 +69,11 @@ func (o *CustomerFindManyRequestFilter) SetNewsletter(v bool) {
 }
 
 func (o CustomerFindManyRequestFilter) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CustomerFindManyRequestFilter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Newsletter) {
+	if !isNil(o.Newsletter) {
 		toSerialize["newsletter"] = o.Newsletter
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCustomerFindManyRequestFilter struct {

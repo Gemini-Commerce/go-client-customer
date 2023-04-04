@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CustomerAddressDeleteResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomerAddressDeleteResponse{}
-
 // CustomerAddressDeleteResponse struct for CustomerAddressDeleteResponse
 type CustomerAddressDeleteResponse struct {
 	Customer *CustomerCustomerResponse `json:"customer,omitempty"`
@@ -41,7 +38,7 @@ func NewCustomerAddressDeleteResponseWithDefaults() *CustomerAddressDeleteRespon
 
 // GetCustomer returns the Customer field value if set, zero value otherwise.
 func (o *CustomerAddressDeleteResponse) GetCustomer() CustomerCustomerResponse {
-	if o == nil || IsNil(o.Customer) {
+	if o == nil || isNil(o.Customer) {
 		var ret CustomerCustomerResponse
 		return ret
 	}
@@ -51,15 +48,15 @@ func (o *CustomerAddressDeleteResponse) GetCustomer() CustomerCustomerResponse {
 // GetCustomerOk returns a tuple with the Customer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressDeleteResponse) GetCustomerOk() (*CustomerCustomerResponse, bool) {
-	if o == nil || IsNil(o.Customer) {
-		return nil, false
+	if o == nil || isNil(o.Customer) {
+    return nil, false
 	}
 	return o.Customer, true
 }
 
 // HasCustomer returns a boolean if a field has been set.
 func (o *CustomerAddressDeleteResponse) HasCustomer() bool {
-	if o != nil && !IsNil(o.Customer) {
+	if o != nil && !isNil(o.Customer) {
 		return true
 	}
 
@@ -72,19 +69,11 @@ func (o *CustomerAddressDeleteResponse) SetCustomer(v CustomerCustomerResponse) 
 }
 
 func (o CustomerAddressDeleteResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CustomerAddressDeleteResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Customer) {
+	if !isNil(o.Customer) {
 		toSerialize["customer"] = o.Customer
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCustomerAddressDeleteResponse struct {

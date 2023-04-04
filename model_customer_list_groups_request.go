@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CustomerListGroupsRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomerListGroupsRequest{}
-
 // CustomerListGroupsRequest struct for CustomerListGroupsRequest
 type CustomerListGroupsRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -41,7 +38,7 @@ func NewCustomerListGroupsRequestWithDefaults() *CustomerListGroupsRequest {
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerListGroupsRequest) GetTenantId() string {
-	if o == nil || IsNil(o.TenantId) {
+	if o == nil || isNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -51,15 +48,15 @@ func (o *CustomerListGroupsRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerListGroupsRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TenantId) {
-		return nil, false
+	if o == nil || isNil(o.TenantId) {
+    return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerListGroupsRequest) HasTenantId() bool {
-	if o != nil && !IsNil(o.TenantId) {
+	if o != nil && !isNil(o.TenantId) {
 		return true
 	}
 
@@ -72,19 +69,11 @@ func (o *CustomerListGroupsRequest) SetTenantId(v string) {
 }
 
 func (o CustomerListGroupsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CustomerListGroupsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TenantId) {
+	if !isNil(o.TenantId) {
 		toSerialize["tenantId"] = o.TenantId
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCustomerListGroupsRequest struct {

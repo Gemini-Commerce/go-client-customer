@@ -15,9 +15,6 @@ import (
 	"time"
 )
 
-// checks if the CustomerCreateRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomerCreateRequest{}
-
 // CustomerCreateRequest struct for CustomerCreateRequest
 type CustomerCreateRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -63,7 +60,7 @@ func NewCustomerCreateRequestWithDefaults() *CustomerCreateRequest {
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetTenantId() string {
-	if o == nil || IsNil(o.TenantId) {
+	if o == nil || isNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -73,15 +70,15 @@ func (o *CustomerCreateRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TenantId) {
-		return nil, false
+	if o == nil || isNil(o.TenantId) {
+    return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasTenantId() bool {
-	if o != nil && !IsNil(o.TenantId) {
+	if o != nil && !isNil(o.TenantId) {
 		return true
 	}
 
@@ -95,7 +92,7 @@ func (o *CustomerCreateRequest) SetTenantId(v string) {
 
 // GetEm returns the Em field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetEm() CustomerEMFields {
-	if o == nil || IsNil(o.Em) {
+	if o == nil || isNil(o.Em) {
 		var ret CustomerEMFields
 		return ret
 	}
@@ -105,15 +102,15 @@ func (o *CustomerCreateRequest) GetEm() CustomerEMFields {
 // GetEmOk returns a tuple with the Em field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetEmOk() (*CustomerEMFields, bool) {
-	if o == nil || IsNil(o.Em) {
-		return nil, false
+	if o == nil || isNil(o.Em) {
+    return nil, false
 	}
 	return o.Em, true
 }
 
 // HasEm returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasEm() bool {
-	if o != nil && !IsNil(o.Em) {
+	if o != nil && !isNil(o.Em) {
 		return true
 	}
 
@@ -127,7 +124,7 @@ func (o *CustomerCreateRequest) SetEm(v CustomerEMFields) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -137,15 +134,15 @@ func (o *CustomerCreateRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -159,7 +156,7 @@ func (o *CustomerCreateRequest) SetName(v string) {
 
 // GetSurname returns the Surname field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetSurname() string {
-	if o == nil || IsNil(o.Surname) {
+	if o == nil || isNil(o.Surname) {
 		var ret string
 		return ret
 	}
@@ -169,15 +166,15 @@ func (o *CustomerCreateRequest) GetSurname() string {
 // GetSurnameOk returns a tuple with the Surname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetSurnameOk() (*string, bool) {
-	if o == nil || IsNil(o.Surname) {
-		return nil, false
+	if o == nil || isNil(o.Surname) {
+    return nil, false
 	}
 	return o.Surname, true
 }
 
 // HasSurname returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasSurname() bool {
-	if o != nil && !IsNil(o.Surname) {
+	if o != nil && !isNil(o.Surname) {
 		return true
 	}
 
@@ -191,7 +188,7 @@ func (o *CustomerCreateRequest) SetSurname(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetEmail() string {
-	if o == nil || IsNil(o.Email) {
+	if o == nil || isNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -201,15 +198,15 @@ func (o *CustomerCreateRequest) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.Email) {
-		return nil, false
+	if o == nil || isNil(o.Email) {
+    return nil, false
 	}
 	return o.Email, true
 }
 
 // HasEmail returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasEmail() bool {
-	if o != nil && !IsNil(o.Email) {
+	if o != nil && !isNil(o.Email) {
 		return true
 	}
 
@@ -223,7 +220,7 @@ func (o *CustomerCreateRequest) SetEmail(v string) {
 
 // GetBirthdate returns the Birthdate field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetBirthdate() time.Time {
-	if o == nil || IsNil(o.Birthdate) {
+	if o == nil || isNil(o.Birthdate) {
 		var ret time.Time
 		return ret
 	}
@@ -233,15 +230,15 @@ func (o *CustomerCreateRequest) GetBirthdate() time.Time {
 // GetBirthdateOk returns a tuple with the Birthdate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetBirthdateOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.Birthdate) {
-		return nil, false
+	if o == nil || isNil(o.Birthdate) {
+    return nil, false
 	}
 	return o.Birthdate, true
 }
 
 // HasBirthdate returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasBirthdate() bool {
-	if o != nil && !IsNil(o.Birthdate) {
+	if o != nil && !isNil(o.Birthdate) {
 		return true
 	}
 
@@ -255,7 +252,7 @@ func (o *CustomerCreateRequest) SetBirthdate(v time.Time) {
 
 // GetGender returns the Gender field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetGender() string {
-	if o == nil || IsNil(o.Gender) {
+	if o == nil || isNil(o.Gender) {
 		var ret string
 		return ret
 	}
@@ -265,15 +262,15 @@ func (o *CustomerCreateRequest) GetGender() string {
 // GetGenderOk returns a tuple with the Gender field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetGenderOk() (*string, bool) {
-	if o == nil || IsNil(o.Gender) {
-		return nil, false
+	if o == nil || isNil(o.Gender) {
+    return nil, false
 	}
 	return o.Gender, true
 }
 
 // HasGender returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasGender() bool {
-	if o != nil && !IsNil(o.Gender) {
+	if o != nil && !isNil(o.Gender) {
 		return true
 	}
 
@@ -287,7 +284,7 @@ func (o *CustomerCreateRequest) SetGender(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetEnabled() bool {
-	if o == nil || IsNil(o.Enabled) {
+	if o == nil || isNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -297,15 +294,15 @@ func (o *CustomerCreateRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.Enabled) {
-		return nil, false
+	if o == nil || isNil(o.Enabled) {
+    return nil, false
 	}
 	return o.Enabled, true
 }
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasEnabled() bool {
-	if o != nil && !IsNil(o.Enabled) {
+	if o != nil && !isNil(o.Enabled) {
 		return true
 	}
 
@@ -319,7 +316,7 @@ func (o *CustomerCreateRequest) SetEnabled(v bool) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetSource() string {
-	if o == nil || IsNil(o.Source) {
+	if o == nil || isNil(o.Source) {
 		var ret string
 		return ret
 	}
@@ -329,15 +326,15 @@ func (o *CustomerCreateRequest) GetSource() string {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetSourceOk() (*string, bool) {
-	if o == nil || IsNil(o.Source) {
-		return nil, false
+	if o == nil || isNil(o.Source) {
+    return nil, false
 	}
 	return o.Source, true
 }
 
 // HasSource returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasSource() bool {
-	if o != nil && !IsNil(o.Source) {
+	if o != nil && !isNil(o.Source) {
 		return true
 	}
 
@@ -351,7 +348,7 @@ func (o *CustomerCreateRequest) SetSource(v string) {
 
 // GetAddresses returns the Addresses field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetAddresses() []CustomerAddressEntity {
-	if o == nil || IsNil(o.Addresses) {
+	if o == nil || isNil(o.Addresses) {
 		var ret []CustomerAddressEntity
 		return ret
 	}
@@ -361,15 +358,15 @@ func (o *CustomerCreateRequest) GetAddresses() []CustomerAddressEntity {
 // GetAddressesOk returns a tuple with the Addresses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetAddressesOk() ([]CustomerAddressEntity, bool) {
-	if o == nil || IsNil(o.Addresses) {
-		return nil, false
+	if o == nil || isNil(o.Addresses) {
+    return nil, false
 	}
 	return o.Addresses, true
 }
 
 // HasAddresses returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasAddresses() bool {
-	if o != nil && !IsNil(o.Addresses) {
+	if o != nil && !isNil(o.Addresses) {
 		return true
 	}
 
@@ -383,7 +380,7 @@ func (o *CustomerCreateRequest) SetAddresses(v []CustomerAddressEntity) {
 
 // GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetPhoneNumber() string {
-	if o == nil || IsNil(o.PhoneNumber) {
+	if o == nil || isNil(o.PhoneNumber) {
 		var ret string
 		return ret
 	}
@@ -393,15 +390,15 @@ func (o *CustomerCreateRequest) GetPhoneNumber() string {
 // GetPhoneNumberOk returns a tuple with the PhoneNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetPhoneNumberOk() (*string, bool) {
-	if o == nil || IsNil(o.PhoneNumber) {
-		return nil, false
+	if o == nil || isNil(o.PhoneNumber) {
+    return nil, false
 	}
 	return o.PhoneNumber, true
 }
 
 // HasPhoneNumber returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasPhoneNumber() bool {
-	if o != nil && !IsNil(o.PhoneNumber) {
+	if o != nil && !isNil(o.PhoneNumber) {
 		return true
 	}
 
@@ -415,7 +412,7 @@ func (o *CustomerCreateRequest) SetPhoneNumber(v string) {
 
 // GetNationality returns the Nationality field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetNationality() string {
-	if o == nil || IsNil(o.Nationality) {
+	if o == nil || isNil(o.Nationality) {
 		var ret string
 		return ret
 	}
@@ -425,15 +422,15 @@ func (o *CustomerCreateRequest) GetNationality() string {
 // GetNationalityOk returns a tuple with the Nationality field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetNationalityOk() (*string, bool) {
-	if o == nil || IsNil(o.Nationality) {
-		return nil, false
+	if o == nil || isNil(o.Nationality) {
+    return nil, false
 	}
 	return o.Nationality, true
 }
 
 // HasNationality returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasNationality() bool {
-	if o != nil && !IsNil(o.Nationality) {
+	if o != nil && !isNil(o.Nationality) {
 		return true
 	}
 
@@ -447,7 +444,7 @@ func (o *CustomerCreateRequest) SetNationality(v string) {
 
 // GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetGroups() []string {
-	if o == nil || IsNil(o.Groups) {
+	if o == nil || isNil(o.Groups) {
 		var ret []string
 		return ret
 	}
@@ -457,15 +454,15 @@ func (o *CustomerCreateRequest) GetGroups() []string {
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetGroupsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Groups) {
-		return nil, false
+	if o == nil || isNil(o.Groups) {
+    return nil, false
 	}
 	return o.Groups, true
 }
 
 // HasGroups returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasGroups() bool {
-	if o != nil && !IsNil(o.Groups) {
+	if o != nil && !isNil(o.Groups) {
 		return true
 	}
 
@@ -479,7 +476,7 @@ func (o *CustomerCreateRequest) SetGroups(v []string) {
 
 // GetDeleted returns the Deleted field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetDeleted() bool {
-	if o == nil || IsNil(o.Deleted) {
+	if o == nil || isNil(o.Deleted) {
 		var ret bool
 		return ret
 	}
@@ -489,15 +486,15 @@ func (o *CustomerCreateRequest) GetDeleted() bool {
 // GetDeletedOk returns a tuple with the Deleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetDeletedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Deleted) {
-		return nil, false
+	if o == nil || isNil(o.Deleted) {
+    return nil, false
 	}
 	return o.Deleted, true
 }
 
 // HasDeleted returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasDeleted() bool {
-	if o != nil && !IsNil(o.Deleted) {
+	if o != nil && !isNil(o.Deleted) {
 		return true
 	}
 
@@ -511,7 +508,7 @@ func (o *CustomerCreateRequest) SetDeleted(v bool) {
 
 // GetNewsletters returns the Newsletters field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetNewsletters() []CustomerNewsletterRequest {
-	if o == nil || IsNil(o.Newsletters) {
+	if o == nil || isNil(o.Newsletters) {
 		var ret []CustomerNewsletterRequest
 		return ret
 	}
@@ -521,15 +518,15 @@ func (o *CustomerCreateRequest) GetNewsletters() []CustomerNewsletterRequest {
 // GetNewslettersOk returns a tuple with the Newsletters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetNewslettersOk() ([]CustomerNewsletterRequest, bool) {
-	if o == nil || IsNil(o.Newsletters) {
-		return nil, false
+	if o == nil || isNil(o.Newsletters) {
+    return nil, false
 	}
 	return o.Newsletters, true
 }
 
 // HasNewsletters returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasNewsletters() bool {
-	if o != nil && !IsNil(o.Newsletters) {
+	if o != nil && !isNil(o.Newsletters) {
 		return true
 	}
 
@@ -543,7 +540,7 @@ func (o *CustomerCreateRequest) SetNewsletters(v []CustomerNewsletterRequest) {
 
 // GetDoNotNotify returns the DoNotNotify field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetDoNotNotify() bool {
-	if o == nil || IsNil(o.DoNotNotify) {
+	if o == nil || isNil(o.DoNotNotify) {
 		var ret bool
 		return ret
 	}
@@ -553,15 +550,15 @@ func (o *CustomerCreateRequest) GetDoNotNotify() bool {
 // GetDoNotNotifyOk returns a tuple with the DoNotNotify field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetDoNotNotifyOk() (*bool, bool) {
-	if o == nil || IsNil(o.DoNotNotify) {
-		return nil, false
+	if o == nil || isNil(o.DoNotNotify) {
+    return nil, false
 	}
 	return o.DoNotNotify, true
 }
 
 // HasDoNotNotify returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasDoNotNotify() bool {
-	if o != nil && !IsNil(o.DoNotNotify) {
+	if o != nil && !isNil(o.DoNotNotify) {
 		return true
 	}
 
@@ -575,7 +572,7 @@ func (o *CustomerCreateRequest) SetDoNotNotify(v bool) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetAttributes() map[string]ProtobufAny {
-	if o == nil || IsNil(o.Attributes) {
+	if o == nil || isNil(o.Attributes) {
 		var ret map[string]ProtobufAny
 		return ret
 	}
@@ -585,15 +582,15 @@ func (o *CustomerCreateRequest) GetAttributes() map[string]ProtobufAny {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetAttributesOk() (*map[string]ProtobufAny, bool) {
-	if o == nil || IsNil(o.Attributes) {
-		return nil, false
+	if o == nil || isNil(o.Attributes) {
+    return nil, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasAttributes() bool {
-	if o != nil && !IsNil(o.Attributes) {
+	if o != nil && !isNil(o.Attributes) {
 		return true
 	}
 
@@ -607,7 +604,7 @@ func (o *CustomerCreateRequest) SetAttributes(v map[string]ProtobufAny) {
 
 // GetMigratedPassword returns the MigratedPassword field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetMigratedPassword() CustomerPassword {
-	if o == nil || IsNil(o.MigratedPassword) {
+	if o == nil || isNil(o.MigratedPassword) {
 		var ret CustomerPassword
 		return ret
 	}
@@ -617,15 +614,15 @@ func (o *CustomerCreateRequest) GetMigratedPassword() CustomerPassword {
 // GetMigratedPasswordOk returns a tuple with the MigratedPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetMigratedPasswordOk() (*CustomerPassword, bool) {
-	if o == nil || IsNil(o.MigratedPassword) {
-		return nil, false
+	if o == nil || isNil(o.MigratedPassword) {
+    return nil, false
 	}
 	return o.MigratedPassword, true
 }
 
 // HasMigratedPassword returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasMigratedPassword() bool {
-	if o != nil && !IsNil(o.MigratedPassword) {
+	if o != nil && !isNil(o.MigratedPassword) {
 		return true
 	}
 
@@ -639,7 +636,7 @@ func (o *CustomerCreateRequest) SetMigratedPassword(v CustomerPassword) {
 
 // GetMarket returns the Market field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetMarket() string {
-	if o == nil || IsNil(o.Market) {
+	if o == nil || isNil(o.Market) {
 		var ret string
 		return ret
 	}
@@ -649,15 +646,15 @@ func (o *CustomerCreateRequest) GetMarket() string {
 // GetMarketOk returns a tuple with the Market field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetMarketOk() (*string, bool) {
-	if o == nil || IsNil(o.Market) {
-		return nil, false
+	if o == nil || isNil(o.Market) {
+    return nil, false
 	}
 	return o.Market, true
 }
 
 // HasMarket returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasMarket() bool {
-	if o != nil && !IsNil(o.Market) {
+	if o != nil && !isNil(o.Market) {
 		return true
 	}
 
@@ -671,7 +668,7 @@ func (o *CustomerCreateRequest) SetMarket(v string) {
 
 // GetPreferredLocale returns the PreferredLocale field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetPreferredLocale() string {
-	if o == nil || IsNil(o.PreferredLocale) {
+	if o == nil || isNil(o.PreferredLocale) {
 		var ret string
 		return ret
 	}
@@ -681,15 +678,15 @@ func (o *CustomerCreateRequest) GetPreferredLocale() string {
 // GetPreferredLocaleOk returns a tuple with the PreferredLocale field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetPreferredLocaleOk() (*string, bool) {
-	if o == nil || IsNil(o.PreferredLocale) {
-		return nil, false
+	if o == nil || isNil(o.PreferredLocale) {
+    return nil, false
 	}
 	return o.PreferredLocale, true
 }
 
 // HasPreferredLocale returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasPreferredLocale() bool {
-	if o != nil && !IsNil(o.PreferredLocale) {
+	if o != nil && !isNil(o.PreferredLocale) {
 		return true
 	}
 
@@ -703,7 +700,7 @@ func (o *CustomerCreateRequest) SetPreferredLocale(v string) {
 
 // GetTaxCode returns the TaxCode field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetTaxCode() string {
-	if o == nil || IsNil(o.TaxCode) {
+	if o == nil || isNil(o.TaxCode) {
 		var ret string
 		return ret
 	}
@@ -713,15 +710,15 @@ func (o *CustomerCreateRequest) GetTaxCode() string {
 // GetTaxCodeOk returns a tuple with the TaxCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetTaxCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.TaxCode) {
-		return nil, false
+	if o == nil || isNil(o.TaxCode) {
+    return nil, false
 	}
 	return o.TaxCode, true
 }
 
 // HasTaxCode returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasTaxCode() bool {
-	if o != nil && !IsNil(o.TaxCode) {
+	if o != nil && !isNil(o.TaxCode) {
 		return true
 	}
 
@@ -735,7 +732,7 @@ func (o *CustomerCreateRequest) SetTaxCode(v string) {
 
 // GetCertifiedEmail returns the CertifiedEmail field value if set, zero value otherwise.
 func (o *CustomerCreateRequest) GetCertifiedEmail() string {
-	if o == nil || IsNil(o.CertifiedEmail) {
+	if o == nil || isNil(o.CertifiedEmail) {
 		var ret string
 		return ret
 	}
@@ -745,15 +742,15 @@ func (o *CustomerCreateRequest) GetCertifiedEmail() string {
 // GetCertifiedEmailOk returns a tuple with the CertifiedEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateRequest) GetCertifiedEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.CertifiedEmail) {
-		return nil, false
+	if o == nil || isNil(o.CertifiedEmail) {
+    return nil, false
 	}
 	return o.CertifiedEmail, true
 }
 
 // HasCertifiedEmail returns a boolean if a field has been set.
 func (o *CustomerCreateRequest) HasCertifiedEmail() bool {
-	if o != nil && !IsNil(o.CertifiedEmail) {
+	if o != nil && !isNil(o.CertifiedEmail) {
 		return true
 	}
 
@@ -766,82 +763,74 @@ func (o *CustomerCreateRequest) SetCertifiedEmail(v string) {
 }
 
 func (o CustomerCreateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CustomerCreateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TenantId) {
+	if !isNil(o.TenantId) {
 		toSerialize["tenantId"] = o.TenantId
 	}
-	if !IsNil(o.Em) {
+	if !isNil(o.Em) {
 		toSerialize["em"] = o.Em
 	}
-	if !IsNil(o.Name) {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Surname) {
+	if !isNil(o.Surname) {
 		toSerialize["surname"] = o.Surname
 	}
-	if !IsNil(o.Email) {
+	if !isNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if !IsNil(o.Birthdate) {
+	if !isNil(o.Birthdate) {
 		toSerialize["birthdate"] = o.Birthdate
 	}
-	if !IsNil(o.Gender) {
+	if !isNil(o.Gender) {
 		toSerialize["gender"] = o.Gender
 	}
-	if !IsNil(o.Enabled) {
+	if !isNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !IsNil(o.Source) {
+	if !isNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if !IsNil(o.Addresses) {
+	if !isNil(o.Addresses) {
 		toSerialize["addresses"] = o.Addresses
 	}
-	if !IsNil(o.PhoneNumber) {
+	if !isNil(o.PhoneNumber) {
 		toSerialize["phoneNumber"] = o.PhoneNumber
 	}
-	if !IsNil(o.Nationality) {
+	if !isNil(o.Nationality) {
 		toSerialize["nationality"] = o.Nationality
 	}
-	if !IsNil(o.Groups) {
+	if !isNil(o.Groups) {
 		toSerialize["groups"] = o.Groups
 	}
-	if !IsNil(o.Deleted) {
+	if !isNil(o.Deleted) {
 		toSerialize["deleted"] = o.Deleted
 	}
-	if !IsNil(o.Newsletters) {
+	if !isNil(o.Newsletters) {
 		toSerialize["newsletters"] = o.Newsletters
 	}
-	if !IsNil(o.DoNotNotify) {
+	if !isNil(o.DoNotNotify) {
 		toSerialize["doNotNotify"] = o.DoNotNotify
 	}
-	if !IsNil(o.Attributes) {
+	if !isNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if !IsNil(o.MigratedPassword) {
+	if !isNil(o.MigratedPassword) {
 		toSerialize["migratedPassword"] = o.MigratedPassword
 	}
-	if !IsNil(o.Market) {
+	if !isNil(o.Market) {
 		toSerialize["market"] = o.Market
 	}
-	if !IsNil(o.PreferredLocale) {
+	if !isNil(o.PreferredLocale) {
 		toSerialize["preferredLocale"] = o.PreferredLocale
 	}
-	if !IsNil(o.TaxCode) {
+	if !isNil(o.TaxCode) {
 		toSerialize["taxCode"] = o.TaxCode
 	}
-	if !IsNil(o.CertifiedEmail) {
+	if !isNil(o.CertifiedEmail) {
 		toSerialize["certifiedEmail"] = o.CertifiedEmail
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCustomerCreateRequest struct {

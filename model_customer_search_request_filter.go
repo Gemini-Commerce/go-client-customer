@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CustomerSearchRequestFilter type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomerSearchRequestFilter{}
-
 // CustomerSearchRequestFilter struct for CustomerSearchRequestFilter
 type CustomerSearchRequestFilter struct {
 	Newsletter *bool `json:"newsletter,omitempty"`
@@ -41,7 +38,7 @@ func NewCustomerSearchRequestFilterWithDefaults() *CustomerSearchRequestFilter {
 
 // GetNewsletter returns the Newsletter field value if set, zero value otherwise.
 func (o *CustomerSearchRequestFilter) GetNewsletter() bool {
-	if o == nil || IsNil(o.Newsletter) {
+	if o == nil || isNil(o.Newsletter) {
 		var ret bool
 		return ret
 	}
@@ -51,15 +48,15 @@ func (o *CustomerSearchRequestFilter) GetNewsletter() bool {
 // GetNewsletterOk returns a tuple with the Newsletter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerSearchRequestFilter) GetNewsletterOk() (*bool, bool) {
-	if o == nil || IsNil(o.Newsletter) {
-		return nil, false
+	if o == nil || isNil(o.Newsletter) {
+    return nil, false
 	}
 	return o.Newsletter, true
 }
 
 // HasNewsletter returns a boolean if a field has been set.
 func (o *CustomerSearchRequestFilter) HasNewsletter() bool {
-	if o != nil && !IsNil(o.Newsletter) {
+	if o != nil && !isNil(o.Newsletter) {
 		return true
 	}
 
@@ -72,19 +69,11 @@ func (o *CustomerSearchRequestFilter) SetNewsletter(v bool) {
 }
 
 func (o CustomerSearchRequestFilter) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CustomerSearchRequestFilter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Newsletter) {
+	if !isNil(o.Newsletter) {
 		toSerialize["newsletter"] = o.Newsletter
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCustomerSearchRequestFilter struct {

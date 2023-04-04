@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CustomerNewsletterResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomerNewsletterResponse{}
-
 // CustomerNewsletterResponse struct for CustomerNewsletterResponse
 type CustomerNewsletterResponse struct {
 	Id *string `json:"id,omitempty"`
@@ -43,7 +40,7 @@ func NewCustomerNewsletterResponseWithDefaults() *CustomerNewsletterResponse {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CustomerNewsletterResponse) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -53,15 +50,15 @@ func (o *CustomerNewsletterResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerNewsletterResponse) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *CustomerNewsletterResponse) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -75,7 +72,7 @@ func (o *CustomerNewsletterResponse) SetId(v string) {
 
 // GetNewsletterGrn returns the NewsletterGrn field value if set, zero value otherwise.
 func (o *CustomerNewsletterResponse) GetNewsletterGrn() string {
-	if o == nil || IsNil(o.NewsletterGrn) {
+	if o == nil || isNil(o.NewsletterGrn) {
 		var ret string
 		return ret
 	}
@@ -85,15 +82,15 @@ func (o *CustomerNewsletterResponse) GetNewsletterGrn() string {
 // GetNewsletterGrnOk returns a tuple with the NewsletterGrn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerNewsletterResponse) GetNewsletterGrnOk() (*string, bool) {
-	if o == nil || IsNil(o.NewsletterGrn) {
-		return nil, false
+	if o == nil || isNil(o.NewsletterGrn) {
+    return nil, false
 	}
 	return o.NewsletterGrn, true
 }
 
 // HasNewsletterGrn returns a boolean if a field has been set.
 func (o *CustomerNewsletterResponse) HasNewsletterGrn() bool {
-	if o != nil && !IsNil(o.NewsletterGrn) {
+	if o != nil && !isNil(o.NewsletterGrn) {
 		return true
 	}
 
@@ -107,7 +104,7 @@ func (o *CustomerNewsletterResponse) SetNewsletterGrn(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CustomerNewsletterResponse) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -117,15 +114,15 @@ func (o *CustomerNewsletterResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerNewsletterResponse) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CustomerNewsletterResponse) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -138,25 +135,17 @@ func (o *CustomerNewsletterResponse) SetName(v string) {
 }
 
 func (o CustomerNewsletterResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CustomerNewsletterResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.NewsletterGrn) {
+	if !isNil(o.NewsletterGrn) {
 		toSerialize["newsletterGrn"] = o.NewsletterGrn
 	}
-	if !IsNil(o.Name) {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCustomerNewsletterResponse struct {

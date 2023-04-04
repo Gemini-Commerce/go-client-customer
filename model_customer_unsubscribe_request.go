@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CustomerUnsubscribeRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomerUnsubscribeRequest{}
-
 // CustomerUnsubscribeRequest struct for CustomerUnsubscribeRequest
 type CustomerUnsubscribeRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -43,7 +40,7 @@ func NewCustomerUnsubscribeRequestWithDefaults() *CustomerUnsubscribeRequest {
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerUnsubscribeRequest) GetTenantId() string {
-	if o == nil || IsNil(o.TenantId) {
+	if o == nil || isNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -53,15 +50,15 @@ func (o *CustomerUnsubscribeRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerUnsubscribeRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TenantId) {
-		return nil, false
+	if o == nil || isNil(o.TenantId) {
+    return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerUnsubscribeRequest) HasTenantId() bool {
-	if o != nil && !IsNil(o.TenantId) {
+	if o != nil && !isNil(o.TenantId) {
 		return true
 	}
 
@@ -75,7 +72,7 @@ func (o *CustomerUnsubscribeRequest) SetTenantId(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *CustomerUnsubscribeRequest) GetEmail() string {
-	if o == nil || IsNil(o.Email) {
+	if o == nil || isNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -85,15 +82,15 @@ func (o *CustomerUnsubscribeRequest) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerUnsubscribeRequest) GetEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.Email) {
-		return nil, false
+	if o == nil || isNil(o.Email) {
+    return nil, false
 	}
 	return o.Email, true
 }
 
 // HasEmail returns a boolean if a field has been set.
 func (o *CustomerUnsubscribeRequest) HasEmail() bool {
-	if o != nil && !IsNil(o.Email) {
+	if o != nil && !isNil(o.Email) {
 		return true
 	}
 
@@ -107,7 +104,7 @@ func (o *CustomerUnsubscribeRequest) SetEmail(v string) {
 
 // GetNewsletterGrn returns the NewsletterGrn field value if set, zero value otherwise.
 func (o *CustomerUnsubscribeRequest) GetNewsletterGrn() []string {
-	if o == nil || IsNil(o.NewsletterGrn) {
+	if o == nil || isNil(o.NewsletterGrn) {
 		var ret []string
 		return ret
 	}
@@ -117,15 +114,15 @@ func (o *CustomerUnsubscribeRequest) GetNewsletterGrn() []string {
 // GetNewsletterGrnOk returns a tuple with the NewsletterGrn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerUnsubscribeRequest) GetNewsletterGrnOk() ([]string, bool) {
-	if o == nil || IsNil(o.NewsletterGrn) {
-		return nil, false
+	if o == nil || isNil(o.NewsletterGrn) {
+    return nil, false
 	}
 	return o.NewsletterGrn, true
 }
 
 // HasNewsletterGrn returns a boolean if a field has been set.
 func (o *CustomerUnsubscribeRequest) HasNewsletterGrn() bool {
-	if o != nil && !IsNil(o.NewsletterGrn) {
+	if o != nil && !isNil(o.NewsletterGrn) {
 		return true
 	}
 
@@ -138,25 +135,17 @@ func (o *CustomerUnsubscribeRequest) SetNewsletterGrn(v []string) {
 }
 
 func (o CustomerUnsubscribeRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CustomerUnsubscribeRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TenantId) {
+	if !isNil(o.TenantId) {
 		toSerialize["tenantId"] = o.TenantId
 	}
-	if !IsNil(o.Email) {
+	if !isNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if !IsNil(o.NewsletterGrn) {
+	if !isNil(o.NewsletterGrn) {
 		toSerialize["newsletterGrn"] = o.NewsletterGrn
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCustomerUnsubscribeRequest struct {

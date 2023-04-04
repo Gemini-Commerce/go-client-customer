@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CustomerBulkUpdateRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomerBulkUpdateRequest{}
-
 // CustomerBulkUpdateRequest struct for CustomerBulkUpdateRequest
 type CustomerBulkUpdateRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -47,7 +44,7 @@ func NewCustomerBulkUpdateRequestWithDefaults() *CustomerBulkUpdateRequest {
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerBulkUpdateRequest) GetTenantId() string {
-	if o == nil || IsNil(o.TenantId) {
+	if o == nil || isNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -57,15 +54,15 @@ func (o *CustomerBulkUpdateRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerBulkUpdateRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TenantId) {
-		return nil, false
+	if o == nil || isNil(o.TenantId) {
+    return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerBulkUpdateRequest) HasTenantId() bool {
-	if o != nil && !IsNil(o.TenantId) {
+	if o != nil && !isNil(o.TenantId) {
 		return true
 	}
 
@@ -79,7 +76,7 @@ func (o *CustomerBulkUpdateRequest) SetTenantId(v string) {
 
 // GetCustomerIds returns the CustomerIds field value if set, zero value otherwise.
 func (o *CustomerBulkUpdateRequest) GetCustomerIds() []string {
-	if o == nil || IsNil(o.CustomerIds) {
+	if o == nil || isNil(o.CustomerIds) {
 		var ret []string
 		return ret
 	}
@@ -89,15 +86,15 @@ func (o *CustomerBulkUpdateRequest) GetCustomerIds() []string {
 // GetCustomerIdsOk returns a tuple with the CustomerIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerBulkUpdateRequest) GetCustomerIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.CustomerIds) {
-		return nil, false
+	if o == nil || isNil(o.CustomerIds) {
+    return nil, false
 	}
 	return o.CustomerIds, true
 }
 
 // HasCustomerIds returns a boolean if a field has been set.
 func (o *CustomerBulkUpdateRequest) HasCustomerIds() bool {
-	if o != nil && !IsNil(o.CustomerIds) {
+	if o != nil && !isNil(o.CustomerIds) {
 		return true
 	}
 
@@ -111,7 +108,7 @@ func (o *CustomerBulkUpdateRequest) SetCustomerIds(v []string) {
 
 // GetAction returns the Action field value if set, zero value otherwise.
 func (o *CustomerBulkUpdateRequest) GetAction() BulkUpdateRequestAction {
-	if o == nil || IsNil(o.Action) {
+	if o == nil || isNil(o.Action) {
 		var ret BulkUpdateRequestAction
 		return ret
 	}
@@ -121,15 +118,15 @@ func (o *CustomerBulkUpdateRequest) GetAction() BulkUpdateRequestAction {
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerBulkUpdateRequest) GetActionOk() (*BulkUpdateRequestAction, bool) {
-	if o == nil || IsNil(o.Action) {
-		return nil, false
+	if o == nil || isNil(o.Action) {
+    return nil, false
 	}
 	return o.Action, true
 }
 
 // HasAction returns a boolean if a field has been set.
 func (o *CustomerBulkUpdateRequest) HasAction() bool {
-	if o != nil && !IsNil(o.Action) {
+	if o != nil && !isNil(o.Action) {
 		return true
 	}
 
@@ -142,25 +139,17 @@ func (o *CustomerBulkUpdateRequest) SetAction(v BulkUpdateRequestAction) {
 }
 
 func (o CustomerBulkUpdateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CustomerBulkUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TenantId) {
+	if !isNil(o.TenantId) {
 		toSerialize["tenantId"] = o.TenantId
 	}
-	if !IsNil(o.CustomerIds) {
+	if !isNil(o.CustomerIds) {
 		toSerialize["customerIds"] = o.CustomerIds
 	}
-	if !IsNil(o.Action) {
+	if !isNil(o.Action) {
 		toSerialize["action"] = o.Action
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCustomerBulkUpdateRequest struct {

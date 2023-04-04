@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CustomerListGroupsResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomerListGroupsResponse{}
-
 // CustomerListGroupsResponse struct for CustomerListGroupsResponse
 type CustomerListGroupsResponse struct {
 	Groups []CustomerGroupResponse `json:"groups,omitempty"`
@@ -41,7 +38,7 @@ func NewCustomerListGroupsResponseWithDefaults() *CustomerListGroupsResponse {
 
 // GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *CustomerListGroupsResponse) GetGroups() []CustomerGroupResponse {
-	if o == nil || IsNil(o.Groups) {
+	if o == nil || isNil(o.Groups) {
 		var ret []CustomerGroupResponse
 		return ret
 	}
@@ -51,15 +48,15 @@ func (o *CustomerListGroupsResponse) GetGroups() []CustomerGroupResponse {
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerListGroupsResponse) GetGroupsOk() ([]CustomerGroupResponse, bool) {
-	if o == nil || IsNil(o.Groups) {
-		return nil, false
+	if o == nil || isNil(o.Groups) {
+    return nil, false
 	}
 	return o.Groups, true
 }
 
 // HasGroups returns a boolean if a field has been set.
 func (o *CustomerListGroupsResponse) HasGroups() bool {
-	if o != nil && !IsNil(o.Groups) {
+	if o != nil && !isNil(o.Groups) {
 		return true
 	}
 
@@ -72,19 +69,11 @@ func (o *CustomerListGroupsResponse) SetGroups(v []CustomerGroupResponse) {
 }
 
 func (o CustomerListGroupsResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CustomerListGroupsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Groups) {
+	if !isNil(o.Groups) {
 		toSerialize["groups"] = o.Groups
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCustomerListGroupsResponse struct {

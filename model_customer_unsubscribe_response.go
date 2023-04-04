@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CustomerUnsubscribeResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CustomerUnsubscribeResponse{}
-
 // CustomerUnsubscribeResponse struct for CustomerUnsubscribeResponse
 type CustomerUnsubscribeResponse struct {
 	Response *bool `json:"response,omitempty"`
@@ -43,7 +40,7 @@ func NewCustomerUnsubscribeResponseWithDefaults() *CustomerUnsubscribeResponse {
 
 // GetResponse returns the Response field value if set, zero value otherwise.
 func (o *CustomerUnsubscribeResponse) GetResponse() bool {
-	if o == nil || IsNil(o.Response) {
+	if o == nil || isNil(o.Response) {
 		var ret bool
 		return ret
 	}
@@ -53,15 +50,15 @@ func (o *CustomerUnsubscribeResponse) GetResponse() bool {
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerUnsubscribeResponse) GetResponseOk() (*bool, bool) {
-	if o == nil || IsNil(o.Response) {
-		return nil, false
+	if o == nil || isNil(o.Response) {
+    return nil, false
 	}
 	return o.Response, true
 }
 
 // HasResponse returns a boolean if a field has been set.
 func (o *CustomerUnsubscribeResponse) HasResponse() bool {
-	if o != nil && !IsNil(o.Response) {
+	if o != nil && !isNil(o.Response) {
 		return true
 	}
 
@@ -75,7 +72,7 @@ func (o *CustomerUnsubscribeResponse) SetResponse(v bool) {
 
 // GetSubscriberExist returns the SubscriberExist field value if set, zero value otherwise.
 func (o *CustomerUnsubscribeResponse) GetSubscriberExist() bool {
-	if o == nil || IsNil(o.SubscriberExist) {
+	if o == nil || isNil(o.SubscriberExist) {
 		var ret bool
 		return ret
 	}
@@ -85,15 +82,15 @@ func (o *CustomerUnsubscribeResponse) GetSubscriberExist() bool {
 // GetSubscriberExistOk returns a tuple with the SubscriberExist field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerUnsubscribeResponse) GetSubscriberExistOk() (*bool, bool) {
-	if o == nil || IsNil(o.SubscriberExist) {
-		return nil, false
+	if o == nil || isNil(o.SubscriberExist) {
+    return nil, false
 	}
 	return o.SubscriberExist, true
 }
 
 // HasSubscriberExist returns a boolean if a field has been set.
 func (o *CustomerUnsubscribeResponse) HasSubscriberExist() bool {
-	if o != nil && !IsNil(o.SubscriberExist) {
+	if o != nil && !isNil(o.SubscriberExist) {
 		return true
 	}
 
@@ -107,7 +104,7 @@ func (o *CustomerUnsubscribeResponse) SetSubscriberExist(v bool) {
 
 // GetActiveNewsletterGrn returns the ActiveNewsletterGrn field value if set, zero value otherwise.
 func (o *CustomerUnsubscribeResponse) GetActiveNewsletterGrn() []string {
-	if o == nil || IsNil(o.ActiveNewsletterGrn) {
+	if o == nil || isNil(o.ActiveNewsletterGrn) {
 		var ret []string
 		return ret
 	}
@@ -117,15 +114,15 @@ func (o *CustomerUnsubscribeResponse) GetActiveNewsletterGrn() []string {
 // GetActiveNewsletterGrnOk returns a tuple with the ActiveNewsletterGrn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerUnsubscribeResponse) GetActiveNewsletterGrnOk() ([]string, bool) {
-	if o == nil || IsNil(o.ActiveNewsletterGrn) {
-		return nil, false
+	if o == nil || isNil(o.ActiveNewsletterGrn) {
+    return nil, false
 	}
 	return o.ActiveNewsletterGrn, true
 }
 
 // HasActiveNewsletterGrn returns a boolean if a field has been set.
 func (o *CustomerUnsubscribeResponse) HasActiveNewsletterGrn() bool {
-	if o != nil && !IsNil(o.ActiveNewsletterGrn) {
+	if o != nil && !isNil(o.ActiveNewsletterGrn) {
 		return true
 	}
 
@@ -138,25 +135,17 @@ func (o *CustomerUnsubscribeResponse) SetActiveNewsletterGrn(v []string) {
 }
 
 func (o CustomerUnsubscribeResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CustomerUnsubscribeResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Response) {
+	if !isNil(o.Response) {
 		toSerialize["response"] = o.Response
 	}
-	if !IsNil(o.SubscriberExist) {
+	if !isNil(o.SubscriberExist) {
 		toSerialize["subscriberExist"] = o.SubscriberExist
 	}
-	if !IsNil(o.ActiveNewsletterGrn) {
+	if !isNil(o.ActiveNewsletterGrn) {
 		toSerialize["activeNewsletterGrn"] = o.ActiveNewsletterGrn
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCustomerUnsubscribeResponse struct {
