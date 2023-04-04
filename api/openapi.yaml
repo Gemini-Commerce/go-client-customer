@@ -1,0 +1,2389 @@
+openapi: 3.0.1
+info:
+  title: customer/customer.proto
+  version: version not set
+servers:
+- url: /
+paths:
+  /customer.Customer/AcquireSubscriber:
+    post:
+      operationId: Customer_AcquireSubscriber
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerCreateSubscriberRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerSubscriberResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/AcquireUnsubscriber:
+    post:
+      operationId: Customer_AcquireUnsubscriber
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerUnsubscribeRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerUnsubscribeResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/AddCustomerToGroup:
+    post:
+      operationId: Customer_AddCustomerToGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerAddCustomerToGroupRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/BulkUpdate:
+    post:
+      operationId: Customer_BulkUpdate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerBulkUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerBulkUpdateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/Create:
+    post:
+      operationId: Customer_Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerCreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerCustomerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/CreateAddress:
+    post:
+      operationId: Customer_CreateAddress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerAddressCreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerAddressCustomerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/CreateGroup:
+    post:
+      operationId: Customer_CreateGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerCreateGroupRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/CreateSubscriber:
+    post:
+      operationId: Customer_CreateSubscriber
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerCreateSubscriberRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerSubscriberResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/DeleteAddress:
+    post:
+      operationId: Customer_DeleteAddress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerAddressDeleteRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerAddressDeleteResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/DeleteGroup:
+    post:
+      operationId: Customer_DeleteGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerDeleteGroupRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerDeleteGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/Find:
+    post:
+      operationId: Customer_Find
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerFindManyRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerFindManyResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/FindByEmail:
+    post:
+      operationId: Customer_FindByEmail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerFindByEmailRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerCustomerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/FindById:
+    post:
+      operationId: Customer_FindById
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerFindByIdRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerCustomerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/FindSubscriberByEmail:
+    post:
+      operationId: Customer_FindSubscriberByEmail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerFindSubscriberByEmailRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerSubscriberResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/FindSubscriberById:
+    post:
+      operationId: Customer_FindSubscriberById
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerFindSubscriberByIdRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerSubscriberResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/GetGroupByCode:
+    post:
+      operationId: Customer_GetGroupByCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerGetGroupByCodeRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/GetGroupById:
+    post:
+      operationId: Customer_GetGroupById
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerGetGroupByIdRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/ListGroups:
+    post:
+      operationId: Customer_ListGroups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerListGroupsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerListGroupsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/RemoveCustomerFromGroup:
+    post:
+      operationId: Customer_RemoveCustomerFromGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerRemoveCustomerFromGroupRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/RemoveDefaultAddress:
+    post:
+      operationId: Customer_RemoveDefaultAddress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerRemoveDefaultAddressRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerCustomerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/Search:
+    post:
+      operationId: Customer_Search
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerSearchRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerSearchResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/SetDefaultAddress:
+    post:
+      operationId: Customer_SetDefaultAddress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerSetDefaultAddressRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerCustomerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/Unsubscribe:
+    post:
+      operationId: Customer_Unsubscribe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerUnsubscribeRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerUnsubscribeResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/Update:
+    post:
+      operationId: Customer_Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerCustomerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/UpdateAddress:
+    post:
+      operationId: Customer_UpdateAddress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerAddressUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerAddressUpdateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/UpdateGroup:
+    post:
+      operationId: Customer_UpdateGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerUpdateGroupRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/UpdateSubscriber:
+    post:
+      operationId: Customer_UpdateSubscriber
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerUpdateSubscriberRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerSubscriberResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    BulkUpdateRequestAction:
+      default: ENABLE
+      enum:
+      - ENABLE
+      - DISABLE
+      - DELETE
+      type: string
+    PasswordPasswordType:
+      default: PASSWORD_TYPE_UNKNOWN
+      enum:
+      - PASSWORD_TYPE_UNKNOWN
+      - PASSWORD_TYPE_MAGENTO1
+      - PASSWORD_TYPE_SYLIUS
+      - PASSWORD_TYPE_MAGENTO2
+      type: string
+    customerAddCustomerToGroupRequest:
+      properties:
+        tenantId:
+          type: string
+        groupId:
+          type: string
+        customerId:
+          type: string
+      type: object
+    customerAddressCreateRequest:
+      properties:
+        tenantId:
+          type: string
+        customerId:
+          type: string
+        em:
+          $ref: '#/components/schemas/customerEMFields'
+        name:
+          type: string
+        surname:
+          type: string
+        street:
+          type: string
+        number:
+          type: string
+        zip:
+          type: string
+        city:
+          type: string
+        province:
+          type: string
+        phoneNumber:
+          type: string
+        fiscalCode:
+          type: string
+        vatNumber:
+          type: string
+        kind:
+          $ref: '#/components/schemas/customerAddressCreateRequestKind'
+        default:
+          type: boolean
+        country:
+          type: string
+        attributes:
+          additionalProperties:
+            $ref: '#/components/schemas/protobufAny'
+          type: object
+      type: object
+    customerAddressCreateRequestKind:
+      default: SHIPPING
+      enum:
+      - SHIPPING
+      - BILLING
+      - BOTH
+      type: string
+    customerAddressCustomerResponse:
+      example:
+        zip: zip
+        country: country
+        grn: grn
+        city: city
+        kind: null
+        em:
+          entityCode: entityCode
+          entityType: entityType
+          tenantId: tenantId
+        number: number
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        default: true
+        phoneNumber: phoneNumber
+        province: province
+        surname: surname
+        street: street
+        fiscalCode: fiscalCode
+        name: name
+        attributes:
+          key:
+            typeUrl: typeUrl
+            value: value
+        id: id
+        vatNumber: vatNumber
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        em:
+          $ref: '#/components/schemas/customerEMFields'
+        grn:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        surname:
+          type: string
+        street:
+          type: string
+        number:
+          type: string
+        zip:
+          type: string
+        city:
+          type: string
+        province:
+          type: string
+        phoneNumber:
+          type: string
+        fiscalCode:
+          type: string
+        vatNumber:
+          type: string
+        kind:
+          $ref: '#/components/schemas/customerAddressCustomerResponseKind'
+        default:
+          type: boolean
+        country:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        attributes:
+          additionalProperties:
+            $ref: '#/components/schemas/protobufAny'
+          type: object
+      type: object
+    customerAddressCustomerResponseKind:
+      default: SHIPPING
+      enum:
+      - SHIPPING
+      - BILLING
+      - BOTH
+      type: string
+    customerAddressDeleteRequest:
+      properties:
+        tenantId:
+          type: string
+        customerId:
+          type: string
+        addressId:
+          type: string
+      type: object
+    customerAddressDeleteResponse:
+      example:
+        customer:
+          addresses:
+          - zip: zip
+            country: country
+            grn: grn
+            city: city
+            kind: null
+            em:
+              entityCode: entityCode
+              entityType: entityType
+              tenantId: tenantId
+            number: number
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            phoneNumber: phoneNumber
+            province: province
+            surname: surname
+            street: street
+            fiscalCode: fiscalCode
+            name: name
+            attributes:
+              key:
+                typeUrl: typeUrl
+                value: value
+            id: id
+            vatNumber: vatNumber
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - zip: zip
+            country: country
+            grn: grn
+            city: city
+            kind: null
+            em:
+              entityCode: entityCode
+              entityType: entityType
+              tenantId: tenantId
+            number: number
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            phoneNumber: phoneNumber
+            province: province
+            surname: surname
+            street: street
+            fiscalCode: fiscalCode
+            name: name
+            attributes:
+              key:
+                typeUrl: typeUrl
+                value: value
+            id: id
+            vatNumber: vatNumber
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          birthdate: 2000-01-23T04:56:07.000+00:00
+          gender: gender
+          source: source
+          enabled: true
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          newsletters:
+          - newsletterGrn: newsletterGrn
+            name: name
+            id: id
+          - newsletterGrn: newsletterGrn
+            name: name
+            id: id
+          surname: surname
+          id: id
+          email: email
+          certifiedEmail: certifiedEmail
+          preferredLocale: preferredLocale
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          grn: grn
+          em:
+            entityCode: entityCode
+            entityType: entityType
+            tenantId: tenantId
+          groups:
+          - groups
+          - groups
+          defaultShippingAddressId: defaultShippingAddressId
+          migratedPassword:
+            data:
+              key: data
+            type: null
+            enabled: true
+          taxCode: taxCode
+          defaultBillingAddressId: defaultBillingAddressId
+          deletedAt: 2000-01-23T04:56:07.000+00:00
+          phoneNumber: phoneNumber
+          deleted: true
+          nationality: nationality
+          name: name
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+      properties:
+        customer:
+          $ref: '#/components/schemas/customerCustomerResponse'
+      type: object
+    customerAddressEntity:
+      properties:
+        em:
+          $ref: '#/components/schemas/customerEMFields'
+        name:
+          type: string
+        surname:
+          type: string
+        street:
+          type: string
+        number:
+          type: string
+        zip:
+          type: string
+        city:
+          type: string
+        province:
+          type: string
+        phoneNumber:
+          type: string
+        fiscalCode:
+          type: string
+        vatNumber:
+          type: string
+        kind:
+          $ref: '#/components/schemas/customerAddressEntityKind'
+        default:
+          type: boolean
+        country:
+          type: string
+        attributes:
+          additionalProperties:
+            $ref: '#/components/schemas/protobufAny'
+          type: object
+      type: object
+    customerAddressEntityKind:
+      default: SHIPPING
+      enum:
+      - SHIPPING
+      - BILLING
+      - BOTH
+      type: string
+    customerAddressUpdateRequest:
+      properties:
+        tenantId:
+          type: string
+        customerId:
+          type: string
+        id:
+          type: string
+        address:
+          $ref: '#/components/schemas/customerAddressEntity'
+        fieldMask:
+          items:
+            type: string
+          type: array
+      type: object
+    customerAddressUpdateResponse:
+      example:
+        customer:
+          addresses:
+          - zip: zip
+            country: country
+            grn: grn
+            city: city
+            kind: null
+            em:
+              entityCode: entityCode
+              entityType: entityType
+              tenantId: tenantId
+            number: number
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            phoneNumber: phoneNumber
+            province: province
+            surname: surname
+            street: street
+            fiscalCode: fiscalCode
+            name: name
+            attributes:
+              key:
+                typeUrl: typeUrl
+                value: value
+            id: id
+            vatNumber: vatNumber
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - zip: zip
+            country: country
+            grn: grn
+            city: city
+            kind: null
+            em:
+              entityCode: entityCode
+              entityType: entityType
+              tenantId: tenantId
+            number: number
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            phoneNumber: phoneNumber
+            province: province
+            surname: surname
+            street: street
+            fiscalCode: fiscalCode
+            name: name
+            attributes:
+              key:
+                typeUrl: typeUrl
+                value: value
+            id: id
+            vatNumber: vatNumber
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          birthdate: 2000-01-23T04:56:07.000+00:00
+          gender: gender
+          source: source
+          enabled: true
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          newsletters:
+          - newsletterGrn: newsletterGrn
+            name: name
+            id: id
+          - newsletterGrn: newsletterGrn
+            name: name
+            id: id
+          surname: surname
+          id: id
+          email: email
+          certifiedEmail: certifiedEmail
+          preferredLocale: preferredLocale
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          grn: grn
+          em:
+            entityCode: entityCode
+            entityType: entityType
+            tenantId: tenantId
+          groups:
+          - groups
+          - groups
+          defaultShippingAddressId: defaultShippingAddressId
+          migratedPassword:
+            data:
+              key: data
+            type: null
+            enabled: true
+          taxCode: taxCode
+          defaultBillingAddressId: defaultBillingAddressId
+          deletedAt: 2000-01-23T04:56:07.000+00:00
+          phoneNumber: phoneNumber
+          deleted: true
+          nationality: nationality
+          name: name
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+      properties:
+        customer:
+          $ref: '#/components/schemas/customerCustomerResponse'
+      type: object
+    customerBulkUpdateRequest:
+      properties:
+        tenantId:
+          type: string
+        customerIds:
+          items:
+            type: string
+          type: array
+        action:
+          $ref: '#/components/schemas/BulkUpdateRequestAction'
+      type: object
+    customerBulkUpdateResponse:
+      example:
+        customerIds:
+        - customerIds
+        - customerIds
+      properties:
+        customerIds:
+          items:
+            type: string
+          type: array
+      type: object
+    customerCreateGroupRequest:
+      properties:
+        name:
+          type: string
+        tenantId:
+          type: string
+        code:
+          type: string
+      type: object
+    customerCreateRequest:
+      properties:
+        tenantId:
+          type: string
+        em:
+          $ref: '#/components/schemas/customerEMFields'
+        name:
+          type: string
+        surname:
+          type: string
+        email:
+          type: string
+        birthdate:
+          format: date-time
+          type: string
+        gender:
+          type: string
+        enabled:
+          type: boolean
+        source:
+          type: string
+        addresses:
+          items:
+            $ref: '#/components/schemas/customerAddressEntity'
+          type: array
+        phoneNumber:
+          type: string
+        nationality:
+          type: string
+        groups:
+          items:
+            type: string
+          type: array
+        deleted:
+          type: boolean
+        newsletters:
+          items:
+            $ref: '#/components/schemas/customerNewsletterRequest'
+          type: array
+        doNotNotify:
+          type: boolean
+        attributes:
+          additionalProperties:
+            $ref: '#/components/schemas/protobufAny'
+          type: object
+        migratedPassword:
+          $ref: '#/components/schemas/customerPassword'
+        market:
+          type: string
+        preferredLocale:
+          type: string
+        taxCode:
+          type: string
+        certifiedEmail:
+          type: string
+      type: object
+    customerCreateSubscriberRequest:
+      properties:
+        tenantId:
+          type: string
+        subscriber:
+          $ref: '#/components/schemas/customerSubscriberRequest'
+      type: object
+    customerCustomerResponse:
+      example:
+        addresses:
+        - zip: zip
+          country: country
+          grn: grn
+          city: city
+          kind: null
+          em:
+            entityCode: entityCode
+            entityType: entityType
+            tenantId: tenantId
+          number: number
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          default: true
+          phoneNumber: phoneNumber
+          province: province
+          surname: surname
+          street: street
+          fiscalCode: fiscalCode
+          name: name
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+          id: id
+          vatNumber: vatNumber
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - zip: zip
+          country: country
+          grn: grn
+          city: city
+          kind: null
+          em:
+            entityCode: entityCode
+            entityType: entityType
+            tenantId: tenantId
+          number: number
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          default: true
+          phoneNumber: phoneNumber
+          province: province
+          surname: surname
+          street: street
+          fiscalCode: fiscalCode
+          name: name
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+          id: id
+          vatNumber: vatNumber
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        birthdate: 2000-01-23T04:56:07.000+00:00
+        gender: gender
+        source: source
+        enabled: true
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        newsletters:
+        - newsletterGrn: newsletterGrn
+          name: name
+          id: id
+        - newsletterGrn: newsletterGrn
+          name: name
+          id: id
+        surname: surname
+        id: id
+        email: email
+        certifiedEmail: certifiedEmail
+        preferredLocale: preferredLocale
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+        grn: grn
+        em:
+          entityCode: entityCode
+          entityType: entityType
+          tenantId: tenantId
+        groups:
+        - groups
+        - groups
+        defaultShippingAddressId: defaultShippingAddressId
+        migratedPassword:
+          data:
+            key: data
+          type: null
+          enabled: true
+        taxCode: taxCode
+        defaultBillingAddressId: defaultBillingAddressId
+        deletedAt: 2000-01-23T04:56:07.000+00:00
+        phoneNumber: phoneNumber
+        deleted: true
+        nationality: nationality
+        name: name
+        attributes:
+          key:
+            typeUrl: typeUrl
+            value: value
+      properties:
+        em:
+          $ref: '#/components/schemas/customerEMFields'
+        grn:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        surname:
+          type: string
+        email:
+          type: string
+        birthdate:
+          format: date-time
+          type: string
+        gender:
+          type: string
+        enabled:
+          type: boolean
+        source:
+          type: string
+        addresses:
+          items:
+            $ref: '#/components/schemas/customerAddressCustomerResponse'
+          type: array
+        defaultBillingAddressId:
+          type: string
+        defaultShippingAddressId:
+          type: string
+        phoneNumber:
+          type: string
+        nationality:
+          type: string
+        preferredLocale:
+          type: string
+        groups:
+          items:
+            type: string
+          type: array
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deleted:
+          type: boolean
+        deletedAt:
+          format: date-time
+          type: string
+        newsletters:
+          items:
+            $ref: '#/components/schemas/customerNewsletterResponse'
+          type: array
+        migratedPassword:
+          $ref: '#/components/schemas/customerPassword'
+        attributes:
+          additionalProperties:
+            $ref: '#/components/schemas/protobufAny'
+          type: object
+        taxCode:
+          type: string
+        certifiedEmail:
+          type: string
+      type: object
+    customerDeleteGroupRequest:
+      properties:
+        tenantId:
+          type: string
+        groupId:
+          type: string
+      type: object
+    customerDeleteGroupResponse:
+      example:
+        groupId: groupId
+      properties:
+        groupId:
+          type: string
+      type: object
+    customerEMFields:
+      example:
+        entityCode: entityCode
+        entityType: entityType
+        tenantId: tenantId
+      properties:
+        tenantId:
+          type: string
+        entityType:
+          type: string
+        entityCode:
+          type: string
+      type: object
+    customerFindByEmailRequest:
+      properties:
+        tenantId:
+          type: string
+        email:
+          type: string
+      type: object
+    customerFindByIdRequest:
+      properties:
+        tenantId:
+          type: string
+        id:
+          type: string
+      type: object
+    customerFindManyRequest:
+      properties:
+        tenantId:
+          type: string
+        groupId:
+          type: string
+        pageSize:
+          format: int64
+          type: integer
+        pageToken:
+          type: string
+        filter:
+          $ref: '#/components/schemas/customerFindManyRequestFilter'
+        filterMask:
+          items:
+            type: string
+          type: array
+      type: object
+    customerFindManyRequestFilter:
+      properties:
+        newsletter:
+          type: boolean
+      type: object
+    customerFindManyResponse:
+      example:
+        nextPageToken: nextPageToken
+        customers:
+        - addresses:
+          - zip: zip
+            country: country
+            grn: grn
+            city: city
+            kind: null
+            em:
+              entityCode: entityCode
+              entityType: entityType
+              tenantId: tenantId
+            number: number
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            phoneNumber: phoneNumber
+            province: province
+            surname: surname
+            street: street
+            fiscalCode: fiscalCode
+            name: name
+            attributes:
+              key:
+                typeUrl: typeUrl
+                value: value
+            id: id
+            vatNumber: vatNumber
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - zip: zip
+            country: country
+            grn: grn
+            city: city
+            kind: null
+            em:
+              entityCode: entityCode
+              entityType: entityType
+              tenantId: tenantId
+            number: number
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            phoneNumber: phoneNumber
+            province: province
+            surname: surname
+            street: street
+            fiscalCode: fiscalCode
+            name: name
+            attributes:
+              key:
+                typeUrl: typeUrl
+                value: value
+            id: id
+            vatNumber: vatNumber
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          birthdate: 2000-01-23T04:56:07.000+00:00
+          gender: gender
+          source: source
+          enabled: true
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          newsletters:
+          - newsletterGrn: newsletterGrn
+            name: name
+            id: id
+          - newsletterGrn: newsletterGrn
+            name: name
+            id: id
+          surname: surname
+          id: id
+          email: email
+          certifiedEmail: certifiedEmail
+          preferredLocale: preferredLocale
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          grn: grn
+          em:
+            entityCode: entityCode
+            entityType: entityType
+            tenantId: tenantId
+          groups:
+          - groups
+          - groups
+          defaultShippingAddressId: defaultShippingAddressId
+          migratedPassword:
+            data:
+              key: data
+            type: null
+            enabled: true
+          taxCode: taxCode
+          defaultBillingAddressId: defaultBillingAddressId
+          deletedAt: 2000-01-23T04:56:07.000+00:00
+          phoneNumber: phoneNumber
+          deleted: true
+          nationality: nationality
+          name: name
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+        - addresses:
+          - zip: zip
+            country: country
+            grn: grn
+            city: city
+            kind: null
+            em:
+              entityCode: entityCode
+              entityType: entityType
+              tenantId: tenantId
+            number: number
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            phoneNumber: phoneNumber
+            province: province
+            surname: surname
+            street: street
+            fiscalCode: fiscalCode
+            name: name
+            attributes:
+              key:
+                typeUrl: typeUrl
+                value: value
+            id: id
+            vatNumber: vatNumber
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - zip: zip
+            country: country
+            grn: grn
+            city: city
+            kind: null
+            em:
+              entityCode: entityCode
+              entityType: entityType
+              tenantId: tenantId
+            number: number
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            phoneNumber: phoneNumber
+            province: province
+            surname: surname
+            street: street
+            fiscalCode: fiscalCode
+            name: name
+            attributes:
+              key:
+                typeUrl: typeUrl
+                value: value
+            id: id
+            vatNumber: vatNumber
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          birthdate: 2000-01-23T04:56:07.000+00:00
+          gender: gender
+          source: source
+          enabled: true
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          newsletters:
+          - newsletterGrn: newsletterGrn
+            name: name
+            id: id
+          - newsletterGrn: newsletterGrn
+            name: name
+            id: id
+          surname: surname
+          id: id
+          email: email
+          certifiedEmail: certifiedEmail
+          preferredLocale: preferredLocale
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          grn: grn
+          em:
+            entityCode: entityCode
+            entityType: entityType
+            tenantId: tenantId
+          groups:
+          - groups
+          - groups
+          defaultShippingAddressId: defaultShippingAddressId
+          migratedPassword:
+            data:
+              key: data
+            type: null
+            enabled: true
+          taxCode: taxCode
+          defaultBillingAddressId: defaultBillingAddressId
+          deletedAt: 2000-01-23T04:56:07.000+00:00
+          phoneNumber: phoneNumber
+          deleted: true
+          nationality: nationality
+          name: name
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+      properties:
+        customers:
+          items:
+            $ref: '#/components/schemas/customerCustomerResponse'
+          type: array
+        nextPageToken:
+          type: string
+      type: object
+    customerFindSubscriberByEmailRequest:
+      properties:
+        tenantId:
+          type: string
+        subscriberEmail:
+          type: string
+      type: object
+    customerFindSubscriberByIdRequest:
+      properties:
+        tenantId:
+          type: string
+        subscriberId:
+          type: string
+      type: object
+    customerGetGroupByCodeRequest:
+      properties:
+        tenantId:
+          type: string
+        code:
+          type: string
+      type: object
+    customerGetGroupByIdRequest:
+      properties:
+        tenantId:
+          type: string
+        groupId:
+          type: string
+      type: object
+    customerGroupResponse:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        grn: grn
+        code: code
+        name: name
+        customerIds:
+        - customerIds
+        - customerIds
+        id: id
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+        customerCount: customerCount
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        customerIds:
+          items:
+            type: string
+          type: array
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        grn:
+          type: string
+        code:
+          type: string
+        customerCount:
+          format: uint64
+          type: string
+      type: object
+    customerListGroupsRequest:
+      properties:
+        tenantId:
+          type: string
+      type: object
+    customerListGroupsResponse:
+      example:
+        groups:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          grn: grn
+          code: code
+          name: name
+          customerIds:
+          - customerIds
+          - customerIds
+          id: id
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          customerCount: customerCount
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          grn: grn
+          code: code
+          name: name
+          customerIds:
+          - customerIds
+          - customerIds
+          id: id
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          customerCount: customerCount
+      properties:
+        groups:
+          items:
+            $ref: '#/components/schemas/customerGroupResponse'
+          type: array
+      type: object
+    customerNewsletterRequest:
+      properties:
+        newsletterGrn:
+          type: string
+        name:
+          type: string
+        subscribed:
+          type: boolean
+      type: object
+    customerNewsletterResponse:
+      example:
+        newsletterGrn: newsletterGrn
+        name: name
+        id: id
+      properties:
+        id:
+          type: string
+        newsletterGrn:
+          type: string
+        name:
+          type: string
+      type: object
+    customerPassword:
+      example:
+        data:
+          key: data
+        type: null
+        enabled: true
+      properties:
+        data:
+          additionalProperties:
+            type: string
+          type: object
+        enabled:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/PasswordPasswordType'
+      type: object
+    customerRemoveCustomerFromGroupRequest:
+      properties:
+        tenantId:
+          type: string
+        groupId:
+          type: string
+        customerId:
+          type: string
+      type: object
+    customerRemoveDefaultAddressRequest:
+      properties:
+        tenantId:
+          type: string
+        customerId:
+          type: string
+        addressId:
+          type: string
+      type: object
+    customerSearchRequest:
+      properties:
+        tenantId:
+          type: string
+        query:
+          type: string
+        groupId:
+          type: string
+        pageSize:
+          format: int64
+          type: integer
+        pageToken:
+          type: string
+        filter:
+          $ref: '#/components/schemas/customerSearchRequestFilter'
+        filterMask:
+          items:
+            type: string
+          type: array
+      type: object
+    customerSearchRequestFilter:
+      properties:
+        newsletter:
+          type: boolean
+      type: object
+    customerSearchResponse:
+      example:
+        nextPageToken: nextPageToken
+        customers:
+        - addresses:
+          - zip: zip
+            country: country
+            grn: grn
+            city: city
+            kind: null
+            em:
+              entityCode: entityCode
+              entityType: entityType
+              tenantId: tenantId
+            number: number
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            phoneNumber: phoneNumber
+            province: province
+            surname: surname
+            street: street
+            fiscalCode: fiscalCode
+            name: name
+            attributes:
+              key:
+                typeUrl: typeUrl
+                value: value
+            id: id
+            vatNumber: vatNumber
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - zip: zip
+            country: country
+            grn: grn
+            city: city
+            kind: null
+            em:
+              entityCode: entityCode
+              entityType: entityType
+              tenantId: tenantId
+            number: number
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            phoneNumber: phoneNumber
+            province: province
+            surname: surname
+            street: street
+            fiscalCode: fiscalCode
+            name: name
+            attributes:
+              key:
+                typeUrl: typeUrl
+                value: value
+            id: id
+            vatNumber: vatNumber
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          birthdate: 2000-01-23T04:56:07.000+00:00
+          gender: gender
+          source: source
+          enabled: true
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          newsletters:
+          - newsletterGrn: newsletterGrn
+            name: name
+            id: id
+          - newsletterGrn: newsletterGrn
+            name: name
+            id: id
+          surname: surname
+          id: id
+          email: email
+          certifiedEmail: certifiedEmail
+          preferredLocale: preferredLocale
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          grn: grn
+          em:
+            entityCode: entityCode
+            entityType: entityType
+            tenantId: tenantId
+          groups:
+          - groups
+          - groups
+          defaultShippingAddressId: defaultShippingAddressId
+          migratedPassword:
+            data:
+              key: data
+            type: null
+            enabled: true
+          taxCode: taxCode
+          defaultBillingAddressId: defaultBillingAddressId
+          deletedAt: 2000-01-23T04:56:07.000+00:00
+          phoneNumber: phoneNumber
+          deleted: true
+          nationality: nationality
+          name: name
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+        - addresses:
+          - zip: zip
+            country: country
+            grn: grn
+            city: city
+            kind: null
+            em:
+              entityCode: entityCode
+              entityType: entityType
+              tenantId: tenantId
+            number: number
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            phoneNumber: phoneNumber
+            province: province
+            surname: surname
+            street: street
+            fiscalCode: fiscalCode
+            name: name
+            attributes:
+              key:
+                typeUrl: typeUrl
+                value: value
+            id: id
+            vatNumber: vatNumber
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - zip: zip
+            country: country
+            grn: grn
+            city: city
+            kind: null
+            em:
+              entityCode: entityCode
+              entityType: entityType
+              tenantId: tenantId
+            number: number
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            phoneNumber: phoneNumber
+            province: province
+            surname: surname
+            street: street
+            fiscalCode: fiscalCode
+            name: name
+            attributes:
+              key:
+                typeUrl: typeUrl
+                value: value
+            id: id
+            vatNumber: vatNumber
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          birthdate: 2000-01-23T04:56:07.000+00:00
+          gender: gender
+          source: source
+          enabled: true
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          newsletters:
+          - newsletterGrn: newsletterGrn
+            name: name
+            id: id
+          - newsletterGrn: newsletterGrn
+            name: name
+            id: id
+          surname: surname
+          id: id
+          email: email
+          certifiedEmail: certifiedEmail
+          preferredLocale: preferredLocale
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          grn: grn
+          em:
+            entityCode: entityCode
+            entityType: entityType
+            tenantId: tenantId
+          groups:
+          - groups
+          - groups
+          defaultShippingAddressId: defaultShippingAddressId
+          migratedPassword:
+            data:
+              key: data
+            type: null
+            enabled: true
+          taxCode: taxCode
+          defaultBillingAddressId: defaultBillingAddressId
+          deletedAt: 2000-01-23T04:56:07.000+00:00
+          phoneNumber: phoneNumber
+          deleted: true
+          nationality: nationality
+          name: name
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+      properties:
+        customers:
+          items:
+            $ref: '#/components/schemas/customerCustomerResponse'
+          type: array
+        nextPageToken:
+          type: string
+      type: object
+    customerSetDefaultAddressRequest:
+      properties:
+        tenantId:
+          type: string
+        customerId:
+          type: string
+        addressId:
+          type: string
+      type: object
+    customerSubscriberRequest:
+      properties:
+        name:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        country:
+          type: string
+        gender:
+          type: string
+        em:
+          $ref: '#/components/schemas/customerEMFields'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        newsletters:
+          items:
+            $ref: '#/components/schemas/customerNewsletterRequest'
+          type: array
+        market:
+          type: string
+        preferredLocale:
+          type: string
+      type: object
+    customerSubscriberResponse:
+      example:
+        market: market
+        country: country
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        newsletters:
+        - newsletterGrn: newsletterGrn
+          name: name
+          id: id
+        - newsletterGrn: newsletterGrn
+          name: name
+          id: id
+        gender: gender
+        name: name
+        em:
+          entityCode: entityCode
+          entityType: entityType
+          tenantId: tenantId
+        id: id
+        email: email
+        lastname: lastname
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+        preferredLocale: preferredLocale
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        country:
+          type: string
+        gender:
+          type: string
+        em:
+          $ref: '#/components/schemas/customerEMFields'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        newsletters:
+          items:
+            $ref: '#/components/schemas/customerNewsletterResponse'
+          type: array
+        market:
+          type: string
+        preferredLocale:
+          type: string
+      type: object
+    customerSubscriberResponseWithNewsletterRequest:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        country:
+          type: string
+        gender:
+          type: string
+        em:
+          $ref: '#/components/schemas/customerEMFields'
+        preferredLocale:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        newsletters:
+          items:
+            $ref: '#/components/schemas/customerNewsletterRequest'
+          type: array
+      type: object
+    customerUnsubscribeRequest:
+      properties:
+        tenantId:
+          type: string
+        email:
+          type: string
+        newsletterGrn:
+          items:
+            type: string
+          type: array
+      type: object
+    customerUnsubscribeResponse:
+      example:
+        activeNewsletterGrn:
+        - activeNewsletterGrn
+        - activeNewsletterGrn
+        response: true
+        subscriberExist: true
+      properties:
+        response:
+          type: boolean
+        subscriberExist:
+          type: boolean
+        activeNewsletterGrn:
+          items:
+            type: string
+          type: array
+      type: object
+    customerUpdateGroupRequest:
+      properties:
+        tenantId:
+          type: string
+        groupId:
+          type: string
+        payload:
+          $ref: '#/components/schemas/customerUpdateGroupRequestPayload'
+        fieldMask:
+          items:
+            type: string
+          type: array
+      type: object
+    customerUpdateGroupRequestPayload:
+      properties:
+        name:
+          type: string
+      type: object
+    customerUpdateRequest:
+      properties:
+        tenantId:
+          type: string
+        customerId:
+          type: string
+        payload:
+          $ref: '#/components/schemas/customerUpdateRequestPayload'
+        fieldMask:
+          items:
+            type: string
+          type: array
+      type: object
+    customerUpdateRequestPayload:
+      properties:
+        em:
+          $ref: '#/components/schemas/customerEMFields'
+        name:
+          type: string
+        surname:
+          type: string
+        email:
+          type: string
+        birthdate:
+          format: date-time
+          type: string
+        gender:
+          type: string
+        enabled:
+          type: boolean
+        source:
+          type: string
+        addresses:
+          items:
+            $ref: '#/components/schemas/customerAddressEntity'
+          type: array
+        defaultBillingAddressId:
+          type: string
+        defaultShippingAddressId:
+          type: string
+        phoneNumber:
+          type: string
+        nationality:
+          type: string
+        groups:
+          items:
+            type: string
+          type: array
+        deleted:
+          type: boolean
+        newsletters:
+          items:
+            $ref: '#/components/schemas/customerNewsletterRequest'
+          type: array
+        attributes:
+          additionalProperties:
+            $ref: '#/components/schemas/protobufAny'
+          type: object
+        migratedPassword:
+          $ref: '#/components/schemas/customerPassword'
+        preferredLocale:
+          type: string
+        taxCode:
+          type: string
+        certifiedEmail:
+          type: string
+      type: object
+    customerUpdateSubscriberRequest:
+      properties:
+        tenantId:
+          type: string
+        subscriber:
+          $ref: '#/components/schemas/customerSubscriberResponseWithNewsletterRequest'
+        fieldMask:
+          items:
+            type: string
+          type: array
+      type: object
+    googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+    protobufAny:
+      description: |-
+        `Any` contains an arbitrary serialized protocol buffer message along with a
+        URL that describes the type of the serialized message.
+
+        Protobuf library provides support to pack/unpack Any values in the form
+        of utility functions or additional generated methods of the Any type.
+
+        Example 1: Pack and unpack a message in C++.
+
+            Foo foo = ...;
+            Any any;
+            any.PackFrom(foo);
+            ...
+            if (any.UnpackTo(&foo)) {
+              ...
+            }
+
+        Example 2: Pack and unpack a message in Java.
+
+            Foo foo = ...;
+            Any any = Any.pack(foo);
+            ...
+            if (any.is(Foo.class)) {
+              foo = any.unpack(Foo.class);
+            }
+
+         Example 3: Pack and unpack a message in Python.
+
+            foo = Foo(...)
+            any = Any()
+            any.Pack(foo)
+            ...
+            if any.Is(Foo.DESCRIPTOR):
+              any.Unpack(foo)
+              ...
+
+         Example 4: Pack and unpack a message in Go
+
+             foo := &pb.Foo{...}
+             any, err := anypb.New(foo)
+             if err != nil {
+               ...
+             }
+             ...
+             foo := &pb.Foo{}
+             if err := any.UnmarshalTo(foo); err != nil {
+               ...
+             }
+
+        The pack methods provided by protobuf library will by default use
+        'type.googleapis.com/full.type.name' as the type URL and the unpack
+        methods only use the fully qualified type name after the last '/'
+        in the type URL, for example "foo.bar.com/x/y.z" will yield type
+        name "y.z".
+
+
+        JSON
+        ====
+        The JSON representation of an `Any` value uses the regular
+        representation of the deserialized, embedded message, with an
+        additional field `@type` which contains the type URL. Example:
+
+            package google.profile;
+            message Person {
+              string first_name = 1;
+              string last_name = 2;
+            }
+
+            {
+              "@type": "type.googleapis.com/google.profile.Person",
+              "firstName": <string>,
+              "lastName": <string>
+            }
+
+        If the embedded message type is well-known and has a custom JSON
+        representation, that representation will be embedded adding a field
+        `value` which holds the custom JSON in addition to the `@type`
+        field. Example (for message [google.protobuf.Duration][]):
+
+            {
+              "@type": "type.googleapis.com/google.protobuf.Duration",
+              "value": "1.212s"
+            }
+      example:
+        typeUrl: typeUrl
+        value: value
+      properties:
+        typeUrl:
+          description: |-
+            A URL/resource name that uniquely identifies the type of the serialized
+            protocol buffer message. This string must contain at least
+            one "/" character. The last segment of the URL's path must represent
+            the fully qualified name of the type (as in
+            `path/google.protobuf.Duration`). The name should be in a canonical form
+            (e.g., leading "." is not accepted).
+
+            In practice, teams usually precompile into the binary all types that they
+            expect it to use in the context of Any. However, for URLs which use the
+            scheme `http`, `https`, or no scheme, one can optionally set up a type
+            server that maps type URLs to message definitions as follows:
+
+            * If no scheme is provided, `https` is assumed.
+            * An HTTP GET on the URL must yield a [google.protobuf.Type][]
+              value in binary format, or produce an error.
+            * Applications are allowed to cache lookup results based on the
+              URL, or have them precompiled into a binary to avoid any
+              lookup. Therefore, binary compatibility needs to be preserved
+              on changes to types. (Use versioned type names to manage
+              breaking changes.)
+
+            Note: this functionality is not currently available in the official
+            protobuf release, and it is not used for type URLs beginning with
+            type.googleapis.com.
+
+            Schemes other than `http`, `https` (or the empty scheme) might be
+            used with implementation specific semantics.
+          type: string
+        value:
+          description: Must be a valid serialized protocol buffer of the above specified
+            type.
+          format: byte
+          pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+          type: string
+      type: object
+  securitySchemes:
+    geminiAuthorization:
+      in: header
+      name: X-Gem-Token
+      type: apiKey
+    standardAuthorization:
+      in: header
+      name: Authorization
+      type: apiKey
+x-original-swagger-version: "2.0"
