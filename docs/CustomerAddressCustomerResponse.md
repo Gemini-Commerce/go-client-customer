@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **PhoneNumber**| **string** |   | [optional]
 **FiscalCode**| **string** |   | [optional]
 **VatNumber**| **string** |   | [optional]
-**Kind**| [**CustomerAddressCustomerResponseKind**](CustomerAddressCustomerResponseKind.md) |  for more information please, see Model/CustomerAddressCustomerResponseKind.php  | [optional] [default to CUSTOMERADDRESSCUSTOMERRESPONSEKIND_SHIPPING]
+**Kind**| [**CustomerAddressCustomerResponseKind**](CustomerAddressCustomerResponseKind.md) |  for more information please, see Model/CustomerAddressCustomerResponseKind.php  | [optional] [default to SHIPPING]
 **Default**| **bool** |   | [optional]
 **Country**| **string** |   | [optional]
 **CreatedAt**| [**time.Time**](time.Time.md) |   | [optional]
