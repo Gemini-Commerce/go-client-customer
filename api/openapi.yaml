@@ -1,9 +1,15 @@
 openapi: 3.0.1
 info:
-  title: customer/customer.proto
-  version: version not set
+  contact:
+    email: info@gemini-commerce.com
+    name: Gemini Team
+  license:
+    name: Gemini fair use license
+    url: https://gemini-commerce.com/api/fair-use-license
+  title: CDP Service
+  version: v1
 servers:
-- url: /
+- url: https://cdp.api.gogemini.io/
 paths:
   /customer.Customer/AcquireSubscriber:
     post:
@@ -430,6 +436,57 @@ paths:
       tags:
       - Customer
       x-codegen-request-body-name: body
+  /customer.Customer/GrantPermissions:
+    post:
+      operationId: Customer_GrantPermissions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerGrantPermissionsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerGrantPermissionsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GrantPermissions add permissions to a customer
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/ListCustomers:
+    post:
+      operationId: Customer_ListCustomers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerListCustomersRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerListCustomersResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
   /customer.Customer/ListGroups:
     post:
       operationId: Customer_ListGroups
@@ -505,6 +562,32 @@ paths:
       tags:
       - Customer
       x-codegen-request-body-name: body
+  /customer.Customer/RevokePermissions:
+    post:
+      operationId: Customer_RevokePermissions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerRevokePermissionsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerRevokePermissionsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: RevokePermissions remove permissions from a customer
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
   /customer.Customer/Search:
     post:
       operationId: Customer_Search
@@ -552,6 +635,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/SetPermissions:
+    post:
+      operationId: Customer_SetPermissions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerSetPermissionsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerSetPermissionsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: SetPermissions set permissions to a customer
       tags:
       - Customer
       x-codegen-request-body-name: body
@@ -689,6 +798,15 @@ components:
       - DISABLE
       - DELETE
       type: string
+    ListCustomersRequestFilterDate:
+      properties:
+        from:
+          format: date-time
+          type: string
+        to:
+          format: date-time
+          type: string
+      type: object
     PasswordPasswordType:
       default: PASSWORD_TYPE_UNKNOWN
       enum:
@@ -774,7 +892,7 @@ components:
         name: name
         attributes:
           key:
-            typeUrl: typeUrl
+            '@type': '@type'
             value: value
         id: id
         vatNumber: vatNumber
@@ -863,7 +981,7 @@ components:
             name: name
             attributes:
               key:
-                typeUrl: typeUrl
+                '@type': '@type'
                 value: value
             id: id
             vatNumber: vatNumber
@@ -888,7 +1006,7 @@ components:
             name: name
             attributes:
               key:
-                typeUrl: typeUrl
+                '@type': '@type'
                 value: value
             id: id
             vatNumber: vatNumber
@@ -906,6 +1024,9 @@ components:
             name: name
             id: id
           surname: surname
+          permissions:
+          - null
+          - null
           id: id
           email: email
           certifiedEmail: certifiedEmail
@@ -916,6 +1037,8 @@ components:
             entityCode: entityCode
             entityType: entityType
             tenantId: tenantId
+          externalIds:
+            key: externalIds
           groups:
           - groups
           - groups
@@ -927,6 +1050,7 @@ components:
             enabled: true
           taxCode: taxCode
           defaultBillingAddressId: defaultBillingAddressId
+          market: market
           deletedAt: 2000-01-23T04:56:07.000+00:00
           phoneNumber: phoneNumber
           deleted: true
@@ -934,7 +1058,7 @@ components:
           name: name
           attributes:
             key:
-              typeUrl: typeUrl
+              '@type': '@type'
               value: value
       properties:
         customer:
@@ -1021,7 +1145,7 @@ components:
             name: name
             attributes:
               key:
-                typeUrl: typeUrl
+                '@type': '@type'
                 value: value
             id: id
             vatNumber: vatNumber
@@ -1046,7 +1170,7 @@ components:
             name: name
             attributes:
               key:
-                typeUrl: typeUrl
+                '@type': '@type'
                 value: value
             id: id
             vatNumber: vatNumber
@@ -1064,6 +1188,9 @@ components:
             name: name
             id: id
           surname: surname
+          permissions:
+          - null
+          - null
           id: id
           email: email
           certifiedEmail: certifiedEmail
@@ -1074,6 +1201,8 @@ components:
             entityCode: entityCode
             entityType: entityType
             tenantId: tenantId
+          externalIds:
+            key: externalIds
           groups:
           - groups
           - groups
@@ -1085,6 +1214,7 @@ components:
             enabled: true
           taxCode: taxCode
           defaultBillingAddressId: defaultBillingAddressId
+          market: market
           deletedAt: 2000-01-23T04:56:07.000+00:00
           phoneNumber: phoneNumber
           deleted: true
@@ -1092,7 +1222,7 @@ components:
           name: name
           attributes:
             key:
-              typeUrl: typeUrl
+              '@type': '@type'
               value: value
       properties:
         customer:
@@ -1184,6 +1314,10 @@ components:
           type: string
         certifiedEmail:
           type: string
+        externalIds:
+          additionalProperties:
+            type: string
+          type: object
       type: object
     customerCreateSubscriberRequest:
       properties:
@@ -1215,7 +1349,7 @@ components:
           name: name
           attributes:
             key:
-              typeUrl: typeUrl
+              '@type': '@type'
               value: value
           id: id
           vatNumber: vatNumber
@@ -1240,7 +1374,7 @@ components:
           name: name
           attributes:
             key:
-              typeUrl: typeUrl
+              '@type': '@type'
               value: value
           id: id
           vatNumber: vatNumber
@@ -1258,6 +1392,9 @@ components:
           name: name
           id: id
         surname: surname
+        permissions:
+        - null
+        - null
         id: id
         email: email
         certifiedEmail: certifiedEmail
@@ -1268,6 +1405,8 @@ components:
           entityCode: entityCode
           entityType: entityType
           tenantId: tenantId
+        externalIds:
+          key: externalIds
         groups:
         - groups
         - groups
@@ -1279,6 +1418,7 @@ components:
           enabled: true
         taxCode: taxCode
         defaultBillingAddressId: defaultBillingAddressId
+        market: market
         deletedAt: 2000-01-23T04:56:07.000+00:00
         phoneNumber: phoneNumber
         deleted: true
@@ -1286,7 +1426,7 @@ components:
         name: name
         attributes:
           key:
-            typeUrl: typeUrl
+            '@type': '@type'
             value: value
       properties:
         em:
@@ -1353,6 +1493,17 @@ components:
           type: string
         certifiedEmail:
           type: string
+        market:
+          type: string
+        permissions:
+          items:
+            $ref: '#/components/schemas/customerPermission'
+          title: Permissions is a list of permissions that the customer has
+          type: array
+        externalIds:
+          additionalProperties:
+            type: string
+          type: object
       type: object
     customerDeleteGroupRequest:
       properties:
@@ -1443,7 +1594,7 @@ components:
             name: name
             attributes:
               key:
-                typeUrl: typeUrl
+                '@type': '@type'
                 value: value
             id: id
             vatNumber: vatNumber
@@ -1468,7 +1619,7 @@ components:
             name: name
             attributes:
               key:
-                typeUrl: typeUrl
+                '@type': '@type'
                 value: value
             id: id
             vatNumber: vatNumber
@@ -1486,6 +1637,9 @@ components:
             name: name
             id: id
           surname: surname
+          permissions:
+          - null
+          - null
           id: id
           email: email
           certifiedEmail: certifiedEmail
@@ -1496,6 +1650,8 @@ components:
             entityCode: entityCode
             entityType: entityType
             tenantId: tenantId
+          externalIds:
+            key: externalIds
           groups:
           - groups
           - groups
@@ -1507,6 +1663,7 @@ components:
             enabled: true
           taxCode: taxCode
           defaultBillingAddressId: defaultBillingAddressId
+          market: market
           deletedAt: 2000-01-23T04:56:07.000+00:00
           phoneNumber: phoneNumber
           deleted: true
@@ -1514,7 +1671,7 @@ components:
           name: name
           attributes:
             key:
-              typeUrl: typeUrl
+              '@type': '@type'
               value: value
         - addresses:
           - zip: zip
@@ -1537,7 +1694,7 @@ components:
             name: name
             attributes:
               key:
-                typeUrl: typeUrl
+                '@type': '@type'
                 value: value
             id: id
             vatNumber: vatNumber
@@ -1562,7 +1719,7 @@ components:
             name: name
             attributes:
               key:
-                typeUrl: typeUrl
+                '@type': '@type'
                 value: value
             id: id
             vatNumber: vatNumber
@@ -1580,6 +1737,9 @@ components:
             name: name
             id: id
           surname: surname
+          permissions:
+          - null
+          - null
           id: id
           email: email
           certifiedEmail: certifiedEmail
@@ -1590,6 +1750,8 @@ components:
             entityCode: entityCode
             entityType: entityType
             tenantId: tenantId
+          externalIds:
+            key: externalIds
           groups:
           - groups
           - groups
@@ -1601,6 +1763,7 @@ components:
             enabled: true
           taxCode: taxCode
           defaultBillingAddressId: defaultBillingAddressId
+          market: market
           deletedAt: 2000-01-23T04:56:07.000+00:00
           phoneNumber: phoneNumber
           deleted: true
@@ -1608,7 +1771,7 @@ components:
           name: name
           attributes:
             key:
-              typeUrl: typeUrl
+              '@type': '@type'
               value: value
       properties:
         customers:
@@ -1646,6 +1809,26 @@ components:
         groupId:
           type: string
       type: object
+    customerGrantPermissionsRequest:
+      properties:
+        tenantId:
+          title: The tenant ID of the customer to grant permissions to
+          type: string
+        customerId:
+          title: The customer ID of the customer to grant permissions to
+          type: string
+        permissions:
+          items:
+            $ref: '#/components/schemas/customerPermission'
+          title: The permissions to grant
+          type: array
+      title: GrantPermissionsRequest is the request message for the GrantPermissions
+        RPC
+      type: object
+    customerGrantPermissionsResponse:
+      title: GrantPermissionsResponse is the response message for the GrantPermissions
+        RPC
+      type: object
     customerGroupResponse:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -1679,6 +1862,249 @@ components:
           type: string
         customerCount:
           format: uint64
+          type: string
+      type: object
+    customerListCustomersRequest:
+      properties:
+        tenantId:
+          type: string
+        pageSize:
+          format: int64
+          type: integer
+        pageToken:
+          type: string
+        filters:
+          $ref: '#/components/schemas/customerListCustomersRequestFilter'
+        filterMask:
+          items:
+            type: string
+          type: array
+      type: object
+    customerListCustomersRequestFilter:
+      properties:
+        genders:
+          items:
+            type: string
+          type: array
+        createdAt:
+          items:
+            $ref: '#/components/schemas/ListCustomersRequestFilterDate'
+          type: array
+        countries:
+          items:
+            type: string
+          type: array
+      type: object
+    customerListCustomersResponse:
+      example:
+        nextPageToken: nextPageToken
+        customers:
+        - addresses:
+          - zip: zip
+            country: country
+            grn: grn
+            city: city
+            kind: null
+            em:
+              entityCode: entityCode
+              entityType: entityType
+              tenantId: tenantId
+            number: number
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            phoneNumber: phoneNumber
+            province: province
+            surname: surname
+            street: street
+            fiscalCode: fiscalCode
+            name: name
+            attributes:
+              key:
+                '@type': '@type'
+                value: value
+            id: id
+            vatNumber: vatNumber
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - zip: zip
+            country: country
+            grn: grn
+            city: city
+            kind: null
+            em:
+              entityCode: entityCode
+              entityType: entityType
+              tenantId: tenantId
+            number: number
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            phoneNumber: phoneNumber
+            province: province
+            surname: surname
+            street: street
+            fiscalCode: fiscalCode
+            name: name
+            attributes:
+              key:
+                '@type': '@type'
+                value: value
+            id: id
+            vatNumber: vatNumber
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          birthdate: 2000-01-23T04:56:07.000+00:00
+          gender: gender
+          source: source
+          enabled: true
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          newsletters:
+          - newsletterGrn: newsletterGrn
+            name: name
+            id: id
+          - newsletterGrn: newsletterGrn
+            name: name
+            id: id
+          surname: surname
+          permissions:
+          - null
+          - null
+          id: id
+          email: email
+          certifiedEmail: certifiedEmail
+          preferredLocale: preferredLocale
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          grn: grn
+          em:
+            entityCode: entityCode
+            entityType: entityType
+            tenantId: tenantId
+          externalIds:
+            key: externalIds
+          groups:
+          - groups
+          - groups
+          defaultShippingAddressId: defaultShippingAddressId
+          migratedPassword:
+            data:
+              key: data
+            type: null
+            enabled: true
+          taxCode: taxCode
+          defaultBillingAddressId: defaultBillingAddressId
+          market: market
+          deletedAt: 2000-01-23T04:56:07.000+00:00
+          phoneNumber: phoneNumber
+          deleted: true
+          nationality: nationality
+          name: name
+          attributes:
+            key:
+              '@type': '@type'
+              value: value
+        - addresses:
+          - zip: zip
+            country: country
+            grn: grn
+            city: city
+            kind: null
+            em:
+              entityCode: entityCode
+              entityType: entityType
+              tenantId: tenantId
+            number: number
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            phoneNumber: phoneNumber
+            province: province
+            surname: surname
+            street: street
+            fiscalCode: fiscalCode
+            name: name
+            attributes:
+              key:
+                '@type': '@type'
+                value: value
+            id: id
+            vatNumber: vatNumber
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - zip: zip
+            country: country
+            grn: grn
+            city: city
+            kind: null
+            em:
+              entityCode: entityCode
+              entityType: entityType
+              tenantId: tenantId
+            number: number
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            default: true
+            phoneNumber: phoneNumber
+            province: province
+            surname: surname
+            street: street
+            fiscalCode: fiscalCode
+            name: name
+            attributes:
+              key:
+                '@type': '@type'
+                value: value
+            id: id
+            vatNumber: vatNumber
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          birthdate: 2000-01-23T04:56:07.000+00:00
+          gender: gender
+          source: source
+          enabled: true
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          newsletters:
+          - newsletterGrn: newsletterGrn
+            name: name
+            id: id
+          - newsletterGrn: newsletterGrn
+            name: name
+            id: id
+          surname: surname
+          permissions:
+          - null
+          - null
+          id: id
+          email: email
+          certifiedEmail: certifiedEmail
+          preferredLocale: preferredLocale
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          grn: grn
+          em:
+            entityCode: entityCode
+            entityType: entityType
+            tenantId: tenantId
+          externalIds:
+            key: externalIds
+          groups:
+          - groups
+          - groups
+          defaultShippingAddressId: defaultShippingAddressId
+          migratedPassword:
+            data:
+              key: data
+            type: null
+            enabled: true
+          taxCode: taxCode
+          defaultBillingAddressId: defaultBillingAddressId
+          market: market
+          deletedAt: 2000-01-23T04:56:07.000+00:00
+          phoneNumber: phoneNumber
+          deleted: true
+          nationality: nationality
+          name: name
+          attributes:
+            key:
+              '@type': '@type'
+              value: value
+      properties:
+        customers:
+          items:
+            $ref: '#/components/schemas/customerCustomerResponse'
+          type: array
+        nextPageToken:
           type: string
       type: object
     customerListGroupsRequest:
@@ -1753,6 +2179,13 @@ components:
         type:
           $ref: '#/components/schemas/PasswordPasswordType'
       type: object
+    customerPermission:
+      default: PERMISSION_UNKNOWN
+      enum:
+      - PERMISSION_UNKNOWN
+      - PERMISSION_LOGIN
+      - PERMISSION_BUY
+      type: string
     customerRemoveCustomerFromGroupRequest:
       properties:
         tenantId:
@@ -1770,6 +2203,26 @@ components:
           type: string
         addressId:
           type: string
+      type: object
+    customerRevokePermissionsRequest:
+      properties:
+        tenantId:
+          title: The tenant ID of the customer to revoke permissions from
+          type: string
+        customerId:
+          title: The customer ID of the customer to revoke permissions from
+          type: string
+        permissions:
+          items:
+            $ref: '#/components/schemas/customerPermission'
+          title: The permissions to revoke
+          type: array
+      title: RevokePermissionsRequest is the request message for the RevokePermissions
+        RPC
+      type: object
+    customerRevokePermissionsResponse:
+      title: RevokePermissionsResponse is the response message for the RevokePermissions
+        RPC
       type: object
     customerSearchRequest:
       properties:
@@ -1821,7 +2274,7 @@ components:
             name: name
             attributes:
               key:
-                typeUrl: typeUrl
+                '@type': '@type'
                 value: value
             id: id
             vatNumber: vatNumber
@@ -1846,7 +2299,7 @@ components:
             name: name
             attributes:
               key:
-                typeUrl: typeUrl
+                '@type': '@type'
                 value: value
             id: id
             vatNumber: vatNumber
@@ -1864,6 +2317,9 @@ components:
             name: name
             id: id
           surname: surname
+          permissions:
+          - null
+          - null
           id: id
           email: email
           certifiedEmail: certifiedEmail
@@ -1874,6 +2330,8 @@ components:
             entityCode: entityCode
             entityType: entityType
             tenantId: tenantId
+          externalIds:
+            key: externalIds
           groups:
           - groups
           - groups
@@ -1885,6 +2343,7 @@ components:
             enabled: true
           taxCode: taxCode
           defaultBillingAddressId: defaultBillingAddressId
+          market: market
           deletedAt: 2000-01-23T04:56:07.000+00:00
           phoneNumber: phoneNumber
           deleted: true
@@ -1892,7 +2351,7 @@ components:
           name: name
           attributes:
             key:
-              typeUrl: typeUrl
+              '@type': '@type'
               value: value
         - addresses:
           - zip: zip
@@ -1915,7 +2374,7 @@ components:
             name: name
             attributes:
               key:
-                typeUrl: typeUrl
+                '@type': '@type'
                 value: value
             id: id
             vatNumber: vatNumber
@@ -1940,7 +2399,7 @@ components:
             name: name
             attributes:
               key:
-                typeUrl: typeUrl
+                '@type': '@type'
                 value: value
             id: id
             vatNumber: vatNumber
@@ -1958,6 +2417,9 @@ components:
             name: name
             id: id
           surname: surname
+          permissions:
+          - null
+          - null
           id: id
           email: email
           certifiedEmail: certifiedEmail
@@ -1968,6 +2430,8 @@ components:
             entityCode: entityCode
             entityType: entityType
             tenantId: tenantId
+          externalIds:
+            key: externalIds
           groups:
           - groups
           - groups
@@ -1979,6 +2443,7 @@ components:
             enabled: true
           taxCode: taxCode
           defaultBillingAddressId: defaultBillingAddressId
+          market: market
           deletedAt: 2000-01-23T04:56:07.000+00:00
           phoneNumber: phoneNumber
           deleted: true
@@ -1986,7 +2451,7 @@ components:
           name: name
           attributes:
             key:
-              typeUrl: typeUrl
+              '@type': '@type'
               value: value
       properties:
         customers:
@@ -2004,6 +2469,24 @@ components:
           type: string
         addressId:
           type: string
+      type: object
+    customerSetPermissionsRequest:
+      properties:
+        tenantId:
+          title: The tenant ID of the customer to set permissions to
+          type: string
+        customerId:
+          title: The customer ID of the customer to set permissions to
+          type: string
+        permissions:
+          items:
+            $ref: '#/components/schemas/customerPermission'
+          title: The permissions to set
+          type: array
+      title: SetPermissionsRequest is the request message for set permissions RPC
+      type: object
+    customerSetPermissionsResponse:
+      title: SetPermissionsResponse is the response message for set permissions RPC
       type: object
     customerSubscriberRequest:
       properties:
@@ -2036,8 +2519,17 @@ components:
       type: object
     customerSubscriberResponse:
       example:
-        market: market
         country: country
+        customerGroups:
+        - customerGroups
+        - customerGroups
+        gender: gender
+        em:
+          entityCode: entityCode
+          entityType: entityType
+          tenantId: tenantId
+        lastname: lastname
+        market: market
         createdAt: 2000-01-23T04:56:07.000+00:00
         newsletters:
         - newsletterGrn: newsletterGrn
@@ -2046,15 +2538,9 @@ components:
         - newsletterGrn: newsletterGrn
           name: name
           id: id
-        gender: gender
         name: name
-        em:
-          entityCode: entityCode
-          entityType: entityType
-          tenantId: tenantId
         id: id
         email: email
-        lastname: lastname
         updatedAt: 2000-01-23T04:56:07.000+00:00
         preferredLocale: preferredLocale
       properties:
@@ -2086,6 +2572,10 @@ components:
           type: string
         preferredLocale:
           type: string
+        customerGroups:
+          items:
+            type: string
+          type: array
       type: object
     customerSubscriberResponseWithNewsletterRequest:
       properties:
@@ -2228,6 +2718,12 @@ components:
           type: string
         certifiedEmail:
           type: string
+        market:
+          type: string
+        externalIds:
+          additionalProperties:
+            type: string
+          type: object
       type: object
     customerUpdateSubscriberRequest:
       properties:
@@ -2279,7 +2775,7 @@ components:
               foo = any.unpack(Foo.class);
             }
 
-        Example 3: Pack and unpack a message in Python.
+         Example 3: Pack and unpack a message in Python.
 
             foo = Foo(...)
             any = Any()
@@ -2289,7 +2785,7 @@ components:
               any.Unpack(foo)
               ...
 
-        Example 4: Pack and unpack a message in Go
+         Example 4: Pack and unpack a message in Go
 
              foo := &pb.Foo{...}
              any, err := anypb.New(foo)
@@ -2310,7 +2806,7 @@ components:
 
 
         JSON
-
+        ====
         The JSON representation of an `Any` value uses the regular
         representation of the deserialized, embedded message, with an
         additional field `@type` which contains the type URL. Example:
@@ -2337,10 +2833,10 @@ components:
               "value": "1.212s"
             }
       example:
-        typeUrl: typeUrl
+        '@type': '@type'
         value: value
       properties:
-        typeUrl:
+        '@type':
           description: |-
             A URL/resource name that uniquely identifies the type of the serialized
             protocol buffer message. This string must contain at least
@@ -2378,12 +2874,9 @@ components:
           type: string
       type: object
   securitySchemes:
-    geminiAuthorization:
-      in: header
-      name: X-Gem-Token
-      type: apiKey
     standardAuthorization:
-      in: header
-      name: Authorization
-      type: apiKey
+      flows:
+        implicit:
+          scopes: {}
+      type: oauth2
 x-original-swagger-version: "2.0"

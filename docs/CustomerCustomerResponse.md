@@ -32,6 +32,9 @@ Name | Type | Description | Notes
 **Attributes**| [**map[string]ProtobufAny**](ProtobufAny.md) |   | [optional]
 **TaxCode**| **string** |   | [optional]
 **CertifiedEmail**| **string** |   | [optional]
+**Market**| **string** |   | [optional]
+**Permissions**| [**[]CustomerPermission**](CustomerPermission.md) |   | [optional]
+**ExternalIds**| **map[string]string** |   | [optional]
 
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Newsletters**| [**[]CustomerNewsletterResponse**](CustomerNewsletterResponse.md) |   | [optional]
 **Market**| **string** |   | [optional]
 **PreferredLocale**| **string** |   | [optional]
+**CustomerGroups**| **[]string** |   | [optional]
 
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -1,6 +1,6 @@
 # \CustomerApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://cdp.api.gogemini.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,11 +21,15 @@ Method | HTTP request | Description
 [**CustomerFindSubscriberById**](CustomerApi.md#CustomerFindSubscriberById) | **Post** /customer.Customer/FindSubscriberById | 
 [**CustomerGetGroupByCode**](CustomerApi.md#CustomerGetGroupByCode) | **Post** /customer.Customer/GetGroupByCode | 
 [**CustomerGetGroupById**](CustomerApi.md#CustomerGetGroupById) | **Post** /customer.Customer/GetGroupById | 
+[**CustomerGrantPermissions**](CustomerApi.md#CustomerGrantPermissions) | **Post** /customer.Customer/GrantPermissions | GrantPermissions add permissions to a customer
+[**CustomerListCustomers**](CustomerApi.md#CustomerListCustomers) | **Post** /customer.Customer/ListCustomers | 
 [**CustomerListGroups**](CustomerApi.md#CustomerListGroups) | **Post** /customer.Customer/ListGroups | 
 [**CustomerRemoveCustomerFromGroup**](CustomerApi.md#CustomerRemoveCustomerFromGroup) | **Post** /customer.Customer/RemoveCustomerFromGroup | 
 [**CustomerRemoveDefaultAddress**](CustomerApi.md#CustomerRemoveDefaultAddress) | **Post** /customer.Customer/RemoveDefaultAddress | 
+[**CustomerRevokePermissions**](CustomerApi.md#CustomerRevokePermissions) | **Post** /customer.Customer/RevokePermissions | RevokePermissions remove permissions from a customer
 [**CustomerSearch**](CustomerApi.md#CustomerSearch) | **Post** /customer.Customer/Search | 
 [**CustomerSetDefaultAddress**](CustomerApi.md#CustomerSetDefaultAddress) | **Post** /customer.Customer/SetDefaultAddress | 
+[**CustomerSetPermissions**](CustomerApi.md#CustomerSetPermissions) | **Post** /customer.Customer/SetPermissions | SetPermissions set permissions to a customer
 [**CustomerUnsubscribe**](CustomerApi.md#CustomerUnsubscribe) | **Post** /customer.Customer/Unsubscribe | 
 [**CustomerUpdate**](CustomerApi.md#CustomerUpdate) | **Post** /customer.Customer/Update | 
 [**CustomerUpdateAddress**](CustomerApi.md#CustomerUpdateAddress) | **Post** /customer.Customer/UpdateAddress | 
@@ -1122,6 +1126,134 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## CustomerGrantPermissions
+
+> map[string]interface{} CustomerGrantPermissions(ctx).Body(body).Execute()
+
+GrantPermissions add permissions to a customer
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewCustomerGrantPermissionsRequest() // CustomerGrantPermissionsRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CustomerApi.CustomerGrantPermissions(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomerApi.CustomerGrantPermissions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CustomerGrantPermissions`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `CustomerApi.CustomerGrantPermissions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCustomerGrantPermissionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CustomerGrantPermissionsRequest**](CustomerGrantPermissionsRequest.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CustomerListCustomers
+
+> CustomerListCustomersResponse CustomerListCustomers(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewCustomerListCustomersRequest() // CustomerListCustomersRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CustomerApi.CustomerListCustomers(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomerApi.CustomerListCustomers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CustomerListCustomers`: CustomerListCustomersResponse
+    fmt.Fprintf(os.Stdout, "Response from `CustomerApi.CustomerListCustomers`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCustomerListCustomersRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CustomerListCustomersRequest**](CustomerListCustomersRequest.md) |  | 
+
+### Return type
+
+[**CustomerListCustomersResponse**](CustomerListCustomersResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CustomerListGroups
 
 > CustomerListGroupsResponse CustomerListGroups(ctx).Body(body).Execute()
@@ -1314,6 +1446,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## CustomerRevokePermissions
+
+> map[string]interface{} CustomerRevokePermissions(ctx).Body(body).Execute()
+
+RevokePermissions remove permissions from a customer
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewCustomerRevokePermissionsRequest() // CustomerRevokePermissionsRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CustomerApi.CustomerRevokePermissions(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomerApi.CustomerRevokePermissions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CustomerRevokePermissions`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `CustomerApi.CustomerRevokePermissions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCustomerRevokePermissionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CustomerRevokePermissionsRequest**](CustomerRevokePermissionsRequest.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CustomerSearch
 
 > CustomerSearchResponse CustomerSearch(ctx).Body(body).Execute()
@@ -1427,6 +1623,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomerCustomerResponse**](CustomerCustomerResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CustomerSetPermissions
+
+> map[string]interface{} CustomerSetPermissions(ctx).Body(body).Execute()
+
+SetPermissions set permissions to a customer
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    body := *openapiclient.NewCustomerSetPermissionsRequest() // CustomerSetPermissionsRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CustomerApi.CustomerSetPermissions(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomerApi.CustomerSetPermissions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CustomerSetPermissions`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `CustomerApi.CustomerSetPermissions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCustomerSetPermissionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CustomerSetPermissionsRequest**](CustomerSetPermissionsRequest.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 

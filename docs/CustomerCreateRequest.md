@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **PreferredLocale**| **string** |   | [optional]
 **TaxCode**| **string** |   | [optional]
 **CertifiedEmail**| **string** |   | [optional]
+**ExternalIds**| **map[string]string** |   | [optional]
 
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
