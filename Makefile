@@ -1,4 +1,4 @@
-version=1.0.1
+version=1.0.2
 
 generate:
 	$(MAKE) -C ./modules/go-client-generator/ generate-go-client service=customer version=${version}
