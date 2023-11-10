@@ -22,7 +22,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import openapi "bitbucket.org/gogemini/go-client-customer"
+import openapi "github.com/gemini-commerce/go-client-customer"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:

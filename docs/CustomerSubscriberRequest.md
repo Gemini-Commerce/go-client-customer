@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **Email**| **string** |   | [optional]
 **Country**| **string** |   | [optional]
 **Gender**| **string** |   | [optional]
+**Birthdate**| [**time.Time**](time.Time.md) |   | [optional]
+**Nationality**| **string** |   | [optional]
 **Em**| [**CustomerEMFields**](CustomerEMFields.md) |   | [optional]
 **CreatedAt**| [**time.Time**](time.Time.md) |   | [optional]
 **UpdatedAt**| [**time.Time**](time.Time.md) |   | [optional]

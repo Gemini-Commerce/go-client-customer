@@ -14,6 +14,7 @@ generate-go-client:
 	[ ! -z "${service}" ] || (printf "\e[31mError: this command is meant to be execute from specific service client repo\e[0m\n"; exit 1) && \
 	${openapi_generator} \
 	generate -i go-client-generator/modules/proto/${lower_service}/${lower_service}.swagger.json \
+	--git-repo-id go-client-${service} --git-user-id gemini-commerce --git-host github.com \
 	-g go -t go-client-generator/templates/go -o go-client-${lower_service} \
 	--additional-properties ${artifact_version}enumClassPrefix=true,structPrefix=true\
 	packageName="${lower_service}",\

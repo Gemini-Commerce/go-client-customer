@@ -1,4 +1,4 @@
-module bitbucket.org/gogemini/go-client-customer
+module github.com/gemini-commerce/go-client-customer
 
 go 1.13
 

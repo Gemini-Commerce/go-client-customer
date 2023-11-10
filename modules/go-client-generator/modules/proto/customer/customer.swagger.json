@@ -2088,6 +2088,13 @@
         "gender": {
           "type": "string"
         },
+        "birthdate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "nationality": {
+          "type": "string"
+        },
         "em": {
           "$ref": "#/definitions/customerEMFields"
         },
@@ -2132,6 +2139,13 @@
           "type": "string"
         },
         "gender": {
+          "type": "string"
+        },
+        "birthdate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "nationality": {
           "type": "string"
         },
         "em": {
@@ -2184,6 +2198,13 @@
           "type": "string"
         },
         "gender": {
+          "type": "string"
+        },
+        "birthdate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "nationality": {
           "type": "string"
         },
         "em": {

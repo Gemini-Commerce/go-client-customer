@@ -24,6 +24,8 @@ type CustomerSubscriberResponseWithNewsletterRequest struct {
 	Email *string `json:"email,omitempty"`
 	Country *string `json:"country,omitempty"`
 	Gender *string `json:"gender,omitempty"`
+	Birthdate *time.Time `json:"birthdate,omitempty"`
+	Nationality *string `json:"nationality,omitempty"`
 	Em *CustomerEMFields `json:"em,omitempty"`
 	PreferredLocale *string `json:"preferredLocale,omitempty"`
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -240,6 +242,70 @@ func (o *CustomerSubscriberResponseWithNewsletterRequest) SetGender(v string) {
 	o.Gender = &v
 }
 
+// GetBirthdate returns the Birthdate field value if set, zero value otherwise.
+func (o *CustomerSubscriberResponseWithNewsletterRequest) GetBirthdate() time.Time {
+	if o == nil || isNil(o.Birthdate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.Birthdate
+}
+
+// GetBirthdateOk returns a tuple with the Birthdate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerSubscriberResponseWithNewsletterRequest) GetBirthdateOk() (*time.Time, bool) {
+	if o == nil || isNil(o.Birthdate) {
+    return nil, false
+	}
+	return o.Birthdate, true
+}
+
+// HasBirthdate returns a boolean if a field has been set.
+func (o *CustomerSubscriberResponseWithNewsletterRequest) HasBirthdate() bool {
+	if o != nil && !isNil(o.Birthdate) {
+		return true
+	}
+
+	return false
+}
+
+// SetBirthdate gets a reference to the given time.Time and assigns it to the Birthdate field.
+func (o *CustomerSubscriberResponseWithNewsletterRequest) SetBirthdate(v time.Time) {
+	o.Birthdate = &v
+}
+
+// GetNationality returns the Nationality field value if set, zero value otherwise.
+func (o *CustomerSubscriberResponseWithNewsletterRequest) GetNationality() string {
+	if o == nil || isNil(o.Nationality) {
+		var ret string
+		return ret
+	}
+	return *o.Nationality
+}
+
+// GetNationalityOk returns a tuple with the Nationality field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerSubscriberResponseWithNewsletterRequest) GetNationalityOk() (*string, bool) {
+	if o == nil || isNil(o.Nationality) {
+    return nil, false
+	}
+	return o.Nationality, true
+}
+
+// HasNationality returns a boolean if a field has been set.
+func (o *CustomerSubscriberResponseWithNewsletterRequest) HasNationality() bool {
+	if o != nil && !isNil(o.Nationality) {
+		return true
+	}
+
+	return false
+}
+
+// SetNationality gets a reference to the given string and assigns it to the Nationality field.
+func (o *CustomerSubscriberResponseWithNewsletterRequest) SetNationality(v string) {
+	o.Nationality = &v
+}
+
 // GetEm returns the Em field value if set, zero value otherwise.
 func (o *CustomerSubscriberResponseWithNewsletterRequest) GetEm() CustomerEMFields {
 	if o == nil || isNil(o.Em) {
@@ -419,6 +485,12 @@ func (o CustomerSubscriberResponseWithNewsletterRequest) MarshalJSON() ([]byte, 
 	}
 	if !isNil(o.Gender) {
 		toSerialize["gender"] = o.Gender
+	}
+	if !isNil(o.Birthdate) {
+		toSerialize["birthdate"] = o.Birthdate
+	}
+	if !isNil(o.Nationality) {
+		toSerialize["nationality"] = o.Nationality
 	}
 	if !isNil(o.Em) {
 		toSerialize["em"] = o.Em
