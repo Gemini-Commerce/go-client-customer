@@ -5,4 +5,4 @@ generate:
 push:
 	bash git_push.sh
 publish:
-	GOPROXY=proxy.golang.org go list -m github.com/gemini-commerce/go-client-customer@v${version}
+	GOPROXY=proxy.golang.org go list -m github.com/Gemini-Commerce/go-client-customer@v${version}
