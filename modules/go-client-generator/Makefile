@@ -16,5 +16,5 @@ generate-go-client:
 	generate -i go-client-generator/modules/proto/${lower_service}/${lower_service}.swagger.json \
 	--git-repo-id go-client-${service} --git-user-id gemini-commerce --git-host github.com \
 	-g go -t go-client-generator/templates/go -o go-client-${lower_service} \
-	--additional-properties ${artifact_version}enumClassPrefix=true,structPrefix=true\
+	--additional-properties ${artifact_version},enumClassPrefix=true,structPrefix=true,\
 	packageName="${lower_service}",\
