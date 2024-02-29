@@ -14,27 +14,27 @@ package customer
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// CustomerApiService CustomerApi service
-type CustomerApiService service
+// CustomerAPIService CustomerAPI service
+type CustomerAPIService service
 
-type CustomerApiCustomerAcquireSubscriberRequest struct {
+type ApiCustomerAcquireSubscriberRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerCreateSubscriberRequest
 }
 
-func (r CustomerApiCustomerAcquireSubscriberRequest) Body(body CustomerCreateSubscriberRequest) CustomerApiCustomerAcquireSubscriberRequest {
+func (r ApiCustomerAcquireSubscriberRequest) Body(body CustomerCreateSubscriberRequest) ApiCustomerAcquireSubscriberRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerAcquireSubscriberRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+func (r ApiCustomerAcquireSubscriberRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
 	return r.ApiService.CustomerAcquireSubscriberExecute(r)
 }
 
@@ -42,10 +42,10 @@ func (r CustomerApiCustomerAcquireSubscriberRequest) Execute() (*CustomerSubscri
 CustomerAcquireSubscriber Method for CustomerAcquireSubscriber
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerAcquireSubscriberRequest
+ @return ApiCustomerAcquireSubscriberRequest
 */
-func (a *CustomerApiService) CustomerAcquireSubscriber(ctx context.Context) CustomerApiCustomerAcquireSubscriberRequest {
-	return CustomerApiCustomerAcquireSubscriberRequest{
+func (a *CustomerAPIService) CustomerAcquireSubscriber(ctx context.Context) ApiCustomerAcquireSubscriberRequest {
+	return ApiCustomerAcquireSubscriberRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -53,7 +53,7 @@ func (a *CustomerApiService) CustomerAcquireSubscriber(ctx context.Context) Cust
 
 // Execute executes the request
 //  @return CustomerSubscriberResponse
-func (a *CustomerApiService) CustomerAcquireSubscriberExecute(r CustomerApiCustomerAcquireSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerAcquireSubscriberExecute(r ApiCustomerAcquireSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -61,7 +61,123 @@ func (a *CustomerApiService) CustomerAcquireSubscriberExecute(r CustomerApiCusto
 		localVarReturnValue  *CustomerSubscriberResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerAcquireSubscriber")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerAcquireSubscriber")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/acquire_subscriber"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerAcquireSubscriber2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerCreateSubscriberRequest
+}
+
+func (r ApiCustomerAcquireSubscriber2Request) Body(body CustomerCreateSubscriberRequest) ApiCustomerAcquireSubscriber2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerAcquireSubscriber2Request) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+	return r.ApiService.CustomerAcquireSubscriber2Execute(r)
+}
+
+/*
+CustomerAcquireSubscriber2 Method for CustomerAcquireSubscriber2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerAcquireSubscriber2Request
+*/
+func (a *CustomerAPIService) CustomerAcquireSubscriber2(ctx context.Context) ApiCustomerAcquireSubscriber2Request {
+	return ApiCustomerAcquireSubscriber2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerSubscriberResponse
+func (a *CustomerAPIService) CustomerAcquireSubscriber2Execute(r ApiCustomerAcquireSubscriber2Request) (*CustomerSubscriberResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerSubscriberResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerAcquireSubscriber2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -104,9 +220,9 @@ func (a *CustomerApiService) CustomerAcquireSubscriberExecute(r CustomerApiCusto
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -122,8 +238,8 @@ func (a *CustomerApiService) CustomerAcquireSubscriberExecute(r CustomerApiCusto
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -139,18 +255,18 @@ func (a *CustomerApiService) CustomerAcquireSubscriberExecute(r CustomerApiCusto
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerAcquireUnsubscriberRequest struct {
+type ApiCustomerAcquireUnsubscriberRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerUnsubscribeRequest
 }
 
-func (r CustomerApiCustomerAcquireUnsubscriberRequest) Body(body CustomerUnsubscribeRequest) CustomerApiCustomerAcquireUnsubscriberRequest {
+func (r ApiCustomerAcquireUnsubscriberRequest) Body(body CustomerUnsubscribeRequest) ApiCustomerAcquireUnsubscriberRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerAcquireUnsubscriberRequest) Execute() (*CustomerUnsubscribeResponse, *http.Response, error) {
+func (r ApiCustomerAcquireUnsubscriberRequest) Execute() (*CustomerUnsubscribeResponse, *http.Response, error) {
 	return r.ApiService.CustomerAcquireUnsubscriberExecute(r)
 }
 
@@ -158,10 +274,10 @@ func (r CustomerApiCustomerAcquireUnsubscriberRequest) Execute() (*CustomerUnsub
 CustomerAcquireUnsubscriber Method for CustomerAcquireUnsubscriber
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerAcquireUnsubscriberRequest
+ @return ApiCustomerAcquireUnsubscriberRequest
 */
-func (a *CustomerApiService) CustomerAcquireUnsubscriber(ctx context.Context) CustomerApiCustomerAcquireUnsubscriberRequest {
-	return CustomerApiCustomerAcquireUnsubscriberRequest{
+func (a *CustomerAPIService) CustomerAcquireUnsubscriber(ctx context.Context) ApiCustomerAcquireUnsubscriberRequest {
+	return ApiCustomerAcquireUnsubscriberRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -169,7 +285,7 @@ func (a *CustomerApiService) CustomerAcquireUnsubscriber(ctx context.Context) Cu
 
 // Execute executes the request
 //  @return CustomerUnsubscribeResponse
-func (a *CustomerApiService) CustomerAcquireUnsubscriberExecute(r CustomerApiCustomerAcquireUnsubscriberRequest) (*CustomerUnsubscribeResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerAcquireUnsubscriberExecute(r ApiCustomerAcquireUnsubscriberRequest) (*CustomerUnsubscribeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -177,7 +293,123 @@ func (a *CustomerApiService) CustomerAcquireUnsubscriberExecute(r CustomerApiCus
 		localVarReturnValue  *CustomerUnsubscribeResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerAcquireUnsubscriber")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerAcquireUnsubscriber")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/acquire_unsubscriber"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerAcquireUnsubscriber2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerUnsubscribeRequest
+}
+
+func (r ApiCustomerAcquireUnsubscriber2Request) Body(body CustomerUnsubscribeRequest) ApiCustomerAcquireUnsubscriber2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerAcquireUnsubscriber2Request) Execute() (*CustomerUnsubscribeResponse, *http.Response, error) {
+	return r.ApiService.CustomerAcquireUnsubscriber2Execute(r)
+}
+
+/*
+CustomerAcquireUnsubscriber2 Method for CustomerAcquireUnsubscriber2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerAcquireUnsubscriber2Request
+*/
+func (a *CustomerAPIService) CustomerAcquireUnsubscriber2(ctx context.Context) ApiCustomerAcquireUnsubscriber2Request {
+	return ApiCustomerAcquireUnsubscriber2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerUnsubscribeResponse
+func (a *CustomerAPIService) CustomerAcquireUnsubscriber2Execute(r ApiCustomerAcquireUnsubscriber2Request) (*CustomerUnsubscribeResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerUnsubscribeResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerAcquireUnsubscriber2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -220,9 +452,9 @@ func (a *CustomerApiService) CustomerAcquireUnsubscriberExecute(r CustomerApiCus
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -238,8 +470,8 @@ func (a *CustomerApiService) CustomerAcquireUnsubscriberExecute(r CustomerApiCus
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -255,18 +487,18 @@ func (a *CustomerApiService) CustomerAcquireUnsubscriberExecute(r CustomerApiCus
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerAddCustomerToGroupRequest struct {
+type ApiCustomerAddCustomerToGroupRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerAddCustomerToGroupRequest
 }
 
-func (r CustomerApiCustomerAddCustomerToGroupRequest) Body(body CustomerAddCustomerToGroupRequest) CustomerApiCustomerAddCustomerToGroupRequest {
+func (r ApiCustomerAddCustomerToGroupRequest) Body(body CustomerAddCustomerToGroupRequest) ApiCustomerAddCustomerToGroupRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerAddCustomerToGroupRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r ApiCustomerAddCustomerToGroupRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerAddCustomerToGroupExecute(r)
 }
 
@@ -274,10 +506,10 @@ func (r CustomerApiCustomerAddCustomerToGroupRequest) Execute() (*CustomerGroupR
 CustomerAddCustomerToGroup Method for CustomerAddCustomerToGroup
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerAddCustomerToGroupRequest
+ @return ApiCustomerAddCustomerToGroupRequest
 */
-func (a *CustomerApiService) CustomerAddCustomerToGroup(ctx context.Context) CustomerApiCustomerAddCustomerToGroupRequest {
-	return CustomerApiCustomerAddCustomerToGroupRequest{
+func (a *CustomerAPIService) CustomerAddCustomerToGroup(ctx context.Context) ApiCustomerAddCustomerToGroupRequest {
+	return ApiCustomerAddCustomerToGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -285,7 +517,7 @@ func (a *CustomerApiService) CustomerAddCustomerToGroup(ctx context.Context) Cus
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerApiService) CustomerAddCustomerToGroupExecute(r CustomerApiCustomerAddCustomerToGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerAddCustomerToGroupExecute(r ApiCustomerAddCustomerToGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -293,7 +525,123 @@ func (a *CustomerApiService) CustomerAddCustomerToGroupExecute(r CustomerApiCust
 		localVarReturnValue  *CustomerGroupResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerAddCustomerToGroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerAddCustomerToGroup")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/add_customer_to_segment"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerAddCustomerToGroup2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerAddCustomerToGroupRequest
+}
+
+func (r ApiCustomerAddCustomerToGroup2Request) Body(body CustomerAddCustomerToGroupRequest) ApiCustomerAddCustomerToGroup2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerAddCustomerToGroup2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
+	return r.ApiService.CustomerAddCustomerToGroup2Execute(r)
+}
+
+/*
+CustomerAddCustomerToGroup2 Method for CustomerAddCustomerToGroup2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerAddCustomerToGroup2Request
+*/
+func (a *CustomerAPIService) CustomerAddCustomerToGroup2(ctx context.Context) ApiCustomerAddCustomerToGroup2Request {
+	return ApiCustomerAddCustomerToGroup2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerGroupResponse
+func (a *CustomerAPIService) CustomerAddCustomerToGroup2Execute(r ApiCustomerAddCustomerToGroup2Request) (*CustomerGroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerGroupResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerAddCustomerToGroup2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -336,9 +684,9 @@ func (a *CustomerApiService) CustomerAddCustomerToGroupExecute(r CustomerApiCust
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -354,8 +702,8 @@ func (a *CustomerApiService) CustomerAddCustomerToGroupExecute(r CustomerApiCust
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -371,18 +719,134 @@ func (a *CustomerApiService) CustomerAddCustomerToGroupExecute(r CustomerApiCust
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerBulkUpdateRequest struct {
+type ApiCustomerAssignAgentRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
-	body *CustomerBulkUpdateRequest
+	ApiService *CustomerAPIService
+	body *CustomerAssignAgentRequest
 }
 
-func (r CustomerApiCustomerBulkUpdateRequest) Body(body CustomerBulkUpdateRequest) CustomerApiCustomerBulkUpdateRequest {
+func (r ApiCustomerAssignAgentRequest) Body(body CustomerAssignAgentRequest) ApiCustomerAssignAgentRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerBulkUpdateRequest) Execute() (*CustomerBulkUpdateResponse, *http.Response, error) {
+func (r ApiCustomerAssignAgentRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.CustomerAssignAgentExecute(r)
+}
+
+/*
+CustomerAssignAgent Method for CustomerAssignAgent
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerAssignAgentRequest
+*/
+func (a *CustomerAPIService) CustomerAssignAgent(ctx context.Context) ApiCustomerAssignAgentRequest {
+	return ApiCustomerAssignAgentRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *CustomerAPIService) CustomerAssignAgentExecute(r ApiCustomerAssignAgentRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerAssignAgent")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer.Customer/AssignAgent"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerBulkUpdateRequest struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerBulkUpdateRequest
+}
+
+func (r ApiCustomerBulkUpdateRequest) Body(body CustomerBulkUpdateRequest) ApiCustomerBulkUpdateRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerBulkUpdateRequest) Execute() (*CustomerBulkUpdateResponse, *http.Response, error) {
 	return r.ApiService.CustomerBulkUpdateExecute(r)
 }
 
@@ -390,10 +854,10 @@ func (r CustomerApiCustomerBulkUpdateRequest) Execute() (*CustomerBulkUpdateResp
 CustomerBulkUpdate Method for CustomerBulkUpdate
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerBulkUpdateRequest
+ @return ApiCustomerBulkUpdateRequest
 */
-func (a *CustomerApiService) CustomerBulkUpdate(ctx context.Context) CustomerApiCustomerBulkUpdateRequest {
-	return CustomerApiCustomerBulkUpdateRequest{
+func (a *CustomerAPIService) CustomerBulkUpdate(ctx context.Context) ApiCustomerBulkUpdateRequest {
+	return ApiCustomerBulkUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -401,7 +865,7 @@ func (a *CustomerApiService) CustomerBulkUpdate(ctx context.Context) CustomerApi
 
 // Execute executes the request
 //  @return CustomerBulkUpdateResponse
-func (a *CustomerApiService) CustomerBulkUpdateExecute(r CustomerApiCustomerBulkUpdateRequest) (*CustomerBulkUpdateResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerBulkUpdateExecute(r ApiCustomerBulkUpdateRequest) (*CustomerBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -409,7 +873,123 @@ func (a *CustomerApiService) CustomerBulkUpdateExecute(r CustomerApiCustomerBulk
 		localVarReturnValue  *CustomerBulkUpdateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerBulkUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerBulkUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/bulk_update"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerBulkUpdate2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerBulkUpdateRequest
+}
+
+func (r ApiCustomerBulkUpdate2Request) Body(body CustomerBulkUpdateRequest) ApiCustomerBulkUpdate2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerBulkUpdate2Request) Execute() (*CustomerBulkUpdateResponse, *http.Response, error) {
+	return r.ApiService.CustomerBulkUpdate2Execute(r)
+}
+
+/*
+CustomerBulkUpdate2 Method for CustomerBulkUpdate2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerBulkUpdate2Request
+*/
+func (a *CustomerAPIService) CustomerBulkUpdate2(ctx context.Context) ApiCustomerBulkUpdate2Request {
+	return ApiCustomerBulkUpdate2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerBulkUpdateResponse
+func (a *CustomerAPIService) CustomerBulkUpdate2Execute(r ApiCustomerBulkUpdate2Request) (*CustomerBulkUpdateResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerBulkUpdateResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerBulkUpdate2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -452,9 +1032,9 @@ func (a *CustomerApiService) CustomerBulkUpdateExecute(r CustomerApiCustomerBulk
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -470,8 +1050,8 @@ func (a *CustomerApiService) CustomerBulkUpdateExecute(r CustomerApiCustomerBulk
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -487,18 +1067,18 @@ func (a *CustomerApiService) CustomerBulkUpdateExecute(r CustomerApiCustomerBulk
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerCreateRequest struct {
+type ApiCustomerCreateRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerCreateRequest
 }
 
-func (r CustomerApiCustomerCreateRequest) Body(body CustomerCreateRequest) CustomerApiCustomerCreateRequest {
+func (r ApiCustomerCreateRequest) Body(body CustomerCreateRequest) ApiCustomerCreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerCreateRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r ApiCustomerCreateRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerCreateExecute(r)
 }
 
@@ -506,10 +1086,10 @@ func (r CustomerApiCustomerCreateRequest) Execute() (*CustomerCustomerResponse, 
 CustomerCreate Method for CustomerCreate
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerCreateRequest
+ @return ApiCustomerCreateRequest
 */
-func (a *CustomerApiService) CustomerCreate(ctx context.Context) CustomerApiCustomerCreateRequest {
-	return CustomerApiCustomerCreateRequest{
+func (a *CustomerAPIService) CustomerCreate(ctx context.Context) ApiCustomerCreateRequest {
+	return ApiCustomerCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -517,7 +1097,7 @@ func (a *CustomerApiService) CustomerCreate(ctx context.Context) CustomerApiCust
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerApiService) CustomerCreateExecute(r CustomerApiCustomerCreateRequest) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerCreateExecute(r ApiCustomerCreateRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -525,7 +1105,123 @@ func (a *CustomerApiService) CustomerCreateExecute(r CustomerApiCustomerCreateRe
 		localVarReturnValue  *CustomerCustomerResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/create"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerCreate2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerCreateRequest
+}
+
+func (r ApiCustomerCreate2Request) Body(body CustomerCreateRequest) ApiCustomerCreate2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerCreate2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+	return r.ApiService.CustomerCreate2Execute(r)
+}
+
+/*
+CustomerCreate2 Method for CustomerCreate2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerCreate2Request
+*/
+func (a *CustomerAPIService) CustomerCreate2(ctx context.Context) ApiCustomerCreate2Request {
+	return ApiCustomerCreate2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerCustomerResponse
+func (a *CustomerAPIService) CustomerCreate2Execute(r ApiCustomerCreate2Request) (*CustomerCustomerResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerCustomerResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCreate2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -568,9 +1264,9 @@ func (a *CustomerApiService) CustomerCreateExecute(r CustomerApiCustomerCreateRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -586,8 +1282,8 @@ func (a *CustomerApiService) CustomerCreateExecute(r CustomerApiCustomerCreateRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -603,18 +1299,18 @@ func (a *CustomerApiService) CustomerCreateExecute(r CustomerApiCustomerCreateRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerCreateAddressRequest struct {
+type ApiCustomerCreateAddressRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerAddressCreateRequest
 }
 
-func (r CustomerApiCustomerCreateAddressRequest) Body(body CustomerAddressCreateRequest) CustomerApiCustomerCreateAddressRequest {
+func (r ApiCustomerCreateAddressRequest) Body(body CustomerAddressCreateRequest) ApiCustomerCreateAddressRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerCreateAddressRequest) Execute() (*CustomerAddressCustomerResponse, *http.Response, error) {
+func (r ApiCustomerCreateAddressRequest) Execute() (*CustomerAddressCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerCreateAddressExecute(r)
 }
 
@@ -622,10 +1318,10 @@ func (r CustomerApiCustomerCreateAddressRequest) Execute() (*CustomerAddressCust
 CustomerCreateAddress Method for CustomerCreateAddress
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerCreateAddressRequest
+ @return ApiCustomerCreateAddressRequest
 */
-func (a *CustomerApiService) CustomerCreateAddress(ctx context.Context) CustomerApiCustomerCreateAddressRequest {
-	return CustomerApiCustomerCreateAddressRequest{
+func (a *CustomerAPIService) CustomerCreateAddress(ctx context.Context) ApiCustomerCreateAddressRequest {
+	return ApiCustomerCreateAddressRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -633,7 +1329,7 @@ func (a *CustomerApiService) CustomerCreateAddress(ctx context.Context) Customer
 
 // Execute executes the request
 //  @return CustomerAddressCustomerResponse
-func (a *CustomerApiService) CustomerCreateAddressExecute(r CustomerApiCustomerCreateAddressRequest) (*CustomerAddressCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerCreateAddressExecute(r ApiCustomerCreateAddressRequest) (*CustomerAddressCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -641,7 +1337,123 @@ func (a *CustomerApiService) CustomerCreateAddressExecute(r CustomerApiCustomerC
 		localVarReturnValue  *CustomerAddressCustomerResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerCreateAddress")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCreateAddress")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/create_address"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerCreateAddress2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerAddressCreateRequest
+}
+
+func (r ApiCustomerCreateAddress2Request) Body(body CustomerAddressCreateRequest) ApiCustomerCreateAddress2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerCreateAddress2Request) Execute() (*CustomerAddressCustomerResponse, *http.Response, error) {
+	return r.ApiService.CustomerCreateAddress2Execute(r)
+}
+
+/*
+CustomerCreateAddress2 Method for CustomerCreateAddress2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerCreateAddress2Request
+*/
+func (a *CustomerAPIService) CustomerCreateAddress2(ctx context.Context) ApiCustomerCreateAddress2Request {
+	return ApiCustomerCreateAddress2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerAddressCustomerResponse
+func (a *CustomerAPIService) CustomerCreateAddress2Execute(r ApiCustomerCreateAddress2Request) (*CustomerAddressCustomerResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerAddressCustomerResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCreateAddress2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -684,9 +1496,9 @@ func (a *CustomerApiService) CustomerCreateAddressExecute(r CustomerApiCustomerC
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -702,8 +1514,8 @@ func (a *CustomerApiService) CustomerCreateAddressExecute(r CustomerApiCustomerC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -719,18 +1531,18 @@ func (a *CustomerApiService) CustomerCreateAddressExecute(r CustomerApiCustomerC
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerCreateGroupRequest struct {
+type ApiCustomerCreateGroupRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerCreateGroupRequest
 }
 
-func (r CustomerApiCustomerCreateGroupRequest) Body(body CustomerCreateGroupRequest) CustomerApiCustomerCreateGroupRequest {
+func (r ApiCustomerCreateGroupRequest) Body(body CustomerCreateGroupRequest) ApiCustomerCreateGroupRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerCreateGroupRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r ApiCustomerCreateGroupRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerCreateGroupExecute(r)
 }
 
@@ -738,10 +1550,10 @@ func (r CustomerApiCustomerCreateGroupRequest) Execute() (*CustomerGroupResponse
 CustomerCreateGroup Method for CustomerCreateGroup
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerCreateGroupRequest
+ @return ApiCustomerCreateGroupRequest
 */
-func (a *CustomerApiService) CustomerCreateGroup(ctx context.Context) CustomerApiCustomerCreateGroupRequest {
-	return CustomerApiCustomerCreateGroupRequest{
+func (a *CustomerAPIService) CustomerCreateGroup(ctx context.Context) ApiCustomerCreateGroupRequest {
+	return ApiCustomerCreateGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -749,7 +1561,7 @@ func (a *CustomerApiService) CustomerCreateGroup(ctx context.Context) CustomerAp
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerApiService) CustomerCreateGroupExecute(r CustomerApiCustomerCreateGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerCreateGroupExecute(r ApiCustomerCreateGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -757,7 +1569,123 @@ func (a *CustomerApiService) CustomerCreateGroupExecute(r CustomerApiCustomerCre
 		localVarReturnValue  *CustomerGroupResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerCreateGroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCreateGroup")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/create_segment"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerCreateGroup2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerCreateGroupRequest
+}
+
+func (r ApiCustomerCreateGroup2Request) Body(body CustomerCreateGroupRequest) ApiCustomerCreateGroup2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerCreateGroup2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
+	return r.ApiService.CustomerCreateGroup2Execute(r)
+}
+
+/*
+CustomerCreateGroup2 Method for CustomerCreateGroup2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerCreateGroup2Request
+*/
+func (a *CustomerAPIService) CustomerCreateGroup2(ctx context.Context) ApiCustomerCreateGroup2Request {
+	return ApiCustomerCreateGroup2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerGroupResponse
+func (a *CustomerAPIService) CustomerCreateGroup2Execute(r ApiCustomerCreateGroup2Request) (*CustomerGroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerGroupResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCreateGroup2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -800,9 +1728,9 @@ func (a *CustomerApiService) CustomerCreateGroupExecute(r CustomerApiCustomerCre
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -818,8 +1746,8 @@ func (a *CustomerApiService) CustomerCreateGroupExecute(r CustomerApiCustomerCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -835,18 +1763,18 @@ func (a *CustomerApiService) CustomerCreateGroupExecute(r CustomerApiCustomerCre
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerCreateSubscriberRequest struct {
+type ApiCustomerCreateSubscriberRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerCreateSubscriberRequest
 }
 
-func (r CustomerApiCustomerCreateSubscriberRequest) Body(body CustomerCreateSubscriberRequest) CustomerApiCustomerCreateSubscriberRequest {
+func (r ApiCustomerCreateSubscriberRequest) Body(body CustomerCreateSubscriberRequest) ApiCustomerCreateSubscriberRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerCreateSubscriberRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+func (r ApiCustomerCreateSubscriberRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
 	return r.ApiService.CustomerCreateSubscriberExecute(r)
 }
 
@@ -854,10 +1782,10 @@ func (r CustomerApiCustomerCreateSubscriberRequest) Execute() (*CustomerSubscrib
 CustomerCreateSubscriber Method for CustomerCreateSubscriber
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerCreateSubscriberRequest
+ @return ApiCustomerCreateSubscriberRequest
 */
-func (a *CustomerApiService) CustomerCreateSubscriber(ctx context.Context) CustomerApiCustomerCreateSubscriberRequest {
-	return CustomerApiCustomerCreateSubscriberRequest{
+func (a *CustomerAPIService) CustomerCreateSubscriber(ctx context.Context) ApiCustomerCreateSubscriberRequest {
+	return ApiCustomerCreateSubscriberRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -865,7 +1793,7 @@ func (a *CustomerApiService) CustomerCreateSubscriber(ctx context.Context) Custo
 
 // Execute executes the request
 //  @return CustomerSubscriberResponse
-func (a *CustomerApiService) CustomerCreateSubscriberExecute(r CustomerApiCustomerCreateSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerCreateSubscriberExecute(r ApiCustomerCreateSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -873,7 +1801,123 @@ func (a *CustomerApiService) CustomerCreateSubscriberExecute(r CustomerApiCustom
 		localVarReturnValue  *CustomerSubscriberResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerCreateSubscriber")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCreateSubscriber")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/create_subscriber"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerCreateSubscriber2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerCreateSubscriberRequest
+}
+
+func (r ApiCustomerCreateSubscriber2Request) Body(body CustomerCreateSubscriberRequest) ApiCustomerCreateSubscriber2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerCreateSubscriber2Request) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+	return r.ApiService.CustomerCreateSubscriber2Execute(r)
+}
+
+/*
+CustomerCreateSubscriber2 Method for CustomerCreateSubscriber2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerCreateSubscriber2Request
+*/
+func (a *CustomerAPIService) CustomerCreateSubscriber2(ctx context.Context) ApiCustomerCreateSubscriber2Request {
+	return ApiCustomerCreateSubscriber2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerSubscriberResponse
+func (a *CustomerAPIService) CustomerCreateSubscriber2Execute(r ApiCustomerCreateSubscriber2Request) (*CustomerSubscriberResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerSubscriberResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCreateSubscriber2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -916,9 +1960,9 @@ func (a *CustomerApiService) CustomerCreateSubscriberExecute(r CustomerApiCustom
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -934,8 +1978,8 @@ func (a *CustomerApiService) CustomerCreateSubscriberExecute(r CustomerApiCustom
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -951,18 +1995,18 @@ func (a *CustomerApiService) CustomerCreateSubscriberExecute(r CustomerApiCustom
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerDeleteAddressRequest struct {
+type ApiCustomerDeleteAddressRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerAddressDeleteRequest
 }
 
-func (r CustomerApiCustomerDeleteAddressRequest) Body(body CustomerAddressDeleteRequest) CustomerApiCustomerDeleteAddressRequest {
+func (r ApiCustomerDeleteAddressRequest) Body(body CustomerAddressDeleteRequest) ApiCustomerDeleteAddressRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerDeleteAddressRequest) Execute() (*CustomerAddressDeleteResponse, *http.Response, error) {
+func (r ApiCustomerDeleteAddressRequest) Execute() (*CustomerAddressDeleteResponse, *http.Response, error) {
 	return r.ApiService.CustomerDeleteAddressExecute(r)
 }
 
@@ -970,10 +2014,10 @@ func (r CustomerApiCustomerDeleteAddressRequest) Execute() (*CustomerAddressDele
 CustomerDeleteAddress Method for CustomerDeleteAddress
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerDeleteAddressRequest
+ @return ApiCustomerDeleteAddressRequest
 */
-func (a *CustomerApiService) CustomerDeleteAddress(ctx context.Context) CustomerApiCustomerDeleteAddressRequest {
-	return CustomerApiCustomerDeleteAddressRequest{
+func (a *CustomerAPIService) CustomerDeleteAddress(ctx context.Context) ApiCustomerDeleteAddressRequest {
+	return ApiCustomerDeleteAddressRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -981,7 +2025,7 @@ func (a *CustomerApiService) CustomerDeleteAddress(ctx context.Context) Customer
 
 // Execute executes the request
 //  @return CustomerAddressDeleteResponse
-func (a *CustomerApiService) CustomerDeleteAddressExecute(r CustomerApiCustomerDeleteAddressRequest) (*CustomerAddressDeleteResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerDeleteAddressExecute(r ApiCustomerDeleteAddressRequest) (*CustomerAddressDeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -989,7 +2033,123 @@ func (a *CustomerApiService) CustomerDeleteAddressExecute(r CustomerApiCustomerD
 		localVarReturnValue  *CustomerAddressDeleteResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerDeleteAddress")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerDeleteAddress")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/delete_address"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerDeleteAddress2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerAddressDeleteRequest
+}
+
+func (r ApiCustomerDeleteAddress2Request) Body(body CustomerAddressDeleteRequest) ApiCustomerDeleteAddress2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerDeleteAddress2Request) Execute() (*CustomerAddressDeleteResponse, *http.Response, error) {
+	return r.ApiService.CustomerDeleteAddress2Execute(r)
+}
+
+/*
+CustomerDeleteAddress2 Method for CustomerDeleteAddress2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerDeleteAddress2Request
+*/
+func (a *CustomerAPIService) CustomerDeleteAddress2(ctx context.Context) ApiCustomerDeleteAddress2Request {
+	return ApiCustomerDeleteAddress2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerAddressDeleteResponse
+func (a *CustomerAPIService) CustomerDeleteAddress2Execute(r ApiCustomerDeleteAddress2Request) (*CustomerAddressDeleteResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerAddressDeleteResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerDeleteAddress2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1032,9 +2192,9 @@ func (a *CustomerApiService) CustomerDeleteAddressExecute(r CustomerApiCustomerD
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1050,8 +2210,8 @@ func (a *CustomerApiService) CustomerDeleteAddressExecute(r CustomerApiCustomerD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1067,18 +2227,18 @@ func (a *CustomerApiService) CustomerDeleteAddressExecute(r CustomerApiCustomerD
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerDeleteGroupRequest struct {
+type ApiCustomerDeleteGroupRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerDeleteGroupRequest
 }
 
-func (r CustomerApiCustomerDeleteGroupRequest) Body(body CustomerDeleteGroupRequest) CustomerApiCustomerDeleteGroupRequest {
+func (r ApiCustomerDeleteGroupRequest) Body(body CustomerDeleteGroupRequest) ApiCustomerDeleteGroupRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerDeleteGroupRequest) Execute() (*CustomerDeleteGroupResponse, *http.Response, error) {
+func (r ApiCustomerDeleteGroupRequest) Execute() (*CustomerDeleteGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerDeleteGroupExecute(r)
 }
 
@@ -1086,10 +2246,10 @@ func (r CustomerApiCustomerDeleteGroupRequest) Execute() (*CustomerDeleteGroupRe
 CustomerDeleteGroup Method for CustomerDeleteGroup
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerDeleteGroupRequest
+ @return ApiCustomerDeleteGroupRequest
 */
-func (a *CustomerApiService) CustomerDeleteGroup(ctx context.Context) CustomerApiCustomerDeleteGroupRequest {
-	return CustomerApiCustomerDeleteGroupRequest{
+func (a *CustomerAPIService) CustomerDeleteGroup(ctx context.Context) ApiCustomerDeleteGroupRequest {
+	return ApiCustomerDeleteGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1097,7 +2257,7 @@ func (a *CustomerApiService) CustomerDeleteGroup(ctx context.Context) CustomerAp
 
 // Execute executes the request
 //  @return CustomerDeleteGroupResponse
-func (a *CustomerApiService) CustomerDeleteGroupExecute(r CustomerApiCustomerDeleteGroupRequest) (*CustomerDeleteGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerDeleteGroupExecute(r ApiCustomerDeleteGroupRequest) (*CustomerDeleteGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1105,7 +2265,123 @@ func (a *CustomerApiService) CustomerDeleteGroupExecute(r CustomerApiCustomerDel
 		localVarReturnValue  *CustomerDeleteGroupResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerDeleteGroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerDeleteGroup")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/delete_segment"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerDeleteGroup2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerDeleteGroupRequest
+}
+
+func (r ApiCustomerDeleteGroup2Request) Body(body CustomerDeleteGroupRequest) ApiCustomerDeleteGroup2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerDeleteGroup2Request) Execute() (*CustomerDeleteGroupResponse, *http.Response, error) {
+	return r.ApiService.CustomerDeleteGroup2Execute(r)
+}
+
+/*
+CustomerDeleteGroup2 Method for CustomerDeleteGroup2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerDeleteGroup2Request
+*/
+func (a *CustomerAPIService) CustomerDeleteGroup2(ctx context.Context) ApiCustomerDeleteGroup2Request {
+	return ApiCustomerDeleteGroup2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerDeleteGroupResponse
+func (a *CustomerAPIService) CustomerDeleteGroup2Execute(r ApiCustomerDeleteGroup2Request) (*CustomerDeleteGroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerDeleteGroupResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerDeleteGroup2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1148,9 +2424,9 @@ func (a *CustomerApiService) CustomerDeleteGroupExecute(r CustomerApiCustomerDel
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1166,8 +2442,8 @@ func (a *CustomerApiService) CustomerDeleteGroupExecute(r CustomerApiCustomerDel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1183,18 +2459,18 @@ func (a *CustomerApiService) CustomerDeleteGroupExecute(r CustomerApiCustomerDel
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerFindRequest struct {
+type ApiCustomerFindRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerFindManyRequest
 }
 
-func (r CustomerApiCustomerFindRequest) Body(body CustomerFindManyRequest) CustomerApiCustomerFindRequest {
+func (r ApiCustomerFindRequest) Body(body CustomerFindManyRequest) ApiCustomerFindRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerFindRequest) Execute() (*CustomerFindManyResponse, *http.Response, error) {
+func (r ApiCustomerFindRequest) Execute() (*CustomerFindManyResponse, *http.Response, error) {
 	return r.ApiService.CustomerFindExecute(r)
 }
 
@@ -1202,10 +2478,10 @@ func (r CustomerApiCustomerFindRequest) Execute() (*CustomerFindManyResponse, *h
 CustomerFind Method for CustomerFind
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerFindRequest
+ @return ApiCustomerFindRequest
 */
-func (a *CustomerApiService) CustomerFind(ctx context.Context) CustomerApiCustomerFindRequest {
-	return CustomerApiCustomerFindRequest{
+func (a *CustomerAPIService) CustomerFind(ctx context.Context) ApiCustomerFindRequest {
+	return ApiCustomerFindRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1213,7 +2489,7 @@ func (a *CustomerApiService) CustomerFind(ctx context.Context) CustomerApiCustom
 
 // Execute executes the request
 //  @return CustomerFindManyResponse
-func (a *CustomerApiService) CustomerFindExecute(r CustomerApiCustomerFindRequest) (*CustomerFindManyResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerFindExecute(r ApiCustomerFindRequest) (*CustomerFindManyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1221,7 +2497,123 @@ func (a *CustomerApiService) CustomerFindExecute(r CustomerApiCustomerFindReques
 		localVarReturnValue  *CustomerFindManyResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerFind")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFind")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/find"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerFind2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerFindManyRequest
+}
+
+func (r ApiCustomerFind2Request) Body(body CustomerFindManyRequest) ApiCustomerFind2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerFind2Request) Execute() (*CustomerFindManyResponse, *http.Response, error) {
+	return r.ApiService.CustomerFind2Execute(r)
+}
+
+/*
+CustomerFind2 Method for CustomerFind2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerFind2Request
+*/
+func (a *CustomerAPIService) CustomerFind2(ctx context.Context) ApiCustomerFind2Request {
+	return ApiCustomerFind2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerFindManyResponse
+func (a *CustomerAPIService) CustomerFind2Execute(r ApiCustomerFind2Request) (*CustomerFindManyResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerFindManyResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFind2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1264,9 +2656,9 @@ func (a *CustomerApiService) CustomerFindExecute(r CustomerApiCustomerFindReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1282,8 +2674,8 @@ func (a *CustomerApiService) CustomerFindExecute(r CustomerApiCustomerFindReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1299,18 +2691,18 @@ func (a *CustomerApiService) CustomerFindExecute(r CustomerApiCustomerFindReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerFindByEmailRequest struct {
+type ApiCustomerFindByEmailRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerFindByEmailRequest
 }
 
-func (r CustomerApiCustomerFindByEmailRequest) Body(body CustomerFindByEmailRequest) CustomerApiCustomerFindByEmailRequest {
+func (r ApiCustomerFindByEmailRequest) Body(body CustomerFindByEmailRequest) ApiCustomerFindByEmailRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerFindByEmailRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r ApiCustomerFindByEmailRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerFindByEmailExecute(r)
 }
 
@@ -1318,10 +2710,10 @@ func (r CustomerApiCustomerFindByEmailRequest) Execute() (*CustomerCustomerRespo
 CustomerFindByEmail Method for CustomerFindByEmail
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerFindByEmailRequest
+ @return ApiCustomerFindByEmailRequest
 */
-func (a *CustomerApiService) CustomerFindByEmail(ctx context.Context) CustomerApiCustomerFindByEmailRequest {
-	return CustomerApiCustomerFindByEmailRequest{
+func (a *CustomerAPIService) CustomerFindByEmail(ctx context.Context) ApiCustomerFindByEmailRequest {
+	return ApiCustomerFindByEmailRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1329,7 +2721,7 @@ func (a *CustomerApiService) CustomerFindByEmail(ctx context.Context) CustomerAp
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerApiService) CustomerFindByEmailExecute(r CustomerApiCustomerFindByEmailRequest) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerFindByEmailExecute(r ApiCustomerFindByEmailRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1337,7 +2729,123 @@ func (a *CustomerApiService) CustomerFindByEmailExecute(r CustomerApiCustomerFin
 		localVarReturnValue  *CustomerCustomerResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerFindByEmail")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFindByEmail")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/find_by_email"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerFindByEmail2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerFindByEmailRequest
+}
+
+func (r ApiCustomerFindByEmail2Request) Body(body CustomerFindByEmailRequest) ApiCustomerFindByEmail2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerFindByEmail2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+	return r.ApiService.CustomerFindByEmail2Execute(r)
+}
+
+/*
+CustomerFindByEmail2 Method for CustomerFindByEmail2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerFindByEmail2Request
+*/
+func (a *CustomerAPIService) CustomerFindByEmail2(ctx context.Context) ApiCustomerFindByEmail2Request {
+	return ApiCustomerFindByEmail2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerCustomerResponse
+func (a *CustomerAPIService) CustomerFindByEmail2Execute(r ApiCustomerFindByEmail2Request) (*CustomerCustomerResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerCustomerResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFindByEmail2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1380,9 +2888,9 @@ func (a *CustomerApiService) CustomerFindByEmailExecute(r CustomerApiCustomerFin
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1398,8 +2906,8 @@ func (a *CustomerApiService) CustomerFindByEmailExecute(r CustomerApiCustomerFin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1415,18 +2923,18 @@ func (a *CustomerApiService) CustomerFindByEmailExecute(r CustomerApiCustomerFin
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerFindByIdRequest struct {
+type ApiCustomerFindByIdRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerFindByIdRequest
 }
 
-func (r CustomerApiCustomerFindByIdRequest) Body(body CustomerFindByIdRequest) CustomerApiCustomerFindByIdRequest {
+func (r ApiCustomerFindByIdRequest) Body(body CustomerFindByIdRequest) ApiCustomerFindByIdRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerFindByIdRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r ApiCustomerFindByIdRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerFindByIdExecute(r)
 }
 
@@ -1434,10 +2942,10 @@ func (r CustomerApiCustomerFindByIdRequest) Execute() (*CustomerCustomerResponse
 CustomerFindById Method for CustomerFindById
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerFindByIdRequest
+ @return ApiCustomerFindByIdRequest
 */
-func (a *CustomerApiService) CustomerFindById(ctx context.Context) CustomerApiCustomerFindByIdRequest {
-	return CustomerApiCustomerFindByIdRequest{
+func (a *CustomerAPIService) CustomerFindById(ctx context.Context) ApiCustomerFindByIdRequest {
+	return ApiCustomerFindByIdRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1445,7 +2953,7 @@ func (a *CustomerApiService) CustomerFindById(ctx context.Context) CustomerApiCu
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerApiService) CustomerFindByIdExecute(r CustomerApiCustomerFindByIdRequest) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerFindByIdExecute(r ApiCustomerFindByIdRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1453,7 +2961,123 @@ func (a *CustomerApiService) CustomerFindByIdExecute(r CustomerApiCustomerFindBy
 		localVarReturnValue  *CustomerCustomerResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerFindById")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFindById")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/find_by_id"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerFindById2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerFindByIdRequest
+}
+
+func (r ApiCustomerFindById2Request) Body(body CustomerFindByIdRequest) ApiCustomerFindById2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerFindById2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+	return r.ApiService.CustomerFindById2Execute(r)
+}
+
+/*
+CustomerFindById2 Method for CustomerFindById2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerFindById2Request
+*/
+func (a *CustomerAPIService) CustomerFindById2(ctx context.Context) ApiCustomerFindById2Request {
+	return ApiCustomerFindById2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerCustomerResponse
+func (a *CustomerAPIService) CustomerFindById2Execute(r ApiCustomerFindById2Request) (*CustomerCustomerResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerCustomerResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFindById2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1496,9 +3120,9 @@ func (a *CustomerApiService) CustomerFindByIdExecute(r CustomerApiCustomerFindBy
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1514,8 +3138,8 @@ func (a *CustomerApiService) CustomerFindByIdExecute(r CustomerApiCustomerFindBy
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1531,18 +3155,18 @@ func (a *CustomerApiService) CustomerFindByIdExecute(r CustomerApiCustomerFindBy
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerFindSubscriberByEmailRequest struct {
+type ApiCustomerFindSubscriberByEmailRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerFindSubscriberByEmailRequest
 }
 
-func (r CustomerApiCustomerFindSubscriberByEmailRequest) Body(body CustomerFindSubscriberByEmailRequest) CustomerApiCustomerFindSubscriberByEmailRequest {
+func (r ApiCustomerFindSubscriberByEmailRequest) Body(body CustomerFindSubscriberByEmailRequest) ApiCustomerFindSubscriberByEmailRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerFindSubscriberByEmailRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+func (r ApiCustomerFindSubscriberByEmailRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
 	return r.ApiService.CustomerFindSubscriberByEmailExecute(r)
 }
 
@@ -1550,10 +3174,10 @@ func (r CustomerApiCustomerFindSubscriberByEmailRequest) Execute() (*CustomerSub
 CustomerFindSubscriberByEmail Method for CustomerFindSubscriberByEmail
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerFindSubscriberByEmailRequest
+ @return ApiCustomerFindSubscriberByEmailRequest
 */
-func (a *CustomerApiService) CustomerFindSubscriberByEmail(ctx context.Context) CustomerApiCustomerFindSubscriberByEmailRequest {
-	return CustomerApiCustomerFindSubscriberByEmailRequest{
+func (a *CustomerAPIService) CustomerFindSubscriberByEmail(ctx context.Context) ApiCustomerFindSubscriberByEmailRequest {
+	return ApiCustomerFindSubscriberByEmailRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1561,7 +3185,7 @@ func (a *CustomerApiService) CustomerFindSubscriberByEmail(ctx context.Context) 
 
 // Execute executes the request
 //  @return CustomerSubscriberResponse
-func (a *CustomerApiService) CustomerFindSubscriberByEmailExecute(r CustomerApiCustomerFindSubscriberByEmailRequest) (*CustomerSubscriberResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerFindSubscriberByEmailExecute(r ApiCustomerFindSubscriberByEmailRequest) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1569,7 +3193,123 @@ func (a *CustomerApiService) CustomerFindSubscriberByEmailExecute(r CustomerApiC
 		localVarReturnValue  *CustomerSubscriberResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerFindSubscriberByEmail")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFindSubscriberByEmail")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/find_subscriber_by_email"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerFindSubscriberByEmail2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerFindSubscriberByEmailRequest
+}
+
+func (r ApiCustomerFindSubscriberByEmail2Request) Body(body CustomerFindSubscriberByEmailRequest) ApiCustomerFindSubscriberByEmail2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerFindSubscriberByEmail2Request) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+	return r.ApiService.CustomerFindSubscriberByEmail2Execute(r)
+}
+
+/*
+CustomerFindSubscriberByEmail2 Method for CustomerFindSubscriberByEmail2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerFindSubscriberByEmail2Request
+*/
+func (a *CustomerAPIService) CustomerFindSubscriberByEmail2(ctx context.Context) ApiCustomerFindSubscriberByEmail2Request {
+	return ApiCustomerFindSubscriberByEmail2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerSubscriberResponse
+func (a *CustomerAPIService) CustomerFindSubscriberByEmail2Execute(r ApiCustomerFindSubscriberByEmail2Request) (*CustomerSubscriberResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerSubscriberResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFindSubscriberByEmail2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1612,9 +3352,9 @@ func (a *CustomerApiService) CustomerFindSubscriberByEmailExecute(r CustomerApiC
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1630,8 +3370,8 @@ func (a *CustomerApiService) CustomerFindSubscriberByEmailExecute(r CustomerApiC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1647,18 +3387,18 @@ func (a *CustomerApiService) CustomerFindSubscriberByEmailExecute(r CustomerApiC
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerFindSubscriberByIdRequest struct {
+type ApiCustomerFindSubscriberByIdRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerFindSubscriberByIdRequest
 }
 
-func (r CustomerApiCustomerFindSubscriberByIdRequest) Body(body CustomerFindSubscriberByIdRequest) CustomerApiCustomerFindSubscriberByIdRequest {
+func (r ApiCustomerFindSubscriberByIdRequest) Body(body CustomerFindSubscriberByIdRequest) ApiCustomerFindSubscriberByIdRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerFindSubscriberByIdRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+func (r ApiCustomerFindSubscriberByIdRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
 	return r.ApiService.CustomerFindSubscriberByIdExecute(r)
 }
 
@@ -1666,10 +3406,10 @@ func (r CustomerApiCustomerFindSubscriberByIdRequest) Execute() (*CustomerSubscr
 CustomerFindSubscriberById Method for CustomerFindSubscriberById
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerFindSubscriberByIdRequest
+ @return ApiCustomerFindSubscriberByIdRequest
 */
-func (a *CustomerApiService) CustomerFindSubscriberById(ctx context.Context) CustomerApiCustomerFindSubscriberByIdRequest {
-	return CustomerApiCustomerFindSubscriberByIdRequest{
+func (a *CustomerAPIService) CustomerFindSubscriberById(ctx context.Context) ApiCustomerFindSubscriberByIdRequest {
+	return ApiCustomerFindSubscriberByIdRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1677,7 +3417,7 @@ func (a *CustomerApiService) CustomerFindSubscriberById(ctx context.Context) Cus
 
 // Execute executes the request
 //  @return CustomerSubscriberResponse
-func (a *CustomerApiService) CustomerFindSubscriberByIdExecute(r CustomerApiCustomerFindSubscriberByIdRequest) (*CustomerSubscriberResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerFindSubscriberByIdExecute(r ApiCustomerFindSubscriberByIdRequest) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1685,7 +3425,123 @@ func (a *CustomerApiService) CustomerFindSubscriberByIdExecute(r CustomerApiCust
 		localVarReturnValue  *CustomerSubscriberResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerFindSubscriberById")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFindSubscriberById")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/find_subscriber_by_id"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerFindSubscriberById2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerFindSubscriberByIdRequest
+}
+
+func (r ApiCustomerFindSubscriberById2Request) Body(body CustomerFindSubscriberByIdRequest) ApiCustomerFindSubscriberById2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerFindSubscriberById2Request) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+	return r.ApiService.CustomerFindSubscriberById2Execute(r)
+}
+
+/*
+CustomerFindSubscriberById2 Method for CustomerFindSubscriberById2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerFindSubscriberById2Request
+*/
+func (a *CustomerAPIService) CustomerFindSubscriberById2(ctx context.Context) ApiCustomerFindSubscriberById2Request {
+	return ApiCustomerFindSubscriberById2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerSubscriberResponse
+func (a *CustomerAPIService) CustomerFindSubscriberById2Execute(r ApiCustomerFindSubscriberById2Request) (*CustomerSubscriberResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerSubscriberResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFindSubscriberById2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1728,9 +3584,9 @@ func (a *CustomerApiService) CustomerFindSubscriberByIdExecute(r CustomerApiCust
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1746,8 +3602,8 @@ func (a *CustomerApiService) CustomerFindSubscriberByIdExecute(r CustomerApiCust
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1763,18 +3619,18 @@ func (a *CustomerApiService) CustomerFindSubscriberByIdExecute(r CustomerApiCust
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerGetGroupByCodeRequest struct {
+type ApiCustomerGetGroupByCodeRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerGetGroupByCodeRequest
 }
 
-func (r CustomerApiCustomerGetGroupByCodeRequest) Body(body CustomerGetGroupByCodeRequest) CustomerApiCustomerGetGroupByCodeRequest {
+func (r ApiCustomerGetGroupByCodeRequest) Body(body CustomerGetGroupByCodeRequest) ApiCustomerGetGroupByCodeRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerGetGroupByCodeRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r ApiCustomerGetGroupByCodeRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerGetGroupByCodeExecute(r)
 }
 
@@ -1782,10 +3638,10 @@ func (r CustomerApiCustomerGetGroupByCodeRequest) Execute() (*CustomerGroupRespo
 CustomerGetGroupByCode Method for CustomerGetGroupByCode
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerGetGroupByCodeRequest
+ @return ApiCustomerGetGroupByCodeRequest
 */
-func (a *CustomerApiService) CustomerGetGroupByCode(ctx context.Context) CustomerApiCustomerGetGroupByCodeRequest {
-	return CustomerApiCustomerGetGroupByCodeRequest{
+func (a *CustomerAPIService) CustomerGetGroupByCode(ctx context.Context) ApiCustomerGetGroupByCodeRequest {
+	return ApiCustomerGetGroupByCodeRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1793,7 +3649,7 @@ func (a *CustomerApiService) CustomerGetGroupByCode(ctx context.Context) Custome
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerApiService) CustomerGetGroupByCodeExecute(r CustomerApiCustomerGetGroupByCodeRequest) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerGetGroupByCodeExecute(r ApiCustomerGetGroupByCodeRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1801,7 +3657,123 @@ func (a *CustomerApiService) CustomerGetGroupByCodeExecute(r CustomerApiCustomer
 		localVarReturnValue  *CustomerGroupResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerGetGroupByCode")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerGetGroupByCode")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/get_segment_by_code"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerGetGroupByCode2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerGetGroupByCodeRequest
+}
+
+func (r ApiCustomerGetGroupByCode2Request) Body(body CustomerGetGroupByCodeRequest) ApiCustomerGetGroupByCode2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerGetGroupByCode2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
+	return r.ApiService.CustomerGetGroupByCode2Execute(r)
+}
+
+/*
+CustomerGetGroupByCode2 Method for CustomerGetGroupByCode2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerGetGroupByCode2Request
+*/
+func (a *CustomerAPIService) CustomerGetGroupByCode2(ctx context.Context) ApiCustomerGetGroupByCode2Request {
+	return ApiCustomerGetGroupByCode2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerGroupResponse
+func (a *CustomerAPIService) CustomerGetGroupByCode2Execute(r ApiCustomerGetGroupByCode2Request) (*CustomerGroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerGroupResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerGetGroupByCode2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1844,9 +3816,9 @@ func (a *CustomerApiService) CustomerGetGroupByCodeExecute(r CustomerApiCustomer
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1862,8 +3834,8 @@ func (a *CustomerApiService) CustomerGetGroupByCodeExecute(r CustomerApiCustomer
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1879,18 +3851,18 @@ func (a *CustomerApiService) CustomerGetGroupByCodeExecute(r CustomerApiCustomer
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerGetGroupByIdRequest struct {
+type ApiCustomerGetGroupByIdRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerGetGroupByIdRequest
 }
 
-func (r CustomerApiCustomerGetGroupByIdRequest) Body(body CustomerGetGroupByIdRequest) CustomerApiCustomerGetGroupByIdRequest {
+func (r ApiCustomerGetGroupByIdRequest) Body(body CustomerGetGroupByIdRequest) ApiCustomerGetGroupByIdRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerGetGroupByIdRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r ApiCustomerGetGroupByIdRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerGetGroupByIdExecute(r)
 }
 
@@ -1898,10 +3870,10 @@ func (r CustomerApiCustomerGetGroupByIdRequest) Execute() (*CustomerGroupRespons
 CustomerGetGroupById Method for CustomerGetGroupById
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerGetGroupByIdRequest
+ @return ApiCustomerGetGroupByIdRequest
 */
-func (a *CustomerApiService) CustomerGetGroupById(ctx context.Context) CustomerApiCustomerGetGroupByIdRequest {
-	return CustomerApiCustomerGetGroupByIdRequest{
+func (a *CustomerAPIService) CustomerGetGroupById(ctx context.Context) ApiCustomerGetGroupByIdRequest {
+	return ApiCustomerGetGroupByIdRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1909,7 +3881,7 @@ func (a *CustomerApiService) CustomerGetGroupById(ctx context.Context) CustomerA
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerApiService) CustomerGetGroupByIdExecute(r CustomerApiCustomerGetGroupByIdRequest) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerGetGroupByIdExecute(r ApiCustomerGetGroupByIdRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1917,7 +3889,123 @@ func (a *CustomerApiService) CustomerGetGroupByIdExecute(r CustomerApiCustomerGe
 		localVarReturnValue  *CustomerGroupResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerGetGroupById")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerGetGroupById")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/get_segment_by_id"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerGetGroupById2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerGetGroupByIdRequest
+}
+
+func (r ApiCustomerGetGroupById2Request) Body(body CustomerGetGroupByIdRequest) ApiCustomerGetGroupById2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerGetGroupById2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
+	return r.ApiService.CustomerGetGroupById2Execute(r)
+}
+
+/*
+CustomerGetGroupById2 Method for CustomerGetGroupById2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerGetGroupById2Request
+*/
+func (a *CustomerAPIService) CustomerGetGroupById2(ctx context.Context) ApiCustomerGetGroupById2Request {
+	return ApiCustomerGetGroupById2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerGroupResponse
+func (a *CustomerAPIService) CustomerGetGroupById2Execute(r ApiCustomerGetGroupById2Request) (*CustomerGroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerGroupResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerGetGroupById2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1960,9 +4048,9 @@ func (a *CustomerApiService) CustomerGetGroupByIdExecute(r CustomerApiCustomerGe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1978,8 +4066,8 @@ func (a *CustomerApiService) CustomerGetGroupByIdExecute(r CustomerApiCustomerGe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1995,29 +4083,29 @@ func (a *CustomerApiService) CustomerGetGroupByIdExecute(r CustomerApiCustomerGe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerGrantPermissionsRequest struct {
+type ApiCustomerGrantPermissionsRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerGrantPermissionsRequest
 }
 
-func (r CustomerApiCustomerGrantPermissionsRequest) Body(body CustomerGrantPermissionsRequest) CustomerApiCustomerGrantPermissionsRequest {
+func (r ApiCustomerGrantPermissionsRequest) Body(body CustomerGrantPermissionsRequest) ApiCustomerGrantPermissionsRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerGrantPermissionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiCustomerGrantPermissionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.CustomerGrantPermissionsExecute(r)
 }
 
 /*
-CustomerGrantPermissions GrantPermissions add permissions to a customer
+CustomerGrantPermissions Method for CustomerGrantPermissions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerGrantPermissionsRequest
+ @return ApiCustomerGrantPermissionsRequest
 */
-func (a *CustomerApiService) CustomerGrantPermissions(ctx context.Context) CustomerApiCustomerGrantPermissionsRequest {
-	return CustomerApiCustomerGrantPermissionsRequest{
+func (a *CustomerAPIService) CustomerGrantPermissions(ctx context.Context) ApiCustomerGrantPermissionsRequest {
+	return ApiCustomerGrantPermissionsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2025,7 +4113,7 @@ func (a *CustomerApiService) CustomerGrantPermissions(ctx context.Context) Custo
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CustomerApiService) CustomerGrantPermissionsExecute(r CustomerApiCustomerGrantPermissionsRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CustomerAPIService) CustomerGrantPermissionsExecute(r ApiCustomerGrantPermissionsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2033,7 +4121,123 @@ func (a *CustomerApiService) CustomerGrantPermissionsExecute(r CustomerApiCustom
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerGrantPermissions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerGrantPermissions")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/grant_permissions"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerGrantPermissions2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerGrantPermissionsRequest
+}
+
+func (r ApiCustomerGrantPermissions2Request) Body(body CustomerGrantPermissionsRequest) ApiCustomerGrantPermissions2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerGrantPermissions2Request) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.CustomerGrantPermissions2Execute(r)
+}
+
+/*
+CustomerGrantPermissions2 Method for CustomerGrantPermissions2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerGrantPermissions2Request
+*/
+func (a *CustomerAPIService) CustomerGrantPermissions2(ctx context.Context) ApiCustomerGrantPermissions2Request {
+	return ApiCustomerGrantPermissions2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *CustomerAPIService) CustomerGrantPermissions2Execute(r ApiCustomerGrantPermissions2Request) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerGrantPermissions2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2076,9 +4280,9 @@ func (a *CustomerApiService) CustomerGrantPermissionsExecute(r CustomerApiCustom
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2094,8 +4298,8 @@ func (a *CustomerApiService) CustomerGrantPermissionsExecute(r CustomerApiCustom
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2111,18 +4315,134 @@ func (a *CustomerApiService) CustomerGrantPermissionsExecute(r CustomerApiCustom
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerListCustomersRequest struct {
+type ApiCustomerListConsentsRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
-	body *CustomerListCustomersRequest
+	ApiService *CustomerAPIService
+	body *CustomerListConsentsRequest
 }
 
-func (r CustomerApiCustomerListCustomersRequest) Body(body CustomerListCustomersRequest) CustomerApiCustomerListCustomersRequest {
+func (r ApiCustomerListConsentsRequest) Body(body CustomerListConsentsRequest) ApiCustomerListConsentsRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerListCustomersRequest) Execute() (*CustomerListCustomersResponse, *http.Response, error) {
+func (r ApiCustomerListConsentsRequest) Execute() (*CustomerListConsentsResponse, *http.Response, error) {
+	return r.ApiService.CustomerListConsentsExecute(r)
+}
+
+/*
+CustomerListConsents ListConsents list all consents of a customer
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerListConsentsRequest
+*/
+func (a *CustomerAPIService) CustomerListConsents(ctx context.Context) ApiCustomerListConsentsRequest {
+	return ApiCustomerListConsentsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerListConsentsResponse
+func (a *CustomerAPIService) CustomerListConsentsExecute(r ApiCustomerListConsentsRequest) (*CustomerListConsentsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerListConsentsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerListConsents")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer.Customer/ListConsents"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerListCustomersRequest struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerListCustomersRequest
+}
+
+func (r ApiCustomerListCustomersRequest) Body(body CustomerListCustomersRequest) ApiCustomerListCustomersRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerListCustomersRequest) Execute() (*CustomerListCustomersResponse, *http.Response, error) {
 	return r.ApiService.CustomerListCustomersExecute(r)
 }
 
@@ -2130,10 +4450,10 @@ func (r CustomerApiCustomerListCustomersRequest) Execute() (*CustomerListCustome
 CustomerListCustomers Method for CustomerListCustomers
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerListCustomersRequest
+ @return ApiCustomerListCustomersRequest
 */
-func (a *CustomerApiService) CustomerListCustomers(ctx context.Context) CustomerApiCustomerListCustomersRequest {
-	return CustomerApiCustomerListCustomersRequest{
+func (a *CustomerAPIService) CustomerListCustomers(ctx context.Context) ApiCustomerListCustomersRequest {
+	return ApiCustomerListCustomersRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2141,7 +4461,7 @@ func (a *CustomerApiService) CustomerListCustomers(ctx context.Context) Customer
 
 // Execute executes the request
 //  @return CustomerListCustomersResponse
-func (a *CustomerApiService) CustomerListCustomersExecute(r CustomerApiCustomerListCustomersRequest) (*CustomerListCustomersResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerListCustomersExecute(r ApiCustomerListCustomersRequest) (*CustomerListCustomersResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2149,7 +4469,123 @@ func (a *CustomerApiService) CustomerListCustomersExecute(r CustomerApiCustomerL
 		localVarReturnValue  *CustomerListCustomersResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerListCustomers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerListCustomers")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/list_customers"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerListCustomers2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerListCustomersRequest
+}
+
+func (r ApiCustomerListCustomers2Request) Body(body CustomerListCustomersRequest) ApiCustomerListCustomers2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerListCustomers2Request) Execute() (*CustomerListCustomersResponse, *http.Response, error) {
+	return r.ApiService.CustomerListCustomers2Execute(r)
+}
+
+/*
+CustomerListCustomers2 Method for CustomerListCustomers2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerListCustomers2Request
+*/
+func (a *CustomerAPIService) CustomerListCustomers2(ctx context.Context) ApiCustomerListCustomers2Request {
+	return ApiCustomerListCustomers2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerListCustomersResponse
+func (a *CustomerAPIService) CustomerListCustomers2Execute(r ApiCustomerListCustomers2Request) (*CustomerListCustomersResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerListCustomersResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerListCustomers2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2192,9 +4628,9 @@ func (a *CustomerApiService) CustomerListCustomersExecute(r CustomerApiCustomerL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2210,8 +4646,8 @@ func (a *CustomerApiService) CustomerListCustomersExecute(r CustomerApiCustomerL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2227,18 +4663,18 @@ func (a *CustomerApiService) CustomerListCustomersExecute(r CustomerApiCustomerL
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerListGroupsRequest struct {
+type ApiCustomerListGroupsRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerListGroupsRequest
 }
 
-func (r CustomerApiCustomerListGroupsRequest) Body(body CustomerListGroupsRequest) CustomerApiCustomerListGroupsRequest {
+func (r ApiCustomerListGroupsRequest) Body(body CustomerListGroupsRequest) ApiCustomerListGroupsRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerListGroupsRequest) Execute() (*CustomerListGroupsResponse, *http.Response, error) {
+func (r ApiCustomerListGroupsRequest) Execute() (*CustomerListGroupsResponse, *http.Response, error) {
 	return r.ApiService.CustomerListGroupsExecute(r)
 }
 
@@ -2246,10 +4682,10 @@ func (r CustomerApiCustomerListGroupsRequest) Execute() (*CustomerListGroupsResp
 CustomerListGroups Method for CustomerListGroups
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerListGroupsRequest
+ @return ApiCustomerListGroupsRequest
 */
-func (a *CustomerApiService) CustomerListGroups(ctx context.Context) CustomerApiCustomerListGroupsRequest {
-	return CustomerApiCustomerListGroupsRequest{
+func (a *CustomerAPIService) CustomerListGroups(ctx context.Context) ApiCustomerListGroupsRequest {
+	return ApiCustomerListGroupsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2257,7 +4693,7 @@ func (a *CustomerApiService) CustomerListGroups(ctx context.Context) CustomerApi
 
 // Execute executes the request
 //  @return CustomerListGroupsResponse
-func (a *CustomerApiService) CustomerListGroupsExecute(r CustomerApiCustomerListGroupsRequest) (*CustomerListGroupsResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerListGroupsExecute(r ApiCustomerListGroupsRequest) (*CustomerListGroupsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2265,7 +4701,123 @@ func (a *CustomerApiService) CustomerListGroupsExecute(r CustomerApiCustomerList
 		localVarReturnValue  *CustomerListGroupsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerListGroups")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerListGroups")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/list_segments"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerListGroups2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerListGroupsRequest
+}
+
+func (r ApiCustomerListGroups2Request) Body(body CustomerListGroupsRequest) ApiCustomerListGroups2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerListGroups2Request) Execute() (*CustomerListGroupsResponse, *http.Response, error) {
+	return r.ApiService.CustomerListGroups2Execute(r)
+}
+
+/*
+CustomerListGroups2 Method for CustomerListGroups2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerListGroups2Request
+*/
+func (a *CustomerAPIService) CustomerListGroups2(ctx context.Context) ApiCustomerListGroups2Request {
+	return ApiCustomerListGroups2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerListGroupsResponse
+func (a *CustomerAPIService) CustomerListGroups2Execute(r ApiCustomerListGroups2Request) (*CustomerListGroupsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerListGroupsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerListGroups2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2308,9 +4860,9 @@ func (a *CustomerApiService) CustomerListGroupsExecute(r CustomerApiCustomerList
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2326,8 +4878,8 @@ func (a *CustomerApiService) CustomerListGroupsExecute(r CustomerApiCustomerList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2343,18 +4895,18 @@ func (a *CustomerApiService) CustomerListGroupsExecute(r CustomerApiCustomerList
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerRemoveCustomerFromGroupRequest struct {
+type ApiCustomerRemoveCustomerFromGroupRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerRemoveCustomerFromGroupRequest
 }
 
-func (r CustomerApiCustomerRemoveCustomerFromGroupRequest) Body(body CustomerRemoveCustomerFromGroupRequest) CustomerApiCustomerRemoveCustomerFromGroupRequest {
+func (r ApiCustomerRemoveCustomerFromGroupRequest) Body(body CustomerRemoveCustomerFromGroupRequest) ApiCustomerRemoveCustomerFromGroupRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerRemoveCustomerFromGroupRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r ApiCustomerRemoveCustomerFromGroupRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerRemoveCustomerFromGroupExecute(r)
 }
 
@@ -2362,10 +4914,10 @@ func (r CustomerApiCustomerRemoveCustomerFromGroupRequest) Execute() (*CustomerG
 CustomerRemoveCustomerFromGroup Method for CustomerRemoveCustomerFromGroup
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerRemoveCustomerFromGroupRequest
+ @return ApiCustomerRemoveCustomerFromGroupRequest
 */
-func (a *CustomerApiService) CustomerRemoveCustomerFromGroup(ctx context.Context) CustomerApiCustomerRemoveCustomerFromGroupRequest {
-	return CustomerApiCustomerRemoveCustomerFromGroupRequest{
+func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup(ctx context.Context) ApiCustomerRemoveCustomerFromGroupRequest {
+	return ApiCustomerRemoveCustomerFromGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2373,7 +4925,7 @@ func (a *CustomerApiService) CustomerRemoveCustomerFromGroup(ctx context.Context
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerApiService) CustomerRemoveCustomerFromGroupExecute(r CustomerApiCustomerRemoveCustomerFromGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerRemoveCustomerFromGroupExecute(r ApiCustomerRemoveCustomerFromGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2381,7 +4933,123 @@ func (a *CustomerApiService) CustomerRemoveCustomerFromGroupExecute(r CustomerAp
 		localVarReturnValue  *CustomerGroupResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerRemoveCustomerFromGroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerRemoveCustomerFromGroup")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/remove_customer_from_segment"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerRemoveCustomerFromGroup2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerRemoveCustomerFromGroupRequest
+}
+
+func (r ApiCustomerRemoveCustomerFromGroup2Request) Body(body CustomerRemoveCustomerFromGroupRequest) ApiCustomerRemoveCustomerFromGroup2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerRemoveCustomerFromGroup2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
+	return r.ApiService.CustomerRemoveCustomerFromGroup2Execute(r)
+}
+
+/*
+CustomerRemoveCustomerFromGroup2 Method for CustomerRemoveCustomerFromGroup2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerRemoveCustomerFromGroup2Request
+*/
+func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup2(ctx context.Context) ApiCustomerRemoveCustomerFromGroup2Request {
+	return ApiCustomerRemoveCustomerFromGroup2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerGroupResponse
+func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup2Execute(r ApiCustomerRemoveCustomerFromGroup2Request) (*CustomerGroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerGroupResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerRemoveCustomerFromGroup2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2424,9 +5092,9 @@ func (a *CustomerApiService) CustomerRemoveCustomerFromGroupExecute(r CustomerAp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2442,8 +5110,8 @@ func (a *CustomerApiService) CustomerRemoveCustomerFromGroupExecute(r CustomerAp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2459,18 +5127,18 @@ func (a *CustomerApiService) CustomerRemoveCustomerFromGroupExecute(r CustomerAp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerRemoveDefaultAddressRequest struct {
+type ApiCustomerRemoveDefaultAddressRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerRemoveDefaultAddressRequest
 }
 
-func (r CustomerApiCustomerRemoveDefaultAddressRequest) Body(body CustomerRemoveDefaultAddressRequest) CustomerApiCustomerRemoveDefaultAddressRequest {
+func (r ApiCustomerRemoveDefaultAddressRequest) Body(body CustomerRemoveDefaultAddressRequest) ApiCustomerRemoveDefaultAddressRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerRemoveDefaultAddressRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r ApiCustomerRemoveDefaultAddressRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerRemoveDefaultAddressExecute(r)
 }
 
@@ -2478,10 +5146,10 @@ func (r CustomerApiCustomerRemoveDefaultAddressRequest) Execute() (*CustomerCust
 CustomerRemoveDefaultAddress Method for CustomerRemoveDefaultAddress
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerRemoveDefaultAddressRequest
+ @return ApiCustomerRemoveDefaultAddressRequest
 */
-func (a *CustomerApiService) CustomerRemoveDefaultAddress(ctx context.Context) CustomerApiCustomerRemoveDefaultAddressRequest {
-	return CustomerApiCustomerRemoveDefaultAddressRequest{
+func (a *CustomerAPIService) CustomerRemoveDefaultAddress(ctx context.Context) ApiCustomerRemoveDefaultAddressRequest {
+	return ApiCustomerRemoveDefaultAddressRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2489,7 +5157,7 @@ func (a *CustomerApiService) CustomerRemoveDefaultAddress(ctx context.Context) C
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerApiService) CustomerRemoveDefaultAddressExecute(r CustomerApiCustomerRemoveDefaultAddressRequest) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerRemoveDefaultAddressExecute(r ApiCustomerRemoveDefaultAddressRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2497,7 +5165,123 @@ func (a *CustomerApiService) CustomerRemoveDefaultAddressExecute(r CustomerApiCu
 		localVarReturnValue  *CustomerCustomerResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerRemoveDefaultAddress")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerRemoveDefaultAddress")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/remove_default_address"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerRemoveDefaultAddress2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerRemoveDefaultAddressRequest
+}
+
+func (r ApiCustomerRemoveDefaultAddress2Request) Body(body CustomerRemoveDefaultAddressRequest) ApiCustomerRemoveDefaultAddress2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerRemoveDefaultAddress2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+	return r.ApiService.CustomerRemoveDefaultAddress2Execute(r)
+}
+
+/*
+CustomerRemoveDefaultAddress2 Method for CustomerRemoveDefaultAddress2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerRemoveDefaultAddress2Request
+*/
+func (a *CustomerAPIService) CustomerRemoveDefaultAddress2(ctx context.Context) ApiCustomerRemoveDefaultAddress2Request {
+	return ApiCustomerRemoveDefaultAddress2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerCustomerResponse
+func (a *CustomerAPIService) CustomerRemoveDefaultAddress2Execute(r ApiCustomerRemoveDefaultAddress2Request) (*CustomerCustomerResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerCustomerResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerRemoveDefaultAddress2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2540,9 +5324,9 @@ func (a *CustomerApiService) CustomerRemoveDefaultAddressExecute(r CustomerApiCu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2558,8 +5342,8 @@ func (a *CustomerApiService) CustomerRemoveDefaultAddressExecute(r CustomerApiCu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2575,29 +5359,29 @@ func (a *CustomerApiService) CustomerRemoveDefaultAddressExecute(r CustomerApiCu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerRevokePermissionsRequest struct {
+type ApiCustomerRevokePermissionsRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerRevokePermissionsRequest
 }
 
-func (r CustomerApiCustomerRevokePermissionsRequest) Body(body CustomerRevokePermissionsRequest) CustomerApiCustomerRevokePermissionsRequest {
+func (r ApiCustomerRevokePermissionsRequest) Body(body CustomerRevokePermissionsRequest) ApiCustomerRevokePermissionsRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerRevokePermissionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiCustomerRevokePermissionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.CustomerRevokePermissionsExecute(r)
 }
 
 /*
-CustomerRevokePermissions RevokePermissions remove permissions from a customer
+CustomerRevokePermissions Method for CustomerRevokePermissions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerRevokePermissionsRequest
+ @return ApiCustomerRevokePermissionsRequest
 */
-func (a *CustomerApiService) CustomerRevokePermissions(ctx context.Context) CustomerApiCustomerRevokePermissionsRequest {
-	return CustomerApiCustomerRevokePermissionsRequest{
+func (a *CustomerAPIService) CustomerRevokePermissions(ctx context.Context) ApiCustomerRevokePermissionsRequest {
+	return ApiCustomerRevokePermissionsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2605,7 +5389,7 @@ func (a *CustomerApiService) CustomerRevokePermissions(ctx context.Context) Cust
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CustomerApiService) CustomerRevokePermissionsExecute(r CustomerApiCustomerRevokePermissionsRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CustomerAPIService) CustomerRevokePermissionsExecute(r ApiCustomerRevokePermissionsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2613,7 +5397,123 @@ func (a *CustomerApiService) CustomerRevokePermissionsExecute(r CustomerApiCusto
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerRevokePermissions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerRevokePermissions")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/revoke_permissions"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerRevokePermissions2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerRevokePermissionsRequest
+}
+
+func (r ApiCustomerRevokePermissions2Request) Body(body CustomerRevokePermissionsRequest) ApiCustomerRevokePermissions2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerRevokePermissions2Request) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.CustomerRevokePermissions2Execute(r)
+}
+
+/*
+CustomerRevokePermissions2 Method for CustomerRevokePermissions2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerRevokePermissions2Request
+*/
+func (a *CustomerAPIService) CustomerRevokePermissions2(ctx context.Context) ApiCustomerRevokePermissions2Request {
+	return ApiCustomerRevokePermissions2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *CustomerAPIService) CustomerRevokePermissions2Execute(r ApiCustomerRevokePermissions2Request) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerRevokePermissions2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2656,9 +5556,9 @@ func (a *CustomerApiService) CustomerRevokePermissionsExecute(r CustomerApiCusto
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2674,8 +5574,8 @@ func (a *CustomerApiService) CustomerRevokePermissionsExecute(r CustomerApiCusto
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2691,18 +5591,18 @@ func (a *CustomerApiService) CustomerRevokePermissionsExecute(r CustomerApiCusto
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerSearchRequest struct {
+type ApiCustomerSearchRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerSearchRequest
 }
 
-func (r CustomerApiCustomerSearchRequest) Body(body CustomerSearchRequest) CustomerApiCustomerSearchRequest {
+func (r ApiCustomerSearchRequest) Body(body CustomerSearchRequest) ApiCustomerSearchRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerSearchRequest) Execute() (*CustomerSearchResponse, *http.Response, error) {
+func (r ApiCustomerSearchRequest) Execute() (*CustomerSearchResponse, *http.Response, error) {
 	return r.ApiService.CustomerSearchExecute(r)
 }
 
@@ -2710,10 +5610,10 @@ func (r CustomerApiCustomerSearchRequest) Execute() (*CustomerSearchResponse, *h
 CustomerSearch Method for CustomerSearch
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerSearchRequest
+ @return ApiCustomerSearchRequest
 */
-func (a *CustomerApiService) CustomerSearch(ctx context.Context) CustomerApiCustomerSearchRequest {
-	return CustomerApiCustomerSearchRequest{
+func (a *CustomerAPIService) CustomerSearch(ctx context.Context) ApiCustomerSearchRequest {
+	return ApiCustomerSearchRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2721,7 +5621,7 @@ func (a *CustomerApiService) CustomerSearch(ctx context.Context) CustomerApiCust
 
 // Execute executes the request
 //  @return CustomerSearchResponse
-func (a *CustomerApiService) CustomerSearchExecute(r CustomerApiCustomerSearchRequest) (*CustomerSearchResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerSearchExecute(r ApiCustomerSearchRequest) (*CustomerSearchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2729,7 +5629,123 @@ func (a *CustomerApiService) CustomerSearchExecute(r CustomerApiCustomerSearchRe
 		localVarReturnValue  *CustomerSearchResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerSearch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerSearch")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/search"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerSearch2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerSearchRequest
+}
+
+func (r ApiCustomerSearch2Request) Body(body CustomerSearchRequest) ApiCustomerSearch2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerSearch2Request) Execute() (*CustomerSearchResponse, *http.Response, error) {
+	return r.ApiService.CustomerSearch2Execute(r)
+}
+
+/*
+CustomerSearch2 Method for CustomerSearch2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerSearch2Request
+*/
+func (a *CustomerAPIService) CustomerSearch2(ctx context.Context) ApiCustomerSearch2Request {
+	return ApiCustomerSearch2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerSearchResponse
+func (a *CustomerAPIService) CustomerSearch2Execute(r ApiCustomerSearch2Request) (*CustomerSearchResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerSearchResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerSearch2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2772,9 +5788,9 @@ func (a *CustomerApiService) CustomerSearchExecute(r CustomerApiCustomerSearchRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2790,8 +5806,8 @@ func (a *CustomerApiService) CustomerSearchExecute(r CustomerApiCustomerSearchRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2807,18 +5823,18 @@ func (a *CustomerApiService) CustomerSearchExecute(r CustomerApiCustomerSearchRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerSetDefaultAddressRequest struct {
+type ApiCustomerSetDefaultAddressRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerSetDefaultAddressRequest
 }
 
-func (r CustomerApiCustomerSetDefaultAddressRequest) Body(body CustomerSetDefaultAddressRequest) CustomerApiCustomerSetDefaultAddressRequest {
+func (r ApiCustomerSetDefaultAddressRequest) Body(body CustomerSetDefaultAddressRequest) ApiCustomerSetDefaultAddressRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerSetDefaultAddressRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r ApiCustomerSetDefaultAddressRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerSetDefaultAddressExecute(r)
 }
 
@@ -2826,10 +5842,10 @@ func (r CustomerApiCustomerSetDefaultAddressRequest) Execute() (*CustomerCustome
 CustomerSetDefaultAddress Method for CustomerSetDefaultAddress
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerSetDefaultAddressRequest
+ @return ApiCustomerSetDefaultAddressRequest
 */
-func (a *CustomerApiService) CustomerSetDefaultAddress(ctx context.Context) CustomerApiCustomerSetDefaultAddressRequest {
-	return CustomerApiCustomerSetDefaultAddressRequest{
+func (a *CustomerAPIService) CustomerSetDefaultAddress(ctx context.Context) ApiCustomerSetDefaultAddressRequest {
+	return ApiCustomerSetDefaultAddressRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2837,7 +5853,7 @@ func (a *CustomerApiService) CustomerSetDefaultAddress(ctx context.Context) Cust
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerApiService) CustomerSetDefaultAddressExecute(r CustomerApiCustomerSetDefaultAddressRequest) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerSetDefaultAddressExecute(r ApiCustomerSetDefaultAddressRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2845,7 +5861,123 @@ func (a *CustomerApiService) CustomerSetDefaultAddressExecute(r CustomerApiCusto
 		localVarReturnValue  *CustomerCustomerResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerSetDefaultAddress")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerSetDefaultAddress")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/set_default_address"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerSetDefaultAddress2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerSetDefaultAddressRequest
+}
+
+func (r ApiCustomerSetDefaultAddress2Request) Body(body CustomerSetDefaultAddressRequest) ApiCustomerSetDefaultAddress2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerSetDefaultAddress2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+	return r.ApiService.CustomerSetDefaultAddress2Execute(r)
+}
+
+/*
+CustomerSetDefaultAddress2 Method for CustomerSetDefaultAddress2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerSetDefaultAddress2Request
+*/
+func (a *CustomerAPIService) CustomerSetDefaultAddress2(ctx context.Context) ApiCustomerSetDefaultAddress2Request {
+	return ApiCustomerSetDefaultAddress2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerCustomerResponse
+func (a *CustomerAPIService) CustomerSetDefaultAddress2Execute(r ApiCustomerSetDefaultAddress2Request) (*CustomerCustomerResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerCustomerResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerSetDefaultAddress2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2888,9 +6020,9 @@ func (a *CustomerApiService) CustomerSetDefaultAddressExecute(r CustomerApiCusto
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2906,8 +6038,8 @@ func (a *CustomerApiService) CustomerSetDefaultAddressExecute(r CustomerApiCusto
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2923,29 +6055,29 @@ func (a *CustomerApiService) CustomerSetDefaultAddressExecute(r CustomerApiCusto
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerSetPermissionsRequest struct {
+type ApiCustomerSetPermissionsRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerSetPermissionsRequest
 }
 
-func (r CustomerApiCustomerSetPermissionsRequest) Body(body CustomerSetPermissionsRequest) CustomerApiCustomerSetPermissionsRequest {
+func (r ApiCustomerSetPermissionsRequest) Body(body CustomerSetPermissionsRequest) ApiCustomerSetPermissionsRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerSetPermissionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiCustomerSetPermissionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.CustomerSetPermissionsExecute(r)
 }
 
 /*
-CustomerSetPermissions SetPermissions set permissions to a customer
+CustomerSetPermissions Method for CustomerSetPermissions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerSetPermissionsRequest
+ @return ApiCustomerSetPermissionsRequest
 */
-func (a *CustomerApiService) CustomerSetPermissions(ctx context.Context) CustomerApiCustomerSetPermissionsRequest {
-	return CustomerApiCustomerSetPermissionsRequest{
+func (a *CustomerAPIService) CustomerSetPermissions(ctx context.Context) ApiCustomerSetPermissionsRequest {
+	return ApiCustomerSetPermissionsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2953,7 +6085,7 @@ func (a *CustomerApiService) CustomerSetPermissions(ctx context.Context) Custome
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CustomerApiService) CustomerSetPermissionsExecute(r CustomerApiCustomerSetPermissionsRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CustomerAPIService) CustomerSetPermissionsExecute(r ApiCustomerSetPermissionsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2961,7 +6093,123 @@ func (a *CustomerApiService) CustomerSetPermissionsExecute(r CustomerApiCustomer
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerSetPermissions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerSetPermissions")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/set_permissions"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerSetPermissions2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerSetPermissionsRequest
+}
+
+func (r ApiCustomerSetPermissions2Request) Body(body CustomerSetPermissionsRequest) ApiCustomerSetPermissions2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerSetPermissions2Request) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.CustomerSetPermissions2Execute(r)
+}
+
+/*
+CustomerSetPermissions2 Method for CustomerSetPermissions2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerSetPermissions2Request
+*/
+func (a *CustomerAPIService) CustomerSetPermissions2(ctx context.Context) ApiCustomerSetPermissions2Request {
+	return ApiCustomerSetPermissions2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *CustomerAPIService) CustomerSetPermissions2Execute(r ApiCustomerSetPermissions2Request) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerSetPermissions2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3004,9 +6252,9 @@ func (a *CustomerApiService) CustomerSetPermissionsExecute(r CustomerApiCustomer
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3022,8 +6270,8 @@ func (a *CustomerApiService) CustomerSetPermissionsExecute(r CustomerApiCustomer
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -3039,18 +6287,134 @@ func (a *CustomerApiService) CustomerSetPermissionsExecute(r CustomerApiCustomer
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerUnsubscribeRequest struct {
+type ApiCustomerUnassignAgentRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
-	body *CustomerUnsubscribeRequest
+	ApiService *CustomerAPIService
+	body *CustomerUnassignAgentRequest
 }
 
-func (r CustomerApiCustomerUnsubscribeRequest) Body(body CustomerUnsubscribeRequest) CustomerApiCustomerUnsubscribeRequest {
+func (r ApiCustomerUnassignAgentRequest) Body(body CustomerUnassignAgentRequest) ApiCustomerUnassignAgentRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerUnsubscribeRequest) Execute() (*CustomerUnsubscribeResponse, *http.Response, error) {
+func (r ApiCustomerUnassignAgentRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.CustomerUnassignAgentExecute(r)
+}
+
+/*
+CustomerUnassignAgent Method for CustomerUnassignAgent
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerUnassignAgentRequest
+*/
+func (a *CustomerAPIService) CustomerUnassignAgent(ctx context.Context) ApiCustomerUnassignAgentRequest {
+	return ApiCustomerUnassignAgentRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *CustomerAPIService) CustomerUnassignAgentExecute(r ApiCustomerUnassignAgentRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUnassignAgent")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer.Customer/UnassignAgent"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerUnsubscribeRequest struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerUnsubscribeRequest
+}
+
+func (r ApiCustomerUnsubscribeRequest) Body(body CustomerUnsubscribeRequest) ApiCustomerUnsubscribeRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerUnsubscribeRequest) Execute() (*CustomerUnsubscribeResponse, *http.Response, error) {
 	return r.ApiService.CustomerUnsubscribeExecute(r)
 }
 
@@ -3058,10 +6422,10 @@ func (r CustomerApiCustomerUnsubscribeRequest) Execute() (*CustomerUnsubscribeRe
 CustomerUnsubscribe Method for CustomerUnsubscribe
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerUnsubscribeRequest
+ @return ApiCustomerUnsubscribeRequest
 */
-func (a *CustomerApiService) CustomerUnsubscribe(ctx context.Context) CustomerApiCustomerUnsubscribeRequest {
-	return CustomerApiCustomerUnsubscribeRequest{
+func (a *CustomerAPIService) CustomerUnsubscribe(ctx context.Context) ApiCustomerUnsubscribeRequest {
+	return ApiCustomerUnsubscribeRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3069,7 +6433,7 @@ func (a *CustomerApiService) CustomerUnsubscribe(ctx context.Context) CustomerAp
 
 // Execute executes the request
 //  @return CustomerUnsubscribeResponse
-func (a *CustomerApiService) CustomerUnsubscribeExecute(r CustomerApiCustomerUnsubscribeRequest) (*CustomerUnsubscribeResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerUnsubscribeExecute(r ApiCustomerUnsubscribeRequest) (*CustomerUnsubscribeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3077,7 +6441,123 @@ func (a *CustomerApiService) CustomerUnsubscribeExecute(r CustomerApiCustomerUns
 		localVarReturnValue  *CustomerUnsubscribeResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerUnsubscribe")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUnsubscribe")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/unsubscribe"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerUnsubscribe2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerUnsubscribeRequest
+}
+
+func (r ApiCustomerUnsubscribe2Request) Body(body CustomerUnsubscribeRequest) ApiCustomerUnsubscribe2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerUnsubscribe2Request) Execute() (*CustomerUnsubscribeResponse, *http.Response, error) {
+	return r.ApiService.CustomerUnsubscribe2Execute(r)
+}
+
+/*
+CustomerUnsubscribe2 Method for CustomerUnsubscribe2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerUnsubscribe2Request
+*/
+func (a *CustomerAPIService) CustomerUnsubscribe2(ctx context.Context) ApiCustomerUnsubscribe2Request {
+	return ApiCustomerUnsubscribe2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerUnsubscribeResponse
+func (a *CustomerAPIService) CustomerUnsubscribe2Execute(r ApiCustomerUnsubscribe2Request) (*CustomerUnsubscribeResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerUnsubscribeResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUnsubscribe2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3120,9 +6600,9 @@ func (a *CustomerApiService) CustomerUnsubscribeExecute(r CustomerApiCustomerUns
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3138,8 +6618,8 @@ func (a *CustomerApiService) CustomerUnsubscribeExecute(r CustomerApiCustomerUns
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -3155,18 +6635,18 @@ func (a *CustomerApiService) CustomerUnsubscribeExecute(r CustomerApiCustomerUns
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerUpdateRequest struct {
+type ApiCustomerUpdateRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerUpdateRequest
 }
 
-func (r CustomerApiCustomerUpdateRequest) Body(body CustomerUpdateRequest) CustomerApiCustomerUpdateRequest {
+func (r ApiCustomerUpdateRequest) Body(body CustomerUpdateRequest) ApiCustomerUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerUpdateRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r ApiCustomerUpdateRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerUpdateExecute(r)
 }
 
@@ -3174,10 +6654,10 @@ func (r CustomerApiCustomerUpdateRequest) Execute() (*CustomerCustomerResponse, 
 CustomerUpdate Method for CustomerUpdate
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerUpdateRequest
+ @return ApiCustomerUpdateRequest
 */
-func (a *CustomerApiService) CustomerUpdate(ctx context.Context) CustomerApiCustomerUpdateRequest {
-	return CustomerApiCustomerUpdateRequest{
+func (a *CustomerAPIService) CustomerUpdate(ctx context.Context) ApiCustomerUpdateRequest {
+	return ApiCustomerUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3185,7 +6665,7 @@ func (a *CustomerApiService) CustomerUpdate(ctx context.Context) CustomerApiCust
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerApiService) CustomerUpdateExecute(r CustomerApiCustomerUpdateRequest) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerUpdateExecute(r ApiCustomerUpdateRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3193,7 +6673,123 @@ func (a *CustomerApiService) CustomerUpdateExecute(r CustomerApiCustomerUpdateRe
 		localVarReturnValue  *CustomerCustomerResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/update"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerUpdate2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerUpdateRequest
+}
+
+func (r ApiCustomerUpdate2Request) Body(body CustomerUpdateRequest) ApiCustomerUpdate2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerUpdate2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+	return r.ApiService.CustomerUpdate2Execute(r)
+}
+
+/*
+CustomerUpdate2 Method for CustomerUpdate2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerUpdate2Request
+*/
+func (a *CustomerAPIService) CustomerUpdate2(ctx context.Context) ApiCustomerUpdate2Request {
+	return ApiCustomerUpdate2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerCustomerResponse
+func (a *CustomerAPIService) CustomerUpdate2Execute(r ApiCustomerUpdate2Request) (*CustomerCustomerResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerCustomerResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdate2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3236,9 +6832,9 @@ func (a *CustomerApiService) CustomerUpdateExecute(r CustomerApiCustomerUpdateRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3254,8 +6850,8 @@ func (a *CustomerApiService) CustomerUpdateExecute(r CustomerApiCustomerUpdateRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -3271,18 +6867,18 @@ func (a *CustomerApiService) CustomerUpdateExecute(r CustomerApiCustomerUpdateRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerUpdateAddressRequest struct {
+type ApiCustomerUpdateAddressRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerAddressUpdateRequest
 }
 
-func (r CustomerApiCustomerUpdateAddressRequest) Body(body CustomerAddressUpdateRequest) CustomerApiCustomerUpdateAddressRequest {
+func (r ApiCustomerUpdateAddressRequest) Body(body CustomerAddressUpdateRequest) ApiCustomerUpdateAddressRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerUpdateAddressRequest) Execute() (*CustomerAddressUpdateResponse, *http.Response, error) {
+func (r ApiCustomerUpdateAddressRequest) Execute() (*CustomerAddressUpdateResponse, *http.Response, error) {
 	return r.ApiService.CustomerUpdateAddressExecute(r)
 }
 
@@ -3290,10 +6886,10 @@ func (r CustomerApiCustomerUpdateAddressRequest) Execute() (*CustomerAddressUpda
 CustomerUpdateAddress Method for CustomerUpdateAddress
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerUpdateAddressRequest
+ @return ApiCustomerUpdateAddressRequest
 */
-func (a *CustomerApiService) CustomerUpdateAddress(ctx context.Context) CustomerApiCustomerUpdateAddressRequest {
-	return CustomerApiCustomerUpdateAddressRequest{
+func (a *CustomerAPIService) CustomerUpdateAddress(ctx context.Context) ApiCustomerUpdateAddressRequest {
+	return ApiCustomerUpdateAddressRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3301,7 +6897,7 @@ func (a *CustomerApiService) CustomerUpdateAddress(ctx context.Context) Customer
 
 // Execute executes the request
 //  @return CustomerAddressUpdateResponse
-func (a *CustomerApiService) CustomerUpdateAddressExecute(r CustomerApiCustomerUpdateAddressRequest) (*CustomerAddressUpdateResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerUpdateAddressExecute(r ApiCustomerUpdateAddressRequest) (*CustomerAddressUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3309,7 +6905,123 @@ func (a *CustomerApiService) CustomerUpdateAddressExecute(r CustomerApiCustomerU
 		localVarReturnValue  *CustomerAddressUpdateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerUpdateAddress")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdateAddress")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/update_address"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerUpdateAddress2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerAddressUpdateRequest
+}
+
+func (r ApiCustomerUpdateAddress2Request) Body(body CustomerAddressUpdateRequest) ApiCustomerUpdateAddress2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerUpdateAddress2Request) Execute() (*CustomerAddressUpdateResponse, *http.Response, error) {
+	return r.ApiService.CustomerUpdateAddress2Execute(r)
+}
+
+/*
+CustomerUpdateAddress2 Method for CustomerUpdateAddress2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerUpdateAddress2Request
+*/
+func (a *CustomerAPIService) CustomerUpdateAddress2(ctx context.Context) ApiCustomerUpdateAddress2Request {
+	return ApiCustomerUpdateAddress2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerAddressUpdateResponse
+func (a *CustomerAPIService) CustomerUpdateAddress2Execute(r ApiCustomerUpdateAddress2Request) (*CustomerAddressUpdateResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerAddressUpdateResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdateAddress2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3352,9 +7064,9 @@ func (a *CustomerApiService) CustomerUpdateAddressExecute(r CustomerApiCustomerU
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3370,8 +7082,8 @@ func (a *CustomerApiService) CustomerUpdateAddressExecute(r CustomerApiCustomerU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -3387,18 +7099,18 @@ func (a *CustomerApiService) CustomerUpdateAddressExecute(r CustomerApiCustomerU
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerUpdateGroupRequest struct {
+type ApiCustomerUpdateGroupRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerUpdateGroupRequest
 }
 
-func (r CustomerApiCustomerUpdateGroupRequest) Body(body CustomerUpdateGroupRequest) CustomerApiCustomerUpdateGroupRequest {
+func (r ApiCustomerUpdateGroupRequest) Body(body CustomerUpdateGroupRequest) ApiCustomerUpdateGroupRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerUpdateGroupRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r ApiCustomerUpdateGroupRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerUpdateGroupExecute(r)
 }
 
@@ -3406,10 +7118,10 @@ func (r CustomerApiCustomerUpdateGroupRequest) Execute() (*CustomerGroupResponse
 CustomerUpdateGroup Method for CustomerUpdateGroup
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerUpdateGroupRequest
+ @return ApiCustomerUpdateGroupRequest
 */
-func (a *CustomerApiService) CustomerUpdateGroup(ctx context.Context) CustomerApiCustomerUpdateGroupRequest {
-	return CustomerApiCustomerUpdateGroupRequest{
+func (a *CustomerAPIService) CustomerUpdateGroup(ctx context.Context) ApiCustomerUpdateGroupRequest {
+	return ApiCustomerUpdateGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3417,7 +7129,7 @@ func (a *CustomerApiService) CustomerUpdateGroup(ctx context.Context) CustomerAp
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerApiService) CustomerUpdateGroupExecute(r CustomerApiCustomerUpdateGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerUpdateGroupExecute(r ApiCustomerUpdateGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3425,7 +7137,123 @@ func (a *CustomerApiService) CustomerUpdateGroupExecute(r CustomerApiCustomerUpd
 		localVarReturnValue  *CustomerGroupResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerUpdateGroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdateGroup")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/update_segment"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerUpdateGroup2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerUpdateGroupRequest
+}
+
+func (r ApiCustomerUpdateGroup2Request) Body(body CustomerUpdateGroupRequest) ApiCustomerUpdateGroup2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerUpdateGroup2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
+	return r.ApiService.CustomerUpdateGroup2Execute(r)
+}
+
+/*
+CustomerUpdateGroup2 Method for CustomerUpdateGroup2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerUpdateGroup2Request
+*/
+func (a *CustomerAPIService) CustomerUpdateGroup2(ctx context.Context) ApiCustomerUpdateGroup2Request {
+	return ApiCustomerUpdateGroup2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerGroupResponse
+func (a *CustomerAPIService) CustomerUpdateGroup2Execute(r ApiCustomerUpdateGroup2Request) (*CustomerGroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerGroupResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdateGroup2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3468,9 +7296,9 @@ func (a *CustomerApiService) CustomerUpdateGroupExecute(r CustomerApiCustomerUpd
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3486,8 +7314,8 @@ func (a *CustomerApiService) CustomerUpdateGroupExecute(r CustomerApiCustomerUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -3503,18 +7331,18 @@ func (a *CustomerApiService) CustomerUpdateGroupExecute(r CustomerApiCustomerUpd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CustomerApiCustomerUpdateSubscriberRequest struct {
+type ApiCustomerUpdateSubscriberRequest struct {
 	ctx context.Context
-	ApiService *CustomerApiService
+	ApiService *CustomerAPIService
 	body *CustomerUpdateSubscriberRequest
 }
 
-func (r CustomerApiCustomerUpdateSubscriberRequest) Body(body CustomerUpdateSubscriberRequest) CustomerApiCustomerUpdateSubscriberRequest {
+func (r ApiCustomerUpdateSubscriberRequest) Body(body CustomerUpdateSubscriberRequest) ApiCustomerUpdateSubscriberRequest {
 	r.body = &body
 	return r
 }
 
-func (r CustomerApiCustomerUpdateSubscriberRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+func (r ApiCustomerUpdateSubscriberRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
 	return r.ApiService.CustomerUpdateSubscriberExecute(r)
 }
 
@@ -3522,10 +7350,10 @@ func (r CustomerApiCustomerUpdateSubscriberRequest) Execute() (*CustomerSubscrib
 CustomerUpdateSubscriber Method for CustomerUpdateSubscriber
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CustomerApiCustomerUpdateSubscriberRequest
+ @return ApiCustomerUpdateSubscriberRequest
 */
-func (a *CustomerApiService) CustomerUpdateSubscriber(ctx context.Context) CustomerApiCustomerUpdateSubscriberRequest {
-	return CustomerApiCustomerUpdateSubscriberRequest{
+func (a *CustomerAPIService) CustomerUpdateSubscriber(ctx context.Context) ApiCustomerUpdateSubscriberRequest {
+	return ApiCustomerUpdateSubscriberRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3533,7 +7361,7 @@ func (a *CustomerApiService) CustomerUpdateSubscriber(ctx context.Context) Custo
 
 // Execute executes the request
 //  @return CustomerSubscriberResponse
-func (a *CustomerApiService) CustomerUpdateSubscriberExecute(r CustomerApiCustomerUpdateSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerUpdateSubscriberExecute(r ApiCustomerUpdateSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3541,7 +7369,123 @@ func (a *CustomerApiService) CustomerUpdateSubscriberExecute(r CustomerApiCustom
 		localVarReturnValue  *CustomerSubscriberResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerApiService.CustomerUpdateSubscriber")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdateSubscriber")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customer/update_subscriber"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCustomerUpdateSubscriber2Request struct {
+	ctx context.Context
+	ApiService *CustomerAPIService
+	body *CustomerUpdateSubscriberRequest
+}
+
+func (r ApiCustomerUpdateSubscriber2Request) Body(body CustomerUpdateSubscriberRequest) ApiCustomerUpdateSubscriber2Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiCustomerUpdateSubscriber2Request) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+	return r.ApiService.CustomerUpdateSubscriber2Execute(r)
+}
+
+/*
+CustomerUpdateSubscriber2 Method for CustomerUpdateSubscriber2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCustomerUpdateSubscriber2Request
+*/
+func (a *CustomerAPIService) CustomerUpdateSubscriber2(ctx context.Context) ApiCustomerUpdateSubscriber2Request {
+	return ApiCustomerUpdateSubscriber2Request{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CustomerSubscriberResponse
+func (a *CustomerAPIService) CustomerUpdateSubscriber2Execute(r ApiCustomerUpdateSubscriber2Request) (*CustomerSubscriberResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CustomerSubscriberResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdateSubscriber2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3584,9 +7528,9 @@ func (a *CustomerApiService) CustomerUpdateSubscriberExecute(r CustomerApiCustom
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3602,8 +7546,8 @@ func (a *CustomerApiService) CustomerUpdateSubscriberExecute(r CustomerApiCustom
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

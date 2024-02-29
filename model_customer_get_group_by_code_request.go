@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerGetGroupByCodeRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerGetGroupByCodeRequest{}
+
 // CustomerGetGroupByCodeRequest struct for CustomerGetGroupByCodeRequest
 type CustomerGetGroupByCodeRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -40,7 +43,7 @@ func NewCustomerGetGroupByCodeRequestWithDefaults() *CustomerGetGroupByCodeReque
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerGetGroupByCodeRequest) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *CustomerGetGroupByCodeRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerGetGroupByCodeRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerGetGroupByCodeRequest) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *CustomerGetGroupByCodeRequest) SetTenantId(v string) {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *CustomerGetGroupByCodeRequest) GetCode() string {
-	if o == nil || isNil(o.Code) {
+	if o == nil || IsNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *CustomerGetGroupByCodeRequest) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerGetGroupByCodeRequest) GetCodeOk() (*string, bool) {
-	if o == nil || isNil(o.Code) {
-    return nil, false
+	if o == nil || IsNil(o.Code) {
+		return nil, false
 	}
 	return o.Code, true
 }
 
 // HasCode returns a boolean if a field has been set.
 func (o *CustomerGetGroupByCodeRequest) HasCode() bool {
-	if o != nil && !isNil(o.Code) {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *CustomerGetGroupByCodeRequest) SetCode(v string) {
 }
 
 func (o CustomerGetGroupByCodeRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !isNil(o.Code) {
-		toSerialize["code"] = o.Code
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerGetGroupByCodeRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerGetGroupByCodeRequest struct {

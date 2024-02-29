@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerAddCustomerToGroupRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerAddCustomerToGroupRequest{}
+
 // CustomerAddCustomerToGroupRequest struct for CustomerAddCustomerToGroupRequest
 type CustomerAddCustomerToGroupRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -41,7 +44,7 @@ func NewCustomerAddCustomerToGroupRequestWithDefaults() *CustomerAddCustomerToGr
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerAddCustomerToGroupRequest) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *CustomerAddCustomerToGroupRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddCustomerToGroupRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerAddCustomerToGroupRequest) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *CustomerAddCustomerToGroupRequest) SetTenantId(v string) {
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise.
 func (o *CustomerAddCustomerToGroupRequest) GetGroupId() string {
-	if o == nil || isNil(o.GroupId) {
+	if o == nil || IsNil(o.GroupId) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *CustomerAddCustomerToGroupRequest) GetGroupId() string {
 // GetGroupIdOk returns a tuple with the GroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddCustomerToGroupRequest) GetGroupIdOk() (*string, bool) {
-	if o == nil || isNil(o.GroupId) {
-    return nil, false
+	if o == nil || IsNil(o.GroupId) {
+		return nil, false
 	}
 	return o.GroupId, true
 }
 
 // HasGroupId returns a boolean if a field has been set.
 func (o *CustomerAddCustomerToGroupRequest) HasGroupId() bool {
-	if o != nil && !isNil(o.GroupId) {
+	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *CustomerAddCustomerToGroupRequest) SetGroupId(v string) {
 
 // GetCustomerId returns the CustomerId field value if set, zero value otherwise.
 func (o *CustomerAddCustomerToGroupRequest) GetCustomerId() string {
-	if o == nil || isNil(o.CustomerId) {
+	if o == nil || IsNil(o.CustomerId) {
 		var ret string
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *CustomerAddCustomerToGroupRequest) GetCustomerId() string {
 // GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddCustomerToGroupRequest) GetCustomerIdOk() (*string, bool) {
-	if o == nil || isNil(o.CustomerId) {
-    return nil, false
+	if o == nil || IsNil(o.CustomerId) {
+		return nil, false
 	}
 	return o.CustomerId, true
 }
 
 // HasCustomerId returns a boolean if a field has been set.
 func (o *CustomerAddCustomerToGroupRequest) HasCustomerId() bool {
-	if o != nil && !isNil(o.CustomerId) {
+	if o != nil && !IsNil(o.CustomerId) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *CustomerAddCustomerToGroupRequest) SetCustomerId(v string) {
 }
 
 func (o CustomerAddCustomerToGroupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !isNil(o.GroupId) {
-		toSerialize["groupId"] = o.GroupId
-	}
-	if !isNil(o.CustomerId) {
-		toSerialize["customerId"] = o.CustomerId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerAddCustomerToGroupRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.GroupId) {
+		toSerialize["groupId"] = o.GroupId
+	}
+	if !IsNil(o.CustomerId) {
+		toSerialize["customerId"] = o.CustomerId
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerAddCustomerToGroupRequest struct {

@@ -15,9 +15,16 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerListGroupsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerListGroupsRequest{}
+
 // CustomerListGroupsRequest struct for CustomerListGroupsRequest
 type CustomerListGroupsRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
+	PageSize *int64 `json:"pageSize,omitempty"`
+	PageToken *string `json:"pageToken,omitempty"`
+	Filter *CustomerListGroupsRequestFilter `json:"filter,omitempty"`
+	FiltersMask *string `json:"filtersMask,omitempty"`
 }
 
 // NewCustomerListGroupsRequest instantiates a new CustomerListGroupsRequest object
@@ -39,7 +46,7 @@ func NewCustomerListGroupsRequestWithDefaults() *CustomerListGroupsRequest {
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerListGroupsRequest) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -49,15 +56,15 @@ func (o *CustomerListGroupsRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerListGroupsRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerListGroupsRequest) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -69,12 +76,160 @@ func (o *CustomerListGroupsRequest) SetTenantId(v string) {
 	o.TenantId = &v
 }
 
+// GetPageSize returns the PageSize field value if set, zero value otherwise.
+func (o *CustomerListGroupsRequest) GetPageSize() int64 {
+	if o == nil || IsNil(o.PageSize) {
+		var ret int64
+		return ret
+	}
+	return *o.PageSize
+}
+
+// GetPageSizeOk returns a tuple with the PageSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerListGroupsRequest) GetPageSizeOk() (*int64, bool) {
+	if o == nil || IsNil(o.PageSize) {
+		return nil, false
+	}
+	return o.PageSize, true
+}
+
+// HasPageSize returns a boolean if a field has been set.
+func (o *CustomerListGroupsRequest) HasPageSize() bool {
+	if o != nil && !IsNil(o.PageSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetPageSize gets a reference to the given int64 and assigns it to the PageSize field.
+func (o *CustomerListGroupsRequest) SetPageSize(v int64) {
+	o.PageSize = &v
+}
+
+// GetPageToken returns the PageToken field value if set, zero value otherwise.
+func (o *CustomerListGroupsRequest) GetPageToken() string {
+	if o == nil || IsNil(o.PageToken) {
+		var ret string
+		return ret
+	}
+	return *o.PageToken
+}
+
+// GetPageTokenOk returns a tuple with the PageToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerListGroupsRequest) GetPageTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.PageToken) {
+		return nil, false
+	}
+	return o.PageToken, true
+}
+
+// HasPageToken returns a boolean if a field has been set.
+func (o *CustomerListGroupsRequest) HasPageToken() bool {
+	if o != nil && !IsNil(o.PageToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetPageToken gets a reference to the given string and assigns it to the PageToken field.
+func (o *CustomerListGroupsRequest) SetPageToken(v string) {
+	o.PageToken = &v
+}
+
+// GetFilter returns the Filter field value if set, zero value otherwise.
+func (o *CustomerListGroupsRequest) GetFilter() CustomerListGroupsRequestFilter {
+	if o == nil || IsNil(o.Filter) {
+		var ret CustomerListGroupsRequestFilter
+		return ret
+	}
+	return *o.Filter
+}
+
+// GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerListGroupsRequest) GetFilterOk() (*CustomerListGroupsRequestFilter, bool) {
+	if o == nil || IsNil(o.Filter) {
+		return nil, false
+	}
+	return o.Filter, true
+}
+
+// HasFilter returns a boolean if a field has been set.
+func (o *CustomerListGroupsRequest) HasFilter() bool {
+	if o != nil && !IsNil(o.Filter) {
+		return true
+	}
+
+	return false
+}
+
+// SetFilter gets a reference to the given CustomerListGroupsRequestFilter and assigns it to the Filter field.
+func (o *CustomerListGroupsRequest) SetFilter(v CustomerListGroupsRequestFilter) {
+	o.Filter = &v
+}
+
+// GetFiltersMask returns the FiltersMask field value if set, zero value otherwise.
+func (o *CustomerListGroupsRequest) GetFiltersMask() string {
+	if o == nil || IsNil(o.FiltersMask) {
+		var ret string
+		return ret
+	}
+	return *o.FiltersMask
+}
+
+// GetFiltersMaskOk returns a tuple with the FiltersMask field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerListGroupsRequest) GetFiltersMaskOk() (*string, bool) {
+	if o == nil || IsNil(o.FiltersMask) {
+		return nil, false
+	}
+	return o.FiltersMask, true
+}
+
+// HasFiltersMask returns a boolean if a field has been set.
+func (o *CustomerListGroupsRequest) HasFiltersMask() bool {
+	if o != nil && !IsNil(o.FiltersMask) {
+		return true
+	}
+
+	return false
+}
+
+// SetFiltersMask gets a reference to the given string and assigns it to the FiltersMask field.
+func (o *CustomerListGroupsRequest) SetFiltersMask(v string) {
+	o.FiltersMask = &v
+}
+
 func (o CustomerListGroupsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerListGroupsRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.PageSize) {
+		toSerialize["pageSize"] = o.PageSize
+	}
+	if !IsNil(o.PageToken) {
+		toSerialize["pageToken"] = o.PageToken
+	}
+	if !IsNil(o.Filter) {
+		toSerialize["filter"] = o.Filter
+	}
+	if !IsNil(o.FiltersMask) {
+		toSerialize["filtersMask"] = o.FiltersMask
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerListGroupsRequest struct {

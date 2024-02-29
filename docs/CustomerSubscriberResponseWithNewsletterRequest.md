@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **CreatedAt**| [**time.Time**](time.Time.md) |   | [optional]
 **UpdatedAt**| [**time.Time**](time.Time.md) |   | [optional]
 **Newsletters**| [**[]CustomerNewsletterRequest**](CustomerNewsletterRequest.md) |   | [optional]
+**Consent**| [**CustomerCreateConsentRequest**](CustomerCreateConsentRequest.md) |   | [optional]
 
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

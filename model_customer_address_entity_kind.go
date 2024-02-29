@@ -21,9 +21,9 @@ type CustomerAddressEntityKind string
 
 // List of customerAddressEntityKind
 const (
-	CUSTOMERADDRESSENTITYKIND_SHIPPING CustomerAddressEntityKind = "SHIPPING"
-	CUSTOMERADDRESSENTITYKIND_BILLING CustomerAddressEntityKind = "BILLING"
-	CUSTOMERADDRESSENTITYKIND_BOTH CustomerAddressEntityKind = "BOTH"
+	SHIPPING CustomerAddressEntityKind = "SHIPPING"
+	BILLING CustomerAddressEntityKind = "BILLING"
+	BOTH CustomerAddressEntityKind = "BOTH"
 )
 
 // All allowed values of CustomerAddressEntityKind enum

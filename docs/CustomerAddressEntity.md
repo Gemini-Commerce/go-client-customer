@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **PhoneNumber**| **string** |   | [optional]
 **FiscalCode**| **string** |   | [optional]
 **VatNumber**| **string** |   | [optional]
-**Kind**| [**CustomerAddressEntityKind**](CustomerAddressEntityKind.md) |  for more information please, see Model/CustomerAddressEntityKind.php  | [optional] [default to CUSTOMERADDRESSENTITYKIND_SHIPPING]
+**Kind**| [**CustomerAddressEntityKind**](CustomerAddressEntityKind.md) |  for more information please, see Model/CustomerAddressEntityKind.php  | [optional] [default to SHIPPING]
 **Default**| **bool** |   | [optional]
 **Country**| **string** |   | [optional]
 **Attributes**| [**map[string]ProtobufAny**](ProtobufAny.md) |   | [optional]

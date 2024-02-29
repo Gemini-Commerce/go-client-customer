@@ -10,10 +10,14 @@ info:
   version: v1
 servers:
 - url: https://cdp.api.gogemini.io/
+tags:
+- externalDocs:
+    url: https://gemini-commerce.com/api/cdp
+  name: Customer
 paths:
   /customer.Customer/AcquireSubscriber:
     post:
-      operationId: Customer_AcquireSubscriber
+      operationId: Customer_AcquireSubscriber2
       requestBody:
         content:
           application/json:
@@ -38,7 +42,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/AcquireUnsubscriber:
     post:
-      operationId: Customer_AcquireUnsubscriber
+      operationId: Customer_AcquireUnsubscriber2
       requestBody:
         content:
           application/json:
@@ -63,7 +67,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/AddCustomerToGroup:
     post:
-      operationId: Customer_AddCustomerToGroup
+      operationId: Customer_AddCustomerToGroup2
       requestBody:
         content:
           application/json:
@@ -86,9 +90,34 @@ paths:
       tags:
       - Customer
       x-codegen-request-body-name: body
+  /customer.Customer/AssignAgent:
+    post:
+      operationId: Customer_AssignAgent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerAssignAgentRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerAssignAgentResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
   /customer.Customer/BulkUpdate:
     post:
-      operationId: Customer_BulkUpdate
+      operationId: Customer_BulkUpdate2
       requestBody:
         content:
           application/json:
@@ -113,7 +142,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/Create:
     post:
-      operationId: Customer_Create
+      operationId: Customer_Create2
       requestBody:
         content:
           application/json:
@@ -138,7 +167,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/CreateAddress:
     post:
-      operationId: Customer_CreateAddress
+      operationId: Customer_CreateAddress2
       requestBody:
         content:
           application/json:
@@ -163,7 +192,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/CreateGroup:
     post:
-      operationId: Customer_CreateGroup
+      operationId: Customer_CreateGroup2
       requestBody:
         content:
           application/json:
@@ -188,7 +217,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/CreateSubscriber:
     post:
-      operationId: Customer_CreateSubscriber
+      operationId: Customer_CreateSubscriber2
       requestBody:
         content:
           application/json:
@@ -213,7 +242,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/DeleteAddress:
     post:
-      operationId: Customer_DeleteAddress
+      operationId: Customer_DeleteAddress2
       requestBody:
         content:
           application/json:
@@ -238,7 +267,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/DeleteGroup:
     post:
-      operationId: Customer_DeleteGroup
+      operationId: Customer_DeleteGroup2
       requestBody:
         content:
           application/json:
@@ -263,7 +292,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/Find:
     post:
-      operationId: Customer_Find
+      operationId: Customer_Find2
       requestBody:
         content:
           application/json:
@@ -288,7 +317,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/FindByEmail:
     post:
-      operationId: Customer_FindByEmail
+      operationId: Customer_FindByEmail2
       requestBody:
         content:
           application/json:
@@ -313,7 +342,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/FindById:
     post:
-      operationId: Customer_FindById
+      operationId: Customer_FindById2
       requestBody:
         content:
           application/json:
@@ -338,7 +367,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/FindSubscriberByEmail:
     post:
-      operationId: Customer_FindSubscriberByEmail
+      operationId: Customer_FindSubscriberByEmail2
       requestBody:
         content:
           application/json:
@@ -363,7 +392,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/FindSubscriberById:
     post:
-      operationId: Customer_FindSubscriberById
+      operationId: Customer_FindSubscriberById2
       requestBody:
         content:
           application/json:
@@ -388,7 +417,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/GetGroupByCode:
     post:
-      operationId: Customer_GetGroupByCode
+      operationId: Customer_GetGroupByCode2
       requestBody:
         content:
           application/json:
@@ -413,7 +442,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/GetGroupById:
     post:
-      operationId: Customer_GetGroupById
+      operationId: Customer_GetGroupById2
       requestBody:
         content:
           application/json:
@@ -438,7 +467,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/GrantPermissions:
     post:
-      operationId: Customer_GrantPermissions
+      operationId: Customer_GrantPermissions2
       requestBody:
         content:
           application/json:
@@ -458,13 +487,38 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: An unexpected error response.
-      summary: GrantPermissions add permissions to a customer
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/ListConsents:
+    post:
+      operationId: Customer_ListConsents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerListConsentsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerListConsentsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListConsents list all consents of a customer
       tags:
       - Customer
       x-codegen-request-body-name: body
   /customer.Customer/ListCustomers:
     post:
-      operationId: Customer_ListCustomers
+      operationId: Customer_ListCustomers2
       requestBody:
         content:
           application/json:
@@ -489,7 +543,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/ListGroups:
     post:
-      operationId: Customer_ListGroups
+      operationId: Customer_ListGroups2
       requestBody:
         content:
           application/json:
@@ -514,7 +568,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/RemoveCustomerFromGroup:
     post:
-      operationId: Customer_RemoveCustomerFromGroup
+      operationId: Customer_RemoveCustomerFromGroup2
       requestBody:
         content:
           application/json:
@@ -539,7 +593,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/RemoveDefaultAddress:
     post:
-      operationId: Customer_RemoveDefaultAddress
+      operationId: Customer_RemoveDefaultAddress2
       requestBody:
         content:
           application/json:
@@ -564,7 +618,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/RevokePermissions:
     post:
-      operationId: Customer_RevokePermissions
+      operationId: Customer_RevokePermissions2
       requestBody:
         content:
           application/json:
@@ -584,13 +638,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: An unexpected error response.
-      summary: RevokePermissions remove permissions from a customer
       tags:
       - Customer
       x-codegen-request-body-name: body
   /customer.Customer/Search:
     post:
-      operationId: Customer_Search
+      operationId: Customer_Search2
       requestBody:
         content:
           application/json:
@@ -615,7 +668,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/SetDefaultAddress:
     post:
-      operationId: Customer_SetDefaultAddress
+      operationId: Customer_SetDefaultAddress2
       requestBody:
         content:
           application/json:
@@ -640,7 +693,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/SetPermissions:
     post:
-      operationId: Customer_SetPermissions
+      operationId: Customer_SetPermissions2
       requestBody:
         content:
           application/json:
@@ -660,13 +713,37 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: An unexpected error response.
-      summary: SetPermissions set permissions to a customer
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer.Customer/UnassignAgent:
+    post:
+      operationId: Customer_UnassignAgent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerUnassignAgentRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerUnassignAgentResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
       tags:
       - Customer
       x-codegen-request-body-name: body
   /customer.Customer/Unsubscribe:
     post:
-      operationId: Customer_Unsubscribe
+      operationId: Customer_Unsubscribe2
       requestBody:
         content:
           application/json:
@@ -691,7 +768,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/Update:
     post:
-      operationId: Customer_Update
+      operationId: Customer_Update2
       requestBody:
         content:
           application/json:
@@ -716,7 +793,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/UpdateAddress:
     post:
-      operationId: Customer_UpdateAddress
+      operationId: Customer_UpdateAddress2
       requestBody:
         content:
           application/json:
@@ -741,7 +818,7 @@ paths:
       x-codegen-request-body-name: body
   /customer.Customer/UpdateGroup:
     post:
-      operationId: Customer_UpdateGroup
+      operationId: Customer_UpdateGroup2
       requestBody:
         content:
           application/json:
@@ -765,6 +842,781 @@ paths:
       - Customer
       x-codegen-request-body-name: body
   /customer.Customer/UpdateSubscriber:
+    post:
+      operationId: Customer_UpdateSubscriber2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerUpdateSubscriberRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerSubscriberResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/acquire_subscriber:
+    post:
+      operationId: Customer_AcquireSubscriber
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerCreateSubscriberRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerSubscriberResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/acquire_unsubscriber:
+    post:
+      operationId: Customer_AcquireUnsubscriber
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerUnsubscribeRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerUnsubscribeResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/add_customer_to_segment:
+    post:
+      operationId: Customer_AddCustomerToGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerAddCustomerToGroupRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/bulk_update:
+    post:
+      operationId: Customer_BulkUpdate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerBulkUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerBulkUpdateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/create:
+    post:
+      operationId: Customer_Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerCreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerCustomerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/create_address:
+    post:
+      operationId: Customer_CreateAddress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerAddressCreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerAddressCustomerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/create_segment:
+    post:
+      operationId: Customer_CreateGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerCreateGroupRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/create_subscriber:
+    post:
+      operationId: Customer_CreateSubscriber
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerCreateSubscriberRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerSubscriberResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/delete_address:
+    post:
+      operationId: Customer_DeleteAddress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerAddressDeleteRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerAddressDeleteResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/delete_segment:
+    post:
+      operationId: Customer_DeleteGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerDeleteGroupRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerDeleteGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/find:
+    post:
+      operationId: Customer_Find
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerFindManyRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerFindManyResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/find_by_email:
+    post:
+      operationId: Customer_FindByEmail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerFindByEmailRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerCustomerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/find_by_id:
+    post:
+      operationId: Customer_FindById
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerFindByIdRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerCustomerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/find_subscriber_by_email:
+    post:
+      operationId: Customer_FindSubscriberByEmail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerFindSubscriberByEmailRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerSubscriberResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/find_subscriber_by_id:
+    post:
+      operationId: Customer_FindSubscriberById
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerFindSubscriberByIdRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerSubscriberResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/get_segment_by_code:
+    post:
+      operationId: Customer_GetGroupByCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerGetGroupByCodeRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/get_segment_by_id:
+    post:
+      operationId: Customer_GetGroupById
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerGetGroupByIdRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/grant_permissions:
+    post:
+      operationId: Customer_GrantPermissions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerGrantPermissionsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerGrantPermissionsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/list_customers:
+    post:
+      operationId: Customer_ListCustomers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerListCustomersRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerListCustomersResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/list_segments:
+    post:
+      operationId: Customer_ListGroups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerListGroupsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerListGroupsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/remove_customer_from_segment:
+    post:
+      operationId: Customer_RemoveCustomerFromGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerRemoveCustomerFromGroupRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/remove_default_address:
+    post:
+      operationId: Customer_RemoveDefaultAddress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerRemoveDefaultAddressRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerCustomerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/revoke_permissions:
+    post:
+      operationId: Customer_RevokePermissions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerRevokePermissionsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerRevokePermissionsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/search:
+    post:
+      operationId: Customer_Search
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerSearchRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerSearchResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/set_default_address:
+    post:
+      operationId: Customer_SetDefaultAddress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerSetDefaultAddressRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerCustomerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/set_permissions:
+    post:
+      operationId: Customer_SetPermissions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerSetPermissionsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerSetPermissionsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/unsubscribe:
+    post:
+      operationId: Customer_Unsubscribe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerUnsubscribeRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerUnsubscribeResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/update:
+    post:
+      operationId: Customer_Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerCustomerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/update_address:
+    post:
+      operationId: Customer_UpdateAddress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerAddressUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerAddressUpdateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/update_segment:
+    post:
+      operationId: Customer_UpdateGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerUpdateGroupRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+  /customer/update_subscriber:
     post:
       operationId: Customer_UpdateSubscriber
       requestBody:
@@ -798,6 +1650,20 @@ components:
       - DISABLE
       - DELETE
       type: string
+    ListConsentsRequestFilters:
+      properties:
+        subjectIds:
+          items:
+            type: string
+          type: array
+      type: object
+    ListConsentsRequestSort:
+      properties:
+        field:
+          $ref: '#/components/schemas/SortSortField'
+        order:
+          $ref: '#/components/schemas/SortSortOrder'
+      type: object
     ListCustomersRequestFilterDate:
       properties:
         from:
@@ -814,6 +1680,18 @@ components:
       - PASSWORD_TYPE_MAGENTO1
       - PASSWORD_TYPE_SYLIUS
       - PASSWORD_TYPE_MAGENTO2
+      type: string
+    SortSortField:
+      default: UNKNOWN
+      enum:
+      - UNKNOWN
+      - DATE
+      type: string
+    SortSortOrder:
+      default: DESC
+      enum:
+      - DESC
+      - ASC
       type: string
     customerAddCustomerToGroupRequest:
       properties:
@@ -893,7 +1771,6 @@ components:
         attributes:
           key:
             '@type': '@type'
-            value: value
         id: id
         vatNumber: vatNumber
         updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -982,7 +1859,6 @@ components:
             attributes:
               key:
                 '@type': '@type'
-                value: value
             id: id
             vatNumber: vatNumber
             updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -1007,14 +1883,16 @@ components:
             attributes:
               key:
                 '@type': '@type'
-                value: value
             id: id
             vatNumber: vatNumber
             updatedAt: 2000-01-23T04:56:07.000+00:00
           birthdate: 2000-01-23T04:56:07.000+00:00
           gender: gender
+          companyName: companyName
+          aggregationId: aggregationId
           source: source
           enabled: true
+          agentGrn: agentGrn
           createdAt: 2000-01-23T04:56:07.000+00:00
           newsletters:
           - newsletterGrn: newsletterGrn
@@ -1027,6 +1905,8 @@ components:
           permissions:
           - null
           - null
+          fiscalCode: fiscalCode
+          additionalInfo: "{}"
           id: id
           email: email
           certifiedEmail: certifiedEmail
@@ -1059,7 +1939,7 @@ components:
           attributes:
             key:
               '@type': '@type'
-              value: value
+          sdiCode: sdiCode
       properties:
         customer:
           $ref: '#/components/schemas/customerCustomerResponse'
@@ -1117,9 +1997,7 @@ components:
         address:
           $ref: '#/components/schemas/customerAddressEntity'
         fieldMask:
-          items:
-            type: string
-          type: array
+          type: string
       type: object
     customerAddressUpdateResponse:
       example:
@@ -1146,7 +2024,6 @@ components:
             attributes:
               key:
                 '@type': '@type'
-                value: value
             id: id
             vatNumber: vatNumber
             updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -1171,14 +2048,16 @@ components:
             attributes:
               key:
                 '@type': '@type'
-                value: value
             id: id
             vatNumber: vatNumber
             updatedAt: 2000-01-23T04:56:07.000+00:00
           birthdate: 2000-01-23T04:56:07.000+00:00
           gender: gender
+          companyName: companyName
+          aggregationId: aggregationId
           source: source
           enabled: true
+          agentGrn: agentGrn
           createdAt: 2000-01-23T04:56:07.000+00:00
           newsletters:
           - newsletterGrn: newsletterGrn
@@ -1191,6 +2070,8 @@ components:
           permissions:
           - null
           - null
+          fiscalCode: fiscalCode
+          additionalInfo: "{}"
           id: id
           email: email
           certifiedEmail: certifiedEmail
@@ -1223,10 +2104,23 @@ components:
           attributes:
             key:
               '@type': '@type'
-              value: value
+          sdiCode: sdiCode
       properties:
         customer:
           $ref: '#/components/schemas/customerCustomerResponse'
+      type: object
+    customerAssignAgentRequest:
+      properties:
+        tenantId:
+          type: string
+        agentGrn:
+          type: string
+        customerIds:
+          items:
+            type: string
+          type: array
+      type: object
+    customerAssignAgentResponse:
       type: object
     customerBulkUpdateRequest:
       properties:
@@ -1250,6 +2144,50 @@ components:
             type: string
           type: array
       type: object
+    customerConsent:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        grn: grn
+        preferences:
+          key: true
+        author: author
+        id: id
+        source: null
+        subjectId: subjectId
+      properties:
+        id:
+          type: string
+        grn:
+          type: string
+        preferences:
+          additionalProperties:
+            type: boolean
+          type: object
+        createdAt:
+          format: date-time
+          type: string
+        source:
+          $ref: '#/components/schemas/customerConsentSource'
+        author:
+          type: string
+        subjectId:
+          type: string
+      type: object
+    customerConsentSource:
+      default: CONSENT_SOURCE_UNKNOWN
+      enum:
+      - CONSENT_SOURCE_UNKNOWN
+      - CONSENT_SOURCE_FRONTEND
+      - CONSENT_SOURCE_BACKOFFICE
+      - CONSENT_SOURCE_BACKEND
+      type: string
+    customerCreateConsentRequest:
+      properties:
+        preferences:
+          additionalProperties:
+            type: boolean
+          type: object
+      type: object
     customerCreateGroupRequest:
       properties:
         name:
@@ -1257,6 +2195,7 @@ components:
         tenantId:
           type: string
         code:
+          title: unique code for the group
           type: string
       type: object
     customerCreateRequest:
@@ -1314,10 +2253,23 @@ components:
           type: string
         certifiedEmail:
           type: string
+        sdiCode:
+          type: string
+        fiscalCode:
+          type: string
+        companyName:
+          type: string
+        additionalInfo:
+          properties: {}
+          type: object
         externalIds:
           additionalProperties:
             type: string
           type: object
+        consent:
+          $ref: '#/components/schemas/customerCreateConsentRequest'
+        aggregationId:
+          type: string
       type: object
     customerCreateSubscriberRequest:
       properties:
@@ -1350,7 +2302,6 @@ components:
           attributes:
             key:
               '@type': '@type'
-              value: value
           id: id
           vatNumber: vatNumber
           updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -1375,14 +2326,16 @@ components:
           attributes:
             key:
               '@type': '@type'
-              value: value
           id: id
           vatNumber: vatNumber
           updatedAt: 2000-01-23T04:56:07.000+00:00
         birthdate: 2000-01-23T04:56:07.000+00:00
         gender: gender
+        companyName: companyName
+        aggregationId: aggregationId
         source: source
         enabled: true
+        agentGrn: agentGrn
         createdAt: 2000-01-23T04:56:07.000+00:00
         newsletters:
         - newsletterGrn: newsletterGrn
@@ -1395,6 +2348,8 @@ components:
         permissions:
         - null
         - null
+        fiscalCode: fiscalCode
+        additionalInfo: "{}"
         id: id
         email: email
         certifiedEmail: certifiedEmail
@@ -1427,7 +2382,7 @@ components:
         attributes:
           key:
             '@type': '@type'
-            value: value
+        sdiCode: sdiCode
       properties:
         em:
           $ref: '#/components/schemas/customerEMFields'
@@ -1493,6 +2448,15 @@ components:
           type: string
         certifiedEmail:
           type: string
+        sdiCode:
+          type: string
+        fiscalCode:
+          type: string
+        companyName:
+          type: string
+        additionalInfo:
+          properties: {}
+          type: object
         market:
           type: string
         permissions:
@@ -1504,6 +2468,10 @@ components:
           additionalProperties:
             type: string
           type: object
+        agentGrn:
+          type: string
+        aggregationId:
+          type: string
       type: object
     customerDeleteGroupRequest:
       properties:
@@ -1560,14 +2528,14 @@ components:
         filter:
           $ref: '#/components/schemas/customerFindManyRequestFilter'
         filterMask:
-          items:
-            type: string
-          type: array
+          type: string
       type: object
     customerFindManyRequestFilter:
       properties:
         newsletter:
           type: boolean
+        agentGrn:
+          type: string
       type: object
     customerFindManyResponse:
       example:
@@ -1595,7 +2563,6 @@ components:
             attributes:
               key:
                 '@type': '@type'
-                value: value
             id: id
             vatNumber: vatNumber
             updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -1620,14 +2587,16 @@ components:
             attributes:
               key:
                 '@type': '@type'
-                value: value
             id: id
             vatNumber: vatNumber
             updatedAt: 2000-01-23T04:56:07.000+00:00
           birthdate: 2000-01-23T04:56:07.000+00:00
           gender: gender
+          companyName: companyName
+          aggregationId: aggregationId
           source: source
           enabled: true
+          agentGrn: agentGrn
           createdAt: 2000-01-23T04:56:07.000+00:00
           newsletters:
           - newsletterGrn: newsletterGrn
@@ -1640,6 +2609,8 @@ components:
           permissions:
           - null
           - null
+          fiscalCode: fiscalCode
+          additionalInfo: "{}"
           id: id
           email: email
           certifiedEmail: certifiedEmail
@@ -1672,7 +2643,7 @@ components:
           attributes:
             key:
               '@type': '@type'
-              value: value
+          sdiCode: sdiCode
         - addresses:
           - zip: zip
             country: country
@@ -1695,7 +2666,6 @@ components:
             attributes:
               key:
                 '@type': '@type'
-                value: value
             id: id
             vatNumber: vatNumber
             updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -1720,14 +2690,16 @@ components:
             attributes:
               key:
                 '@type': '@type'
-                value: value
             id: id
             vatNumber: vatNumber
             updatedAt: 2000-01-23T04:56:07.000+00:00
           birthdate: 2000-01-23T04:56:07.000+00:00
           gender: gender
+          companyName: companyName
+          aggregationId: aggregationId
           source: source
           enabled: true
+          agentGrn: agentGrn
           createdAt: 2000-01-23T04:56:07.000+00:00
           newsletters:
           - newsletterGrn: newsletterGrn
@@ -1740,6 +2712,8 @@ components:
           permissions:
           - null
           - null
+          fiscalCode: fiscalCode
+          additionalInfo: "{}"
           id: id
           email: email
           certifiedEmail: certifiedEmail
@@ -1772,7 +2746,7 @@ components:
           attributes:
             key:
               '@type': '@type'
-              value: value
+          sdiCode: sdiCode
       properties:
         customers:
           items:
@@ -1859,9 +2833,56 @@ components:
         grn:
           type: string
         code:
+          title: unique identifier
           type: string
         customerCount:
           format: uint64
+          type: string
+      type: object
+    customerListConsentsRequest:
+      properties:
+        tenantId:
+          type: string
+        pageSize:
+          format: int64
+          type: integer
+        pageToken:
+          type: string
+        sorts:
+          items:
+            $ref: '#/components/schemas/ListConsentsRequestSort'
+          type: array
+        filtersMask:
+          type: string
+        filters:
+          $ref: '#/components/schemas/ListConsentsRequestFilters'
+      type: object
+    customerListConsentsResponse:
+      example:
+        nextPageToken: nextPageToken
+        consents:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          grn: grn
+          preferences:
+            key: true
+          author: author
+          id: id
+          source: null
+          subjectId: subjectId
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          grn: grn
+          preferences:
+            key: true
+          author: author
+          id: id
+          source: null
+          subjectId: subjectId
+      properties:
+        consents:
+          items:
+            $ref: '#/components/schemas/customerConsent'
+          type: array
+        nextPageToken:
           type: string
       type: object
     customerListCustomersRequest:
@@ -1876,9 +2897,7 @@ components:
         filters:
           $ref: '#/components/schemas/customerListCustomersRequestFilter'
         filterMask:
-          items:
-            type: string
-          type: array
+          type: string
       type: object
     customerListCustomersRequestFilter:
       properties:
@@ -1894,6 +2913,8 @@ components:
           items:
             type: string
           type: array
+        agentGrn:
+          type: string
       type: object
     customerListCustomersResponse:
       example:
@@ -1921,7 +2942,6 @@ components:
             attributes:
               key:
                 '@type': '@type'
-                value: value
             id: id
             vatNumber: vatNumber
             updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -1946,14 +2966,16 @@ components:
             attributes:
               key:
                 '@type': '@type'
-                value: value
             id: id
             vatNumber: vatNumber
             updatedAt: 2000-01-23T04:56:07.000+00:00
           birthdate: 2000-01-23T04:56:07.000+00:00
           gender: gender
+          companyName: companyName
+          aggregationId: aggregationId
           source: source
           enabled: true
+          agentGrn: agentGrn
           createdAt: 2000-01-23T04:56:07.000+00:00
           newsletters:
           - newsletterGrn: newsletterGrn
@@ -1966,6 +2988,8 @@ components:
           permissions:
           - null
           - null
+          fiscalCode: fiscalCode
+          additionalInfo: "{}"
           id: id
           email: email
           certifiedEmail: certifiedEmail
@@ -1998,7 +3022,7 @@ components:
           attributes:
             key:
               '@type': '@type'
-              value: value
+          sdiCode: sdiCode
         - addresses:
           - zip: zip
             country: country
@@ -2021,7 +3045,6 @@ components:
             attributes:
               key:
                 '@type': '@type'
-                value: value
             id: id
             vatNumber: vatNumber
             updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -2046,14 +3069,16 @@ components:
             attributes:
               key:
                 '@type': '@type'
-                value: value
             id: id
             vatNumber: vatNumber
             updatedAt: 2000-01-23T04:56:07.000+00:00
           birthdate: 2000-01-23T04:56:07.000+00:00
           gender: gender
+          companyName: companyName
+          aggregationId: aggregationId
           source: source
           enabled: true
+          agentGrn: agentGrn
           createdAt: 2000-01-23T04:56:07.000+00:00
           newsletters:
           - newsletterGrn: newsletterGrn
@@ -2066,6 +3091,8 @@ components:
           permissions:
           - null
           - null
+          fiscalCode: fiscalCode
+          additionalInfo: "{}"
           id: id
           email: email
           certifiedEmail: certifiedEmail
@@ -2098,7 +3125,7 @@ components:
           attributes:
             key:
               '@type': '@type'
-              value: value
+          sdiCode: sdiCode
       properties:
         customers:
           items:
@@ -2111,9 +3138,24 @@ components:
       properties:
         tenantId:
           type: string
+        pageSize:
+          format: int64
+          type: integer
+        pageToken:
+          type: string
+        filter:
+          $ref: '#/components/schemas/customerListGroupsRequestFilter'
+        filtersMask:
+          type: string
+      type: object
+    customerListGroupsRequestFilter:
+      properties:
+        searchTerm:
+          type: string
       type: object
     customerListGroupsResponse:
       example:
+        nextPageToken: nextPageToken
         groups:
         - createdAt: 2000-01-23T04:56:07.000+00:00
           grn: grn
@@ -2140,6 +3182,8 @@ components:
           items:
             $ref: '#/components/schemas/customerGroupResponse'
           type: array
+        nextPageToken:
+          type: string
       type: object
     customerNewsletterRequest:
       properties:
@@ -2161,6 +3205,7 @@ components:
         newsletterGrn:
           type: string
         name:
+          title: bool subscribed = 4;
           type: string
       type: object
     customerPassword:
@@ -2240,14 +3285,14 @@ components:
         filter:
           $ref: '#/components/schemas/customerSearchRequestFilter'
         filterMask:
-          items:
-            type: string
-          type: array
+          type: string
       type: object
     customerSearchRequestFilter:
       properties:
         newsletter:
           type: boolean
+        agentGrn:
+          type: string
       type: object
     customerSearchResponse:
       example:
@@ -2275,7 +3320,6 @@ components:
             attributes:
               key:
                 '@type': '@type'
-                value: value
             id: id
             vatNumber: vatNumber
             updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -2300,14 +3344,16 @@ components:
             attributes:
               key:
                 '@type': '@type'
-                value: value
             id: id
             vatNumber: vatNumber
             updatedAt: 2000-01-23T04:56:07.000+00:00
           birthdate: 2000-01-23T04:56:07.000+00:00
           gender: gender
+          companyName: companyName
+          aggregationId: aggregationId
           source: source
           enabled: true
+          agentGrn: agentGrn
           createdAt: 2000-01-23T04:56:07.000+00:00
           newsletters:
           - newsletterGrn: newsletterGrn
@@ -2320,6 +3366,8 @@ components:
           permissions:
           - null
           - null
+          fiscalCode: fiscalCode
+          additionalInfo: "{}"
           id: id
           email: email
           certifiedEmail: certifiedEmail
@@ -2352,7 +3400,7 @@ components:
           attributes:
             key:
               '@type': '@type'
-              value: value
+          sdiCode: sdiCode
         - addresses:
           - zip: zip
             country: country
@@ -2375,7 +3423,6 @@ components:
             attributes:
               key:
                 '@type': '@type'
-                value: value
             id: id
             vatNumber: vatNumber
             updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -2400,14 +3447,16 @@ components:
             attributes:
               key:
                 '@type': '@type'
-                value: value
             id: id
             vatNumber: vatNumber
             updatedAt: 2000-01-23T04:56:07.000+00:00
           birthdate: 2000-01-23T04:56:07.000+00:00
           gender: gender
+          companyName: companyName
+          aggregationId: aggregationId
           source: source
           enabled: true
+          agentGrn: agentGrn
           createdAt: 2000-01-23T04:56:07.000+00:00
           newsletters:
           - newsletterGrn: newsletterGrn
@@ -2420,6 +3469,8 @@ components:
           permissions:
           - null
           - null
+          fiscalCode: fiscalCode
+          additionalInfo: "{}"
           id: id
           email: email
           certifiedEmail: certifiedEmail
@@ -2452,7 +3503,7 @@ components:
           attributes:
             key:
               '@type': '@type'
-              value: value
+          sdiCode: sdiCode
       properties:
         customers:
           items:
@@ -2504,6 +3555,7 @@ components:
           format: date-time
           type: string
         nationality:
+          title: "deprecated: use country instead"
           type: string
         em:
           $ref: '#/components/schemas/customerEMFields'
@@ -2521,6 +3573,8 @@ components:
           type: string
         preferredLocale:
           type: string
+        consent:
+          $ref: '#/components/schemas/customerCreateConsentRequest'
       type: object
     customerSubscriberResponse:
       example:
@@ -2567,6 +3621,7 @@ components:
           format: date-time
           type: string
         nationality:
+          title: "deprecated: use country instead"
           type: string
         em:
           $ref: '#/components/schemas/customerEMFields'
@@ -2607,6 +3662,7 @@ components:
           format: date-time
           type: string
         nationality:
+          title: "deprecated: use country instead"
           type: string
         em:
           $ref: '#/components/schemas/customerEMFields'
@@ -2622,6 +3678,21 @@ components:
           items:
             $ref: '#/components/schemas/customerNewsletterRequest'
           type: array
+        consent:
+          $ref: '#/components/schemas/customerCreateConsentRequest'
+      type: object
+    customerUnassignAgentRequest:
+      properties:
+        tenantId:
+          type: string
+        agentGrn:
+          type: string
+        customerIds:
+          items:
+            type: string
+          type: array
+      type: object
+    customerUnassignAgentResponse:
       type: object
     customerUnsubscribeRequest:
       properties:
@@ -2660,9 +3731,7 @@ components:
         payload:
           $ref: '#/components/schemas/customerUpdateGroupRequestPayload'
         fieldMask:
-          items:
-            type: string
-          type: array
+          type: string
       type: object
     customerUpdateGroupRequestPayload:
       properties:
@@ -2678,9 +3747,7 @@ components:
         payload:
           $ref: '#/components/schemas/customerUpdateRequestPayload'
         fieldMask:
-          items:
-            type: string
-          type: array
+          type: string
       type: object
     customerUpdateRequestPayload:
       properties:
@@ -2735,12 +3802,23 @@ components:
           type: string
         certifiedEmail:
           type: string
+        sdiCode:
+          type: string
+        fiscalCode:
+          type: string
+        companyName:
+          type: string
+        additionalInfo:
+          properties: {}
+          type: object
         market:
           type: string
         externalIds:
           additionalProperties:
             type: string
           type: object
+        consent:
+          $ref: '#/components/schemas/customerCreateConsentRequest'
       type: object
     customerUpdateSubscriberRequest:
       properties:
@@ -2749,9 +3827,7 @@ components:
         subscriber:
           $ref: '#/components/schemas/customerSubscriberResponseWithNewsletterRequest'
         fieldMask:
-          items:
-            type: string
-          type: array
+          type: string
       type: object
     googlerpcStatus:
       properties:
@@ -2766,6 +3842,8 @@ components:
           type: array
       type: object
     protobufAny:
+      additionalProperties:
+        type: object
       description: |-
         `Any` contains an arbitrary serialized protocol buffer message along with a
         URL that describes the type of the serialized message.
@@ -2792,7 +3870,7 @@ components:
               foo = any.unpack(Foo.class);
             }
 
-         Example 3: Pack and unpack a message in Python.
+        Example 3: Pack and unpack a message in Python.
 
             foo = Foo(...)
             any = Any()
@@ -2802,7 +3880,7 @@ components:
               any.Unpack(foo)
               ...
 
-         Example 4: Pack and unpack a message in Go
+        Example 4: Pack and unpack a message in Go
 
              foo := &pb.Foo{...}
              any, err := anypb.New(foo)
@@ -2823,7 +3901,7 @@ components:
 
 
         JSON
-        ====
+
         The JSON representation of an `Any` value uses the regular
         representation of the deserialized, embedded message, with an
         additional field `@type` which contains the type URL. Example:
@@ -2851,7 +3929,6 @@ components:
             }
       example:
         '@type': '@type'
-        value: value
       properties:
         '@type':
           description: |-
@@ -2883,13 +3960,19 @@ components:
             Schemes other than `http`, `https` (or the empty scheme) might be
             used with implementation specific semantics.
           type: string
-        value:
-          description: Must be a valid serialized protocol buffer of the above specified
-            type.
-          format: byte
-          pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
-          type: string
       type: object
+    protobufNullValue:
+      default: NULL_VALUE
+      description: |-
+        `NullValue` is a singleton enumeration to represent the null value for the
+        `Value` type union.
+
+         The JSON representation for `NullValue` is JSON `null`.
+
+         - NULL_VALUE: Null value.
+      enum:
+      - NULL_VALUE
+      type: string
   securitySchemes:
     standardAuthorization:
       flows:

@@ -15,12 +15,15 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerUpdateGroupRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerUpdateGroupRequest{}
+
 // CustomerUpdateGroupRequest struct for CustomerUpdateGroupRequest
 type CustomerUpdateGroupRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
 	GroupId *string `json:"groupId,omitempty"`
 	Payload *CustomerUpdateGroupRequestPayload `json:"payload,omitempty"`
-	FieldMask []string `json:"fieldMask,omitempty"`
+	FieldMask *string `json:"fieldMask,omitempty"`
 }
 
 // NewCustomerUpdateGroupRequest instantiates a new CustomerUpdateGroupRequest object
@@ -42,7 +45,7 @@ func NewCustomerUpdateGroupRequestWithDefaults() *CustomerUpdateGroupRequest {
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerUpdateGroupRequest) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -52,15 +55,15 @@ func (o *CustomerUpdateGroupRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerUpdateGroupRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerUpdateGroupRequest) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *CustomerUpdateGroupRequest) SetTenantId(v string) {
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise.
 func (o *CustomerUpdateGroupRequest) GetGroupId() string {
-	if o == nil || isNil(o.GroupId) {
+	if o == nil || IsNil(o.GroupId) {
 		var ret string
 		return ret
 	}
@@ -84,15 +87,15 @@ func (o *CustomerUpdateGroupRequest) GetGroupId() string {
 // GetGroupIdOk returns a tuple with the GroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerUpdateGroupRequest) GetGroupIdOk() (*string, bool) {
-	if o == nil || isNil(o.GroupId) {
-    return nil, false
+	if o == nil || IsNil(o.GroupId) {
+		return nil, false
 	}
 	return o.GroupId, true
 }
 
 // HasGroupId returns a boolean if a field has been set.
 func (o *CustomerUpdateGroupRequest) HasGroupId() bool {
-	if o != nil && !isNil(o.GroupId) {
+	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *CustomerUpdateGroupRequest) SetGroupId(v string) {
 
 // GetPayload returns the Payload field value if set, zero value otherwise.
 func (o *CustomerUpdateGroupRequest) GetPayload() CustomerUpdateGroupRequestPayload {
-	if o == nil || isNil(o.Payload) {
+	if o == nil || IsNil(o.Payload) {
 		var ret CustomerUpdateGroupRequestPayload
 		return ret
 	}
@@ -116,15 +119,15 @@ func (o *CustomerUpdateGroupRequest) GetPayload() CustomerUpdateGroupRequestPayl
 // GetPayloadOk returns a tuple with the Payload field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerUpdateGroupRequest) GetPayloadOk() (*CustomerUpdateGroupRequestPayload, bool) {
-	if o == nil || isNil(o.Payload) {
-    return nil, false
+	if o == nil || IsNil(o.Payload) {
+		return nil, false
 	}
 	return o.Payload, true
 }
 
 // HasPayload returns a boolean if a field has been set.
 func (o *CustomerUpdateGroupRequest) HasPayload() bool {
-	if o != nil && !isNil(o.Payload) {
+	if o != nil && !IsNil(o.Payload) {
 		return true
 	}
 
@@ -137,52 +140,60 @@ func (o *CustomerUpdateGroupRequest) SetPayload(v CustomerUpdateGroupRequestPayl
 }
 
 // GetFieldMask returns the FieldMask field value if set, zero value otherwise.
-func (o *CustomerUpdateGroupRequest) GetFieldMask() []string {
-	if o == nil || isNil(o.FieldMask) {
-		var ret []string
+func (o *CustomerUpdateGroupRequest) GetFieldMask() string {
+	if o == nil || IsNil(o.FieldMask) {
+		var ret string
 		return ret
 	}
-	return o.FieldMask
+	return *o.FieldMask
 }
 
 // GetFieldMaskOk returns a tuple with the FieldMask field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CustomerUpdateGroupRequest) GetFieldMaskOk() ([]string, bool) {
-	if o == nil || isNil(o.FieldMask) {
-    return nil, false
+func (o *CustomerUpdateGroupRequest) GetFieldMaskOk() (*string, bool) {
+	if o == nil || IsNil(o.FieldMask) {
+		return nil, false
 	}
 	return o.FieldMask, true
 }
 
 // HasFieldMask returns a boolean if a field has been set.
 func (o *CustomerUpdateGroupRequest) HasFieldMask() bool {
-	if o != nil && !isNil(o.FieldMask) {
+	if o != nil && !IsNil(o.FieldMask) {
 		return true
 	}
 
 	return false
 }
 
-// SetFieldMask gets a reference to the given []string and assigns it to the FieldMask field.
-func (o *CustomerUpdateGroupRequest) SetFieldMask(v []string) {
-	o.FieldMask = v
+// SetFieldMask gets a reference to the given string and assigns it to the FieldMask field.
+func (o *CustomerUpdateGroupRequest) SetFieldMask(v string) {
+	o.FieldMask = &v
 }
 
 func (o CustomerUpdateGroupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !isNil(o.GroupId) {
-		toSerialize["groupId"] = o.GroupId
-	}
-	if !isNil(o.Payload) {
-		toSerialize["payload"] = o.Payload
-	}
-	if !isNil(o.FieldMask) {
-		toSerialize["fieldMask"] = o.FieldMask
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerUpdateGroupRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.GroupId) {
+		toSerialize["groupId"] = o.GroupId
+	}
+	if !IsNil(o.Payload) {
+		toSerialize["payload"] = o.Payload
+	}
+	if !IsNil(o.FieldMask) {
+		toSerialize["fieldMask"] = o.FieldMask
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerUpdateGroupRequest struct {

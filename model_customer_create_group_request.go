@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerCreateGroupRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerCreateGroupRequest{}
+
 // CustomerCreateGroupRequest struct for CustomerCreateGroupRequest
 type CustomerCreateGroupRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -41,7 +44,7 @@ func NewCustomerCreateGroupRequestWithDefaults() *CustomerCreateGroupRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CustomerCreateGroupRequest) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *CustomerCreateGroupRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateGroupRequest) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CustomerCreateGroupRequest) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *CustomerCreateGroupRequest) SetName(v string) {
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerCreateGroupRequest) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *CustomerCreateGroupRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateGroupRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerCreateGroupRequest) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *CustomerCreateGroupRequest) SetTenantId(v string) {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *CustomerCreateGroupRequest) GetCode() string {
-	if o == nil || isNil(o.Code) {
+	if o == nil || IsNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *CustomerCreateGroupRequest) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerCreateGroupRequest) GetCodeOk() (*string, bool) {
-	if o == nil || isNil(o.Code) {
-    return nil, false
+	if o == nil || IsNil(o.Code) {
+		return nil, false
 	}
 	return o.Code, true
 }
 
 // HasCode returns a boolean if a field has been set.
 func (o *CustomerCreateGroupRequest) HasCode() bool {
-	if o != nil && !isNil(o.Code) {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *CustomerCreateGroupRequest) SetCode(v string) {
 }
 
 func (o CustomerCreateGroupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !isNil(o.Code) {
-		toSerialize["code"] = o.Code
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerCreateGroupRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerCreateGroupRequest struct {

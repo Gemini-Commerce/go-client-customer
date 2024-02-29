@@ -15,9 +15,13 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerListGroupsResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerListGroupsResponse{}
+
 // CustomerListGroupsResponse struct for CustomerListGroupsResponse
 type CustomerListGroupsResponse struct {
 	Groups []CustomerGroupResponse `json:"groups,omitempty"`
+	NextPageToken *string `json:"nextPageToken,omitempty"`
 }
 
 // NewCustomerListGroupsResponse instantiates a new CustomerListGroupsResponse object
@@ -39,7 +43,7 @@ func NewCustomerListGroupsResponseWithDefaults() *CustomerListGroupsResponse {
 
 // GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *CustomerListGroupsResponse) GetGroups() []CustomerGroupResponse {
-	if o == nil || isNil(o.Groups) {
+	if o == nil || IsNil(o.Groups) {
 		var ret []CustomerGroupResponse
 		return ret
 	}
@@ -49,15 +53,15 @@ func (o *CustomerListGroupsResponse) GetGroups() []CustomerGroupResponse {
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerListGroupsResponse) GetGroupsOk() ([]CustomerGroupResponse, bool) {
-	if o == nil || isNil(o.Groups) {
-    return nil, false
+	if o == nil || IsNil(o.Groups) {
+		return nil, false
 	}
 	return o.Groups, true
 }
 
 // HasGroups returns a boolean if a field has been set.
 func (o *CustomerListGroupsResponse) HasGroups() bool {
-	if o != nil && !isNil(o.Groups) {
+	if o != nil && !IsNil(o.Groups) {
 		return true
 	}
 
@@ -69,12 +73,55 @@ func (o *CustomerListGroupsResponse) SetGroups(v []CustomerGroupResponse) {
 	o.Groups = v
 }
 
+// GetNextPageToken returns the NextPageToken field value if set, zero value otherwise.
+func (o *CustomerListGroupsResponse) GetNextPageToken() string {
+	if o == nil || IsNil(o.NextPageToken) {
+		var ret string
+		return ret
+	}
+	return *o.NextPageToken
+}
+
+// GetNextPageTokenOk returns a tuple with the NextPageToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerListGroupsResponse) GetNextPageTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.NextPageToken) {
+		return nil, false
+	}
+	return o.NextPageToken, true
+}
+
+// HasNextPageToken returns a boolean if a field has been set.
+func (o *CustomerListGroupsResponse) HasNextPageToken() bool {
+	if o != nil && !IsNil(o.NextPageToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetNextPageToken gets a reference to the given string and assigns it to the NextPageToken field.
+func (o *CustomerListGroupsResponse) SetNextPageToken(v string) {
+	o.NextPageToken = &v
+}
+
 func (o CustomerListGroupsResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Groups) {
-		toSerialize["groups"] = o.Groups
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerListGroupsResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Groups) {
+		toSerialize["groups"] = o.Groups
+	}
+	if !IsNil(o.NextPageToken) {
+		toSerialize["nextPageToken"] = o.NextPageToken
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerListGroupsResponse struct {

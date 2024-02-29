@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerNewsletterRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerNewsletterRequest{}
+
 // CustomerNewsletterRequest struct for CustomerNewsletterRequest
 type CustomerNewsletterRequest struct {
 	NewsletterGrn *string `json:"newsletterGrn,omitempty"`
@@ -41,7 +44,7 @@ func NewCustomerNewsletterRequestWithDefaults() *CustomerNewsletterRequest {
 
 // GetNewsletterGrn returns the NewsletterGrn field value if set, zero value otherwise.
 func (o *CustomerNewsletterRequest) GetNewsletterGrn() string {
-	if o == nil || isNil(o.NewsletterGrn) {
+	if o == nil || IsNil(o.NewsletterGrn) {
 		var ret string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *CustomerNewsletterRequest) GetNewsletterGrn() string {
 // GetNewsletterGrnOk returns a tuple with the NewsletterGrn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerNewsletterRequest) GetNewsletterGrnOk() (*string, bool) {
-	if o == nil || isNil(o.NewsletterGrn) {
-    return nil, false
+	if o == nil || IsNil(o.NewsletterGrn) {
+		return nil, false
 	}
 	return o.NewsletterGrn, true
 }
 
 // HasNewsletterGrn returns a boolean if a field has been set.
 func (o *CustomerNewsletterRequest) HasNewsletterGrn() bool {
-	if o != nil && !isNil(o.NewsletterGrn) {
+	if o != nil && !IsNil(o.NewsletterGrn) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *CustomerNewsletterRequest) SetNewsletterGrn(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CustomerNewsletterRequest) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *CustomerNewsletterRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerNewsletterRequest) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CustomerNewsletterRequest) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *CustomerNewsletterRequest) SetName(v string) {
 
 // GetSubscribed returns the Subscribed field value if set, zero value otherwise.
 func (o *CustomerNewsletterRequest) GetSubscribed() bool {
-	if o == nil || isNil(o.Subscribed) {
+	if o == nil || IsNil(o.Subscribed) {
 		var ret bool
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *CustomerNewsletterRequest) GetSubscribed() bool {
 // GetSubscribedOk returns a tuple with the Subscribed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerNewsletterRequest) GetSubscribedOk() (*bool, bool) {
-	if o == nil || isNil(o.Subscribed) {
-    return nil, false
+	if o == nil || IsNil(o.Subscribed) {
+		return nil, false
 	}
 	return o.Subscribed, true
 }
 
 // HasSubscribed returns a boolean if a field has been set.
 func (o *CustomerNewsletterRequest) HasSubscribed() bool {
-	if o != nil && !isNil(o.Subscribed) {
+	if o != nil && !IsNil(o.Subscribed) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *CustomerNewsletterRequest) SetSubscribed(v bool) {
 }
 
 func (o CustomerNewsletterRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.NewsletterGrn) {
-		toSerialize["newsletterGrn"] = o.NewsletterGrn
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Subscribed) {
-		toSerialize["subscribed"] = o.Subscribed
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerNewsletterRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.NewsletterGrn) {
+		toSerialize["newsletterGrn"] = o.NewsletterGrn
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Subscribed) {
+		toSerialize["subscribed"] = o.Subscribed
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerNewsletterRequest struct {

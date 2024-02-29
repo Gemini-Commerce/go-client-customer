@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerPassword type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerPassword{}
+
 // CustomerPassword struct for CustomerPassword
 type CustomerPassword struct {
 	Data *map[string]string `json:"data,omitempty"`
@@ -28,7 +31,7 @@ type CustomerPassword struct {
 // will change when the set of required properties is changed
 func NewCustomerPassword() *CustomerPassword {
 	this := CustomerPassword{}
-	var type_ PasswordPasswordType = PASSWORDPASSWORDTYPE_UNKNOWN
+	var type_ PasswordPasswordType = UNKNOWN
 	this.Type = &type_
 	return &this
 }
@@ -38,14 +41,14 @@ func NewCustomerPassword() *CustomerPassword {
 // but it doesn't guarantee that properties required by API are set
 func NewCustomerPasswordWithDefaults() *CustomerPassword {
 	this := CustomerPassword{}
-	var type_ PasswordPasswordType = PASSWORDPASSWORDTYPE_UNKNOWN
+	var type_ PasswordPasswordType = UNKNOWN
 	this.Type = &type_
 	return &this
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
 func (o *CustomerPassword) GetData() map[string]string {
-	if o == nil || isNil(o.Data) {
+	if o == nil || IsNil(o.Data) {
 		var ret map[string]string
 		return ret
 	}
@@ -55,15 +58,15 @@ func (o *CustomerPassword) GetData() map[string]string {
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerPassword) GetDataOk() (*map[string]string, bool) {
-	if o == nil || isNil(o.Data) {
-    return nil, false
+	if o == nil || IsNil(o.Data) {
+		return nil, false
 	}
 	return o.Data, true
 }
 
 // HasData returns a boolean if a field has been set.
 func (o *CustomerPassword) HasData() bool {
-	if o != nil && !isNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *CustomerPassword) SetData(v map[string]string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *CustomerPassword) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -87,15 +90,15 @@ func (o *CustomerPassword) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerPassword) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
-    return nil, false
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
 	}
 	return o.Enabled, true
 }
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *CustomerPassword) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *CustomerPassword) SetEnabled(v bool) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *CustomerPassword) GetType() PasswordPasswordType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret PasswordPasswordType
 		return ret
 	}
@@ -119,15 +122,15 @@ func (o *CustomerPassword) GetType() PasswordPasswordType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerPassword) GetTypeOk() (*PasswordPasswordType, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *CustomerPassword) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -140,17 +143,25 @@ func (o *CustomerPassword) SetType(v PasswordPasswordType) {
 }
 
 func (o CustomerPassword) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Data) {
-		toSerialize["data"] = o.Data
-	}
-	if !isNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerPassword) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerPassword struct {

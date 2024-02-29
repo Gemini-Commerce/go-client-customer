@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerAddressEntity type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerAddressEntity{}
+
 // CustomerAddressEntity struct for CustomerAddressEntity
 type CustomerAddressEntity struct {
 	Em *CustomerEMFields `json:"em,omitempty"`
@@ -40,7 +43,7 @@ type CustomerAddressEntity struct {
 // will change when the set of required properties is changed
 func NewCustomerAddressEntity() *CustomerAddressEntity {
 	this := CustomerAddressEntity{}
-	var kind CustomerAddressEntityKind = CUSTOMERADDRESSENTITYKIND_SHIPPING
+	var kind CustomerAddressEntityKind = SHIPPING
 	this.Kind = &kind
 	return &this
 }
@@ -50,14 +53,14 @@ func NewCustomerAddressEntity() *CustomerAddressEntity {
 // but it doesn't guarantee that properties required by API are set
 func NewCustomerAddressEntityWithDefaults() *CustomerAddressEntity {
 	this := CustomerAddressEntity{}
-	var kind CustomerAddressEntityKind = CUSTOMERADDRESSENTITYKIND_SHIPPING
+	var kind CustomerAddressEntityKind = SHIPPING
 	this.Kind = &kind
 	return &this
 }
 
 // GetEm returns the Em field value if set, zero value otherwise.
 func (o *CustomerAddressEntity) GetEm() CustomerEMFields {
-	if o == nil || isNil(o.Em) {
+	if o == nil || IsNil(o.Em) {
 		var ret CustomerEMFields
 		return ret
 	}
@@ -67,15 +70,15 @@ func (o *CustomerAddressEntity) GetEm() CustomerEMFields {
 // GetEmOk returns a tuple with the Em field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressEntity) GetEmOk() (*CustomerEMFields, bool) {
-	if o == nil || isNil(o.Em) {
-    return nil, false
+	if o == nil || IsNil(o.Em) {
+		return nil, false
 	}
 	return o.Em, true
 }
 
 // HasEm returns a boolean if a field has been set.
 func (o *CustomerAddressEntity) HasEm() bool {
-	if o != nil && !isNil(o.Em) {
+	if o != nil && !IsNil(o.Em) {
 		return true
 	}
 
@@ -89,7 +92,7 @@ func (o *CustomerAddressEntity) SetEm(v CustomerEMFields) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CustomerAddressEntity) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -99,15 +102,15 @@ func (o *CustomerAddressEntity) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressEntity) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CustomerAddressEntity) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -121,7 +124,7 @@ func (o *CustomerAddressEntity) SetName(v string) {
 
 // GetSurname returns the Surname field value if set, zero value otherwise.
 func (o *CustomerAddressEntity) GetSurname() string {
-	if o == nil || isNil(o.Surname) {
+	if o == nil || IsNil(o.Surname) {
 		var ret string
 		return ret
 	}
@@ -131,15 +134,15 @@ func (o *CustomerAddressEntity) GetSurname() string {
 // GetSurnameOk returns a tuple with the Surname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressEntity) GetSurnameOk() (*string, bool) {
-	if o == nil || isNil(o.Surname) {
-    return nil, false
+	if o == nil || IsNil(o.Surname) {
+		return nil, false
 	}
 	return o.Surname, true
 }
 
 // HasSurname returns a boolean if a field has been set.
 func (o *CustomerAddressEntity) HasSurname() bool {
-	if o != nil && !isNil(o.Surname) {
+	if o != nil && !IsNil(o.Surname) {
 		return true
 	}
 
@@ -153,7 +156,7 @@ func (o *CustomerAddressEntity) SetSurname(v string) {
 
 // GetStreet returns the Street field value if set, zero value otherwise.
 func (o *CustomerAddressEntity) GetStreet() string {
-	if o == nil || isNil(o.Street) {
+	if o == nil || IsNil(o.Street) {
 		var ret string
 		return ret
 	}
@@ -163,15 +166,15 @@ func (o *CustomerAddressEntity) GetStreet() string {
 // GetStreetOk returns a tuple with the Street field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressEntity) GetStreetOk() (*string, bool) {
-	if o == nil || isNil(o.Street) {
-    return nil, false
+	if o == nil || IsNil(o.Street) {
+		return nil, false
 	}
 	return o.Street, true
 }
 
 // HasStreet returns a boolean if a field has been set.
 func (o *CustomerAddressEntity) HasStreet() bool {
-	if o != nil && !isNil(o.Street) {
+	if o != nil && !IsNil(o.Street) {
 		return true
 	}
 
@@ -185,7 +188,7 @@ func (o *CustomerAddressEntity) SetStreet(v string) {
 
 // GetNumber returns the Number field value if set, zero value otherwise.
 func (o *CustomerAddressEntity) GetNumber() string {
-	if o == nil || isNil(o.Number) {
+	if o == nil || IsNil(o.Number) {
 		var ret string
 		return ret
 	}
@@ -195,15 +198,15 @@ func (o *CustomerAddressEntity) GetNumber() string {
 // GetNumberOk returns a tuple with the Number field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressEntity) GetNumberOk() (*string, bool) {
-	if o == nil || isNil(o.Number) {
-    return nil, false
+	if o == nil || IsNil(o.Number) {
+		return nil, false
 	}
 	return o.Number, true
 }
 
 // HasNumber returns a boolean if a field has been set.
 func (o *CustomerAddressEntity) HasNumber() bool {
-	if o != nil && !isNil(o.Number) {
+	if o != nil && !IsNil(o.Number) {
 		return true
 	}
 
@@ -217,7 +220,7 @@ func (o *CustomerAddressEntity) SetNumber(v string) {
 
 // GetZip returns the Zip field value if set, zero value otherwise.
 func (o *CustomerAddressEntity) GetZip() string {
-	if o == nil || isNil(o.Zip) {
+	if o == nil || IsNil(o.Zip) {
 		var ret string
 		return ret
 	}
@@ -227,15 +230,15 @@ func (o *CustomerAddressEntity) GetZip() string {
 // GetZipOk returns a tuple with the Zip field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressEntity) GetZipOk() (*string, bool) {
-	if o == nil || isNil(o.Zip) {
-    return nil, false
+	if o == nil || IsNil(o.Zip) {
+		return nil, false
 	}
 	return o.Zip, true
 }
 
 // HasZip returns a boolean if a field has been set.
 func (o *CustomerAddressEntity) HasZip() bool {
-	if o != nil && !isNil(o.Zip) {
+	if o != nil && !IsNil(o.Zip) {
 		return true
 	}
 
@@ -249,7 +252,7 @@ func (o *CustomerAddressEntity) SetZip(v string) {
 
 // GetCity returns the City field value if set, zero value otherwise.
 func (o *CustomerAddressEntity) GetCity() string {
-	if o == nil || isNil(o.City) {
+	if o == nil || IsNil(o.City) {
 		var ret string
 		return ret
 	}
@@ -259,15 +262,15 @@ func (o *CustomerAddressEntity) GetCity() string {
 // GetCityOk returns a tuple with the City field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressEntity) GetCityOk() (*string, bool) {
-	if o == nil || isNil(o.City) {
-    return nil, false
+	if o == nil || IsNil(o.City) {
+		return nil, false
 	}
 	return o.City, true
 }
 
 // HasCity returns a boolean if a field has been set.
 func (o *CustomerAddressEntity) HasCity() bool {
-	if o != nil && !isNil(o.City) {
+	if o != nil && !IsNil(o.City) {
 		return true
 	}
 
@@ -281,7 +284,7 @@ func (o *CustomerAddressEntity) SetCity(v string) {
 
 // GetProvince returns the Province field value if set, zero value otherwise.
 func (o *CustomerAddressEntity) GetProvince() string {
-	if o == nil || isNil(o.Province) {
+	if o == nil || IsNil(o.Province) {
 		var ret string
 		return ret
 	}
@@ -291,15 +294,15 @@ func (o *CustomerAddressEntity) GetProvince() string {
 // GetProvinceOk returns a tuple with the Province field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressEntity) GetProvinceOk() (*string, bool) {
-	if o == nil || isNil(o.Province) {
-    return nil, false
+	if o == nil || IsNil(o.Province) {
+		return nil, false
 	}
 	return o.Province, true
 }
 
 // HasProvince returns a boolean if a field has been set.
 func (o *CustomerAddressEntity) HasProvince() bool {
-	if o != nil && !isNil(o.Province) {
+	if o != nil && !IsNil(o.Province) {
 		return true
 	}
 
@@ -313,7 +316,7 @@ func (o *CustomerAddressEntity) SetProvince(v string) {
 
 // GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
 func (o *CustomerAddressEntity) GetPhoneNumber() string {
-	if o == nil || isNil(o.PhoneNumber) {
+	if o == nil || IsNil(o.PhoneNumber) {
 		var ret string
 		return ret
 	}
@@ -323,15 +326,15 @@ func (o *CustomerAddressEntity) GetPhoneNumber() string {
 // GetPhoneNumberOk returns a tuple with the PhoneNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressEntity) GetPhoneNumberOk() (*string, bool) {
-	if o == nil || isNil(o.PhoneNumber) {
-    return nil, false
+	if o == nil || IsNil(o.PhoneNumber) {
+		return nil, false
 	}
 	return o.PhoneNumber, true
 }
 
 // HasPhoneNumber returns a boolean if a field has been set.
 func (o *CustomerAddressEntity) HasPhoneNumber() bool {
-	if o != nil && !isNil(o.PhoneNumber) {
+	if o != nil && !IsNil(o.PhoneNumber) {
 		return true
 	}
 
@@ -345,7 +348,7 @@ func (o *CustomerAddressEntity) SetPhoneNumber(v string) {
 
 // GetFiscalCode returns the FiscalCode field value if set, zero value otherwise.
 func (o *CustomerAddressEntity) GetFiscalCode() string {
-	if o == nil || isNil(o.FiscalCode) {
+	if o == nil || IsNil(o.FiscalCode) {
 		var ret string
 		return ret
 	}
@@ -355,15 +358,15 @@ func (o *CustomerAddressEntity) GetFiscalCode() string {
 // GetFiscalCodeOk returns a tuple with the FiscalCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressEntity) GetFiscalCodeOk() (*string, bool) {
-	if o == nil || isNil(o.FiscalCode) {
-    return nil, false
+	if o == nil || IsNil(o.FiscalCode) {
+		return nil, false
 	}
 	return o.FiscalCode, true
 }
 
 // HasFiscalCode returns a boolean if a field has been set.
 func (o *CustomerAddressEntity) HasFiscalCode() bool {
-	if o != nil && !isNil(o.FiscalCode) {
+	if o != nil && !IsNil(o.FiscalCode) {
 		return true
 	}
 
@@ -377,7 +380,7 @@ func (o *CustomerAddressEntity) SetFiscalCode(v string) {
 
 // GetVatNumber returns the VatNumber field value if set, zero value otherwise.
 func (o *CustomerAddressEntity) GetVatNumber() string {
-	if o == nil || isNil(o.VatNumber) {
+	if o == nil || IsNil(o.VatNumber) {
 		var ret string
 		return ret
 	}
@@ -387,15 +390,15 @@ func (o *CustomerAddressEntity) GetVatNumber() string {
 // GetVatNumberOk returns a tuple with the VatNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressEntity) GetVatNumberOk() (*string, bool) {
-	if o == nil || isNil(o.VatNumber) {
-    return nil, false
+	if o == nil || IsNil(o.VatNumber) {
+		return nil, false
 	}
 	return o.VatNumber, true
 }
 
 // HasVatNumber returns a boolean if a field has been set.
 func (o *CustomerAddressEntity) HasVatNumber() bool {
-	if o != nil && !isNil(o.VatNumber) {
+	if o != nil && !IsNil(o.VatNumber) {
 		return true
 	}
 
@@ -409,7 +412,7 @@ func (o *CustomerAddressEntity) SetVatNumber(v string) {
 
 // GetKind returns the Kind field value if set, zero value otherwise.
 func (o *CustomerAddressEntity) GetKind() CustomerAddressEntityKind {
-	if o == nil || isNil(o.Kind) {
+	if o == nil || IsNil(o.Kind) {
 		var ret CustomerAddressEntityKind
 		return ret
 	}
@@ -419,15 +422,15 @@ func (o *CustomerAddressEntity) GetKind() CustomerAddressEntityKind {
 // GetKindOk returns a tuple with the Kind field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressEntity) GetKindOk() (*CustomerAddressEntityKind, bool) {
-	if o == nil || isNil(o.Kind) {
-    return nil, false
+	if o == nil || IsNil(o.Kind) {
+		return nil, false
 	}
 	return o.Kind, true
 }
 
 // HasKind returns a boolean if a field has been set.
 func (o *CustomerAddressEntity) HasKind() bool {
-	if o != nil && !isNil(o.Kind) {
+	if o != nil && !IsNil(o.Kind) {
 		return true
 	}
 
@@ -441,7 +444,7 @@ func (o *CustomerAddressEntity) SetKind(v CustomerAddressEntityKind) {
 
 // GetDefault returns the Default field value if set, zero value otherwise.
 func (o *CustomerAddressEntity) GetDefault() bool {
-	if o == nil || isNil(o.Default) {
+	if o == nil || IsNil(o.Default) {
 		var ret bool
 		return ret
 	}
@@ -451,15 +454,15 @@ func (o *CustomerAddressEntity) GetDefault() bool {
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressEntity) GetDefaultOk() (*bool, bool) {
-	if o == nil || isNil(o.Default) {
-    return nil, false
+	if o == nil || IsNil(o.Default) {
+		return nil, false
 	}
 	return o.Default, true
 }
 
 // HasDefault returns a boolean if a field has been set.
 func (o *CustomerAddressEntity) HasDefault() bool {
-	if o != nil && !isNil(o.Default) {
+	if o != nil && !IsNil(o.Default) {
 		return true
 	}
 
@@ -473,7 +476,7 @@ func (o *CustomerAddressEntity) SetDefault(v bool) {
 
 // GetCountry returns the Country field value if set, zero value otherwise.
 func (o *CustomerAddressEntity) GetCountry() string {
-	if o == nil || isNil(o.Country) {
+	if o == nil || IsNil(o.Country) {
 		var ret string
 		return ret
 	}
@@ -483,15 +486,15 @@ func (o *CustomerAddressEntity) GetCountry() string {
 // GetCountryOk returns a tuple with the Country field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressEntity) GetCountryOk() (*string, bool) {
-	if o == nil || isNil(o.Country) {
-    return nil, false
+	if o == nil || IsNil(o.Country) {
+		return nil, false
 	}
 	return o.Country, true
 }
 
 // HasCountry returns a boolean if a field has been set.
 func (o *CustomerAddressEntity) HasCountry() bool {
-	if o != nil && !isNil(o.Country) {
+	if o != nil && !IsNil(o.Country) {
 		return true
 	}
 
@@ -505,7 +508,7 @@ func (o *CustomerAddressEntity) SetCountry(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *CustomerAddressEntity) GetAttributes() map[string]ProtobufAny {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]ProtobufAny
 		return ret
 	}
@@ -515,15 +518,15 @@ func (o *CustomerAddressEntity) GetAttributes() map[string]ProtobufAny {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressEntity) GetAttributesOk() (*map[string]ProtobufAny, bool) {
-	if o == nil || isNil(o.Attributes) {
-    return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return nil, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *CustomerAddressEntity) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -536,53 +539,61 @@ func (o *CustomerAddressEntity) SetAttributes(v map[string]ProtobufAny) {
 }
 
 func (o CustomerAddressEntity) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Em) {
-		toSerialize["em"] = o.Em
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Surname) {
-		toSerialize["surname"] = o.Surname
-	}
-	if !isNil(o.Street) {
-		toSerialize["street"] = o.Street
-	}
-	if !isNil(o.Number) {
-		toSerialize["number"] = o.Number
-	}
-	if !isNil(o.Zip) {
-		toSerialize["zip"] = o.Zip
-	}
-	if !isNil(o.City) {
-		toSerialize["city"] = o.City
-	}
-	if !isNil(o.Province) {
-		toSerialize["province"] = o.Province
-	}
-	if !isNil(o.PhoneNumber) {
-		toSerialize["phoneNumber"] = o.PhoneNumber
-	}
-	if !isNil(o.FiscalCode) {
-		toSerialize["fiscalCode"] = o.FiscalCode
-	}
-	if !isNil(o.VatNumber) {
-		toSerialize["vatNumber"] = o.VatNumber
-	}
-	if !isNil(o.Kind) {
-		toSerialize["kind"] = o.Kind
-	}
-	if !isNil(o.Default) {
-		toSerialize["default"] = o.Default
-	}
-	if !isNil(o.Country) {
-		toSerialize["country"] = o.Country
-	}
-	if !isNil(o.Attributes) {
-		toSerialize["attributes"] = o.Attributes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerAddressEntity) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Em) {
+		toSerialize["em"] = o.Em
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Surname) {
+		toSerialize["surname"] = o.Surname
+	}
+	if !IsNil(o.Street) {
+		toSerialize["street"] = o.Street
+	}
+	if !IsNil(o.Number) {
+		toSerialize["number"] = o.Number
+	}
+	if !IsNil(o.Zip) {
+		toSerialize["zip"] = o.Zip
+	}
+	if !IsNil(o.City) {
+		toSerialize["city"] = o.City
+	}
+	if !IsNil(o.Province) {
+		toSerialize["province"] = o.Province
+	}
+	if !IsNil(o.PhoneNumber) {
+		toSerialize["phoneNumber"] = o.PhoneNumber
+	}
+	if !IsNil(o.FiscalCode) {
+		toSerialize["fiscalCode"] = o.FiscalCode
+	}
+	if !IsNil(o.VatNumber) {
+		toSerialize["vatNumber"] = o.VatNumber
+	}
+	if !IsNil(o.Kind) {
+		toSerialize["kind"] = o.Kind
+	}
+	if !IsNil(o.Default) {
+		toSerialize["default"] = o.Default
+	}
+	if !IsNil(o.Country) {
+		toSerialize["country"] = o.Country
+	}
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerAddressEntity struct {

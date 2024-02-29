@@ -15,11 +15,14 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerUpdateSubscriberRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerUpdateSubscriberRequest{}
+
 // CustomerUpdateSubscriberRequest struct for CustomerUpdateSubscriberRequest
 type CustomerUpdateSubscriberRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
 	Subscriber *CustomerSubscriberResponseWithNewsletterRequest `json:"subscriber,omitempty"`
-	FieldMask []string `json:"fieldMask,omitempty"`
+	FieldMask *string `json:"fieldMask,omitempty"`
 }
 
 // NewCustomerUpdateSubscriberRequest instantiates a new CustomerUpdateSubscriberRequest object
@@ -41,7 +44,7 @@ func NewCustomerUpdateSubscriberRequestWithDefaults() *CustomerUpdateSubscriberR
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerUpdateSubscriberRequest) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *CustomerUpdateSubscriberRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerUpdateSubscriberRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerUpdateSubscriberRequest) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *CustomerUpdateSubscriberRequest) SetTenantId(v string) {
 
 // GetSubscriber returns the Subscriber field value if set, zero value otherwise.
 func (o *CustomerUpdateSubscriberRequest) GetSubscriber() CustomerSubscriberResponseWithNewsletterRequest {
-	if o == nil || isNil(o.Subscriber) {
+	if o == nil || IsNil(o.Subscriber) {
 		var ret CustomerSubscriberResponseWithNewsletterRequest
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *CustomerUpdateSubscriberRequest) GetSubscriber() CustomerSubscriberResp
 // GetSubscriberOk returns a tuple with the Subscriber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerUpdateSubscriberRequest) GetSubscriberOk() (*CustomerSubscriberResponseWithNewsletterRequest, bool) {
-	if o == nil || isNil(o.Subscriber) {
-    return nil, false
+	if o == nil || IsNil(o.Subscriber) {
+		return nil, false
 	}
 	return o.Subscriber, true
 }
 
 // HasSubscriber returns a boolean if a field has been set.
 func (o *CustomerUpdateSubscriberRequest) HasSubscriber() bool {
-	if o != nil && !isNil(o.Subscriber) {
+	if o != nil && !IsNil(o.Subscriber) {
 		return true
 	}
 
@@ -104,49 +107,57 @@ func (o *CustomerUpdateSubscriberRequest) SetSubscriber(v CustomerSubscriberResp
 }
 
 // GetFieldMask returns the FieldMask field value if set, zero value otherwise.
-func (o *CustomerUpdateSubscriberRequest) GetFieldMask() []string {
-	if o == nil || isNil(o.FieldMask) {
-		var ret []string
+func (o *CustomerUpdateSubscriberRequest) GetFieldMask() string {
+	if o == nil || IsNil(o.FieldMask) {
+		var ret string
 		return ret
 	}
-	return o.FieldMask
+	return *o.FieldMask
 }
 
 // GetFieldMaskOk returns a tuple with the FieldMask field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CustomerUpdateSubscriberRequest) GetFieldMaskOk() ([]string, bool) {
-	if o == nil || isNil(o.FieldMask) {
-    return nil, false
+func (o *CustomerUpdateSubscriberRequest) GetFieldMaskOk() (*string, bool) {
+	if o == nil || IsNil(o.FieldMask) {
+		return nil, false
 	}
 	return o.FieldMask, true
 }
 
 // HasFieldMask returns a boolean if a field has been set.
 func (o *CustomerUpdateSubscriberRequest) HasFieldMask() bool {
-	if o != nil && !isNil(o.FieldMask) {
+	if o != nil && !IsNil(o.FieldMask) {
 		return true
 	}
 
 	return false
 }
 
-// SetFieldMask gets a reference to the given []string and assigns it to the FieldMask field.
-func (o *CustomerUpdateSubscriberRequest) SetFieldMask(v []string) {
-	o.FieldMask = v
+// SetFieldMask gets a reference to the given string and assigns it to the FieldMask field.
+func (o *CustomerUpdateSubscriberRequest) SetFieldMask(v string) {
+	o.FieldMask = &v
 }
 
 func (o CustomerUpdateSubscriberRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !isNil(o.Subscriber) {
-		toSerialize["subscriber"] = o.Subscriber
-	}
-	if !isNil(o.FieldMask) {
-		toSerialize["fieldMask"] = o.FieldMask
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerUpdateSubscriberRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.Subscriber) {
+		toSerialize["subscriber"] = o.Subscriber
+	}
+	if !IsNil(o.FieldMask) {
+		toSerialize["fieldMask"] = o.FieldMask
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerUpdateSubscriberRequest struct {

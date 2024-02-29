@@ -21,9 +21,9 @@ type CustomerPermission string
 
 // List of customerPermission
 const (
-	CUSTOMERPERMISSION_UNKNOWN CustomerPermission = "PERMISSION_UNKNOWN"
-	CUSTOMERPERMISSION_LOGIN CustomerPermission = "PERMISSION_LOGIN"
-	CUSTOMERPERMISSION_BUY CustomerPermission = "PERMISSION_BUY"
+	UNKNOWN CustomerPermission = "PERMISSION_UNKNOWN"
+	LOGIN CustomerPermission = "PERMISSION_LOGIN"
+	BUY CustomerPermission = "PERMISSION_BUY"
 )
 
 // All allowed values of CustomerPermission enum

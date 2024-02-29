@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Newsletters**| [**[]CustomerNewsletterRequest**](CustomerNewsletterRequest.md) |   | [optional]
 **Market**| **string** |   | [optional]
 **PreferredLocale**| **string** |   | [optional]
+**Consent**| [**CustomerCreateConsentRequest**](CustomerCreateConsentRequest.md) |   | [optional]
 
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

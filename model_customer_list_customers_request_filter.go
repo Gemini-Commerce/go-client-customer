@@ -15,11 +15,15 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerListCustomersRequestFilter type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerListCustomersRequestFilter{}
+
 // CustomerListCustomersRequestFilter struct for CustomerListCustomersRequestFilter
 type CustomerListCustomersRequestFilter struct {
 	Genders []string `json:"genders,omitempty"`
 	CreatedAt []ListCustomersRequestFilterDate `json:"createdAt,omitempty"`
 	Countries []string `json:"countries,omitempty"`
+	AgentGrn *string `json:"agentGrn,omitempty"`
 }
 
 // NewCustomerListCustomersRequestFilter instantiates a new CustomerListCustomersRequestFilter object
@@ -41,7 +45,7 @@ func NewCustomerListCustomersRequestFilterWithDefaults() *CustomerListCustomersR
 
 // GetGenders returns the Genders field value if set, zero value otherwise.
 func (o *CustomerListCustomersRequestFilter) GetGenders() []string {
-	if o == nil || isNil(o.Genders) {
+	if o == nil || IsNil(o.Genders) {
 		var ret []string
 		return ret
 	}
@@ -51,15 +55,15 @@ func (o *CustomerListCustomersRequestFilter) GetGenders() []string {
 // GetGendersOk returns a tuple with the Genders field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerListCustomersRequestFilter) GetGendersOk() ([]string, bool) {
-	if o == nil || isNil(o.Genders) {
-    return nil, false
+	if o == nil || IsNil(o.Genders) {
+		return nil, false
 	}
 	return o.Genders, true
 }
 
 // HasGenders returns a boolean if a field has been set.
 func (o *CustomerListCustomersRequestFilter) HasGenders() bool {
-	if o != nil && !isNil(o.Genders) {
+	if o != nil && !IsNil(o.Genders) {
 		return true
 	}
 
@@ -73,7 +77,7 @@ func (o *CustomerListCustomersRequestFilter) SetGenders(v []string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *CustomerListCustomersRequestFilter) GetCreatedAt() []ListCustomersRequestFilterDate {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret []ListCustomersRequestFilterDate
 		return ret
 	}
@@ -83,15 +87,15 @@ func (o *CustomerListCustomersRequestFilter) GetCreatedAt() []ListCustomersReque
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerListCustomersRequestFilter) GetCreatedAtOk() ([]ListCustomersRequestFilterDate, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *CustomerListCustomersRequestFilter) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -105,7 +109,7 @@ func (o *CustomerListCustomersRequestFilter) SetCreatedAt(v []ListCustomersReque
 
 // GetCountries returns the Countries field value if set, zero value otherwise.
 func (o *CustomerListCustomersRequestFilter) GetCountries() []string {
-	if o == nil || isNil(o.Countries) {
+	if o == nil || IsNil(o.Countries) {
 		var ret []string
 		return ret
 	}
@@ -115,15 +119,15 @@ func (o *CustomerListCustomersRequestFilter) GetCountries() []string {
 // GetCountriesOk returns a tuple with the Countries field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerListCustomersRequestFilter) GetCountriesOk() ([]string, bool) {
-	if o == nil || isNil(o.Countries) {
-    return nil, false
+	if o == nil || IsNil(o.Countries) {
+		return nil, false
 	}
 	return o.Countries, true
 }
 
 // HasCountries returns a boolean if a field has been set.
 func (o *CustomerListCustomersRequestFilter) HasCountries() bool {
-	if o != nil && !isNil(o.Countries) {
+	if o != nil && !IsNil(o.Countries) {
 		return true
 	}
 
@@ -135,18 +139,61 @@ func (o *CustomerListCustomersRequestFilter) SetCountries(v []string) {
 	o.Countries = v
 }
 
+// GetAgentGrn returns the AgentGrn field value if set, zero value otherwise.
+func (o *CustomerListCustomersRequestFilter) GetAgentGrn() string {
+	if o == nil || IsNil(o.AgentGrn) {
+		var ret string
+		return ret
+	}
+	return *o.AgentGrn
+}
+
+// GetAgentGrnOk returns a tuple with the AgentGrn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerListCustomersRequestFilter) GetAgentGrnOk() (*string, bool) {
+	if o == nil || IsNil(o.AgentGrn) {
+		return nil, false
+	}
+	return o.AgentGrn, true
+}
+
+// HasAgentGrn returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequestFilter) HasAgentGrn() bool {
+	if o != nil && !IsNil(o.AgentGrn) {
+		return true
+	}
+
+	return false
+}
+
+// SetAgentGrn gets a reference to the given string and assigns it to the AgentGrn field.
+func (o *CustomerListCustomersRequestFilter) SetAgentGrn(v string) {
+	o.AgentGrn = &v
+}
+
 func (o CustomerListCustomersRequestFilter) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Genders) {
-		toSerialize["genders"] = o.Genders
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.Countries) {
-		toSerialize["countries"] = o.Countries
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerListCustomersRequestFilter) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Genders) {
+		toSerialize["genders"] = o.Genders
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.Countries) {
+		toSerialize["countries"] = o.Countries
+	}
+	if !IsNil(o.AgentGrn) {
+		toSerialize["agentGrn"] = o.AgentGrn
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerListCustomersRequestFilter struct {

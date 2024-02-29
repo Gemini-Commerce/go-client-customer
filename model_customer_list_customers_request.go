@@ -15,13 +15,16 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerListCustomersRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerListCustomersRequest{}
+
 // CustomerListCustomersRequest struct for CustomerListCustomersRequest
 type CustomerListCustomersRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
 	PageSize *int64 `json:"pageSize,omitempty"`
 	PageToken *string `json:"pageToken,omitempty"`
 	Filters *CustomerListCustomersRequestFilter `json:"filters,omitempty"`
-	FilterMask []string `json:"filterMask,omitempty"`
+	FilterMask *string `json:"filterMask,omitempty"`
 }
 
 // NewCustomerListCustomersRequest instantiates a new CustomerListCustomersRequest object
@@ -43,7 +46,7 @@ func NewCustomerListCustomersRequestWithDefaults() *CustomerListCustomersRequest
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerListCustomersRequest) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *CustomerListCustomersRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerListCustomersRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerListCustomersRequest) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *CustomerListCustomersRequest) SetTenantId(v string) {
 
 // GetPageSize returns the PageSize field value if set, zero value otherwise.
 func (o *CustomerListCustomersRequest) GetPageSize() int64 {
-	if o == nil || isNil(o.PageSize) {
+	if o == nil || IsNil(o.PageSize) {
 		var ret int64
 		return ret
 	}
@@ -85,15 +88,15 @@ func (o *CustomerListCustomersRequest) GetPageSize() int64 {
 // GetPageSizeOk returns a tuple with the PageSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerListCustomersRequest) GetPageSizeOk() (*int64, bool) {
-	if o == nil || isNil(o.PageSize) {
-    return nil, false
+	if o == nil || IsNil(o.PageSize) {
+		return nil, false
 	}
 	return o.PageSize, true
 }
 
 // HasPageSize returns a boolean if a field has been set.
 func (o *CustomerListCustomersRequest) HasPageSize() bool {
-	if o != nil && !isNil(o.PageSize) {
+	if o != nil && !IsNil(o.PageSize) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *CustomerListCustomersRequest) SetPageSize(v int64) {
 
 // GetPageToken returns the PageToken field value if set, zero value otherwise.
 func (o *CustomerListCustomersRequest) GetPageToken() string {
-	if o == nil || isNil(o.PageToken) {
+	if o == nil || IsNil(o.PageToken) {
 		var ret string
 		return ret
 	}
@@ -117,15 +120,15 @@ func (o *CustomerListCustomersRequest) GetPageToken() string {
 // GetPageTokenOk returns a tuple with the PageToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerListCustomersRequest) GetPageTokenOk() (*string, bool) {
-	if o == nil || isNil(o.PageToken) {
-    return nil, false
+	if o == nil || IsNil(o.PageToken) {
+		return nil, false
 	}
 	return o.PageToken, true
 }
 
 // HasPageToken returns a boolean if a field has been set.
 func (o *CustomerListCustomersRequest) HasPageToken() bool {
-	if o != nil && !isNil(o.PageToken) {
+	if o != nil && !IsNil(o.PageToken) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *CustomerListCustomersRequest) SetPageToken(v string) {
 
 // GetFilters returns the Filters field value if set, zero value otherwise.
 func (o *CustomerListCustomersRequest) GetFilters() CustomerListCustomersRequestFilter {
-	if o == nil || isNil(o.Filters) {
+	if o == nil || IsNil(o.Filters) {
 		var ret CustomerListCustomersRequestFilter
 		return ret
 	}
@@ -149,15 +152,15 @@ func (o *CustomerListCustomersRequest) GetFilters() CustomerListCustomersRequest
 // GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerListCustomersRequest) GetFiltersOk() (*CustomerListCustomersRequestFilter, bool) {
-	if o == nil || isNil(o.Filters) {
-    return nil, false
+	if o == nil || IsNil(o.Filters) {
+		return nil, false
 	}
 	return o.Filters, true
 }
 
 // HasFilters returns a boolean if a field has been set.
 func (o *CustomerListCustomersRequest) HasFilters() bool {
-	if o != nil && !isNil(o.Filters) {
+	if o != nil && !IsNil(o.Filters) {
 		return true
 	}
 
@@ -170,55 +173,63 @@ func (o *CustomerListCustomersRequest) SetFilters(v CustomerListCustomersRequest
 }
 
 // GetFilterMask returns the FilterMask field value if set, zero value otherwise.
-func (o *CustomerListCustomersRequest) GetFilterMask() []string {
-	if o == nil || isNil(o.FilterMask) {
-		var ret []string
+func (o *CustomerListCustomersRequest) GetFilterMask() string {
+	if o == nil || IsNil(o.FilterMask) {
+		var ret string
 		return ret
 	}
-	return o.FilterMask
+	return *o.FilterMask
 }
 
 // GetFilterMaskOk returns a tuple with the FilterMask field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CustomerListCustomersRequest) GetFilterMaskOk() ([]string, bool) {
-	if o == nil || isNil(o.FilterMask) {
-    return nil, false
+func (o *CustomerListCustomersRequest) GetFilterMaskOk() (*string, bool) {
+	if o == nil || IsNil(o.FilterMask) {
+		return nil, false
 	}
 	return o.FilterMask, true
 }
 
 // HasFilterMask returns a boolean if a field has been set.
 func (o *CustomerListCustomersRequest) HasFilterMask() bool {
-	if o != nil && !isNil(o.FilterMask) {
+	if o != nil && !IsNil(o.FilterMask) {
 		return true
 	}
 
 	return false
 }
 
-// SetFilterMask gets a reference to the given []string and assigns it to the FilterMask field.
-func (o *CustomerListCustomersRequest) SetFilterMask(v []string) {
-	o.FilterMask = v
+// SetFilterMask gets a reference to the given string and assigns it to the FilterMask field.
+func (o *CustomerListCustomersRequest) SetFilterMask(v string) {
+	o.FilterMask = &v
 }
 
 func (o CustomerListCustomersRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !isNil(o.PageSize) {
-		toSerialize["pageSize"] = o.PageSize
-	}
-	if !isNil(o.PageToken) {
-		toSerialize["pageToken"] = o.PageToken
-	}
-	if !isNil(o.Filters) {
-		toSerialize["filters"] = o.Filters
-	}
-	if !isNil(o.FilterMask) {
-		toSerialize["filterMask"] = o.FilterMask
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerListCustomersRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.PageSize) {
+		toSerialize["pageSize"] = o.PageSize
+	}
+	if !IsNil(o.PageToken) {
+		toSerialize["pageToken"] = o.PageToken
+	}
+	if !IsNil(o.Filters) {
+		toSerialize["filters"] = o.Filters
+	}
+	if !IsNil(o.FilterMask) {
+		toSerialize["filterMask"] = o.FilterMask
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerListCustomersRequest struct {

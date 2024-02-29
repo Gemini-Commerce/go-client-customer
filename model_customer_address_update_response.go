@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerAddressUpdateResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerAddressUpdateResponse{}
+
 // CustomerAddressUpdateResponse struct for CustomerAddressUpdateResponse
 type CustomerAddressUpdateResponse struct {
 	Customer *CustomerCustomerResponse `json:"customer,omitempty"`
@@ -39,7 +42,7 @@ func NewCustomerAddressUpdateResponseWithDefaults() *CustomerAddressUpdateRespon
 
 // GetCustomer returns the Customer field value if set, zero value otherwise.
 func (o *CustomerAddressUpdateResponse) GetCustomer() CustomerCustomerResponse {
-	if o == nil || isNil(o.Customer) {
+	if o == nil || IsNil(o.Customer) {
 		var ret CustomerCustomerResponse
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *CustomerAddressUpdateResponse) GetCustomer() CustomerCustomerResponse {
 // GetCustomerOk returns a tuple with the Customer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressUpdateResponse) GetCustomerOk() (*CustomerCustomerResponse, bool) {
-	if o == nil || isNil(o.Customer) {
-    return nil, false
+	if o == nil || IsNil(o.Customer) {
+		return nil, false
 	}
 	return o.Customer, true
 }
 
 // HasCustomer returns a boolean if a field has been set.
 func (o *CustomerAddressUpdateResponse) HasCustomer() bool {
-	if o != nil && !isNil(o.Customer) {
+	if o != nil && !IsNil(o.Customer) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *CustomerAddressUpdateResponse) SetCustomer(v CustomerCustomerResponse) 
 }
 
 func (o CustomerAddressUpdateResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Customer) {
-		toSerialize["customer"] = o.Customer
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerAddressUpdateResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Customer) {
+		toSerialize["customer"] = o.Customer
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerAddressUpdateResponse struct {

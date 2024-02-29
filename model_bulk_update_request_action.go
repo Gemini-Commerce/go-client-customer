@@ -21,9 +21,9 @@ type BulkUpdateRequestAction string
 
 // List of BulkUpdateRequestAction
 const (
-	BULKUPDATEREQUESTACTION_ENABLE BulkUpdateRequestAction = "ENABLE"
-	BULKUPDATEREQUESTACTION_DISABLE BulkUpdateRequestAction = "DISABLE"
-	BULKUPDATEREQUESTACTION_DELETE BulkUpdateRequestAction = "DELETE"
+	ENABLE BulkUpdateRequestAction = "ENABLE"
+	DISABLE BulkUpdateRequestAction = "DISABLE"
+	DELETE BulkUpdateRequestAction = "DELETE"
 )
 
 // All allowed values of BulkUpdateRequestAction enum

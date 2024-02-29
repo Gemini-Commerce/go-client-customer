@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the ListCustomersRequestFilterDate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ListCustomersRequestFilterDate{}
+
 // ListCustomersRequestFilterDate struct for ListCustomersRequestFilterDate
 type ListCustomersRequestFilterDate struct {
 	From *time.Time `json:"from,omitempty"`
@@ -41,7 +44,7 @@ func NewListCustomersRequestFilterDateWithDefaults() *ListCustomersRequestFilter
 
 // GetFrom returns the From field value if set, zero value otherwise.
 func (o *ListCustomersRequestFilterDate) GetFrom() time.Time {
-	if o == nil || isNil(o.From) {
+	if o == nil || IsNil(o.From) {
 		var ret time.Time
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *ListCustomersRequestFilterDate) GetFrom() time.Time {
 // GetFromOk returns a tuple with the From field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListCustomersRequestFilterDate) GetFromOk() (*time.Time, bool) {
-	if o == nil || isNil(o.From) {
-    return nil, false
+	if o == nil || IsNil(o.From) {
+		return nil, false
 	}
 	return o.From, true
 }
 
 // HasFrom returns a boolean if a field has been set.
 func (o *ListCustomersRequestFilterDate) HasFrom() bool {
-	if o != nil && !isNil(o.From) {
+	if o != nil && !IsNil(o.From) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ListCustomersRequestFilterDate) SetFrom(v time.Time) {
 
 // GetTo returns the To field value if set, zero value otherwise.
 func (o *ListCustomersRequestFilterDate) GetTo() time.Time {
-	if o == nil || isNil(o.To) {
+	if o == nil || IsNil(o.To) {
 		var ret time.Time
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *ListCustomersRequestFilterDate) GetTo() time.Time {
 // GetToOk returns a tuple with the To field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListCustomersRequestFilterDate) GetToOk() (*time.Time, bool) {
-	if o == nil || isNil(o.To) {
-    return nil, false
+	if o == nil || IsNil(o.To) {
+		return nil, false
 	}
 	return o.To, true
 }
 
 // HasTo returns a boolean if a field has been set.
 func (o *ListCustomersRequestFilterDate) HasTo() bool {
-	if o != nil && !isNil(o.To) {
+	if o != nil && !IsNil(o.To) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *ListCustomersRequestFilterDate) SetTo(v time.Time) {
 }
 
 func (o ListCustomersRequestFilterDate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.From) {
-		toSerialize["from"] = o.From
-	}
-	if !isNil(o.To) {
-		toSerialize["to"] = o.To
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ListCustomersRequestFilterDate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.From) {
+		toSerialize["from"] = o.From
+	}
+	if !IsNil(o.To) {
+		toSerialize["to"] = o.To
+	}
+	return toSerialize, nil
 }
 
 type NullableListCustomersRequestFilterDate struct {

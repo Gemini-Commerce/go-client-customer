@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerEMFields type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerEMFields{}
+
 // CustomerEMFields struct for CustomerEMFields
 type CustomerEMFields struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -41,7 +44,7 @@ func NewCustomerEMFieldsWithDefaults() *CustomerEMFields {
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerEMFields) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *CustomerEMFields) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerEMFields) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerEMFields) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *CustomerEMFields) SetTenantId(v string) {
 
 // GetEntityType returns the EntityType field value if set, zero value otherwise.
 func (o *CustomerEMFields) GetEntityType() string {
-	if o == nil || isNil(o.EntityType) {
+	if o == nil || IsNil(o.EntityType) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *CustomerEMFields) GetEntityType() string {
 // GetEntityTypeOk returns a tuple with the EntityType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerEMFields) GetEntityTypeOk() (*string, bool) {
-	if o == nil || isNil(o.EntityType) {
-    return nil, false
+	if o == nil || IsNil(o.EntityType) {
+		return nil, false
 	}
 	return o.EntityType, true
 }
 
 // HasEntityType returns a boolean if a field has been set.
 func (o *CustomerEMFields) HasEntityType() bool {
-	if o != nil && !isNil(o.EntityType) {
+	if o != nil && !IsNil(o.EntityType) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *CustomerEMFields) SetEntityType(v string) {
 
 // GetEntityCode returns the EntityCode field value if set, zero value otherwise.
 func (o *CustomerEMFields) GetEntityCode() string {
-	if o == nil || isNil(o.EntityCode) {
+	if o == nil || IsNil(o.EntityCode) {
 		var ret string
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *CustomerEMFields) GetEntityCode() string {
 // GetEntityCodeOk returns a tuple with the EntityCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerEMFields) GetEntityCodeOk() (*string, bool) {
-	if o == nil || isNil(o.EntityCode) {
-    return nil, false
+	if o == nil || IsNil(o.EntityCode) {
+		return nil, false
 	}
 	return o.EntityCode, true
 }
 
 // HasEntityCode returns a boolean if a field has been set.
 func (o *CustomerEMFields) HasEntityCode() bool {
-	if o != nil && !isNil(o.EntityCode) {
+	if o != nil && !IsNil(o.EntityCode) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *CustomerEMFields) SetEntityCode(v string) {
 }
 
 func (o CustomerEMFields) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !isNil(o.EntityType) {
-		toSerialize["entityType"] = o.EntityType
-	}
-	if !isNil(o.EntityCode) {
-		toSerialize["entityCode"] = o.EntityCode
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerEMFields) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.EntityType) {
+		toSerialize["entityType"] = o.EntityType
+	}
+	if !IsNil(o.EntityCode) {
+		toSerialize["entityCode"] = o.EntityCode
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerEMFields struct {

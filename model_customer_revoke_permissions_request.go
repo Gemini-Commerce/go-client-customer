@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerRevokePermissionsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerRevokePermissionsRequest{}
+
 // CustomerRevokePermissionsRequest struct for CustomerRevokePermissionsRequest
 type CustomerRevokePermissionsRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -41,7 +44,7 @@ func NewCustomerRevokePermissionsRequestWithDefaults() *CustomerRevokePermission
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerRevokePermissionsRequest) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *CustomerRevokePermissionsRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerRevokePermissionsRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerRevokePermissionsRequest) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *CustomerRevokePermissionsRequest) SetTenantId(v string) {
 
 // GetCustomerId returns the CustomerId field value if set, zero value otherwise.
 func (o *CustomerRevokePermissionsRequest) GetCustomerId() string {
-	if o == nil || isNil(o.CustomerId) {
+	if o == nil || IsNil(o.CustomerId) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *CustomerRevokePermissionsRequest) GetCustomerId() string {
 // GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerRevokePermissionsRequest) GetCustomerIdOk() (*string, bool) {
-	if o == nil || isNil(o.CustomerId) {
-    return nil, false
+	if o == nil || IsNil(o.CustomerId) {
+		return nil, false
 	}
 	return o.CustomerId, true
 }
 
 // HasCustomerId returns a boolean if a field has been set.
 func (o *CustomerRevokePermissionsRequest) HasCustomerId() bool {
-	if o != nil && !isNil(o.CustomerId) {
+	if o != nil && !IsNil(o.CustomerId) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *CustomerRevokePermissionsRequest) SetCustomerId(v string) {
 
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
 func (o *CustomerRevokePermissionsRequest) GetPermissions() []CustomerPermission {
-	if o == nil || isNil(o.Permissions) {
+	if o == nil || IsNil(o.Permissions) {
 		var ret []CustomerPermission
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *CustomerRevokePermissionsRequest) GetPermissions() []CustomerPermission
 // GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerRevokePermissionsRequest) GetPermissionsOk() ([]CustomerPermission, bool) {
-	if o == nil || isNil(o.Permissions) {
-    return nil, false
+	if o == nil || IsNil(o.Permissions) {
+		return nil, false
 	}
 	return o.Permissions, true
 }
 
 // HasPermissions returns a boolean if a field has been set.
 func (o *CustomerRevokePermissionsRequest) HasPermissions() bool {
-	if o != nil && !isNil(o.Permissions) {
+	if o != nil && !IsNil(o.Permissions) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *CustomerRevokePermissionsRequest) SetPermissions(v []CustomerPermission
 }
 
 func (o CustomerRevokePermissionsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !isNil(o.CustomerId) {
-		toSerialize["customerId"] = o.CustomerId
-	}
-	if !isNil(o.Permissions) {
-		toSerialize["permissions"] = o.Permissions
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerRevokePermissionsRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.CustomerId) {
+		toSerialize["customerId"] = o.CustomerId
+	}
+	if !IsNil(o.Permissions) {
+		toSerialize["permissions"] = o.Permissions
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerRevokePermissionsRequest struct {

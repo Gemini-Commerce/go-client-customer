@@ -15,9 +15,13 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerFindManyRequestFilter type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerFindManyRequestFilter{}
+
 // CustomerFindManyRequestFilter struct for CustomerFindManyRequestFilter
 type CustomerFindManyRequestFilter struct {
 	Newsletter *bool `json:"newsletter,omitempty"`
+	AgentGrn *string `json:"agentGrn,omitempty"`
 }
 
 // NewCustomerFindManyRequestFilter instantiates a new CustomerFindManyRequestFilter object
@@ -39,7 +43,7 @@ func NewCustomerFindManyRequestFilterWithDefaults() *CustomerFindManyRequestFilt
 
 // GetNewsletter returns the Newsletter field value if set, zero value otherwise.
 func (o *CustomerFindManyRequestFilter) GetNewsletter() bool {
-	if o == nil || isNil(o.Newsletter) {
+	if o == nil || IsNil(o.Newsletter) {
 		var ret bool
 		return ret
 	}
@@ -49,15 +53,15 @@ func (o *CustomerFindManyRequestFilter) GetNewsletter() bool {
 // GetNewsletterOk returns a tuple with the Newsletter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerFindManyRequestFilter) GetNewsletterOk() (*bool, bool) {
-	if o == nil || isNil(o.Newsletter) {
-    return nil, false
+	if o == nil || IsNil(o.Newsletter) {
+		return nil, false
 	}
 	return o.Newsletter, true
 }
 
 // HasNewsletter returns a boolean if a field has been set.
 func (o *CustomerFindManyRequestFilter) HasNewsletter() bool {
-	if o != nil && !isNil(o.Newsletter) {
+	if o != nil && !IsNil(o.Newsletter) {
 		return true
 	}
 
@@ -69,12 +73,55 @@ func (o *CustomerFindManyRequestFilter) SetNewsletter(v bool) {
 	o.Newsletter = &v
 }
 
+// GetAgentGrn returns the AgentGrn field value if set, zero value otherwise.
+func (o *CustomerFindManyRequestFilter) GetAgentGrn() string {
+	if o == nil || IsNil(o.AgentGrn) {
+		var ret string
+		return ret
+	}
+	return *o.AgentGrn
+}
+
+// GetAgentGrnOk returns a tuple with the AgentGrn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerFindManyRequestFilter) GetAgentGrnOk() (*string, bool) {
+	if o == nil || IsNil(o.AgentGrn) {
+		return nil, false
+	}
+	return o.AgentGrn, true
+}
+
+// HasAgentGrn returns a boolean if a field has been set.
+func (o *CustomerFindManyRequestFilter) HasAgentGrn() bool {
+	if o != nil && !IsNil(o.AgentGrn) {
+		return true
+	}
+
+	return false
+}
+
+// SetAgentGrn gets a reference to the given string and assigns it to the AgentGrn field.
+func (o *CustomerFindManyRequestFilter) SetAgentGrn(v string) {
+	o.AgentGrn = &v
+}
+
 func (o CustomerFindManyRequestFilter) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Newsletter) {
-		toSerialize["newsletter"] = o.Newsletter
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerFindManyRequestFilter) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Newsletter) {
+		toSerialize["newsletter"] = o.Newsletter
+	}
+	if !IsNil(o.AgentGrn) {
+		toSerialize["agentGrn"] = o.AgentGrn
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerFindManyRequestFilter struct {

@@ -27,8 +27,13 @@ Name | Type | Description | Notes
 **PreferredLocale**| **string** |   | [optional]
 **TaxCode**| **string** |   | [optional]
 **CertifiedEmail**| **string** |   | [optional]
+**SdiCode**| **string** |   | [optional]
+**FiscalCode**| **string** |   | [optional]
+**CompanyName**| **string** |   | [optional]
+**AdditionalInfo**| **map[string]interface{}** |   | [optional]
 **Market**| **string** |   | [optional]
 **ExternalIds**| **map[string]string** |   | [optional]
+**Consent**| [**CustomerCreateConsentRequest**](CustomerCreateConsentRequest.md) |   | [optional]
 
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

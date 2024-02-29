@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerFindSubscriberByIdRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerFindSubscriberByIdRequest{}
+
 // CustomerFindSubscriberByIdRequest struct for CustomerFindSubscriberByIdRequest
 type CustomerFindSubscriberByIdRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -40,7 +43,7 @@ func NewCustomerFindSubscriberByIdRequestWithDefaults() *CustomerFindSubscriberB
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerFindSubscriberByIdRequest) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *CustomerFindSubscriberByIdRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerFindSubscriberByIdRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerFindSubscriberByIdRequest) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *CustomerFindSubscriberByIdRequest) SetTenantId(v string) {
 
 // GetSubscriberId returns the SubscriberId field value if set, zero value otherwise.
 func (o *CustomerFindSubscriberByIdRequest) GetSubscriberId() string {
-	if o == nil || isNil(o.SubscriberId) {
+	if o == nil || IsNil(o.SubscriberId) {
 		var ret string
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *CustomerFindSubscriberByIdRequest) GetSubscriberId() string {
 // GetSubscriberIdOk returns a tuple with the SubscriberId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerFindSubscriberByIdRequest) GetSubscriberIdOk() (*string, bool) {
-	if o == nil || isNil(o.SubscriberId) {
-    return nil, false
+	if o == nil || IsNil(o.SubscriberId) {
+		return nil, false
 	}
 	return o.SubscriberId, true
 }
 
 // HasSubscriberId returns a boolean if a field has been set.
 func (o *CustomerFindSubscriberByIdRequest) HasSubscriberId() bool {
-	if o != nil && !isNil(o.SubscriberId) {
+	if o != nil && !IsNil(o.SubscriberId) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *CustomerFindSubscriberByIdRequest) SetSubscriberId(v string) {
 }
 
 func (o CustomerFindSubscriberByIdRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !isNil(o.SubscriberId) {
-		toSerialize["subscriberId"] = o.SubscriberId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerFindSubscriberByIdRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.SubscriberId) {
+		toSerialize["subscriberId"] = o.SubscriberId
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerFindSubscriberByIdRequest struct {

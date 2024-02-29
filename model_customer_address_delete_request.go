@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomerAddressDeleteRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomerAddressDeleteRequest{}
+
 // CustomerAddressDeleteRequest struct for CustomerAddressDeleteRequest
 type CustomerAddressDeleteRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -41,7 +44,7 @@ func NewCustomerAddressDeleteRequestWithDefaults() *CustomerAddressDeleteRequest
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *CustomerAddressDeleteRequest) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *CustomerAddressDeleteRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressDeleteRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *CustomerAddressDeleteRequest) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *CustomerAddressDeleteRequest) SetTenantId(v string) {
 
 // GetCustomerId returns the CustomerId field value if set, zero value otherwise.
 func (o *CustomerAddressDeleteRequest) GetCustomerId() string {
-	if o == nil || isNil(o.CustomerId) {
+	if o == nil || IsNil(o.CustomerId) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *CustomerAddressDeleteRequest) GetCustomerId() string {
 // GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressDeleteRequest) GetCustomerIdOk() (*string, bool) {
-	if o == nil || isNil(o.CustomerId) {
-    return nil, false
+	if o == nil || IsNil(o.CustomerId) {
+		return nil, false
 	}
 	return o.CustomerId, true
 }
 
 // HasCustomerId returns a boolean if a field has been set.
 func (o *CustomerAddressDeleteRequest) HasCustomerId() bool {
-	if o != nil && !isNil(o.CustomerId) {
+	if o != nil && !IsNil(o.CustomerId) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *CustomerAddressDeleteRequest) SetCustomerId(v string) {
 
 // GetAddressId returns the AddressId field value if set, zero value otherwise.
 func (o *CustomerAddressDeleteRequest) GetAddressId() string {
-	if o == nil || isNil(o.AddressId) {
+	if o == nil || IsNil(o.AddressId) {
 		var ret string
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *CustomerAddressDeleteRequest) GetAddressId() string {
 // GetAddressIdOk returns a tuple with the AddressId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAddressDeleteRequest) GetAddressIdOk() (*string, bool) {
-	if o == nil || isNil(o.AddressId) {
-    return nil, false
+	if o == nil || IsNil(o.AddressId) {
+		return nil, false
 	}
 	return o.AddressId, true
 }
 
 // HasAddressId returns a boolean if a field has been set.
 func (o *CustomerAddressDeleteRequest) HasAddressId() bool {
-	if o != nil && !isNil(o.AddressId) {
+	if o != nil && !IsNil(o.AddressId) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *CustomerAddressDeleteRequest) SetAddressId(v string) {
 }
 
 func (o CustomerAddressDeleteRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !isNil(o.CustomerId) {
-		toSerialize["customerId"] = o.CustomerId
-	}
-	if !isNil(o.AddressId) {
-		toSerialize["addressId"] = o.AddressId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomerAddressDeleteRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.CustomerId) {
+		toSerialize["customerId"] = o.CustomerId
+	}
+	if !IsNil(o.AddressId) {
+		toSerialize["addressId"] = o.AddressId
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomerAddressDeleteRequest struct {
