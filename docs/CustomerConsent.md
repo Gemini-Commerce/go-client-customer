@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Grn**| **string** |   | [optional]
 **Preferences**| **map[string]bool** |   | [optional]
 **CreatedAt**| [**time.Time**](time.Time.md) |   | [optional]
-**Source**| [**CustomerConsentSource**](CustomerConsentSource.md) |  for more information please, see Model/CustomerConsentSource.php  | [optional] [default to UNKNOWN]
+**Source**| [**CustomerConsentSource**](CustomerConsentSource.md) |  for more information please, see Model/CustomerConsentSource.php  | [optional] [default to CUSTOMERCONSENTSOURCE_UNKNOWN]
 **Author**| **string** |   | [optional]
 **SubjectId**| **string** |   | [optional]
 

@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **PhoneNumber**| **string** |   | [optional]
 **FiscalCode**| **string** |   | [optional]
 **VatNumber**| **string** |   | [optional]
-**Kind**| [**CustomerAddressCreateRequestKind**](CustomerAddressCreateRequestKind.md) |  for more information please, see Model/CustomerAddressCreateRequestKind.php  | [optional] [default to SHIPPING]
+**Kind**| [**CustomerAddressCreateRequestKind**](CustomerAddressCreateRequestKind.md) |  for more information please, see Model/CustomerAddressCreateRequestKind.php  | [optional] [default to CUSTOMERADDRESSCREATEREQUESTKIND_SHIPPING]
 **Default**| **bool** |   | [optional]
 **Country**| **string** |   | [optional]
 **Attributes**| [**map[string]ProtobufAny**](ProtobufAny.md) |   | [optional]

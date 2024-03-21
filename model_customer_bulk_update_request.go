@@ -31,7 +31,7 @@ type CustomerBulkUpdateRequest struct {
 // will change when the set of required properties is changed
 func NewCustomerBulkUpdateRequest() *CustomerBulkUpdateRequest {
 	this := CustomerBulkUpdateRequest{}
-	var action BulkUpdateRequestAction = ENABLE
+	var action BulkUpdateRequestAction = BULKUPDATEREQUESTACTION_ENABLE
 	this.Action = &action
 	return &this
 }
@@ -41,7 +41,7 @@ func NewCustomerBulkUpdateRequest() *CustomerBulkUpdateRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewCustomerBulkUpdateRequestWithDefaults() *CustomerBulkUpdateRequest {
 	this := CustomerBulkUpdateRequest{}
-	var action BulkUpdateRequestAction = ENABLE
+	var action BulkUpdateRequestAction = BULKUPDATEREQUESTACTION_ENABLE
 	this.Action = &action
 	return &this
 }

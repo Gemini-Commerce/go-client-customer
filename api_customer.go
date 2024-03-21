@@ -20,21 +20,804 @@ import (
 )
 
 
+type CustomerAPI interface {
+
+	/*
+	CustomerAcquireSubscriber Method for CustomerAcquireSubscriber
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerAcquireSubscriberRequest
+	*/
+	CustomerAcquireSubscriber(ctx context.Context) CustomerAPICustomerAcquireSubscriberRequest
+
+	// CustomerAcquireSubscriberExecute executes the request
+	//  @return CustomerSubscriberResponse
+	CustomerAcquireSubscriberExecute(r CustomerAPICustomerAcquireSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error)
+
+	/*
+	CustomerAcquireSubscriber2 Method for CustomerAcquireSubscriber2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerAcquireSubscriber2Request
+	*/
+	CustomerAcquireSubscriber2(ctx context.Context) CustomerAPICustomerAcquireSubscriber2Request
+
+	// CustomerAcquireSubscriber2Execute executes the request
+	//  @return CustomerSubscriberResponse
+	CustomerAcquireSubscriber2Execute(r CustomerAPICustomerAcquireSubscriber2Request) (*CustomerSubscriberResponse, *http.Response, error)
+
+	/*
+	CustomerAcquireUnsubscriber Method for CustomerAcquireUnsubscriber
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerAcquireUnsubscriberRequest
+	*/
+	CustomerAcquireUnsubscriber(ctx context.Context) CustomerAPICustomerAcquireUnsubscriberRequest
+
+	// CustomerAcquireUnsubscriberExecute executes the request
+	//  @return CustomerUnsubscribeResponse
+	CustomerAcquireUnsubscriberExecute(r CustomerAPICustomerAcquireUnsubscriberRequest) (*CustomerUnsubscribeResponse, *http.Response, error)
+
+	/*
+	CustomerAcquireUnsubscriber2 Method for CustomerAcquireUnsubscriber2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerAcquireUnsubscriber2Request
+	*/
+	CustomerAcquireUnsubscriber2(ctx context.Context) CustomerAPICustomerAcquireUnsubscriber2Request
+
+	// CustomerAcquireUnsubscriber2Execute executes the request
+	//  @return CustomerUnsubscribeResponse
+	CustomerAcquireUnsubscriber2Execute(r CustomerAPICustomerAcquireUnsubscriber2Request) (*CustomerUnsubscribeResponse, *http.Response, error)
+
+	/*
+	CustomerAddCustomerToGroup Method for CustomerAddCustomerToGroup
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerAddCustomerToGroupRequest
+	*/
+	CustomerAddCustomerToGroup(ctx context.Context) CustomerAPICustomerAddCustomerToGroupRequest
+
+	// CustomerAddCustomerToGroupExecute executes the request
+	//  @return CustomerGroupResponse
+	CustomerAddCustomerToGroupExecute(r CustomerAPICustomerAddCustomerToGroupRequest) (*CustomerGroupResponse, *http.Response, error)
+
+	/*
+	CustomerAddCustomerToGroup2 Method for CustomerAddCustomerToGroup2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerAddCustomerToGroup2Request
+	*/
+	CustomerAddCustomerToGroup2(ctx context.Context) CustomerAPICustomerAddCustomerToGroup2Request
+
+	// CustomerAddCustomerToGroup2Execute executes the request
+	//  @return CustomerGroupResponse
+	CustomerAddCustomerToGroup2Execute(r CustomerAPICustomerAddCustomerToGroup2Request) (*CustomerGroupResponse, *http.Response, error)
+
+	/*
+	CustomerAssignAgent Method for CustomerAssignAgent
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerAssignAgentRequest
+	*/
+	CustomerAssignAgent(ctx context.Context) CustomerAPICustomerAssignAgentRequest
+
+	// CustomerAssignAgentExecute executes the request
+	//  @return map[string]interface{}
+	CustomerAssignAgentExecute(r CustomerAPICustomerAssignAgentRequest) (map[string]interface{}, *http.Response, error)
+
+	/*
+	CustomerBulkUpdate Method for CustomerBulkUpdate
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerBulkUpdateRequest
+	*/
+	CustomerBulkUpdate(ctx context.Context) CustomerAPICustomerBulkUpdateRequest
+
+	// CustomerBulkUpdateExecute executes the request
+	//  @return CustomerBulkUpdateResponse
+	CustomerBulkUpdateExecute(r CustomerAPICustomerBulkUpdateRequest) (*CustomerBulkUpdateResponse, *http.Response, error)
+
+	/*
+	CustomerBulkUpdate2 Method for CustomerBulkUpdate2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerBulkUpdate2Request
+	*/
+	CustomerBulkUpdate2(ctx context.Context) CustomerAPICustomerBulkUpdate2Request
+
+	// CustomerBulkUpdate2Execute executes the request
+	//  @return CustomerBulkUpdateResponse
+	CustomerBulkUpdate2Execute(r CustomerAPICustomerBulkUpdate2Request) (*CustomerBulkUpdateResponse, *http.Response, error)
+
+	/*
+	CustomerCreate Method for CustomerCreate
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerCreateRequest
+	*/
+	CustomerCreate(ctx context.Context) CustomerAPICustomerCreateRequest
+
+	// CustomerCreateExecute executes the request
+	//  @return CustomerCustomerResponse
+	CustomerCreateExecute(r CustomerAPICustomerCreateRequest) (*CustomerCustomerResponse, *http.Response, error)
+
+	/*
+	CustomerCreate2 Method for CustomerCreate2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerCreate2Request
+	*/
+	CustomerCreate2(ctx context.Context) CustomerAPICustomerCreate2Request
+
+	// CustomerCreate2Execute executes the request
+	//  @return CustomerCustomerResponse
+	CustomerCreate2Execute(r CustomerAPICustomerCreate2Request) (*CustomerCustomerResponse, *http.Response, error)
+
+	/*
+	CustomerCreateAddress Method for CustomerCreateAddress
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerCreateAddressRequest
+	*/
+	CustomerCreateAddress(ctx context.Context) CustomerAPICustomerCreateAddressRequest
+
+	// CustomerCreateAddressExecute executes the request
+	//  @return CustomerAddressCustomerResponse
+	CustomerCreateAddressExecute(r CustomerAPICustomerCreateAddressRequest) (*CustomerAddressCustomerResponse, *http.Response, error)
+
+	/*
+	CustomerCreateAddress2 Method for CustomerCreateAddress2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerCreateAddress2Request
+	*/
+	CustomerCreateAddress2(ctx context.Context) CustomerAPICustomerCreateAddress2Request
+
+	// CustomerCreateAddress2Execute executes the request
+	//  @return CustomerAddressCustomerResponse
+	CustomerCreateAddress2Execute(r CustomerAPICustomerCreateAddress2Request) (*CustomerAddressCustomerResponse, *http.Response, error)
+
+	/*
+	CustomerCreateGroup Method for CustomerCreateGroup
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerCreateGroupRequest
+	*/
+	CustomerCreateGroup(ctx context.Context) CustomerAPICustomerCreateGroupRequest
+
+	// CustomerCreateGroupExecute executes the request
+	//  @return CustomerGroupResponse
+	CustomerCreateGroupExecute(r CustomerAPICustomerCreateGroupRequest) (*CustomerGroupResponse, *http.Response, error)
+
+	/*
+	CustomerCreateGroup2 Method for CustomerCreateGroup2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerCreateGroup2Request
+	*/
+	CustomerCreateGroup2(ctx context.Context) CustomerAPICustomerCreateGroup2Request
+
+	// CustomerCreateGroup2Execute executes the request
+	//  @return CustomerGroupResponse
+	CustomerCreateGroup2Execute(r CustomerAPICustomerCreateGroup2Request) (*CustomerGroupResponse, *http.Response, error)
+
+	/*
+	CustomerCreateSubscriber Method for CustomerCreateSubscriber
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerCreateSubscriberRequest
+	*/
+	CustomerCreateSubscriber(ctx context.Context) CustomerAPICustomerCreateSubscriberRequest
+
+	// CustomerCreateSubscriberExecute executes the request
+	//  @return CustomerSubscriberResponse
+	CustomerCreateSubscriberExecute(r CustomerAPICustomerCreateSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error)
+
+	/*
+	CustomerCreateSubscriber2 Method for CustomerCreateSubscriber2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerCreateSubscriber2Request
+	*/
+	CustomerCreateSubscriber2(ctx context.Context) CustomerAPICustomerCreateSubscriber2Request
+
+	// CustomerCreateSubscriber2Execute executes the request
+	//  @return CustomerSubscriberResponse
+	CustomerCreateSubscriber2Execute(r CustomerAPICustomerCreateSubscriber2Request) (*CustomerSubscriberResponse, *http.Response, error)
+
+	/*
+	CustomerDeleteAddress Method for CustomerDeleteAddress
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerDeleteAddressRequest
+	*/
+	CustomerDeleteAddress(ctx context.Context) CustomerAPICustomerDeleteAddressRequest
+
+	// CustomerDeleteAddressExecute executes the request
+	//  @return CustomerAddressDeleteResponse
+	CustomerDeleteAddressExecute(r CustomerAPICustomerDeleteAddressRequest) (*CustomerAddressDeleteResponse, *http.Response, error)
+
+	/*
+	CustomerDeleteAddress2 Method for CustomerDeleteAddress2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerDeleteAddress2Request
+	*/
+	CustomerDeleteAddress2(ctx context.Context) CustomerAPICustomerDeleteAddress2Request
+
+	// CustomerDeleteAddress2Execute executes the request
+	//  @return CustomerAddressDeleteResponse
+	CustomerDeleteAddress2Execute(r CustomerAPICustomerDeleteAddress2Request) (*CustomerAddressDeleteResponse, *http.Response, error)
+
+	/*
+	CustomerDeleteGroup Method for CustomerDeleteGroup
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerDeleteGroupRequest
+	*/
+	CustomerDeleteGroup(ctx context.Context) CustomerAPICustomerDeleteGroupRequest
+
+	// CustomerDeleteGroupExecute executes the request
+	//  @return CustomerDeleteGroupResponse
+	CustomerDeleteGroupExecute(r CustomerAPICustomerDeleteGroupRequest) (*CustomerDeleteGroupResponse, *http.Response, error)
+
+	/*
+	CustomerDeleteGroup2 Method for CustomerDeleteGroup2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerDeleteGroup2Request
+	*/
+	CustomerDeleteGroup2(ctx context.Context) CustomerAPICustomerDeleteGroup2Request
+
+	// CustomerDeleteGroup2Execute executes the request
+	//  @return CustomerDeleteGroupResponse
+	CustomerDeleteGroup2Execute(r CustomerAPICustomerDeleteGroup2Request) (*CustomerDeleteGroupResponse, *http.Response, error)
+
+	/*
+	CustomerFind Method for CustomerFind
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerFindRequest
+	*/
+	CustomerFind(ctx context.Context) CustomerAPICustomerFindRequest
+
+	// CustomerFindExecute executes the request
+	//  @return CustomerFindManyResponse
+	CustomerFindExecute(r CustomerAPICustomerFindRequest) (*CustomerFindManyResponse, *http.Response, error)
+
+	/*
+	CustomerFind2 Method for CustomerFind2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerFind2Request
+	*/
+	CustomerFind2(ctx context.Context) CustomerAPICustomerFind2Request
+
+	// CustomerFind2Execute executes the request
+	//  @return CustomerFindManyResponse
+	CustomerFind2Execute(r CustomerAPICustomerFind2Request) (*CustomerFindManyResponse, *http.Response, error)
+
+	/*
+	CustomerFindByEmail Method for CustomerFindByEmail
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerFindByEmailRequest
+	*/
+	CustomerFindByEmail(ctx context.Context) CustomerAPICustomerFindByEmailRequest
+
+	// CustomerFindByEmailExecute executes the request
+	//  @return CustomerCustomerResponse
+	CustomerFindByEmailExecute(r CustomerAPICustomerFindByEmailRequest) (*CustomerCustomerResponse, *http.Response, error)
+
+	/*
+	CustomerFindByEmail2 Method for CustomerFindByEmail2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerFindByEmail2Request
+	*/
+	CustomerFindByEmail2(ctx context.Context) CustomerAPICustomerFindByEmail2Request
+
+	// CustomerFindByEmail2Execute executes the request
+	//  @return CustomerCustomerResponse
+	CustomerFindByEmail2Execute(r CustomerAPICustomerFindByEmail2Request) (*CustomerCustomerResponse, *http.Response, error)
+
+	/*
+	CustomerFindById Method for CustomerFindById
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerFindByIdRequest
+	*/
+	CustomerFindById(ctx context.Context) CustomerAPICustomerFindByIdRequest
+
+	// CustomerFindByIdExecute executes the request
+	//  @return CustomerCustomerResponse
+	CustomerFindByIdExecute(r CustomerAPICustomerFindByIdRequest) (*CustomerCustomerResponse, *http.Response, error)
+
+	/*
+	CustomerFindById2 Method for CustomerFindById2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerFindById2Request
+	*/
+	CustomerFindById2(ctx context.Context) CustomerAPICustomerFindById2Request
+
+	// CustomerFindById2Execute executes the request
+	//  @return CustomerCustomerResponse
+	CustomerFindById2Execute(r CustomerAPICustomerFindById2Request) (*CustomerCustomerResponse, *http.Response, error)
+
+	/*
+	CustomerFindSubscriberByEmail Method for CustomerFindSubscriberByEmail
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerFindSubscriberByEmailRequest
+	*/
+	CustomerFindSubscriberByEmail(ctx context.Context) CustomerAPICustomerFindSubscriberByEmailRequest
+
+	// CustomerFindSubscriberByEmailExecute executes the request
+	//  @return CustomerSubscriberResponse
+	CustomerFindSubscriberByEmailExecute(r CustomerAPICustomerFindSubscriberByEmailRequest) (*CustomerSubscriberResponse, *http.Response, error)
+
+	/*
+	CustomerFindSubscriberByEmail2 Method for CustomerFindSubscriberByEmail2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerFindSubscriberByEmail2Request
+	*/
+	CustomerFindSubscriberByEmail2(ctx context.Context) CustomerAPICustomerFindSubscriberByEmail2Request
+
+	// CustomerFindSubscriberByEmail2Execute executes the request
+	//  @return CustomerSubscriberResponse
+	CustomerFindSubscriberByEmail2Execute(r CustomerAPICustomerFindSubscriberByEmail2Request) (*CustomerSubscriberResponse, *http.Response, error)
+
+	/*
+	CustomerFindSubscriberById Method for CustomerFindSubscriberById
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerFindSubscriberByIdRequest
+	*/
+	CustomerFindSubscriberById(ctx context.Context) CustomerAPICustomerFindSubscriberByIdRequest
+
+	// CustomerFindSubscriberByIdExecute executes the request
+	//  @return CustomerSubscriberResponse
+	CustomerFindSubscriberByIdExecute(r CustomerAPICustomerFindSubscriberByIdRequest) (*CustomerSubscriberResponse, *http.Response, error)
+
+	/*
+	CustomerFindSubscriberById2 Method for CustomerFindSubscriberById2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerFindSubscriberById2Request
+	*/
+	CustomerFindSubscriberById2(ctx context.Context) CustomerAPICustomerFindSubscriberById2Request
+
+	// CustomerFindSubscriberById2Execute executes the request
+	//  @return CustomerSubscriberResponse
+	CustomerFindSubscriberById2Execute(r CustomerAPICustomerFindSubscriberById2Request) (*CustomerSubscriberResponse, *http.Response, error)
+
+	/*
+	CustomerGetGroupByCode Method for CustomerGetGroupByCode
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerGetGroupByCodeRequest
+	*/
+	CustomerGetGroupByCode(ctx context.Context) CustomerAPICustomerGetGroupByCodeRequest
+
+	// CustomerGetGroupByCodeExecute executes the request
+	//  @return CustomerGroupResponse
+	CustomerGetGroupByCodeExecute(r CustomerAPICustomerGetGroupByCodeRequest) (*CustomerGroupResponse, *http.Response, error)
+
+	/*
+	CustomerGetGroupByCode2 Method for CustomerGetGroupByCode2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerGetGroupByCode2Request
+	*/
+	CustomerGetGroupByCode2(ctx context.Context) CustomerAPICustomerGetGroupByCode2Request
+
+	// CustomerGetGroupByCode2Execute executes the request
+	//  @return CustomerGroupResponse
+	CustomerGetGroupByCode2Execute(r CustomerAPICustomerGetGroupByCode2Request) (*CustomerGroupResponse, *http.Response, error)
+
+	/*
+	CustomerGetGroupById Method for CustomerGetGroupById
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerGetGroupByIdRequest
+	*/
+	CustomerGetGroupById(ctx context.Context) CustomerAPICustomerGetGroupByIdRequest
+
+	// CustomerGetGroupByIdExecute executes the request
+	//  @return CustomerGroupResponse
+	CustomerGetGroupByIdExecute(r CustomerAPICustomerGetGroupByIdRequest) (*CustomerGroupResponse, *http.Response, error)
+
+	/*
+	CustomerGetGroupById2 Method for CustomerGetGroupById2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerGetGroupById2Request
+	*/
+	CustomerGetGroupById2(ctx context.Context) CustomerAPICustomerGetGroupById2Request
+
+	// CustomerGetGroupById2Execute executes the request
+	//  @return CustomerGroupResponse
+	CustomerGetGroupById2Execute(r CustomerAPICustomerGetGroupById2Request) (*CustomerGroupResponse, *http.Response, error)
+
+	/*
+	CustomerGrantPermissions Method for CustomerGrantPermissions
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerGrantPermissionsRequest
+	*/
+	CustomerGrantPermissions(ctx context.Context) CustomerAPICustomerGrantPermissionsRequest
+
+	// CustomerGrantPermissionsExecute executes the request
+	//  @return map[string]interface{}
+	CustomerGrantPermissionsExecute(r CustomerAPICustomerGrantPermissionsRequest) (map[string]interface{}, *http.Response, error)
+
+	/*
+	CustomerGrantPermissions2 Method for CustomerGrantPermissions2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerGrantPermissions2Request
+	*/
+	CustomerGrantPermissions2(ctx context.Context) CustomerAPICustomerGrantPermissions2Request
+
+	// CustomerGrantPermissions2Execute executes the request
+	//  @return map[string]interface{}
+	CustomerGrantPermissions2Execute(r CustomerAPICustomerGrantPermissions2Request) (map[string]interface{}, *http.Response, error)
+
+	/*
+	CustomerListConsents ListConsents list all consents of a customer
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerListConsentsRequest
+	*/
+	CustomerListConsents(ctx context.Context) CustomerAPICustomerListConsentsRequest
+
+	// CustomerListConsentsExecute executes the request
+	//  @return CustomerListConsentsResponse
+	CustomerListConsentsExecute(r CustomerAPICustomerListConsentsRequest) (*CustomerListConsentsResponse, *http.Response, error)
+
+	/*
+	CustomerListCustomers Method for CustomerListCustomers
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerListCustomersRequest
+	*/
+	CustomerListCustomers(ctx context.Context) CustomerAPICustomerListCustomersRequest
+
+	// CustomerListCustomersExecute executes the request
+	//  @return CustomerListCustomersResponse
+	CustomerListCustomersExecute(r CustomerAPICustomerListCustomersRequest) (*CustomerListCustomersResponse, *http.Response, error)
+
+	/*
+	CustomerListCustomers2 Method for CustomerListCustomers2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerListCustomers2Request
+	*/
+	CustomerListCustomers2(ctx context.Context) CustomerAPICustomerListCustomers2Request
+
+	// CustomerListCustomers2Execute executes the request
+	//  @return CustomerListCustomersResponse
+	CustomerListCustomers2Execute(r CustomerAPICustomerListCustomers2Request) (*CustomerListCustomersResponse, *http.Response, error)
+
+	/*
+	CustomerListGroups Method for CustomerListGroups
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerListGroupsRequest
+	*/
+	CustomerListGroups(ctx context.Context) CustomerAPICustomerListGroupsRequest
+
+	// CustomerListGroupsExecute executes the request
+	//  @return CustomerListGroupsResponse
+	CustomerListGroupsExecute(r CustomerAPICustomerListGroupsRequest) (*CustomerListGroupsResponse, *http.Response, error)
+
+	/*
+	CustomerListGroups2 Method for CustomerListGroups2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerListGroups2Request
+	*/
+	CustomerListGroups2(ctx context.Context) CustomerAPICustomerListGroups2Request
+
+	// CustomerListGroups2Execute executes the request
+	//  @return CustomerListGroupsResponse
+	CustomerListGroups2Execute(r CustomerAPICustomerListGroups2Request) (*CustomerListGroupsResponse, *http.Response, error)
+
+	/*
+	CustomerRemoveCustomerFromGroup Method for CustomerRemoveCustomerFromGroup
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerRemoveCustomerFromGroupRequest
+	*/
+	CustomerRemoveCustomerFromGroup(ctx context.Context) CustomerAPICustomerRemoveCustomerFromGroupRequest
+
+	// CustomerRemoveCustomerFromGroupExecute executes the request
+	//  @return CustomerGroupResponse
+	CustomerRemoveCustomerFromGroupExecute(r CustomerAPICustomerRemoveCustomerFromGroupRequest) (*CustomerGroupResponse, *http.Response, error)
+
+	/*
+	CustomerRemoveCustomerFromGroup2 Method for CustomerRemoveCustomerFromGroup2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerRemoveCustomerFromGroup2Request
+	*/
+	CustomerRemoveCustomerFromGroup2(ctx context.Context) CustomerAPICustomerRemoveCustomerFromGroup2Request
+
+	// CustomerRemoveCustomerFromGroup2Execute executes the request
+	//  @return CustomerGroupResponse
+	CustomerRemoveCustomerFromGroup2Execute(r CustomerAPICustomerRemoveCustomerFromGroup2Request) (*CustomerGroupResponse, *http.Response, error)
+
+	/*
+	CustomerRemoveDefaultAddress Method for CustomerRemoveDefaultAddress
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerRemoveDefaultAddressRequest
+	*/
+	CustomerRemoveDefaultAddress(ctx context.Context) CustomerAPICustomerRemoveDefaultAddressRequest
+
+	// CustomerRemoveDefaultAddressExecute executes the request
+	//  @return CustomerCustomerResponse
+	CustomerRemoveDefaultAddressExecute(r CustomerAPICustomerRemoveDefaultAddressRequest) (*CustomerCustomerResponse, *http.Response, error)
+
+	/*
+	CustomerRemoveDefaultAddress2 Method for CustomerRemoveDefaultAddress2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerRemoveDefaultAddress2Request
+	*/
+	CustomerRemoveDefaultAddress2(ctx context.Context) CustomerAPICustomerRemoveDefaultAddress2Request
+
+	// CustomerRemoveDefaultAddress2Execute executes the request
+	//  @return CustomerCustomerResponse
+	CustomerRemoveDefaultAddress2Execute(r CustomerAPICustomerRemoveDefaultAddress2Request) (*CustomerCustomerResponse, *http.Response, error)
+
+	/*
+	CustomerRevokePermissions Method for CustomerRevokePermissions
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerRevokePermissionsRequest
+	*/
+	CustomerRevokePermissions(ctx context.Context) CustomerAPICustomerRevokePermissionsRequest
+
+	// CustomerRevokePermissionsExecute executes the request
+	//  @return map[string]interface{}
+	CustomerRevokePermissionsExecute(r CustomerAPICustomerRevokePermissionsRequest) (map[string]interface{}, *http.Response, error)
+
+	/*
+	CustomerRevokePermissions2 Method for CustomerRevokePermissions2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerRevokePermissions2Request
+	*/
+	CustomerRevokePermissions2(ctx context.Context) CustomerAPICustomerRevokePermissions2Request
+
+	// CustomerRevokePermissions2Execute executes the request
+	//  @return map[string]interface{}
+	CustomerRevokePermissions2Execute(r CustomerAPICustomerRevokePermissions2Request) (map[string]interface{}, *http.Response, error)
+
+	/*
+	CustomerSearch Method for CustomerSearch
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerSearchRequest
+	*/
+	CustomerSearch(ctx context.Context) CustomerAPICustomerSearchRequest
+
+	// CustomerSearchExecute executes the request
+	//  @return CustomerSearchResponse
+	CustomerSearchExecute(r CustomerAPICustomerSearchRequest) (*CustomerSearchResponse, *http.Response, error)
+
+	/*
+	CustomerSearch2 Method for CustomerSearch2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerSearch2Request
+	*/
+	CustomerSearch2(ctx context.Context) CustomerAPICustomerSearch2Request
+
+	// CustomerSearch2Execute executes the request
+	//  @return CustomerSearchResponse
+	CustomerSearch2Execute(r CustomerAPICustomerSearch2Request) (*CustomerSearchResponse, *http.Response, error)
+
+	/*
+	CustomerSetDefaultAddress Method for CustomerSetDefaultAddress
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerSetDefaultAddressRequest
+	*/
+	CustomerSetDefaultAddress(ctx context.Context) CustomerAPICustomerSetDefaultAddressRequest
+
+	// CustomerSetDefaultAddressExecute executes the request
+	//  @return CustomerCustomerResponse
+	CustomerSetDefaultAddressExecute(r CustomerAPICustomerSetDefaultAddressRequest) (*CustomerCustomerResponse, *http.Response, error)
+
+	/*
+	CustomerSetDefaultAddress2 Method for CustomerSetDefaultAddress2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerSetDefaultAddress2Request
+	*/
+	CustomerSetDefaultAddress2(ctx context.Context) CustomerAPICustomerSetDefaultAddress2Request
+
+	// CustomerSetDefaultAddress2Execute executes the request
+	//  @return CustomerCustomerResponse
+	CustomerSetDefaultAddress2Execute(r CustomerAPICustomerSetDefaultAddress2Request) (*CustomerCustomerResponse, *http.Response, error)
+
+	/*
+	CustomerSetPermissions Method for CustomerSetPermissions
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerSetPermissionsRequest
+	*/
+	CustomerSetPermissions(ctx context.Context) CustomerAPICustomerSetPermissionsRequest
+
+	// CustomerSetPermissionsExecute executes the request
+	//  @return map[string]interface{}
+	CustomerSetPermissionsExecute(r CustomerAPICustomerSetPermissionsRequest) (map[string]interface{}, *http.Response, error)
+
+	/*
+	CustomerSetPermissions2 Method for CustomerSetPermissions2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerSetPermissions2Request
+	*/
+	CustomerSetPermissions2(ctx context.Context) CustomerAPICustomerSetPermissions2Request
+
+	// CustomerSetPermissions2Execute executes the request
+	//  @return map[string]interface{}
+	CustomerSetPermissions2Execute(r CustomerAPICustomerSetPermissions2Request) (map[string]interface{}, *http.Response, error)
+
+	/*
+	CustomerUnassignAgent Method for CustomerUnassignAgent
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerUnassignAgentRequest
+	*/
+	CustomerUnassignAgent(ctx context.Context) CustomerAPICustomerUnassignAgentRequest
+
+	// CustomerUnassignAgentExecute executes the request
+	//  @return map[string]interface{}
+	CustomerUnassignAgentExecute(r CustomerAPICustomerUnassignAgentRequest) (map[string]interface{}, *http.Response, error)
+
+	/*
+	CustomerUnsubscribe Method for CustomerUnsubscribe
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerUnsubscribeRequest
+	*/
+	CustomerUnsubscribe(ctx context.Context) CustomerAPICustomerUnsubscribeRequest
+
+	// CustomerUnsubscribeExecute executes the request
+	//  @return CustomerUnsubscribeResponse
+	CustomerUnsubscribeExecute(r CustomerAPICustomerUnsubscribeRequest) (*CustomerUnsubscribeResponse, *http.Response, error)
+
+	/*
+	CustomerUnsubscribe2 Method for CustomerUnsubscribe2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerUnsubscribe2Request
+	*/
+	CustomerUnsubscribe2(ctx context.Context) CustomerAPICustomerUnsubscribe2Request
+
+	// CustomerUnsubscribe2Execute executes the request
+	//  @return CustomerUnsubscribeResponse
+	CustomerUnsubscribe2Execute(r CustomerAPICustomerUnsubscribe2Request) (*CustomerUnsubscribeResponse, *http.Response, error)
+
+	/*
+	CustomerUpdate Method for CustomerUpdate
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerUpdateRequest
+	*/
+	CustomerUpdate(ctx context.Context) CustomerAPICustomerUpdateRequest
+
+	// CustomerUpdateExecute executes the request
+	//  @return CustomerCustomerResponse
+	CustomerUpdateExecute(r CustomerAPICustomerUpdateRequest) (*CustomerCustomerResponse, *http.Response, error)
+
+	/*
+	CustomerUpdate2 Method for CustomerUpdate2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerUpdate2Request
+	*/
+	CustomerUpdate2(ctx context.Context) CustomerAPICustomerUpdate2Request
+
+	// CustomerUpdate2Execute executes the request
+	//  @return CustomerCustomerResponse
+	CustomerUpdate2Execute(r CustomerAPICustomerUpdate2Request) (*CustomerCustomerResponse, *http.Response, error)
+
+	/*
+	CustomerUpdateAddress Method for CustomerUpdateAddress
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerUpdateAddressRequest
+	*/
+	CustomerUpdateAddress(ctx context.Context) CustomerAPICustomerUpdateAddressRequest
+
+	// CustomerUpdateAddressExecute executes the request
+	//  @return CustomerAddressUpdateResponse
+	CustomerUpdateAddressExecute(r CustomerAPICustomerUpdateAddressRequest) (*CustomerAddressUpdateResponse, *http.Response, error)
+
+	/*
+	CustomerUpdateAddress2 Method for CustomerUpdateAddress2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerUpdateAddress2Request
+	*/
+	CustomerUpdateAddress2(ctx context.Context) CustomerAPICustomerUpdateAddress2Request
+
+	// CustomerUpdateAddress2Execute executes the request
+	//  @return CustomerAddressUpdateResponse
+	CustomerUpdateAddress2Execute(r CustomerAPICustomerUpdateAddress2Request) (*CustomerAddressUpdateResponse, *http.Response, error)
+
+	/*
+	CustomerUpdateGroup Method for CustomerUpdateGroup
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerUpdateGroupRequest
+	*/
+	CustomerUpdateGroup(ctx context.Context) CustomerAPICustomerUpdateGroupRequest
+
+	// CustomerUpdateGroupExecute executes the request
+	//  @return CustomerGroupResponse
+	CustomerUpdateGroupExecute(r CustomerAPICustomerUpdateGroupRequest) (*CustomerGroupResponse, *http.Response, error)
+
+	/*
+	CustomerUpdateGroup2 Method for CustomerUpdateGroup2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerUpdateGroup2Request
+	*/
+	CustomerUpdateGroup2(ctx context.Context) CustomerAPICustomerUpdateGroup2Request
+
+	// CustomerUpdateGroup2Execute executes the request
+	//  @return CustomerGroupResponse
+	CustomerUpdateGroup2Execute(r CustomerAPICustomerUpdateGroup2Request) (*CustomerGroupResponse, *http.Response, error)
+
+	/*
+	CustomerUpdateSubscriber Method for CustomerUpdateSubscriber
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerUpdateSubscriberRequest
+	*/
+	CustomerUpdateSubscriber(ctx context.Context) CustomerAPICustomerUpdateSubscriberRequest
+
+	// CustomerUpdateSubscriberExecute executes the request
+	//  @return CustomerSubscriberResponse
+	CustomerUpdateSubscriberExecute(r CustomerAPICustomerUpdateSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error)
+
+	/*
+	CustomerUpdateSubscriber2 Method for CustomerUpdateSubscriber2
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CustomerAPICustomerUpdateSubscriber2Request
+	*/
+	CustomerUpdateSubscriber2(ctx context.Context) CustomerAPICustomerUpdateSubscriber2Request
+
+	// CustomerUpdateSubscriber2Execute executes the request
+	//  @return CustomerSubscriberResponse
+	CustomerUpdateSubscriber2Execute(r CustomerAPICustomerUpdateSubscriber2Request) (*CustomerSubscriberResponse, *http.Response, error)
+}
+
 // CustomerAPIService CustomerAPI service
 type CustomerAPIService service
 
-type ApiCustomerAcquireSubscriberRequest struct {
+type CustomerAPICustomerAcquireSubscriberRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerCreateSubscriberRequest
 }
 
-func (r ApiCustomerAcquireSubscriberRequest) Body(body CustomerCreateSubscriberRequest) ApiCustomerAcquireSubscriberRequest {
+func (r CustomerAPICustomerAcquireSubscriberRequest) Body(body CustomerCreateSubscriberRequest) CustomerAPICustomerAcquireSubscriberRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerAcquireSubscriberRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+func (r CustomerAPICustomerAcquireSubscriberRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
 	return r.ApiService.CustomerAcquireSubscriberExecute(r)
 }
 
@@ -42,10 +825,10 @@ func (r ApiCustomerAcquireSubscriberRequest) Execute() (*CustomerSubscriberRespo
 CustomerAcquireSubscriber Method for CustomerAcquireSubscriber
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerAcquireSubscriberRequest
+ @return CustomerAPICustomerAcquireSubscriberRequest
 */
-func (a *CustomerAPIService) CustomerAcquireSubscriber(ctx context.Context) ApiCustomerAcquireSubscriberRequest {
-	return ApiCustomerAcquireSubscriberRequest{
+func (a *CustomerAPIService) CustomerAcquireSubscriber(ctx context.Context) CustomerAPICustomerAcquireSubscriberRequest {
+	return CustomerAPICustomerAcquireSubscriberRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -53,7 +836,7 @@ func (a *CustomerAPIService) CustomerAcquireSubscriber(ctx context.Context) ApiC
 
 // Execute executes the request
 //  @return CustomerSubscriberResponse
-func (a *CustomerAPIService) CustomerAcquireSubscriberExecute(r ApiCustomerAcquireSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerAcquireSubscriberExecute(r CustomerAPICustomerAcquireSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -139,18 +922,18 @@ func (a *CustomerAPIService) CustomerAcquireSubscriberExecute(r ApiCustomerAcqui
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerAcquireSubscriber2Request struct {
+type CustomerAPICustomerAcquireSubscriber2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerCreateSubscriberRequest
 }
 
-func (r ApiCustomerAcquireSubscriber2Request) Body(body CustomerCreateSubscriberRequest) ApiCustomerAcquireSubscriber2Request {
+func (r CustomerAPICustomerAcquireSubscriber2Request) Body(body CustomerCreateSubscriberRequest) CustomerAPICustomerAcquireSubscriber2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerAcquireSubscriber2Request) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+func (r CustomerAPICustomerAcquireSubscriber2Request) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
 	return r.ApiService.CustomerAcquireSubscriber2Execute(r)
 }
 
@@ -158,10 +941,10 @@ func (r ApiCustomerAcquireSubscriber2Request) Execute() (*CustomerSubscriberResp
 CustomerAcquireSubscriber2 Method for CustomerAcquireSubscriber2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerAcquireSubscriber2Request
+ @return CustomerAPICustomerAcquireSubscriber2Request
 */
-func (a *CustomerAPIService) CustomerAcquireSubscriber2(ctx context.Context) ApiCustomerAcquireSubscriber2Request {
-	return ApiCustomerAcquireSubscriber2Request{
+func (a *CustomerAPIService) CustomerAcquireSubscriber2(ctx context.Context) CustomerAPICustomerAcquireSubscriber2Request {
+	return CustomerAPICustomerAcquireSubscriber2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -169,7 +952,7 @@ func (a *CustomerAPIService) CustomerAcquireSubscriber2(ctx context.Context) Api
 
 // Execute executes the request
 //  @return CustomerSubscriberResponse
-func (a *CustomerAPIService) CustomerAcquireSubscriber2Execute(r ApiCustomerAcquireSubscriber2Request) (*CustomerSubscriberResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerAcquireSubscriber2Execute(r CustomerAPICustomerAcquireSubscriber2Request) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -255,18 +1038,18 @@ func (a *CustomerAPIService) CustomerAcquireSubscriber2Execute(r ApiCustomerAcqu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerAcquireUnsubscriberRequest struct {
+type CustomerAPICustomerAcquireUnsubscriberRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerUnsubscribeRequest
 }
 
-func (r ApiCustomerAcquireUnsubscriberRequest) Body(body CustomerUnsubscribeRequest) ApiCustomerAcquireUnsubscriberRequest {
+func (r CustomerAPICustomerAcquireUnsubscriberRequest) Body(body CustomerUnsubscribeRequest) CustomerAPICustomerAcquireUnsubscriberRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerAcquireUnsubscriberRequest) Execute() (*CustomerUnsubscribeResponse, *http.Response, error) {
+func (r CustomerAPICustomerAcquireUnsubscriberRequest) Execute() (*CustomerUnsubscribeResponse, *http.Response, error) {
 	return r.ApiService.CustomerAcquireUnsubscriberExecute(r)
 }
 
@@ -274,10 +1057,10 @@ func (r ApiCustomerAcquireUnsubscriberRequest) Execute() (*CustomerUnsubscribeRe
 CustomerAcquireUnsubscriber Method for CustomerAcquireUnsubscriber
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerAcquireUnsubscriberRequest
+ @return CustomerAPICustomerAcquireUnsubscriberRequest
 */
-func (a *CustomerAPIService) CustomerAcquireUnsubscriber(ctx context.Context) ApiCustomerAcquireUnsubscriberRequest {
-	return ApiCustomerAcquireUnsubscriberRequest{
+func (a *CustomerAPIService) CustomerAcquireUnsubscriber(ctx context.Context) CustomerAPICustomerAcquireUnsubscriberRequest {
+	return CustomerAPICustomerAcquireUnsubscriberRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -285,7 +1068,7 @@ func (a *CustomerAPIService) CustomerAcquireUnsubscriber(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return CustomerUnsubscribeResponse
-func (a *CustomerAPIService) CustomerAcquireUnsubscriberExecute(r ApiCustomerAcquireUnsubscriberRequest) (*CustomerUnsubscribeResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerAcquireUnsubscriberExecute(r CustomerAPICustomerAcquireUnsubscriberRequest) (*CustomerUnsubscribeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -371,18 +1154,18 @@ func (a *CustomerAPIService) CustomerAcquireUnsubscriberExecute(r ApiCustomerAcq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerAcquireUnsubscriber2Request struct {
+type CustomerAPICustomerAcquireUnsubscriber2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerUnsubscribeRequest
 }
 
-func (r ApiCustomerAcquireUnsubscriber2Request) Body(body CustomerUnsubscribeRequest) ApiCustomerAcquireUnsubscriber2Request {
+func (r CustomerAPICustomerAcquireUnsubscriber2Request) Body(body CustomerUnsubscribeRequest) CustomerAPICustomerAcquireUnsubscriber2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerAcquireUnsubscriber2Request) Execute() (*CustomerUnsubscribeResponse, *http.Response, error) {
+func (r CustomerAPICustomerAcquireUnsubscriber2Request) Execute() (*CustomerUnsubscribeResponse, *http.Response, error) {
 	return r.ApiService.CustomerAcquireUnsubscriber2Execute(r)
 }
 
@@ -390,10 +1173,10 @@ func (r ApiCustomerAcquireUnsubscriber2Request) Execute() (*CustomerUnsubscribeR
 CustomerAcquireUnsubscriber2 Method for CustomerAcquireUnsubscriber2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerAcquireUnsubscriber2Request
+ @return CustomerAPICustomerAcquireUnsubscriber2Request
 */
-func (a *CustomerAPIService) CustomerAcquireUnsubscriber2(ctx context.Context) ApiCustomerAcquireUnsubscriber2Request {
-	return ApiCustomerAcquireUnsubscriber2Request{
+func (a *CustomerAPIService) CustomerAcquireUnsubscriber2(ctx context.Context) CustomerAPICustomerAcquireUnsubscriber2Request {
+	return CustomerAPICustomerAcquireUnsubscriber2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -401,7 +1184,7 @@ func (a *CustomerAPIService) CustomerAcquireUnsubscriber2(ctx context.Context) A
 
 // Execute executes the request
 //  @return CustomerUnsubscribeResponse
-func (a *CustomerAPIService) CustomerAcquireUnsubscriber2Execute(r ApiCustomerAcquireUnsubscriber2Request) (*CustomerUnsubscribeResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerAcquireUnsubscriber2Execute(r CustomerAPICustomerAcquireUnsubscriber2Request) (*CustomerUnsubscribeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -487,18 +1270,18 @@ func (a *CustomerAPIService) CustomerAcquireUnsubscriber2Execute(r ApiCustomerAc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerAddCustomerToGroupRequest struct {
+type CustomerAPICustomerAddCustomerToGroupRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerAddCustomerToGroupRequest
 }
 
-func (r ApiCustomerAddCustomerToGroupRequest) Body(body CustomerAddCustomerToGroupRequest) ApiCustomerAddCustomerToGroupRequest {
+func (r CustomerAPICustomerAddCustomerToGroupRequest) Body(body CustomerAddCustomerToGroupRequest) CustomerAPICustomerAddCustomerToGroupRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerAddCustomerToGroupRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r CustomerAPICustomerAddCustomerToGroupRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerAddCustomerToGroupExecute(r)
 }
 
@@ -506,10 +1289,10 @@ func (r ApiCustomerAddCustomerToGroupRequest) Execute() (*CustomerGroupResponse,
 CustomerAddCustomerToGroup Method for CustomerAddCustomerToGroup
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerAddCustomerToGroupRequest
+ @return CustomerAPICustomerAddCustomerToGroupRequest
 */
-func (a *CustomerAPIService) CustomerAddCustomerToGroup(ctx context.Context) ApiCustomerAddCustomerToGroupRequest {
-	return ApiCustomerAddCustomerToGroupRequest{
+func (a *CustomerAPIService) CustomerAddCustomerToGroup(ctx context.Context) CustomerAPICustomerAddCustomerToGroupRequest {
+	return CustomerAPICustomerAddCustomerToGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -517,7 +1300,7 @@ func (a *CustomerAPIService) CustomerAddCustomerToGroup(ctx context.Context) Api
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerAPIService) CustomerAddCustomerToGroupExecute(r ApiCustomerAddCustomerToGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerAddCustomerToGroupExecute(r CustomerAPICustomerAddCustomerToGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -603,18 +1386,18 @@ func (a *CustomerAPIService) CustomerAddCustomerToGroupExecute(r ApiCustomerAddC
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerAddCustomerToGroup2Request struct {
+type CustomerAPICustomerAddCustomerToGroup2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerAddCustomerToGroupRequest
 }
 
-func (r ApiCustomerAddCustomerToGroup2Request) Body(body CustomerAddCustomerToGroupRequest) ApiCustomerAddCustomerToGroup2Request {
+func (r CustomerAPICustomerAddCustomerToGroup2Request) Body(body CustomerAddCustomerToGroupRequest) CustomerAPICustomerAddCustomerToGroup2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerAddCustomerToGroup2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r CustomerAPICustomerAddCustomerToGroup2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerAddCustomerToGroup2Execute(r)
 }
 
@@ -622,10 +1405,10 @@ func (r ApiCustomerAddCustomerToGroup2Request) Execute() (*CustomerGroupResponse
 CustomerAddCustomerToGroup2 Method for CustomerAddCustomerToGroup2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerAddCustomerToGroup2Request
+ @return CustomerAPICustomerAddCustomerToGroup2Request
 */
-func (a *CustomerAPIService) CustomerAddCustomerToGroup2(ctx context.Context) ApiCustomerAddCustomerToGroup2Request {
-	return ApiCustomerAddCustomerToGroup2Request{
+func (a *CustomerAPIService) CustomerAddCustomerToGroup2(ctx context.Context) CustomerAPICustomerAddCustomerToGroup2Request {
+	return CustomerAPICustomerAddCustomerToGroup2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -633,7 +1416,7 @@ func (a *CustomerAPIService) CustomerAddCustomerToGroup2(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerAPIService) CustomerAddCustomerToGroup2Execute(r ApiCustomerAddCustomerToGroup2Request) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerAddCustomerToGroup2Execute(r CustomerAPICustomerAddCustomerToGroup2Request) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -719,18 +1502,18 @@ func (a *CustomerAPIService) CustomerAddCustomerToGroup2Execute(r ApiCustomerAdd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerAssignAgentRequest struct {
+type CustomerAPICustomerAssignAgentRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerAssignAgentRequest
 }
 
-func (r ApiCustomerAssignAgentRequest) Body(body CustomerAssignAgentRequest) ApiCustomerAssignAgentRequest {
+func (r CustomerAPICustomerAssignAgentRequest) Body(body CustomerAssignAgentRequest) CustomerAPICustomerAssignAgentRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerAssignAgentRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r CustomerAPICustomerAssignAgentRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.CustomerAssignAgentExecute(r)
 }
 
@@ -738,10 +1521,10 @@ func (r ApiCustomerAssignAgentRequest) Execute() (map[string]interface{}, *http.
 CustomerAssignAgent Method for CustomerAssignAgent
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerAssignAgentRequest
+ @return CustomerAPICustomerAssignAgentRequest
 */
-func (a *CustomerAPIService) CustomerAssignAgent(ctx context.Context) ApiCustomerAssignAgentRequest {
-	return ApiCustomerAssignAgentRequest{
+func (a *CustomerAPIService) CustomerAssignAgent(ctx context.Context) CustomerAPICustomerAssignAgentRequest {
+	return CustomerAPICustomerAssignAgentRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -749,7 +1532,7 @@ func (a *CustomerAPIService) CustomerAssignAgent(ctx context.Context) ApiCustome
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CustomerAPIService) CustomerAssignAgentExecute(r ApiCustomerAssignAgentRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CustomerAPIService) CustomerAssignAgentExecute(r CustomerAPICustomerAssignAgentRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -835,18 +1618,18 @@ func (a *CustomerAPIService) CustomerAssignAgentExecute(r ApiCustomerAssignAgent
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerBulkUpdateRequest struct {
+type CustomerAPICustomerBulkUpdateRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerBulkUpdateRequest
 }
 
-func (r ApiCustomerBulkUpdateRequest) Body(body CustomerBulkUpdateRequest) ApiCustomerBulkUpdateRequest {
+func (r CustomerAPICustomerBulkUpdateRequest) Body(body CustomerBulkUpdateRequest) CustomerAPICustomerBulkUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerBulkUpdateRequest) Execute() (*CustomerBulkUpdateResponse, *http.Response, error) {
+func (r CustomerAPICustomerBulkUpdateRequest) Execute() (*CustomerBulkUpdateResponse, *http.Response, error) {
 	return r.ApiService.CustomerBulkUpdateExecute(r)
 }
 
@@ -854,10 +1637,10 @@ func (r ApiCustomerBulkUpdateRequest) Execute() (*CustomerBulkUpdateResponse, *h
 CustomerBulkUpdate Method for CustomerBulkUpdate
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerBulkUpdateRequest
+ @return CustomerAPICustomerBulkUpdateRequest
 */
-func (a *CustomerAPIService) CustomerBulkUpdate(ctx context.Context) ApiCustomerBulkUpdateRequest {
-	return ApiCustomerBulkUpdateRequest{
+func (a *CustomerAPIService) CustomerBulkUpdate(ctx context.Context) CustomerAPICustomerBulkUpdateRequest {
+	return CustomerAPICustomerBulkUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -865,7 +1648,7 @@ func (a *CustomerAPIService) CustomerBulkUpdate(ctx context.Context) ApiCustomer
 
 // Execute executes the request
 //  @return CustomerBulkUpdateResponse
-func (a *CustomerAPIService) CustomerBulkUpdateExecute(r ApiCustomerBulkUpdateRequest) (*CustomerBulkUpdateResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerBulkUpdateExecute(r CustomerAPICustomerBulkUpdateRequest) (*CustomerBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -951,18 +1734,18 @@ func (a *CustomerAPIService) CustomerBulkUpdateExecute(r ApiCustomerBulkUpdateRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerBulkUpdate2Request struct {
+type CustomerAPICustomerBulkUpdate2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerBulkUpdateRequest
 }
 
-func (r ApiCustomerBulkUpdate2Request) Body(body CustomerBulkUpdateRequest) ApiCustomerBulkUpdate2Request {
+func (r CustomerAPICustomerBulkUpdate2Request) Body(body CustomerBulkUpdateRequest) CustomerAPICustomerBulkUpdate2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerBulkUpdate2Request) Execute() (*CustomerBulkUpdateResponse, *http.Response, error) {
+func (r CustomerAPICustomerBulkUpdate2Request) Execute() (*CustomerBulkUpdateResponse, *http.Response, error) {
 	return r.ApiService.CustomerBulkUpdate2Execute(r)
 }
 
@@ -970,10 +1753,10 @@ func (r ApiCustomerBulkUpdate2Request) Execute() (*CustomerBulkUpdateResponse, *
 CustomerBulkUpdate2 Method for CustomerBulkUpdate2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerBulkUpdate2Request
+ @return CustomerAPICustomerBulkUpdate2Request
 */
-func (a *CustomerAPIService) CustomerBulkUpdate2(ctx context.Context) ApiCustomerBulkUpdate2Request {
-	return ApiCustomerBulkUpdate2Request{
+func (a *CustomerAPIService) CustomerBulkUpdate2(ctx context.Context) CustomerAPICustomerBulkUpdate2Request {
+	return CustomerAPICustomerBulkUpdate2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -981,7 +1764,7 @@ func (a *CustomerAPIService) CustomerBulkUpdate2(ctx context.Context) ApiCustome
 
 // Execute executes the request
 //  @return CustomerBulkUpdateResponse
-func (a *CustomerAPIService) CustomerBulkUpdate2Execute(r ApiCustomerBulkUpdate2Request) (*CustomerBulkUpdateResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerBulkUpdate2Execute(r CustomerAPICustomerBulkUpdate2Request) (*CustomerBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1067,18 +1850,18 @@ func (a *CustomerAPIService) CustomerBulkUpdate2Execute(r ApiCustomerBulkUpdate2
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerCreateRequest struct {
+type CustomerAPICustomerCreateRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerCreateRequest
 }
 
-func (r ApiCustomerCreateRequest) Body(body CustomerCreateRequest) ApiCustomerCreateRequest {
+func (r CustomerAPICustomerCreateRequest) Body(body CustomerCreateRequest) CustomerAPICustomerCreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerCreateRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r CustomerAPICustomerCreateRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerCreateExecute(r)
 }
 
@@ -1086,10 +1869,10 @@ func (r ApiCustomerCreateRequest) Execute() (*CustomerCustomerResponse, *http.Re
 CustomerCreate Method for CustomerCreate
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerCreateRequest
+ @return CustomerAPICustomerCreateRequest
 */
-func (a *CustomerAPIService) CustomerCreate(ctx context.Context) ApiCustomerCreateRequest {
-	return ApiCustomerCreateRequest{
+func (a *CustomerAPIService) CustomerCreate(ctx context.Context) CustomerAPICustomerCreateRequest {
+	return CustomerAPICustomerCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1097,7 +1880,7 @@ func (a *CustomerAPIService) CustomerCreate(ctx context.Context) ApiCustomerCrea
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerAPIService) CustomerCreateExecute(r ApiCustomerCreateRequest) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerCreateExecute(r CustomerAPICustomerCreateRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1183,18 +1966,18 @@ func (a *CustomerAPIService) CustomerCreateExecute(r ApiCustomerCreateRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerCreate2Request struct {
+type CustomerAPICustomerCreate2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerCreateRequest
 }
 
-func (r ApiCustomerCreate2Request) Body(body CustomerCreateRequest) ApiCustomerCreate2Request {
+func (r CustomerAPICustomerCreate2Request) Body(body CustomerCreateRequest) CustomerAPICustomerCreate2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerCreate2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r CustomerAPICustomerCreate2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerCreate2Execute(r)
 }
 
@@ -1202,10 +1985,10 @@ func (r ApiCustomerCreate2Request) Execute() (*CustomerCustomerResponse, *http.R
 CustomerCreate2 Method for CustomerCreate2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerCreate2Request
+ @return CustomerAPICustomerCreate2Request
 */
-func (a *CustomerAPIService) CustomerCreate2(ctx context.Context) ApiCustomerCreate2Request {
-	return ApiCustomerCreate2Request{
+func (a *CustomerAPIService) CustomerCreate2(ctx context.Context) CustomerAPICustomerCreate2Request {
+	return CustomerAPICustomerCreate2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1213,7 +1996,7 @@ func (a *CustomerAPIService) CustomerCreate2(ctx context.Context) ApiCustomerCre
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerAPIService) CustomerCreate2Execute(r ApiCustomerCreate2Request) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerCreate2Execute(r CustomerAPICustomerCreate2Request) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1299,18 +2082,18 @@ func (a *CustomerAPIService) CustomerCreate2Execute(r ApiCustomerCreate2Request)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerCreateAddressRequest struct {
+type CustomerAPICustomerCreateAddressRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerAddressCreateRequest
 }
 
-func (r ApiCustomerCreateAddressRequest) Body(body CustomerAddressCreateRequest) ApiCustomerCreateAddressRequest {
+func (r CustomerAPICustomerCreateAddressRequest) Body(body CustomerAddressCreateRequest) CustomerAPICustomerCreateAddressRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerCreateAddressRequest) Execute() (*CustomerAddressCustomerResponse, *http.Response, error) {
+func (r CustomerAPICustomerCreateAddressRequest) Execute() (*CustomerAddressCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerCreateAddressExecute(r)
 }
 
@@ -1318,10 +2101,10 @@ func (r ApiCustomerCreateAddressRequest) Execute() (*CustomerAddressCustomerResp
 CustomerCreateAddress Method for CustomerCreateAddress
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerCreateAddressRequest
+ @return CustomerAPICustomerCreateAddressRequest
 */
-func (a *CustomerAPIService) CustomerCreateAddress(ctx context.Context) ApiCustomerCreateAddressRequest {
-	return ApiCustomerCreateAddressRequest{
+func (a *CustomerAPIService) CustomerCreateAddress(ctx context.Context) CustomerAPICustomerCreateAddressRequest {
+	return CustomerAPICustomerCreateAddressRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1329,7 +2112,7 @@ func (a *CustomerAPIService) CustomerCreateAddress(ctx context.Context) ApiCusto
 
 // Execute executes the request
 //  @return CustomerAddressCustomerResponse
-func (a *CustomerAPIService) CustomerCreateAddressExecute(r ApiCustomerCreateAddressRequest) (*CustomerAddressCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerCreateAddressExecute(r CustomerAPICustomerCreateAddressRequest) (*CustomerAddressCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1415,18 +2198,18 @@ func (a *CustomerAPIService) CustomerCreateAddressExecute(r ApiCustomerCreateAdd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerCreateAddress2Request struct {
+type CustomerAPICustomerCreateAddress2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerAddressCreateRequest
 }
 
-func (r ApiCustomerCreateAddress2Request) Body(body CustomerAddressCreateRequest) ApiCustomerCreateAddress2Request {
+func (r CustomerAPICustomerCreateAddress2Request) Body(body CustomerAddressCreateRequest) CustomerAPICustomerCreateAddress2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerCreateAddress2Request) Execute() (*CustomerAddressCustomerResponse, *http.Response, error) {
+func (r CustomerAPICustomerCreateAddress2Request) Execute() (*CustomerAddressCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerCreateAddress2Execute(r)
 }
 
@@ -1434,10 +2217,10 @@ func (r ApiCustomerCreateAddress2Request) Execute() (*CustomerAddressCustomerRes
 CustomerCreateAddress2 Method for CustomerCreateAddress2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerCreateAddress2Request
+ @return CustomerAPICustomerCreateAddress2Request
 */
-func (a *CustomerAPIService) CustomerCreateAddress2(ctx context.Context) ApiCustomerCreateAddress2Request {
-	return ApiCustomerCreateAddress2Request{
+func (a *CustomerAPIService) CustomerCreateAddress2(ctx context.Context) CustomerAPICustomerCreateAddress2Request {
+	return CustomerAPICustomerCreateAddress2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1445,7 +2228,7 @@ func (a *CustomerAPIService) CustomerCreateAddress2(ctx context.Context) ApiCust
 
 // Execute executes the request
 //  @return CustomerAddressCustomerResponse
-func (a *CustomerAPIService) CustomerCreateAddress2Execute(r ApiCustomerCreateAddress2Request) (*CustomerAddressCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerCreateAddress2Execute(r CustomerAPICustomerCreateAddress2Request) (*CustomerAddressCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1531,18 +2314,18 @@ func (a *CustomerAPIService) CustomerCreateAddress2Execute(r ApiCustomerCreateAd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerCreateGroupRequest struct {
+type CustomerAPICustomerCreateGroupRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerCreateGroupRequest
 }
 
-func (r ApiCustomerCreateGroupRequest) Body(body CustomerCreateGroupRequest) ApiCustomerCreateGroupRequest {
+func (r CustomerAPICustomerCreateGroupRequest) Body(body CustomerCreateGroupRequest) CustomerAPICustomerCreateGroupRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerCreateGroupRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r CustomerAPICustomerCreateGroupRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerCreateGroupExecute(r)
 }
 
@@ -1550,10 +2333,10 @@ func (r ApiCustomerCreateGroupRequest) Execute() (*CustomerGroupResponse, *http.
 CustomerCreateGroup Method for CustomerCreateGroup
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerCreateGroupRequest
+ @return CustomerAPICustomerCreateGroupRequest
 */
-func (a *CustomerAPIService) CustomerCreateGroup(ctx context.Context) ApiCustomerCreateGroupRequest {
-	return ApiCustomerCreateGroupRequest{
+func (a *CustomerAPIService) CustomerCreateGroup(ctx context.Context) CustomerAPICustomerCreateGroupRequest {
+	return CustomerAPICustomerCreateGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1561,7 +2344,7 @@ func (a *CustomerAPIService) CustomerCreateGroup(ctx context.Context) ApiCustome
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerAPIService) CustomerCreateGroupExecute(r ApiCustomerCreateGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerCreateGroupExecute(r CustomerAPICustomerCreateGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1647,18 +2430,18 @@ func (a *CustomerAPIService) CustomerCreateGroupExecute(r ApiCustomerCreateGroup
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerCreateGroup2Request struct {
+type CustomerAPICustomerCreateGroup2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerCreateGroupRequest
 }
 
-func (r ApiCustomerCreateGroup2Request) Body(body CustomerCreateGroupRequest) ApiCustomerCreateGroup2Request {
+func (r CustomerAPICustomerCreateGroup2Request) Body(body CustomerCreateGroupRequest) CustomerAPICustomerCreateGroup2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerCreateGroup2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r CustomerAPICustomerCreateGroup2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerCreateGroup2Execute(r)
 }
 
@@ -1666,10 +2449,10 @@ func (r ApiCustomerCreateGroup2Request) Execute() (*CustomerGroupResponse, *http
 CustomerCreateGroup2 Method for CustomerCreateGroup2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerCreateGroup2Request
+ @return CustomerAPICustomerCreateGroup2Request
 */
-func (a *CustomerAPIService) CustomerCreateGroup2(ctx context.Context) ApiCustomerCreateGroup2Request {
-	return ApiCustomerCreateGroup2Request{
+func (a *CustomerAPIService) CustomerCreateGroup2(ctx context.Context) CustomerAPICustomerCreateGroup2Request {
+	return CustomerAPICustomerCreateGroup2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1677,7 +2460,7 @@ func (a *CustomerAPIService) CustomerCreateGroup2(ctx context.Context) ApiCustom
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerAPIService) CustomerCreateGroup2Execute(r ApiCustomerCreateGroup2Request) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerCreateGroup2Execute(r CustomerAPICustomerCreateGroup2Request) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1763,18 +2546,18 @@ func (a *CustomerAPIService) CustomerCreateGroup2Execute(r ApiCustomerCreateGrou
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerCreateSubscriberRequest struct {
+type CustomerAPICustomerCreateSubscriberRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerCreateSubscriberRequest
 }
 
-func (r ApiCustomerCreateSubscriberRequest) Body(body CustomerCreateSubscriberRequest) ApiCustomerCreateSubscriberRequest {
+func (r CustomerAPICustomerCreateSubscriberRequest) Body(body CustomerCreateSubscriberRequest) CustomerAPICustomerCreateSubscriberRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerCreateSubscriberRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+func (r CustomerAPICustomerCreateSubscriberRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
 	return r.ApiService.CustomerCreateSubscriberExecute(r)
 }
 
@@ -1782,10 +2565,10 @@ func (r ApiCustomerCreateSubscriberRequest) Execute() (*CustomerSubscriberRespon
 CustomerCreateSubscriber Method for CustomerCreateSubscriber
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerCreateSubscriberRequest
+ @return CustomerAPICustomerCreateSubscriberRequest
 */
-func (a *CustomerAPIService) CustomerCreateSubscriber(ctx context.Context) ApiCustomerCreateSubscriberRequest {
-	return ApiCustomerCreateSubscriberRequest{
+func (a *CustomerAPIService) CustomerCreateSubscriber(ctx context.Context) CustomerAPICustomerCreateSubscriberRequest {
+	return CustomerAPICustomerCreateSubscriberRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1793,7 +2576,7 @@ func (a *CustomerAPIService) CustomerCreateSubscriber(ctx context.Context) ApiCu
 
 // Execute executes the request
 //  @return CustomerSubscriberResponse
-func (a *CustomerAPIService) CustomerCreateSubscriberExecute(r ApiCustomerCreateSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerCreateSubscriberExecute(r CustomerAPICustomerCreateSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1879,18 +2662,18 @@ func (a *CustomerAPIService) CustomerCreateSubscriberExecute(r ApiCustomerCreate
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerCreateSubscriber2Request struct {
+type CustomerAPICustomerCreateSubscriber2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerCreateSubscriberRequest
 }
 
-func (r ApiCustomerCreateSubscriber2Request) Body(body CustomerCreateSubscriberRequest) ApiCustomerCreateSubscriber2Request {
+func (r CustomerAPICustomerCreateSubscriber2Request) Body(body CustomerCreateSubscriberRequest) CustomerAPICustomerCreateSubscriber2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerCreateSubscriber2Request) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+func (r CustomerAPICustomerCreateSubscriber2Request) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
 	return r.ApiService.CustomerCreateSubscriber2Execute(r)
 }
 
@@ -1898,10 +2681,10 @@ func (r ApiCustomerCreateSubscriber2Request) Execute() (*CustomerSubscriberRespo
 CustomerCreateSubscriber2 Method for CustomerCreateSubscriber2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerCreateSubscriber2Request
+ @return CustomerAPICustomerCreateSubscriber2Request
 */
-func (a *CustomerAPIService) CustomerCreateSubscriber2(ctx context.Context) ApiCustomerCreateSubscriber2Request {
-	return ApiCustomerCreateSubscriber2Request{
+func (a *CustomerAPIService) CustomerCreateSubscriber2(ctx context.Context) CustomerAPICustomerCreateSubscriber2Request {
+	return CustomerAPICustomerCreateSubscriber2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1909,7 +2692,7 @@ func (a *CustomerAPIService) CustomerCreateSubscriber2(ctx context.Context) ApiC
 
 // Execute executes the request
 //  @return CustomerSubscriberResponse
-func (a *CustomerAPIService) CustomerCreateSubscriber2Execute(r ApiCustomerCreateSubscriber2Request) (*CustomerSubscriberResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerCreateSubscriber2Execute(r CustomerAPICustomerCreateSubscriber2Request) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1995,18 +2778,18 @@ func (a *CustomerAPIService) CustomerCreateSubscriber2Execute(r ApiCustomerCreat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerDeleteAddressRequest struct {
+type CustomerAPICustomerDeleteAddressRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerAddressDeleteRequest
 }
 
-func (r ApiCustomerDeleteAddressRequest) Body(body CustomerAddressDeleteRequest) ApiCustomerDeleteAddressRequest {
+func (r CustomerAPICustomerDeleteAddressRequest) Body(body CustomerAddressDeleteRequest) CustomerAPICustomerDeleteAddressRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerDeleteAddressRequest) Execute() (*CustomerAddressDeleteResponse, *http.Response, error) {
+func (r CustomerAPICustomerDeleteAddressRequest) Execute() (*CustomerAddressDeleteResponse, *http.Response, error) {
 	return r.ApiService.CustomerDeleteAddressExecute(r)
 }
 
@@ -2014,10 +2797,10 @@ func (r ApiCustomerDeleteAddressRequest) Execute() (*CustomerAddressDeleteRespon
 CustomerDeleteAddress Method for CustomerDeleteAddress
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerDeleteAddressRequest
+ @return CustomerAPICustomerDeleteAddressRequest
 */
-func (a *CustomerAPIService) CustomerDeleteAddress(ctx context.Context) ApiCustomerDeleteAddressRequest {
-	return ApiCustomerDeleteAddressRequest{
+func (a *CustomerAPIService) CustomerDeleteAddress(ctx context.Context) CustomerAPICustomerDeleteAddressRequest {
+	return CustomerAPICustomerDeleteAddressRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2025,7 +2808,7 @@ func (a *CustomerAPIService) CustomerDeleteAddress(ctx context.Context) ApiCusto
 
 // Execute executes the request
 //  @return CustomerAddressDeleteResponse
-func (a *CustomerAPIService) CustomerDeleteAddressExecute(r ApiCustomerDeleteAddressRequest) (*CustomerAddressDeleteResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerDeleteAddressExecute(r CustomerAPICustomerDeleteAddressRequest) (*CustomerAddressDeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2111,18 +2894,18 @@ func (a *CustomerAPIService) CustomerDeleteAddressExecute(r ApiCustomerDeleteAdd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerDeleteAddress2Request struct {
+type CustomerAPICustomerDeleteAddress2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerAddressDeleteRequest
 }
 
-func (r ApiCustomerDeleteAddress2Request) Body(body CustomerAddressDeleteRequest) ApiCustomerDeleteAddress2Request {
+func (r CustomerAPICustomerDeleteAddress2Request) Body(body CustomerAddressDeleteRequest) CustomerAPICustomerDeleteAddress2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerDeleteAddress2Request) Execute() (*CustomerAddressDeleteResponse, *http.Response, error) {
+func (r CustomerAPICustomerDeleteAddress2Request) Execute() (*CustomerAddressDeleteResponse, *http.Response, error) {
 	return r.ApiService.CustomerDeleteAddress2Execute(r)
 }
 
@@ -2130,10 +2913,10 @@ func (r ApiCustomerDeleteAddress2Request) Execute() (*CustomerAddressDeleteRespo
 CustomerDeleteAddress2 Method for CustomerDeleteAddress2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerDeleteAddress2Request
+ @return CustomerAPICustomerDeleteAddress2Request
 */
-func (a *CustomerAPIService) CustomerDeleteAddress2(ctx context.Context) ApiCustomerDeleteAddress2Request {
-	return ApiCustomerDeleteAddress2Request{
+func (a *CustomerAPIService) CustomerDeleteAddress2(ctx context.Context) CustomerAPICustomerDeleteAddress2Request {
+	return CustomerAPICustomerDeleteAddress2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2141,7 +2924,7 @@ func (a *CustomerAPIService) CustomerDeleteAddress2(ctx context.Context) ApiCust
 
 // Execute executes the request
 //  @return CustomerAddressDeleteResponse
-func (a *CustomerAPIService) CustomerDeleteAddress2Execute(r ApiCustomerDeleteAddress2Request) (*CustomerAddressDeleteResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerDeleteAddress2Execute(r CustomerAPICustomerDeleteAddress2Request) (*CustomerAddressDeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2227,18 +3010,18 @@ func (a *CustomerAPIService) CustomerDeleteAddress2Execute(r ApiCustomerDeleteAd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerDeleteGroupRequest struct {
+type CustomerAPICustomerDeleteGroupRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerDeleteGroupRequest
 }
 
-func (r ApiCustomerDeleteGroupRequest) Body(body CustomerDeleteGroupRequest) ApiCustomerDeleteGroupRequest {
+func (r CustomerAPICustomerDeleteGroupRequest) Body(body CustomerDeleteGroupRequest) CustomerAPICustomerDeleteGroupRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerDeleteGroupRequest) Execute() (*CustomerDeleteGroupResponse, *http.Response, error) {
+func (r CustomerAPICustomerDeleteGroupRequest) Execute() (*CustomerDeleteGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerDeleteGroupExecute(r)
 }
 
@@ -2246,10 +3029,10 @@ func (r ApiCustomerDeleteGroupRequest) Execute() (*CustomerDeleteGroupResponse, 
 CustomerDeleteGroup Method for CustomerDeleteGroup
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerDeleteGroupRequest
+ @return CustomerAPICustomerDeleteGroupRequest
 */
-func (a *CustomerAPIService) CustomerDeleteGroup(ctx context.Context) ApiCustomerDeleteGroupRequest {
-	return ApiCustomerDeleteGroupRequest{
+func (a *CustomerAPIService) CustomerDeleteGroup(ctx context.Context) CustomerAPICustomerDeleteGroupRequest {
+	return CustomerAPICustomerDeleteGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2257,7 +3040,7 @@ func (a *CustomerAPIService) CustomerDeleteGroup(ctx context.Context) ApiCustome
 
 // Execute executes the request
 //  @return CustomerDeleteGroupResponse
-func (a *CustomerAPIService) CustomerDeleteGroupExecute(r ApiCustomerDeleteGroupRequest) (*CustomerDeleteGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerDeleteGroupExecute(r CustomerAPICustomerDeleteGroupRequest) (*CustomerDeleteGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2343,18 +3126,18 @@ func (a *CustomerAPIService) CustomerDeleteGroupExecute(r ApiCustomerDeleteGroup
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerDeleteGroup2Request struct {
+type CustomerAPICustomerDeleteGroup2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerDeleteGroupRequest
 }
 
-func (r ApiCustomerDeleteGroup2Request) Body(body CustomerDeleteGroupRequest) ApiCustomerDeleteGroup2Request {
+func (r CustomerAPICustomerDeleteGroup2Request) Body(body CustomerDeleteGroupRequest) CustomerAPICustomerDeleteGroup2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerDeleteGroup2Request) Execute() (*CustomerDeleteGroupResponse, *http.Response, error) {
+func (r CustomerAPICustomerDeleteGroup2Request) Execute() (*CustomerDeleteGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerDeleteGroup2Execute(r)
 }
 
@@ -2362,10 +3145,10 @@ func (r ApiCustomerDeleteGroup2Request) Execute() (*CustomerDeleteGroupResponse,
 CustomerDeleteGroup2 Method for CustomerDeleteGroup2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerDeleteGroup2Request
+ @return CustomerAPICustomerDeleteGroup2Request
 */
-func (a *CustomerAPIService) CustomerDeleteGroup2(ctx context.Context) ApiCustomerDeleteGroup2Request {
-	return ApiCustomerDeleteGroup2Request{
+func (a *CustomerAPIService) CustomerDeleteGroup2(ctx context.Context) CustomerAPICustomerDeleteGroup2Request {
+	return CustomerAPICustomerDeleteGroup2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2373,7 +3156,7 @@ func (a *CustomerAPIService) CustomerDeleteGroup2(ctx context.Context) ApiCustom
 
 // Execute executes the request
 //  @return CustomerDeleteGroupResponse
-func (a *CustomerAPIService) CustomerDeleteGroup2Execute(r ApiCustomerDeleteGroup2Request) (*CustomerDeleteGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerDeleteGroup2Execute(r CustomerAPICustomerDeleteGroup2Request) (*CustomerDeleteGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2459,18 +3242,18 @@ func (a *CustomerAPIService) CustomerDeleteGroup2Execute(r ApiCustomerDeleteGrou
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerFindRequest struct {
+type CustomerAPICustomerFindRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerFindManyRequest
 }
 
-func (r ApiCustomerFindRequest) Body(body CustomerFindManyRequest) ApiCustomerFindRequest {
+func (r CustomerAPICustomerFindRequest) Body(body CustomerFindManyRequest) CustomerAPICustomerFindRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerFindRequest) Execute() (*CustomerFindManyResponse, *http.Response, error) {
+func (r CustomerAPICustomerFindRequest) Execute() (*CustomerFindManyResponse, *http.Response, error) {
 	return r.ApiService.CustomerFindExecute(r)
 }
 
@@ -2478,10 +3261,10 @@ func (r ApiCustomerFindRequest) Execute() (*CustomerFindManyResponse, *http.Resp
 CustomerFind Method for CustomerFind
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindRequest
+ @return CustomerAPICustomerFindRequest
 */
-func (a *CustomerAPIService) CustomerFind(ctx context.Context) ApiCustomerFindRequest {
-	return ApiCustomerFindRequest{
+func (a *CustomerAPIService) CustomerFind(ctx context.Context) CustomerAPICustomerFindRequest {
+	return CustomerAPICustomerFindRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2489,7 +3272,7 @@ func (a *CustomerAPIService) CustomerFind(ctx context.Context) ApiCustomerFindRe
 
 // Execute executes the request
 //  @return CustomerFindManyResponse
-func (a *CustomerAPIService) CustomerFindExecute(r ApiCustomerFindRequest) (*CustomerFindManyResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerFindExecute(r CustomerAPICustomerFindRequest) (*CustomerFindManyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2575,18 +3358,18 @@ func (a *CustomerAPIService) CustomerFindExecute(r ApiCustomerFindRequest) (*Cus
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerFind2Request struct {
+type CustomerAPICustomerFind2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerFindManyRequest
 }
 
-func (r ApiCustomerFind2Request) Body(body CustomerFindManyRequest) ApiCustomerFind2Request {
+func (r CustomerAPICustomerFind2Request) Body(body CustomerFindManyRequest) CustomerAPICustomerFind2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerFind2Request) Execute() (*CustomerFindManyResponse, *http.Response, error) {
+func (r CustomerAPICustomerFind2Request) Execute() (*CustomerFindManyResponse, *http.Response, error) {
 	return r.ApiService.CustomerFind2Execute(r)
 }
 
@@ -2594,10 +3377,10 @@ func (r ApiCustomerFind2Request) Execute() (*CustomerFindManyResponse, *http.Res
 CustomerFind2 Method for CustomerFind2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFind2Request
+ @return CustomerAPICustomerFind2Request
 */
-func (a *CustomerAPIService) CustomerFind2(ctx context.Context) ApiCustomerFind2Request {
-	return ApiCustomerFind2Request{
+func (a *CustomerAPIService) CustomerFind2(ctx context.Context) CustomerAPICustomerFind2Request {
+	return CustomerAPICustomerFind2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2605,7 +3388,7 @@ func (a *CustomerAPIService) CustomerFind2(ctx context.Context) ApiCustomerFind2
 
 // Execute executes the request
 //  @return CustomerFindManyResponse
-func (a *CustomerAPIService) CustomerFind2Execute(r ApiCustomerFind2Request) (*CustomerFindManyResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerFind2Execute(r CustomerAPICustomerFind2Request) (*CustomerFindManyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2691,18 +3474,18 @@ func (a *CustomerAPIService) CustomerFind2Execute(r ApiCustomerFind2Request) (*C
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerFindByEmailRequest struct {
+type CustomerAPICustomerFindByEmailRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerFindByEmailRequest
 }
 
-func (r ApiCustomerFindByEmailRequest) Body(body CustomerFindByEmailRequest) ApiCustomerFindByEmailRequest {
+func (r CustomerAPICustomerFindByEmailRequest) Body(body CustomerFindByEmailRequest) CustomerAPICustomerFindByEmailRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerFindByEmailRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r CustomerAPICustomerFindByEmailRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerFindByEmailExecute(r)
 }
 
@@ -2710,10 +3493,10 @@ func (r ApiCustomerFindByEmailRequest) Execute() (*CustomerCustomerResponse, *ht
 CustomerFindByEmail Method for CustomerFindByEmail
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindByEmailRequest
+ @return CustomerAPICustomerFindByEmailRequest
 */
-func (a *CustomerAPIService) CustomerFindByEmail(ctx context.Context) ApiCustomerFindByEmailRequest {
-	return ApiCustomerFindByEmailRequest{
+func (a *CustomerAPIService) CustomerFindByEmail(ctx context.Context) CustomerAPICustomerFindByEmailRequest {
+	return CustomerAPICustomerFindByEmailRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2721,7 +3504,7 @@ func (a *CustomerAPIService) CustomerFindByEmail(ctx context.Context) ApiCustome
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerAPIService) CustomerFindByEmailExecute(r ApiCustomerFindByEmailRequest) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerFindByEmailExecute(r CustomerAPICustomerFindByEmailRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2807,18 +3590,18 @@ func (a *CustomerAPIService) CustomerFindByEmailExecute(r ApiCustomerFindByEmail
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerFindByEmail2Request struct {
+type CustomerAPICustomerFindByEmail2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerFindByEmailRequest
 }
 
-func (r ApiCustomerFindByEmail2Request) Body(body CustomerFindByEmailRequest) ApiCustomerFindByEmail2Request {
+func (r CustomerAPICustomerFindByEmail2Request) Body(body CustomerFindByEmailRequest) CustomerAPICustomerFindByEmail2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerFindByEmail2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r CustomerAPICustomerFindByEmail2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerFindByEmail2Execute(r)
 }
 
@@ -2826,10 +3609,10 @@ func (r ApiCustomerFindByEmail2Request) Execute() (*CustomerCustomerResponse, *h
 CustomerFindByEmail2 Method for CustomerFindByEmail2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindByEmail2Request
+ @return CustomerAPICustomerFindByEmail2Request
 */
-func (a *CustomerAPIService) CustomerFindByEmail2(ctx context.Context) ApiCustomerFindByEmail2Request {
-	return ApiCustomerFindByEmail2Request{
+func (a *CustomerAPIService) CustomerFindByEmail2(ctx context.Context) CustomerAPICustomerFindByEmail2Request {
+	return CustomerAPICustomerFindByEmail2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2837,7 +3620,7 @@ func (a *CustomerAPIService) CustomerFindByEmail2(ctx context.Context) ApiCustom
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerAPIService) CustomerFindByEmail2Execute(r ApiCustomerFindByEmail2Request) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerFindByEmail2Execute(r CustomerAPICustomerFindByEmail2Request) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2923,18 +3706,18 @@ func (a *CustomerAPIService) CustomerFindByEmail2Execute(r ApiCustomerFindByEmai
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerFindByIdRequest struct {
+type CustomerAPICustomerFindByIdRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerFindByIdRequest
 }
 
-func (r ApiCustomerFindByIdRequest) Body(body CustomerFindByIdRequest) ApiCustomerFindByIdRequest {
+func (r CustomerAPICustomerFindByIdRequest) Body(body CustomerFindByIdRequest) CustomerAPICustomerFindByIdRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerFindByIdRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r CustomerAPICustomerFindByIdRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerFindByIdExecute(r)
 }
 
@@ -2942,10 +3725,10 @@ func (r ApiCustomerFindByIdRequest) Execute() (*CustomerCustomerResponse, *http.
 CustomerFindById Method for CustomerFindById
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindByIdRequest
+ @return CustomerAPICustomerFindByIdRequest
 */
-func (a *CustomerAPIService) CustomerFindById(ctx context.Context) ApiCustomerFindByIdRequest {
-	return ApiCustomerFindByIdRequest{
+func (a *CustomerAPIService) CustomerFindById(ctx context.Context) CustomerAPICustomerFindByIdRequest {
+	return CustomerAPICustomerFindByIdRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2953,7 +3736,7 @@ func (a *CustomerAPIService) CustomerFindById(ctx context.Context) ApiCustomerFi
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerAPIService) CustomerFindByIdExecute(r ApiCustomerFindByIdRequest) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerFindByIdExecute(r CustomerAPICustomerFindByIdRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3039,18 +3822,18 @@ func (a *CustomerAPIService) CustomerFindByIdExecute(r ApiCustomerFindByIdReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerFindById2Request struct {
+type CustomerAPICustomerFindById2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerFindByIdRequest
 }
 
-func (r ApiCustomerFindById2Request) Body(body CustomerFindByIdRequest) ApiCustomerFindById2Request {
+func (r CustomerAPICustomerFindById2Request) Body(body CustomerFindByIdRequest) CustomerAPICustomerFindById2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerFindById2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r CustomerAPICustomerFindById2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerFindById2Execute(r)
 }
 
@@ -3058,10 +3841,10 @@ func (r ApiCustomerFindById2Request) Execute() (*CustomerCustomerResponse, *http
 CustomerFindById2 Method for CustomerFindById2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindById2Request
+ @return CustomerAPICustomerFindById2Request
 */
-func (a *CustomerAPIService) CustomerFindById2(ctx context.Context) ApiCustomerFindById2Request {
-	return ApiCustomerFindById2Request{
+func (a *CustomerAPIService) CustomerFindById2(ctx context.Context) CustomerAPICustomerFindById2Request {
+	return CustomerAPICustomerFindById2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3069,7 +3852,7 @@ func (a *CustomerAPIService) CustomerFindById2(ctx context.Context) ApiCustomerF
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerAPIService) CustomerFindById2Execute(r ApiCustomerFindById2Request) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerFindById2Execute(r CustomerAPICustomerFindById2Request) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3155,18 +3938,18 @@ func (a *CustomerAPIService) CustomerFindById2Execute(r ApiCustomerFindById2Requ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerFindSubscriberByEmailRequest struct {
+type CustomerAPICustomerFindSubscriberByEmailRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerFindSubscriberByEmailRequest
 }
 
-func (r ApiCustomerFindSubscriberByEmailRequest) Body(body CustomerFindSubscriberByEmailRequest) ApiCustomerFindSubscriberByEmailRequest {
+func (r CustomerAPICustomerFindSubscriberByEmailRequest) Body(body CustomerFindSubscriberByEmailRequest) CustomerAPICustomerFindSubscriberByEmailRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerFindSubscriberByEmailRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+func (r CustomerAPICustomerFindSubscriberByEmailRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
 	return r.ApiService.CustomerFindSubscriberByEmailExecute(r)
 }
 
@@ -3174,10 +3957,10 @@ func (r ApiCustomerFindSubscriberByEmailRequest) Execute() (*CustomerSubscriberR
 CustomerFindSubscriberByEmail Method for CustomerFindSubscriberByEmail
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindSubscriberByEmailRequest
+ @return CustomerAPICustomerFindSubscriberByEmailRequest
 */
-func (a *CustomerAPIService) CustomerFindSubscriberByEmail(ctx context.Context) ApiCustomerFindSubscriberByEmailRequest {
-	return ApiCustomerFindSubscriberByEmailRequest{
+func (a *CustomerAPIService) CustomerFindSubscriberByEmail(ctx context.Context) CustomerAPICustomerFindSubscriberByEmailRequest {
+	return CustomerAPICustomerFindSubscriberByEmailRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3185,7 +3968,7 @@ func (a *CustomerAPIService) CustomerFindSubscriberByEmail(ctx context.Context) 
 
 // Execute executes the request
 //  @return CustomerSubscriberResponse
-func (a *CustomerAPIService) CustomerFindSubscriberByEmailExecute(r ApiCustomerFindSubscriberByEmailRequest) (*CustomerSubscriberResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerFindSubscriberByEmailExecute(r CustomerAPICustomerFindSubscriberByEmailRequest) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3271,18 +4054,18 @@ func (a *CustomerAPIService) CustomerFindSubscriberByEmailExecute(r ApiCustomerF
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerFindSubscriberByEmail2Request struct {
+type CustomerAPICustomerFindSubscriberByEmail2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerFindSubscriberByEmailRequest
 }
 
-func (r ApiCustomerFindSubscriberByEmail2Request) Body(body CustomerFindSubscriberByEmailRequest) ApiCustomerFindSubscriberByEmail2Request {
+func (r CustomerAPICustomerFindSubscriberByEmail2Request) Body(body CustomerFindSubscriberByEmailRequest) CustomerAPICustomerFindSubscriberByEmail2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerFindSubscriberByEmail2Request) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+func (r CustomerAPICustomerFindSubscriberByEmail2Request) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
 	return r.ApiService.CustomerFindSubscriberByEmail2Execute(r)
 }
 
@@ -3290,10 +4073,10 @@ func (r ApiCustomerFindSubscriberByEmail2Request) Execute() (*CustomerSubscriber
 CustomerFindSubscriberByEmail2 Method for CustomerFindSubscriberByEmail2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindSubscriberByEmail2Request
+ @return CustomerAPICustomerFindSubscriberByEmail2Request
 */
-func (a *CustomerAPIService) CustomerFindSubscriberByEmail2(ctx context.Context) ApiCustomerFindSubscriberByEmail2Request {
-	return ApiCustomerFindSubscriberByEmail2Request{
+func (a *CustomerAPIService) CustomerFindSubscriberByEmail2(ctx context.Context) CustomerAPICustomerFindSubscriberByEmail2Request {
+	return CustomerAPICustomerFindSubscriberByEmail2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3301,7 +4084,7 @@ func (a *CustomerAPIService) CustomerFindSubscriberByEmail2(ctx context.Context)
 
 // Execute executes the request
 //  @return CustomerSubscriberResponse
-func (a *CustomerAPIService) CustomerFindSubscriberByEmail2Execute(r ApiCustomerFindSubscriberByEmail2Request) (*CustomerSubscriberResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerFindSubscriberByEmail2Execute(r CustomerAPICustomerFindSubscriberByEmail2Request) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3387,18 +4170,18 @@ func (a *CustomerAPIService) CustomerFindSubscriberByEmail2Execute(r ApiCustomer
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerFindSubscriberByIdRequest struct {
+type CustomerAPICustomerFindSubscriberByIdRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerFindSubscriberByIdRequest
 }
 
-func (r ApiCustomerFindSubscriberByIdRequest) Body(body CustomerFindSubscriberByIdRequest) ApiCustomerFindSubscriberByIdRequest {
+func (r CustomerAPICustomerFindSubscriberByIdRequest) Body(body CustomerFindSubscriberByIdRequest) CustomerAPICustomerFindSubscriberByIdRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerFindSubscriberByIdRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+func (r CustomerAPICustomerFindSubscriberByIdRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
 	return r.ApiService.CustomerFindSubscriberByIdExecute(r)
 }
 
@@ -3406,10 +4189,10 @@ func (r ApiCustomerFindSubscriberByIdRequest) Execute() (*CustomerSubscriberResp
 CustomerFindSubscriberById Method for CustomerFindSubscriberById
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindSubscriberByIdRequest
+ @return CustomerAPICustomerFindSubscriberByIdRequest
 */
-func (a *CustomerAPIService) CustomerFindSubscriberById(ctx context.Context) ApiCustomerFindSubscriberByIdRequest {
-	return ApiCustomerFindSubscriberByIdRequest{
+func (a *CustomerAPIService) CustomerFindSubscriberById(ctx context.Context) CustomerAPICustomerFindSubscriberByIdRequest {
+	return CustomerAPICustomerFindSubscriberByIdRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3417,7 +4200,7 @@ func (a *CustomerAPIService) CustomerFindSubscriberById(ctx context.Context) Api
 
 // Execute executes the request
 //  @return CustomerSubscriberResponse
-func (a *CustomerAPIService) CustomerFindSubscriberByIdExecute(r ApiCustomerFindSubscriberByIdRequest) (*CustomerSubscriberResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerFindSubscriberByIdExecute(r CustomerAPICustomerFindSubscriberByIdRequest) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3503,18 +4286,18 @@ func (a *CustomerAPIService) CustomerFindSubscriberByIdExecute(r ApiCustomerFind
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerFindSubscriberById2Request struct {
+type CustomerAPICustomerFindSubscriberById2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerFindSubscriberByIdRequest
 }
 
-func (r ApiCustomerFindSubscriberById2Request) Body(body CustomerFindSubscriberByIdRequest) ApiCustomerFindSubscriberById2Request {
+func (r CustomerAPICustomerFindSubscriberById2Request) Body(body CustomerFindSubscriberByIdRequest) CustomerAPICustomerFindSubscriberById2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerFindSubscriberById2Request) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+func (r CustomerAPICustomerFindSubscriberById2Request) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
 	return r.ApiService.CustomerFindSubscriberById2Execute(r)
 }
 
@@ -3522,10 +4305,10 @@ func (r ApiCustomerFindSubscriberById2Request) Execute() (*CustomerSubscriberRes
 CustomerFindSubscriberById2 Method for CustomerFindSubscriberById2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindSubscriberById2Request
+ @return CustomerAPICustomerFindSubscriberById2Request
 */
-func (a *CustomerAPIService) CustomerFindSubscriberById2(ctx context.Context) ApiCustomerFindSubscriberById2Request {
-	return ApiCustomerFindSubscriberById2Request{
+func (a *CustomerAPIService) CustomerFindSubscriberById2(ctx context.Context) CustomerAPICustomerFindSubscriberById2Request {
+	return CustomerAPICustomerFindSubscriberById2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3533,7 +4316,7 @@ func (a *CustomerAPIService) CustomerFindSubscriberById2(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return CustomerSubscriberResponse
-func (a *CustomerAPIService) CustomerFindSubscriberById2Execute(r ApiCustomerFindSubscriberById2Request) (*CustomerSubscriberResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerFindSubscriberById2Execute(r CustomerAPICustomerFindSubscriberById2Request) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3619,18 +4402,18 @@ func (a *CustomerAPIService) CustomerFindSubscriberById2Execute(r ApiCustomerFin
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerGetGroupByCodeRequest struct {
+type CustomerAPICustomerGetGroupByCodeRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerGetGroupByCodeRequest
 }
 
-func (r ApiCustomerGetGroupByCodeRequest) Body(body CustomerGetGroupByCodeRequest) ApiCustomerGetGroupByCodeRequest {
+func (r CustomerAPICustomerGetGroupByCodeRequest) Body(body CustomerGetGroupByCodeRequest) CustomerAPICustomerGetGroupByCodeRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerGetGroupByCodeRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r CustomerAPICustomerGetGroupByCodeRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerGetGroupByCodeExecute(r)
 }
 
@@ -3638,10 +4421,10 @@ func (r ApiCustomerGetGroupByCodeRequest) Execute() (*CustomerGroupResponse, *ht
 CustomerGetGroupByCode Method for CustomerGetGroupByCode
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerGetGroupByCodeRequest
+ @return CustomerAPICustomerGetGroupByCodeRequest
 */
-func (a *CustomerAPIService) CustomerGetGroupByCode(ctx context.Context) ApiCustomerGetGroupByCodeRequest {
-	return ApiCustomerGetGroupByCodeRequest{
+func (a *CustomerAPIService) CustomerGetGroupByCode(ctx context.Context) CustomerAPICustomerGetGroupByCodeRequest {
+	return CustomerAPICustomerGetGroupByCodeRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3649,7 +4432,7 @@ func (a *CustomerAPIService) CustomerGetGroupByCode(ctx context.Context) ApiCust
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerAPIService) CustomerGetGroupByCodeExecute(r ApiCustomerGetGroupByCodeRequest) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerGetGroupByCodeExecute(r CustomerAPICustomerGetGroupByCodeRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3735,18 +4518,18 @@ func (a *CustomerAPIService) CustomerGetGroupByCodeExecute(r ApiCustomerGetGroup
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerGetGroupByCode2Request struct {
+type CustomerAPICustomerGetGroupByCode2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerGetGroupByCodeRequest
 }
 
-func (r ApiCustomerGetGroupByCode2Request) Body(body CustomerGetGroupByCodeRequest) ApiCustomerGetGroupByCode2Request {
+func (r CustomerAPICustomerGetGroupByCode2Request) Body(body CustomerGetGroupByCodeRequest) CustomerAPICustomerGetGroupByCode2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerGetGroupByCode2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r CustomerAPICustomerGetGroupByCode2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerGetGroupByCode2Execute(r)
 }
 
@@ -3754,10 +4537,10 @@ func (r ApiCustomerGetGroupByCode2Request) Execute() (*CustomerGroupResponse, *h
 CustomerGetGroupByCode2 Method for CustomerGetGroupByCode2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerGetGroupByCode2Request
+ @return CustomerAPICustomerGetGroupByCode2Request
 */
-func (a *CustomerAPIService) CustomerGetGroupByCode2(ctx context.Context) ApiCustomerGetGroupByCode2Request {
-	return ApiCustomerGetGroupByCode2Request{
+func (a *CustomerAPIService) CustomerGetGroupByCode2(ctx context.Context) CustomerAPICustomerGetGroupByCode2Request {
+	return CustomerAPICustomerGetGroupByCode2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3765,7 +4548,7 @@ func (a *CustomerAPIService) CustomerGetGroupByCode2(ctx context.Context) ApiCus
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerAPIService) CustomerGetGroupByCode2Execute(r ApiCustomerGetGroupByCode2Request) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerGetGroupByCode2Execute(r CustomerAPICustomerGetGroupByCode2Request) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3851,18 +4634,18 @@ func (a *CustomerAPIService) CustomerGetGroupByCode2Execute(r ApiCustomerGetGrou
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerGetGroupByIdRequest struct {
+type CustomerAPICustomerGetGroupByIdRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerGetGroupByIdRequest
 }
 
-func (r ApiCustomerGetGroupByIdRequest) Body(body CustomerGetGroupByIdRequest) ApiCustomerGetGroupByIdRequest {
+func (r CustomerAPICustomerGetGroupByIdRequest) Body(body CustomerGetGroupByIdRequest) CustomerAPICustomerGetGroupByIdRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerGetGroupByIdRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r CustomerAPICustomerGetGroupByIdRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerGetGroupByIdExecute(r)
 }
 
@@ -3870,10 +4653,10 @@ func (r ApiCustomerGetGroupByIdRequest) Execute() (*CustomerGroupResponse, *http
 CustomerGetGroupById Method for CustomerGetGroupById
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerGetGroupByIdRequest
+ @return CustomerAPICustomerGetGroupByIdRequest
 */
-func (a *CustomerAPIService) CustomerGetGroupById(ctx context.Context) ApiCustomerGetGroupByIdRequest {
-	return ApiCustomerGetGroupByIdRequest{
+func (a *CustomerAPIService) CustomerGetGroupById(ctx context.Context) CustomerAPICustomerGetGroupByIdRequest {
+	return CustomerAPICustomerGetGroupByIdRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3881,7 +4664,7 @@ func (a *CustomerAPIService) CustomerGetGroupById(ctx context.Context) ApiCustom
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerAPIService) CustomerGetGroupByIdExecute(r ApiCustomerGetGroupByIdRequest) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerGetGroupByIdExecute(r CustomerAPICustomerGetGroupByIdRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3967,18 +4750,18 @@ func (a *CustomerAPIService) CustomerGetGroupByIdExecute(r ApiCustomerGetGroupBy
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerGetGroupById2Request struct {
+type CustomerAPICustomerGetGroupById2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerGetGroupByIdRequest
 }
 
-func (r ApiCustomerGetGroupById2Request) Body(body CustomerGetGroupByIdRequest) ApiCustomerGetGroupById2Request {
+func (r CustomerAPICustomerGetGroupById2Request) Body(body CustomerGetGroupByIdRequest) CustomerAPICustomerGetGroupById2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerGetGroupById2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r CustomerAPICustomerGetGroupById2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerGetGroupById2Execute(r)
 }
 
@@ -3986,10 +4769,10 @@ func (r ApiCustomerGetGroupById2Request) Execute() (*CustomerGroupResponse, *htt
 CustomerGetGroupById2 Method for CustomerGetGroupById2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerGetGroupById2Request
+ @return CustomerAPICustomerGetGroupById2Request
 */
-func (a *CustomerAPIService) CustomerGetGroupById2(ctx context.Context) ApiCustomerGetGroupById2Request {
-	return ApiCustomerGetGroupById2Request{
+func (a *CustomerAPIService) CustomerGetGroupById2(ctx context.Context) CustomerAPICustomerGetGroupById2Request {
+	return CustomerAPICustomerGetGroupById2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3997,7 +4780,7 @@ func (a *CustomerAPIService) CustomerGetGroupById2(ctx context.Context) ApiCusto
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerAPIService) CustomerGetGroupById2Execute(r ApiCustomerGetGroupById2Request) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerGetGroupById2Execute(r CustomerAPICustomerGetGroupById2Request) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4083,18 +4866,18 @@ func (a *CustomerAPIService) CustomerGetGroupById2Execute(r ApiCustomerGetGroupB
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerGrantPermissionsRequest struct {
+type CustomerAPICustomerGrantPermissionsRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerGrantPermissionsRequest
 }
 
-func (r ApiCustomerGrantPermissionsRequest) Body(body CustomerGrantPermissionsRequest) ApiCustomerGrantPermissionsRequest {
+func (r CustomerAPICustomerGrantPermissionsRequest) Body(body CustomerGrantPermissionsRequest) CustomerAPICustomerGrantPermissionsRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerGrantPermissionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r CustomerAPICustomerGrantPermissionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.CustomerGrantPermissionsExecute(r)
 }
 
@@ -4102,10 +4885,10 @@ func (r ApiCustomerGrantPermissionsRequest) Execute() (map[string]interface{}, *
 CustomerGrantPermissions Method for CustomerGrantPermissions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerGrantPermissionsRequest
+ @return CustomerAPICustomerGrantPermissionsRequest
 */
-func (a *CustomerAPIService) CustomerGrantPermissions(ctx context.Context) ApiCustomerGrantPermissionsRequest {
-	return ApiCustomerGrantPermissionsRequest{
+func (a *CustomerAPIService) CustomerGrantPermissions(ctx context.Context) CustomerAPICustomerGrantPermissionsRequest {
+	return CustomerAPICustomerGrantPermissionsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -4113,7 +4896,7 @@ func (a *CustomerAPIService) CustomerGrantPermissions(ctx context.Context) ApiCu
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CustomerAPIService) CustomerGrantPermissionsExecute(r ApiCustomerGrantPermissionsRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CustomerAPIService) CustomerGrantPermissionsExecute(r CustomerAPICustomerGrantPermissionsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4199,18 +4982,18 @@ func (a *CustomerAPIService) CustomerGrantPermissionsExecute(r ApiCustomerGrantP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerGrantPermissions2Request struct {
+type CustomerAPICustomerGrantPermissions2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerGrantPermissionsRequest
 }
 
-func (r ApiCustomerGrantPermissions2Request) Body(body CustomerGrantPermissionsRequest) ApiCustomerGrantPermissions2Request {
+func (r CustomerAPICustomerGrantPermissions2Request) Body(body CustomerGrantPermissionsRequest) CustomerAPICustomerGrantPermissions2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerGrantPermissions2Request) Execute() (map[string]interface{}, *http.Response, error) {
+func (r CustomerAPICustomerGrantPermissions2Request) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.CustomerGrantPermissions2Execute(r)
 }
 
@@ -4218,10 +5001,10 @@ func (r ApiCustomerGrantPermissions2Request) Execute() (map[string]interface{}, 
 CustomerGrantPermissions2 Method for CustomerGrantPermissions2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerGrantPermissions2Request
+ @return CustomerAPICustomerGrantPermissions2Request
 */
-func (a *CustomerAPIService) CustomerGrantPermissions2(ctx context.Context) ApiCustomerGrantPermissions2Request {
-	return ApiCustomerGrantPermissions2Request{
+func (a *CustomerAPIService) CustomerGrantPermissions2(ctx context.Context) CustomerAPICustomerGrantPermissions2Request {
+	return CustomerAPICustomerGrantPermissions2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -4229,7 +5012,7 @@ func (a *CustomerAPIService) CustomerGrantPermissions2(ctx context.Context) ApiC
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CustomerAPIService) CustomerGrantPermissions2Execute(r ApiCustomerGrantPermissions2Request) (map[string]interface{}, *http.Response, error) {
+func (a *CustomerAPIService) CustomerGrantPermissions2Execute(r CustomerAPICustomerGrantPermissions2Request) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4315,18 +5098,18 @@ func (a *CustomerAPIService) CustomerGrantPermissions2Execute(r ApiCustomerGrant
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerListConsentsRequest struct {
+type CustomerAPICustomerListConsentsRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerListConsentsRequest
 }
 
-func (r ApiCustomerListConsentsRequest) Body(body CustomerListConsentsRequest) ApiCustomerListConsentsRequest {
+func (r CustomerAPICustomerListConsentsRequest) Body(body CustomerListConsentsRequest) CustomerAPICustomerListConsentsRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerListConsentsRequest) Execute() (*CustomerListConsentsResponse, *http.Response, error) {
+func (r CustomerAPICustomerListConsentsRequest) Execute() (*CustomerListConsentsResponse, *http.Response, error) {
 	return r.ApiService.CustomerListConsentsExecute(r)
 }
 
@@ -4334,10 +5117,10 @@ func (r ApiCustomerListConsentsRequest) Execute() (*CustomerListConsentsResponse
 CustomerListConsents ListConsents list all consents of a customer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerListConsentsRequest
+ @return CustomerAPICustomerListConsentsRequest
 */
-func (a *CustomerAPIService) CustomerListConsents(ctx context.Context) ApiCustomerListConsentsRequest {
-	return ApiCustomerListConsentsRequest{
+func (a *CustomerAPIService) CustomerListConsents(ctx context.Context) CustomerAPICustomerListConsentsRequest {
+	return CustomerAPICustomerListConsentsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -4345,7 +5128,7 @@ func (a *CustomerAPIService) CustomerListConsents(ctx context.Context) ApiCustom
 
 // Execute executes the request
 //  @return CustomerListConsentsResponse
-func (a *CustomerAPIService) CustomerListConsentsExecute(r ApiCustomerListConsentsRequest) (*CustomerListConsentsResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerListConsentsExecute(r CustomerAPICustomerListConsentsRequest) (*CustomerListConsentsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4431,18 +5214,18 @@ func (a *CustomerAPIService) CustomerListConsentsExecute(r ApiCustomerListConsen
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerListCustomersRequest struct {
+type CustomerAPICustomerListCustomersRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerListCustomersRequest
 }
 
-func (r ApiCustomerListCustomersRequest) Body(body CustomerListCustomersRequest) ApiCustomerListCustomersRequest {
+func (r CustomerAPICustomerListCustomersRequest) Body(body CustomerListCustomersRequest) CustomerAPICustomerListCustomersRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerListCustomersRequest) Execute() (*CustomerListCustomersResponse, *http.Response, error) {
+func (r CustomerAPICustomerListCustomersRequest) Execute() (*CustomerListCustomersResponse, *http.Response, error) {
 	return r.ApiService.CustomerListCustomersExecute(r)
 }
 
@@ -4450,10 +5233,10 @@ func (r ApiCustomerListCustomersRequest) Execute() (*CustomerListCustomersRespon
 CustomerListCustomers Method for CustomerListCustomers
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerListCustomersRequest
+ @return CustomerAPICustomerListCustomersRequest
 */
-func (a *CustomerAPIService) CustomerListCustomers(ctx context.Context) ApiCustomerListCustomersRequest {
-	return ApiCustomerListCustomersRequest{
+func (a *CustomerAPIService) CustomerListCustomers(ctx context.Context) CustomerAPICustomerListCustomersRequest {
+	return CustomerAPICustomerListCustomersRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -4461,7 +5244,7 @@ func (a *CustomerAPIService) CustomerListCustomers(ctx context.Context) ApiCusto
 
 // Execute executes the request
 //  @return CustomerListCustomersResponse
-func (a *CustomerAPIService) CustomerListCustomersExecute(r ApiCustomerListCustomersRequest) (*CustomerListCustomersResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerListCustomersExecute(r CustomerAPICustomerListCustomersRequest) (*CustomerListCustomersResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4547,18 +5330,18 @@ func (a *CustomerAPIService) CustomerListCustomersExecute(r ApiCustomerListCusto
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerListCustomers2Request struct {
+type CustomerAPICustomerListCustomers2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerListCustomersRequest
 }
 
-func (r ApiCustomerListCustomers2Request) Body(body CustomerListCustomersRequest) ApiCustomerListCustomers2Request {
+func (r CustomerAPICustomerListCustomers2Request) Body(body CustomerListCustomersRequest) CustomerAPICustomerListCustomers2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerListCustomers2Request) Execute() (*CustomerListCustomersResponse, *http.Response, error) {
+func (r CustomerAPICustomerListCustomers2Request) Execute() (*CustomerListCustomersResponse, *http.Response, error) {
 	return r.ApiService.CustomerListCustomers2Execute(r)
 }
 
@@ -4566,10 +5349,10 @@ func (r ApiCustomerListCustomers2Request) Execute() (*CustomerListCustomersRespo
 CustomerListCustomers2 Method for CustomerListCustomers2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerListCustomers2Request
+ @return CustomerAPICustomerListCustomers2Request
 */
-func (a *CustomerAPIService) CustomerListCustomers2(ctx context.Context) ApiCustomerListCustomers2Request {
-	return ApiCustomerListCustomers2Request{
+func (a *CustomerAPIService) CustomerListCustomers2(ctx context.Context) CustomerAPICustomerListCustomers2Request {
+	return CustomerAPICustomerListCustomers2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -4577,7 +5360,7 @@ func (a *CustomerAPIService) CustomerListCustomers2(ctx context.Context) ApiCust
 
 // Execute executes the request
 //  @return CustomerListCustomersResponse
-func (a *CustomerAPIService) CustomerListCustomers2Execute(r ApiCustomerListCustomers2Request) (*CustomerListCustomersResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerListCustomers2Execute(r CustomerAPICustomerListCustomers2Request) (*CustomerListCustomersResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4663,18 +5446,18 @@ func (a *CustomerAPIService) CustomerListCustomers2Execute(r ApiCustomerListCust
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerListGroupsRequest struct {
+type CustomerAPICustomerListGroupsRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerListGroupsRequest
 }
 
-func (r ApiCustomerListGroupsRequest) Body(body CustomerListGroupsRequest) ApiCustomerListGroupsRequest {
+func (r CustomerAPICustomerListGroupsRequest) Body(body CustomerListGroupsRequest) CustomerAPICustomerListGroupsRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerListGroupsRequest) Execute() (*CustomerListGroupsResponse, *http.Response, error) {
+func (r CustomerAPICustomerListGroupsRequest) Execute() (*CustomerListGroupsResponse, *http.Response, error) {
 	return r.ApiService.CustomerListGroupsExecute(r)
 }
 
@@ -4682,10 +5465,10 @@ func (r ApiCustomerListGroupsRequest) Execute() (*CustomerListGroupsResponse, *h
 CustomerListGroups Method for CustomerListGroups
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerListGroupsRequest
+ @return CustomerAPICustomerListGroupsRequest
 */
-func (a *CustomerAPIService) CustomerListGroups(ctx context.Context) ApiCustomerListGroupsRequest {
-	return ApiCustomerListGroupsRequest{
+func (a *CustomerAPIService) CustomerListGroups(ctx context.Context) CustomerAPICustomerListGroupsRequest {
+	return CustomerAPICustomerListGroupsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -4693,7 +5476,7 @@ func (a *CustomerAPIService) CustomerListGroups(ctx context.Context) ApiCustomer
 
 // Execute executes the request
 //  @return CustomerListGroupsResponse
-func (a *CustomerAPIService) CustomerListGroupsExecute(r ApiCustomerListGroupsRequest) (*CustomerListGroupsResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerListGroupsExecute(r CustomerAPICustomerListGroupsRequest) (*CustomerListGroupsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4779,18 +5562,18 @@ func (a *CustomerAPIService) CustomerListGroupsExecute(r ApiCustomerListGroupsRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerListGroups2Request struct {
+type CustomerAPICustomerListGroups2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerListGroupsRequest
 }
 
-func (r ApiCustomerListGroups2Request) Body(body CustomerListGroupsRequest) ApiCustomerListGroups2Request {
+func (r CustomerAPICustomerListGroups2Request) Body(body CustomerListGroupsRequest) CustomerAPICustomerListGroups2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerListGroups2Request) Execute() (*CustomerListGroupsResponse, *http.Response, error) {
+func (r CustomerAPICustomerListGroups2Request) Execute() (*CustomerListGroupsResponse, *http.Response, error) {
 	return r.ApiService.CustomerListGroups2Execute(r)
 }
 
@@ -4798,10 +5581,10 @@ func (r ApiCustomerListGroups2Request) Execute() (*CustomerListGroupsResponse, *
 CustomerListGroups2 Method for CustomerListGroups2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerListGroups2Request
+ @return CustomerAPICustomerListGroups2Request
 */
-func (a *CustomerAPIService) CustomerListGroups2(ctx context.Context) ApiCustomerListGroups2Request {
-	return ApiCustomerListGroups2Request{
+func (a *CustomerAPIService) CustomerListGroups2(ctx context.Context) CustomerAPICustomerListGroups2Request {
+	return CustomerAPICustomerListGroups2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -4809,7 +5592,7 @@ func (a *CustomerAPIService) CustomerListGroups2(ctx context.Context) ApiCustome
 
 // Execute executes the request
 //  @return CustomerListGroupsResponse
-func (a *CustomerAPIService) CustomerListGroups2Execute(r ApiCustomerListGroups2Request) (*CustomerListGroupsResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerListGroups2Execute(r CustomerAPICustomerListGroups2Request) (*CustomerListGroupsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4895,18 +5678,18 @@ func (a *CustomerAPIService) CustomerListGroups2Execute(r ApiCustomerListGroups2
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerRemoveCustomerFromGroupRequest struct {
+type CustomerAPICustomerRemoveCustomerFromGroupRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerRemoveCustomerFromGroupRequest
 }
 
-func (r ApiCustomerRemoveCustomerFromGroupRequest) Body(body CustomerRemoveCustomerFromGroupRequest) ApiCustomerRemoveCustomerFromGroupRequest {
+func (r CustomerAPICustomerRemoveCustomerFromGroupRequest) Body(body CustomerRemoveCustomerFromGroupRequest) CustomerAPICustomerRemoveCustomerFromGroupRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerRemoveCustomerFromGroupRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r CustomerAPICustomerRemoveCustomerFromGroupRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerRemoveCustomerFromGroupExecute(r)
 }
 
@@ -4914,10 +5697,10 @@ func (r ApiCustomerRemoveCustomerFromGroupRequest) Execute() (*CustomerGroupResp
 CustomerRemoveCustomerFromGroup Method for CustomerRemoveCustomerFromGroup
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerRemoveCustomerFromGroupRequest
+ @return CustomerAPICustomerRemoveCustomerFromGroupRequest
 */
-func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup(ctx context.Context) ApiCustomerRemoveCustomerFromGroupRequest {
-	return ApiCustomerRemoveCustomerFromGroupRequest{
+func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup(ctx context.Context) CustomerAPICustomerRemoveCustomerFromGroupRequest {
+	return CustomerAPICustomerRemoveCustomerFromGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -4925,7 +5708,7 @@ func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup(ctx context.Context
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerAPIService) CustomerRemoveCustomerFromGroupExecute(r ApiCustomerRemoveCustomerFromGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerRemoveCustomerFromGroupExecute(r CustomerAPICustomerRemoveCustomerFromGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -5011,18 +5794,18 @@ func (a *CustomerAPIService) CustomerRemoveCustomerFromGroupExecute(r ApiCustome
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerRemoveCustomerFromGroup2Request struct {
+type CustomerAPICustomerRemoveCustomerFromGroup2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerRemoveCustomerFromGroupRequest
 }
 
-func (r ApiCustomerRemoveCustomerFromGroup2Request) Body(body CustomerRemoveCustomerFromGroupRequest) ApiCustomerRemoveCustomerFromGroup2Request {
+func (r CustomerAPICustomerRemoveCustomerFromGroup2Request) Body(body CustomerRemoveCustomerFromGroupRequest) CustomerAPICustomerRemoveCustomerFromGroup2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerRemoveCustomerFromGroup2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r CustomerAPICustomerRemoveCustomerFromGroup2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerRemoveCustomerFromGroup2Execute(r)
 }
 
@@ -5030,10 +5813,10 @@ func (r ApiCustomerRemoveCustomerFromGroup2Request) Execute() (*CustomerGroupRes
 CustomerRemoveCustomerFromGroup2 Method for CustomerRemoveCustomerFromGroup2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerRemoveCustomerFromGroup2Request
+ @return CustomerAPICustomerRemoveCustomerFromGroup2Request
 */
-func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup2(ctx context.Context) ApiCustomerRemoveCustomerFromGroup2Request {
-	return ApiCustomerRemoveCustomerFromGroup2Request{
+func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup2(ctx context.Context) CustomerAPICustomerRemoveCustomerFromGroup2Request {
+	return CustomerAPICustomerRemoveCustomerFromGroup2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -5041,7 +5824,7 @@ func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup2(ctx context.Contex
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup2Execute(r ApiCustomerRemoveCustomerFromGroup2Request) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup2Execute(r CustomerAPICustomerRemoveCustomerFromGroup2Request) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -5127,18 +5910,18 @@ func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup2Execute(r ApiCustom
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerRemoveDefaultAddressRequest struct {
+type CustomerAPICustomerRemoveDefaultAddressRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerRemoveDefaultAddressRequest
 }
 
-func (r ApiCustomerRemoveDefaultAddressRequest) Body(body CustomerRemoveDefaultAddressRequest) ApiCustomerRemoveDefaultAddressRequest {
+func (r CustomerAPICustomerRemoveDefaultAddressRequest) Body(body CustomerRemoveDefaultAddressRequest) CustomerAPICustomerRemoveDefaultAddressRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerRemoveDefaultAddressRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r CustomerAPICustomerRemoveDefaultAddressRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerRemoveDefaultAddressExecute(r)
 }
 
@@ -5146,10 +5929,10 @@ func (r ApiCustomerRemoveDefaultAddressRequest) Execute() (*CustomerCustomerResp
 CustomerRemoveDefaultAddress Method for CustomerRemoveDefaultAddress
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerRemoveDefaultAddressRequest
+ @return CustomerAPICustomerRemoveDefaultAddressRequest
 */
-func (a *CustomerAPIService) CustomerRemoveDefaultAddress(ctx context.Context) ApiCustomerRemoveDefaultAddressRequest {
-	return ApiCustomerRemoveDefaultAddressRequest{
+func (a *CustomerAPIService) CustomerRemoveDefaultAddress(ctx context.Context) CustomerAPICustomerRemoveDefaultAddressRequest {
+	return CustomerAPICustomerRemoveDefaultAddressRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -5157,7 +5940,7 @@ func (a *CustomerAPIService) CustomerRemoveDefaultAddress(ctx context.Context) A
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerAPIService) CustomerRemoveDefaultAddressExecute(r ApiCustomerRemoveDefaultAddressRequest) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerRemoveDefaultAddressExecute(r CustomerAPICustomerRemoveDefaultAddressRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -5243,18 +6026,18 @@ func (a *CustomerAPIService) CustomerRemoveDefaultAddressExecute(r ApiCustomerRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerRemoveDefaultAddress2Request struct {
+type CustomerAPICustomerRemoveDefaultAddress2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerRemoveDefaultAddressRequest
 }
 
-func (r ApiCustomerRemoveDefaultAddress2Request) Body(body CustomerRemoveDefaultAddressRequest) ApiCustomerRemoveDefaultAddress2Request {
+func (r CustomerAPICustomerRemoveDefaultAddress2Request) Body(body CustomerRemoveDefaultAddressRequest) CustomerAPICustomerRemoveDefaultAddress2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerRemoveDefaultAddress2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r CustomerAPICustomerRemoveDefaultAddress2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerRemoveDefaultAddress2Execute(r)
 }
 
@@ -5262,10 +6045,10 @@ func (r ApiCustomerRemoveDefaultAddress2Request) Execute() (*CustomerCustomerRes
 CustomerRemoveDefaultAddress2 Method for CustomerRemoveDefaultAddress2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerRemoveDefaultAddress2Request
+ @return CustomerAPICustomerRemoveDefaultAddress2Request
 */
-func (a *CustomerAPIService) CustomerRemoveDefaultAddress2(ctx context.Context) ApiCustomerRemoveDefaultAddress2Request {
-	return ApiCustomerRemoveDefaultAddress2Request{
+func (a *CustomerAPIService) CustomerRemoveDefaultAddress2(ctx context.Context) CustomerAPICustomerRemoveDefaultAddress2Request {
+	return CustomerAPICustomerRemoveDefaultAddress2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -5273,7 +6056,7 @@ func (a *CustomerAPIService) CustomerRemoveDefaultAddress2(ctx context.Context) 
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerAPIService) CustomerRemoveDefaultAddress2Execute(r ApiCustomerRemoveDefaultAddress2Request) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerRemoveDefaultAddress2Execute(r CustomerAPICustomerRemoveDefaultAddress2Request) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -5359,18 +6142,18 @@ func (a *CustomerAPIService) CustomerRemoveDefaultAddress2Execute(r ApiCustomerR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerRevokePermissionsRequest struct {
+type CustomerAPICustomerRevokePermissionsRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerRevokePermissionsRequest
 }
 
-func (r ApiCustomerRevokePermissionsRequest) Body(body CustomerRevokePermissionsRequest) ApiCustomerRevokePermissionsRequest {
+func (r CustomerAPICustomerRevokePermissionsRequest) Body(body CustomerRevokePermissionsRequest) CustomerAPICustomerRevokePermissionsRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerRevokePermissionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r CustomerAPICustomerRevokePermissionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.CustomerRevokePermissionsExecute(r)
 }
 
@@ -5378,10 +6161,10 @@ func (r ApiCustomerRevokePermissionsRequest) Execute() (map[string]interface{}, 
 CustomerRevokePermissions Method for CustomerRevokePermissions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerRevokePermissionsRequest
+ @return CustomerAPICustomerRevokePermissionsRequest
 */
-func (a *CustomerAPIService) CustomerRevokePermissions(ctx context.Context) ApiCustomerRevokePermissionsRequest {
-	return ApiCustomerRevokePermissionsRequest{
+func (a *CustomerAPIService) CustomerRevokePermissions(ctx context.Context) CustomerAPICustomerRevokePermissionsRequest {
+	return CustomerAPICustomerRevokePermissionsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -5389,7 +6172,7 @@ func (a *CustomerAPIService) CustomerRevokePermissions(ctx context.Context) ApiC
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CustomerAPIService) CustomerRevokePermissionsExecute(r ApiCustomerRevokePermissionsRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CustomerAPIService) CustomerRevokePermissionsExecute(r CustomerAPICustomerRevokePermissionsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -5475,18 +6258,18 @@ func (a *CustomerAPIService) CustomerRevokePermissionsExecute(r ApiCustomerRevok
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerRevokePermissions2Request struct {
+type CustomerAPICustomerRevokePermissions2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerRevokePermissionsRequest
 }
 
-func (r ApiCustomerRevokePermissions2Request) Body(body CustomerRevokePermissionsRequest) ApiCustomerRevokePermissions2Request {
+func (r CustomerAPICustomerRevokePermissions2Request) Body(body CustomerRevokePermissionsRequest) CustomerAPICustomerRevokePermissions2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerRevokePermissions2Request) Execute() (map[string]interface{}, *http.Response, error) {
+func (r CustomerAPICustomerRevokePermissions2Request) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.CustomerRevokePermissions2Execute(r)
 }
 
@@ -5494,10 +6277,10 @@ func (r ApiCustomerRevokePermissions2Request) Execute() (map[string]interface{},
 CustomerRevokePermissions2 Method for CustomerRevokePermissions2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerRevokePermissions2Request
+ @return CustomerAPICustomerRevokePermissions2Request
 */
-func (a *CustomerAPIService) CustomerRevokePermissions2(ctx context.Context) ApiCustomerRevokePermissions2Request {
-	return ApiCustomerRevokePermissions2Request{
+func (a *CustomerAPIService) CustomerRevokePermissions2(ctx context.Context) CustomerAPICustomerRevokePermissions2Request {
+	return CustomerAPICustomerRevokePermissions2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -5505,7 +6288,7 @@ func (a *CustomerAPIService) CustomerRevokePermissions2(ctx context.Context) Api
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CustomerAPIService) CustomerRevokePermissions2Execute(r ApiCustomerRevokePermissions2Request) (map[string]interface{}, *http.Response, error) {
+func (a *CustomerAPIService) CustomerRevokePermissions2Execute(r CustomerAPICustomerRevokePermissions2Request) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -5591,18 +6374,18 @@ func (a *CustomerAPIService) CustomerRevokePermissions2Execute(r ApiCustomerRevo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerSearchRequest struct {
+type CustomerAPICustomerSearchRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerSearchRequest
 }
 
-func (r ApiCustomerSearchRequest) Body(body CustomerSearchRequest) ApiCustomerSearchRequest {
+func (r CustomerAPICustomerSearchRequest) Body(body CustomerSearchRequest) CustomerAPICustomerSearchRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerSearchRequest) Execute() (*CustomerSearchResponse, *http.Response, error) {
+func (r CustomerAPICustomerSearchRequest) Execute() (*CustomerSearchResponse, *http.Response, error) {
 	return r.ApiService.CustomerSearchExecute(r)
 }
 
@@ -5610,10 +6393,10 @@ func (r ApiCustomerSearchRequest) Execute() (*CustomerSearchResponse, *http.Resp
 CustomerSearch Method for CustomerSearch
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerSearchRequest
+ @return CustomerAPICustomerSearchRequest
 */
-func (a *CustomerAPIService) CustomerSearch(ctx context.Context) ApiCustomerSearchRequest {
-	return ApiCustomerSearchRequest{
+func (a *CustomerAPIService) CustomerSearch(ctx context.Context) CustomerAPICustomerSearchRequest {
+	return CustomerAPICustomerSearchRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -5621,7 +6404,7 @@ func (a *CustomerAPIService) CustomerSearch(ctx context.Context) ApiCustomerSear
 
 // Execute executes the request
 //  @return CustomerSearchResponse
-func (a *CustomerAPIService) CustomerSearchExecute(r ApiCustomerSearchRequest) (*CustomerSearchResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerSearchExecute(r CustomerAPICustomerSearchRequest) (*CustomerSearchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -5707,18 +6490,18 @@ func (a *CustomerAPIService) CustomerSearchExecute(r ApiCustomerSearchRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerSearch2Request struct {
+type CustomerAPICustomerSearch2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerSearchRequest
 }
 
-func (r ApiCustomerSearch2Request) Body(body CustomerSearchRequest) ApiCustomerSearch2Request {
+func (r CustomerAPICustomerSearch2Request) Body(body CustomerSearchRequest) CustomerAPICustomerSearch2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerSearch2Request) Execute() (*CustomerSearchResponse, *http.Response, error) {
+func (r CustomerAPICustomerSearch2Request) Execute() (*CustomerSearchResponse, *http.Response, error) {
 	return r.ApiService.CustomerSearch2Execute(r)
 }
 
@@ -5726,10 +6509,10 @@ func (r ApiCustomerSearch2Request) Execute() (*CustomerSearchResponse, *http.Res
 CustomerSearch2 Method for CustomerSearch2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerSearch2Request
+ @return CustomerAPICustomerSearch2Request
 */
-func (a *CustomerAPIService) CustomerSearch2(ctx context.Context) ApiCustomerSearch2Request {
-	return ApiCustomerSearch2Request{
+func (a *CustomerAPIService) CustomerSearch2(ctx context.Context) CustomerAPICustomerSearch2Request {
+	return CustomerAPICustomerSearch2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -5737,7 +6520,7 @@ func (a *CustomerAPIService) CustomerSearch2(ctx context.Context) ApiCustomerSea
 
 // Execute executes the request
 //  @return CustomerSearchResponse
-func (a *CustomerAPIService) CustomerSearch2Execute(r ApiCustomerSearch2Request) (*CustomerSearchResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerSearch2Execute(r CustomerAPICustomerSearch2Request) (*CustomerSearchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -5823,18 +6606,18 @@ func (a *CustomerAPIService) CustomerSearch2Execute(r ApiCustomerSearch2Request)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerSetDefaultAddressRequest struct {
+type CustomerAPICustomerSetDefaultAddressRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerSetDefaultAddressRequest
 }
 
-func (r ApiCustomerSetDefaultAddressRequest) Body(body CustomerSetDefaultAddressRequest) ApiCustomerSetDefaultAddressRequest {
+func (r CustomerAPICustomerSetDefaultAddressRequest) Body(body CustomerSetDefaultAddressRequest) CustomerAPICustomerSetDefaultAddressRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerSetDefaultAddressRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r CustomerAPICustomerSetDefaultAddressRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerSetDefaultAddressExecute(r)
 }
 
@@ -5842,10 +6625,10 @@ func (r ApiCustomerSetDefaultAddressRequest) Execute() (*CustomerCustomerRespons
 CustomerSetDefaultAddress Method for CustomerSetDefaultAddress
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerSetDefaultAddressRequest
+ @return CustomerAPICustomerSetDefaultAddressRequest
 */
-func (a *CustomerAPIService) CustomerSetDefaultAddress(ctx context.Context) ApiCustomerSetDefaultAddressRequest {
-	return ApiCustomerSetDefaultAddressRequest{
+func (a *CustomerAPIService) CustomerSetDefaultAddress(ctx context.Context) CustomerAPICustomerSetDefaultAddressRequest {
+	return CustomerAPICustomerSetDefaultAddressRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -5853,7 +6636,7 @@ func (a *CustomerAPIService) CustomerSetDefaultAddress(ctx context.Context) ApiC
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerAPIService) CustomerSetDefaultAddressExecute(r ApiCustomerSetDefaultAddressRequest) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerSetDefaultAddressExecute(r CustomerAPICustomerSetDefaultAddressRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -5939,18 +6722,18 @@ func (a *CustomerAPIService) CustomerSetDefaultAddressExecute(r ApiCustomerSetDe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerSetDefaultAddress2Request struct {
+type CustomerAPICustomerSetDefaultAddress2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerSetDefaultAddressRequest
 }
 
-func (r ApiCustomerSetDefaultAddress2Request) Body(body CustomerSetDefaultAddressRequest) ApiCustomerSetDefaultAddress2Request {
+func (r CustomerAPICustomerSetDefaultAddress2Request) Body(body CustomerSetDefaultAddressRequest) CustomerAPICustomerSetDefaultAddress2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerSetDefaultAddress2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r CustomerAPICustomerSetDefaultAddress2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerSetDefaultAddress2Execute(r)
 }
 
@@ -5958,10 +6741,10 @@ func (r ApiCustomerSetDefaultAddress2Request) Execute() (*CustomerCustomerRespon
 CustomerSetDefaultAddress2 Method for CustomerSetDefaultAddress2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerSetDefaultAddress2Request
+ @return CustomerAPICustomerSetDefaultAddress2Request
 */
-func (a *CustomerAPIService) CustomerSetDefaultAddress2(ctx context.Context) ApiCustomerSetDefaultAddress2Request {
-	return ApiCustomerSetDefaultAddress2Request{
+func (a *CustomerAPIService) CustomerSetDefaultAddress2(ctx context.Context) CustomerAPICustomerSetDefaultAddress2Request {
+	return CustomerAPICustomerSetDefaultAddress2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -5969,7 +6752,7 @@ func (a *CustomerAPIService) CustomerSetDefaultAddress2(ctx context.Context) Api
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerAPIService) CustomerSetDefaultAddress2Execute(r ApiCustomerSetDefaultAddress2Request) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerSetDefaultAddress2Execute(r CustomerAPICustomerSetDefaultAddress2Request) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -6055,18 +6838,18 @@ func (a *CustomerAPIService) CustomerSetDefaultAddress2Execute(r ApiCustomerSetD
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerSetPermissionsRequest struct {
+type CustomerAPICustomerSetPermissionsRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerSetPermissionsRequest
 }
 
-func (r ApiCustomerSetPermissionsRequest) Body(body CustomerSetPermissionsRequest) ApiCustomerSetPermissionsRequest {
+func (r CustomerAPICustomerSetPermissionsRequest) Body(body CustomerSetPermissionsRequest) CustomerAPICustomerSetPermissionsRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerSetPermissionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r CustomerAPICustomerSetPermissionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.CustomerSetPermissionsExecute(r)
 }
 
@@ -6074,10 +6857,10 @@ func (r ApiCustomerSetPermissionsRequest) Execute() (map[string]interface{}, *ht
 CustomerSetPermissions Method for CustomerSetPermissions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerSetPermissionsRequest
+ @return CustomerAPICustomerSetPermissionsRequest
 */
-func (a *CustomerAPIService) CustomerSetPermissions(ctx context.Context) ApiCustomerSetPermissionsRequest {
-	return ApiCustomerSetPermissionsRequest{
+func (a *CustomerAPIService) CustomerSetPermissions(ctx context.Context) CustomerAPICustomerSetPermissionsRequest {
+	return CustomerAPICustomerSetPermissionsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -6085,7 +6868,7 @@ func (a *CustomerAPIService) CustomerSetPermissions(ctx context.Context) ApiCust
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CustomerAPIService) CustomerSetPermissionsExecute(r ApiCustomerSetPermissionsRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CustomerAPIService) CustomerSetPermissionsExecute(r CustomerAPICustomerSetPermissionsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -6171,18 +6954,18 @@ func (a *CustomerAPIService) CustomerSetPermissionsExecute(r ApiCustomerSetPermi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerSetPermissions2Request struct {
+type CustomerAPICustomerSetPermissions2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerSetPermissionsRequest
 }
 
-func (r ApiCustomerSetPermissions2Request) Body(body CustomerSetPermissionsRequest) ApiCustomerSetPermissions2Request {
+func (r CustomerAPICustomerSetPermissions2Request) Body(body CustomerSetPermissionsRequest) CustomerAPICustomerSetPermissions2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerSetPermissions2Request) Execute() (map[string]interface{}, *http.Response, error) {
+func (r CustomerAPICustomerSetPermissions2Request) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.CustomerSetPermissions2Execute(r)
 }
 
@@ -6190,10 +6973,10 @@ func (r ApiCustomerSetPermissions2Request) Execute() (map[string]interface{}, *h
 CustomerSetPermissions2 Method for CustomerSetPermissions2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerSetPermissions2Request
+ @return CustomerAPICustomerSetPermissions2Request
 */
-func (a *CustomerAPIService) CustomerSetPermissions2(ctx context.Context) ApiCustomerSetPermissions2Request {
-	return ApiCustomerSetPermissions2Request{
+func (a *CustomerAPIService) CustomerSetPermissions2(ctx context.Context) CustomerAPICustomerSetPermissions2Request {
+	return CustomerAPICustomerSetPermissions2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -6201,7 +6984,7 @@ func (a *CustomerAPIService) CustomerSetPermissions2(ctx context.Context) ApiCus
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CustomerAPIService) CustomerSetPermissions2Execute(r ApiCustomerSetPermissions2Request) (map[string]interface{}, *http.Response, error) {
+func (a *CustomerAPIService) CustomerSetPermissions2Execute(r CustomerAPICustomerSetPermissions2Request) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -6287,18 +7070,18 @@ func (a *CustomerAPIService) CustomerSetPermissions2Execute(r ApiCustomerSetPerm
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerUnassignAgentRequest struct {
+type CustomerAPICustomerUnassignAgentRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerUnassignAgentRequest
 }
 
-func (r ApiCustomerUnassignAgentRequest) Body(body CustomerUnassignAgentRequest) ApiCustomerUnassignAgentRequest {
+func (r CustomerAPICustomerUnassignAgentRequest) Body(body CustomerUnassignAgentRequest) CustomerAPICustomerUnassignAgentRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerUnassignAgentRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r CustomerAPICustomerUnassignAgentRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.CustomerUnassignAgentExecute(r)
 }
 
@@ -6306,10 +7089,10 @@ func (r ApiCustomerUnassignAgentRequest) Execute() (map[string]interface{}, *htt
 CustomerUnassignAgent Method for CustomerUnassignAgent
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUnassignAgentRequest
+ @return CustomerAPICustomerUnassignAgentRequest
 */
-func (a *CustomerAPIService) CustomerUnassignAgent(ctx context.Context) ApiCustomerUnassignAgentRequest {
-	return ApiCustomerUnassignAgentRequest{
+func (a *CustomerAPIService) CustomerUnassignAgent(ctx context.Context) CustomerAPICustomerUnassignAgentRequest {
+	return CustomerAPICustomerUnassignAgentRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -6317,7 +7100,7 @@ func (a *CustomerAPIService) CustomerUnassignAgent(ctx context.Context) ApiCusto
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CustomerAPIService) CustomerUnassignAgentExecute(r ApiCustomerUnassignAgentRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CustomerAPIService) CustomerUnassignAgentExecute(r CustomerAPICustomerUnassignAgentRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -6403,18 +7186,18 @@ func (a *CustomerAPIService) CustomerUnassignAgentExecute(r ApiCustomerUnassignA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerUnsubscribeRequest struct {
+type CustomerAPICustomerUnsubscribeRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerUnsubscribeRequest
 }
 
-func (r ApiCustomerUnsubscribeRequest) Body(body CustomerUnsubscribeRequest) ApiCustomerUnsubscribeRequest {
+func (r CustomerAPICustomerUnsubscribeRequest) Body(body CustomerUnsubscribeRequest) CustomerAPICustomerUnsubscribeRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerUnsubscribeRequest) Execute() (*CustomerUnsubscribeResponse, *http.Response, error) {
+func (r CustomerAPICustomerUnsubscribeRequest) Execute() (*CustomerUnsubscribeResponse, *http.Response, error) {
 	return r.ApiService.CustomerUnsubscribeExecute(r)
 }
 
@@ -6422,10 +7205,10 @@ func (r ApiCustomerUnsubscribeRequest) Execute() (*CustomerUnsubscribeResponse, 
 CustomerUnsubscribe Method for CustomerUnsubscribe
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUnsubscribeRequest
+ @return CustomerAPICustomerUnsubscribeRequest
 */
-func (a *CustomerAPIService) CustomerUnsubscribe(ctx context.Context) ApiCustomerUnsubscribeRequest {
-	return ApiCustomerUnsubscribeRequest{
+func (a *CustomerAPIService) CustomerUnsubscribe(ctx context.Context) CustomerAPICustomerUnsubscribeRequest {
+	return CustomerAPICustomerUnsubscribeRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -6433,7 +7216,7 @@ func (a *CustomerAPIService) CustomerUnsubscribe(ctx context.Context) ApiCustome
 
 // Execute executes the request
 //  @return CustomerUnsubscribeResponse
-func (a *CustomerAPIService) CustomerUnsubscribeExecute(r ApiCustomerUnsubscribeRequest) (*CustomerUnsubscribeResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerUnsubscribeExecute(r CustomerAPICustomerUnsubscribeRequest) (*CustomerUnsubscribeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -6519,18 +7302,18 @@ func (a *CustomerAPIService) CustomerUnsubscribeExecute(r ApiCustomerUnsubscribe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerUnsubscribe2Request struct {
+type CustomerAPICustomerUnsubscribe2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerUnsubscribeRequest
 }
 
-func (r ApiCustomerUnsubscribe2Request) Body(body CustomerUnsubscribeRequest) ApiCustomerUnsubscribe2Request {
+func (r CustomerAPICustomerUnsubscribe2Request) Body(body CustomerUnsubscribeRequest) CustomerAPICustomerUnsubscribe2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerUnsubscribe2Request) Execute() (*CustomerUnsubscribeResponse, *http.Response, error) {
+func (r CustomerAPICustomerUnsubscribe2Request) Execute() (*CustomerUnsubscribeResponse, *http.Response, error) {
 	return r.ApiService.CustomerUnsubscribe2Execute(r)
 }
 
@@ -6538,10 +7321,10 @@ func (r ApiCustomerUnsubscribe2Request) Execute() (*CustomerUnsubscribeResponse,
 CustomerUnsubscribe2 Method for CustomerUnsubscribe2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUnsubscribe2Request
+ @return CustomerAPICustomerUnsubscribe2Request
 */
-func (a *CustomerAPIService) CustomerUnsubscribe2(ctx context.Context) ApiCustomerUnsubscribe2Request {
-	return ApiCustomerUnsubscribe2Request{
+func (a *CustomerAPIService) CustomerUnsubscribe2(ctx context.Context) CustomerAPICustomerUnsubscribe2Request {
+	return CustomerAPICustomerUnsubscribe2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -6549,7 +7332,7 @@ func (a *CustomerAPIService) CustomerUnsubscribe2(ctx context.Context) ApiCustom
 
 // Execute executes the request
 //  @return CustomerUnsubscribeResponse
-func (a *CustomerAPIService) CustomerUnsubscribe2Execute(r ApiCustomerUnsubscribe2Request) (*CustomerUnsubscribeResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerUnsubscribe2Execute(r CustomerAPICustomerUnsubscribe2Request) (*CustomerUnsubscribeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -6635,18 +7418,18 @@ func (a *CustomerAPIService) CustomerUnsubscribe2Execute(r ApiCustomerUnsubscrib
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerUpdateRequest struct {
+type CustomerAPICustomerUpdateRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerUpdateRequest
 }
 
-func (r ApiCustomerUpdateRequest) Body(body CustomerUpdateRequest) ApiCustomerUpdateRequest {
+func (r CustomerAPICustomerUpdateRequest) Body(body CustomerUpdateRequest) CustomerAPICustomerUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerUpdateRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r CustomerAPICustomerUpdateRequest) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerUpdateExecute(r)
 }
 
@@ -6654,10 +7437,10 @@ func (r ApiCustomerUpdateRequest) Execute() (*CustomerCustomerResponse, *http.Re
 CustomerUpdate Method for CustomerUpdate
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUpdateRequest
+ @return CustomerAPICustomerUpdateRequest
 */
-func (a *CustomerAPIService) CustomerUpdate(ctx context.Context) ApiCustomerUpdateRequest {
-	return ApiCustomerUpdateRequest{
+func (a *CustomerAPIService) CustomerUpdate(ctx context.Context) CustomerAPICustomerUpdateRequest {
+	return CustomerAPICustomerUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -6665,7 +7448,7 @@ func (a *CustomerAPIService) CustomerUpdate(ctx context.Context) ApiCustomerUpda
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerAPIService) CustomerUpdateExecute(r ApiCustomerUpdateRequest) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerUpdateExecute(r CustomerAPICustomerUpdateRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -6751,18 +7534,18 @@ func (a *CustomerAPIService) CustomerUpdateExecute(r ApiCustomerUpdateRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerUpdate2Request struct {
+type CustomerAPICustomerUpdate2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerUpdateRequest
 }
 
-func (r ApiCustomerUpdate2Request) Body(body CustomerUpdateRequest) ApiCustomerUpdate2Request {
+func (r CustomerAPICustomerUpdate2Request) Body(body CustomerUpdateRequest) CustomerAPICustomerUpdate2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerUpdate2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
+func (r CustomerAPICustomerUpdate2Request) Execute() (*CustomerCustomerResponse, *http.Response, error) {
 	return r.ApiService.CustomerUpdate2Execute(r)
 }
 
@@ -6770,10 +7553,10 @@ func (r ApiCustomerUpdate2Request) Execute() (*CustomerCustomerResponse, *http.R
 CustomerUpdate2 Method for CustomerUpdate2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUpdate2Request
+ @return CustomerAPICustomerUpdate2Request
 */
-func (a *CustomerAPIService) CustomerUpdate2(ctx context.Context) ApiCustomerUpdate2Request {
-	return ApiCustomerUpdate2Request{
+func (a *CustomerAPIService) CustomerUpdate2(ctx context.Context) CustomerAPICustomerUpdate2Request {
+	return CustomerAPICustomerUpdate2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -6781,7 +7564,7 @@ func (a *CustomerAPIService) CustomerUpdate2(ctx context.Context) ApiCustomerUpd
 
 // Execute executes the request
 //  @return CustomerCustomerResponse
-func (a *CustomerAPIService) CustomerUpdate2Execute(r ApiCustomerUpdate2Request) (*CustomerCustomerResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerUpdate2Execute(r CustomerAPICustomerUpdate2Request) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -6867,18 +7650,18 @@ func (a *CustomerAPIService) CustomerUpdate2Execute(r ApiCustomerUpdate2Request)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerUpdateAddressRequest struct {
+type CustomerAPICustomerUpdateAddressRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerAddressUpdateRequest
 }
 
-func (r ApiCustomerUpdateAddressRequest) Body(body CustomerAddressUpdateRequest) ApiCustomerUpdateAddressRequest {
+func (r CustomerAPICustomerUpdateAddressRequest) Body(body CustomerAddressUpdateRequest) CustomerAPICustomerUpdateAddressRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerUpdateAddressRequest) Execute() (*CustomerAddressUpdateResponse, *http.Response, error) {
+func (r CustomerAPICustomerUpdateAddressRequest) Execute() (*CustomerAddressUpdateResponse, *http.Response, error) {
 	return r.ApiService.CustomerUpdateAddressExecute(r)
 }
 
@@ -6886,10 +7669,10 @@ func (r ApiCustomerUpdateAddressRequest) Execute() (*CustomerAddressUpdateRespon
 CustomerUpdateAddress Method for CustomerUpdateAddress
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUpdateAddressRequest
+ @return CustomerAPICustomerUpdateAddressRequest
 */
-func (a *CustomerAPIService) CustomerUpdateAddress(ctx context.Context) ApiCustomerUpdateAddressRequest {
-	return ApiCustomerUpdateAddressRequest{
+func (a *CustomerAPIService) CustomerUpdateAddress(ctx context.Context) CustomerAPICustomerUpdateAddressRequest {
+	return CustomerAPICustomerUpdateAddressRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -6897,7 +7680,7 @@ func (a *CustomerAPIService) CustomerUpdateAddress(ctx context.Context) ApiCusto
 
 // Execute executes the request
 //  @return CustomerAddressUpdateResponse
-func (a *CustomerAPIService) CustomerUpdateAddressExecute(r ApiCustomerUpdateAddressRequest) (*CustomerAddressUpdateResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerUpdateAddressExecute(r CustomerAPICustomerUpdateAddressRequest) (*CustomerAddressUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -6983,18 +7766,18 @@ func (a *CustomerAPIService) CustomerUpdateAddressExecute(r ApiCustomerUpdateAdd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerUpdateAddress2Request struct {
+type CustomerAPICustomerUpdateAddress2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerAddressUpdateRequest
 }
 
-func (r ApiCustomerUpdateAddress2Request) Body(body CustomerAddressUpdateRequest) ApiCustomerUpdateAddress2Request {
+func (r CustomerAPICustomerUpdateAddress2Request) Body(body CustomerAddressUpdateRequest) CustomerAPICustomerUpdateAddress2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerUpdateAddress2Request) Execute() (*CustomerAddressUpdateResponse, *http.Response, error) {
+func (r CustomerAPICustomerUpdateAddress2Request) Execute() (*CustomerAddressUpdateResponse, *http.Response, error) {
 	return r.ApiService.CustomerUpdateAddress2Execute(r)
 }
 
@@ -7002,10 +7785,10 @@ func (r ApiCustomerUpdateAddress2Request) Execute() (*CustomerAddressUpdateRespo
 CustomerUpdateAddress2 Method for CustomerUpdateAddress2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUpdateAddress2Request
+ @return CustomerAPICustomerUpdateAddress2Request
 */
-func (a *CustomerAPIService) CustomerUpdateAddress2(ctx context.Context) ApiCustomerUpdateAddress2Request {
-	return ApiCustomerUpdateAddress2Request{
+func (a *CustomerAPIService) CustomerUpdateAddress2(ctx context.Context) CustomerAPICustomerUpdateAddress2Request {
+	return CustomerAPICustomerUpdateAddress2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -7013,7 +7796,7 @@ func (a *CustomerAPIService) CustomerUpdateAddress2(ctx context.Context) ApiCust
 
 // Execute executes the request
 //  @return CustomerAddressUpdateResponse
-func (a *CustomerAPIService) CustomerUpdateAddress2Execute(r ApiCustomerUpdateAddress2Request) (*CustomerAddressUpdateResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerUpdateAddress2Execute(r CustomerAPICustomerUpdateAddress2Request) (*CustomerAddressUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -7099,18 +7882,18 @@ func (a *CustomerAPIService) CustomerUpdateAddress2Execute(r ApiCustomerUpdateAd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerUpdateGroupRequest struct {
+type CustomerAPICustomerUpdateGroupRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerUpdateGroupRequest
 }
 
-func (r ApiCustomerUpdateGroupRequest) Body(body CustomerUpdateGroupRequest) ApiCustomerUpdateGroupRequest {
+func (r CustomerAPICustomerUpdateGroupRequest) Body(body CustomerUpdateGroupRequest) CustomerAPICustomerUpdateGroupRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerUpdateGroupRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r CustomerAPICustomerUpdateGroupRequest) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerUpdateGroupExecute(r)
 }
 
@@ -7118,10 +7901,10 @@ func (r ApiCustomerUpdateGroupRequest) Execute() (*CustomerGroupResponse, *http.
 CustomerUpdateGroup Method for CustomerUpdateGroup
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUpdateGroupRequest
+ @return CustomerAPICustomerUpdateGroupRequest
 */
-func (a *CustomerAPIService) CustomerUpdateGroup(ctx context.Context) ApiCustomerUpdateGroupRequest {
-	return ApiCustomerUpdateGroupRequest{
+func (a *CustomerAPIService) CustomerUpdateGroup(ctx context.Context) CustomerAPICustomerUpdateGroupRequest {
+	return CustomerAPICustomerUpdateGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -7129,7 +7912,7 @@ func (a *CustomerAPIService) CustomerUpdateGroup(ctx context.Context) ApiCustome
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerAPIService) CustomerUpdateGroupExecute(r ApiCustomerUpdateGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerUpdateGroupExecute(r CustomerAPICustomerUpdateGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -7215,18 +7998,18 @@ func (a *CustomerAPIService) CustomerUpdateGroupExecute(r ApiCustomerUpdateGroup
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerUpdateGroup2Request struct {
+type CustomerAPICustomerUpdateGroup2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerUpdateGroupRequest
 }
 
-func (r ApiCustomerUpdateGroup2Request) Body(body CustomerUpdateGroupRequest) ApiCustomerUpdateGroup2Request {
+func (r CustomerAPICustomerUpdateGroup2Request) Body(body CustomerUpdateGroupRequest) CustomerAPICustomerUpdateGroup2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerUpdateGroup2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
+func (r CustomerAPICustomerUpdateGroup2Request) Execute() (*CustomerGroupResponse, *http.Response, error) {
 	return r.ApiService.CustomerUpdateGroup2Execute(r)
 }
 
@@ -7234,10 +8017,10 @@ func (r ApiCustomerUpdateGroup2Request) Execute() (*CustomerGroupResponse, *http
 CustomerUpdateGroup2 Method for CustomerUpdateGroup2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUpdateGroup2Request
+ @return CustomerAPICustomerUpdateGroup2Request
 */
-func (a *CustomerAPIService) CustomerUpdateGroup2(ctx context.Context) ApiCustomerUpdateGroup2Request {
-	return ApiCustomerUpdateGroup2Request{
+func (a *CustomerAPIService) CustomerUpdateGroup2(ctx context.Context) CustomerAPICustomerUpdateGroup2Request {
+	return CustomerAPICustomerUpdateGroup2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -7245,7 +8028,7 @@ func (a *CustomerAPIService) CustomerUpdateGroup2(ctx context.Context) ApiCustom
 
 // Execute executes the request
 //  @return CustomerGroupResponse
-func (a *CustomerAPIService) CustomerUpdateGroup2Execute(r ApiCustomerUpdateGroup2Request) (*CustomerGroupResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerUpdateGroup2Execute(r CustomerAPICustomerUpdateGroup2Request) (*CustomerGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -7331,18 +8114,18 @@ func (a *CustomerAPIService) CustomerUpdateGroup2Execute(r ApiCustomerUpdateGrou
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerUpdateSubscriberRequest struct {
+type CustomerAPICustomerUpdateSubscriberRequest struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerUpdateSubscriberRequest
 }
 
-func (r ApiCustomerUpdateSubscriberRequest) Body(body CustomerUpdateSubscriberRequest) ApiCustomerUpdateSubscriberRequest {
+func (r CustomerAPICustomerUpdateSubscriberRequest) Body(body CustomerUpdateSubscriberRequest) CustomerAPICustomerUpdateSubscriberRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerUpdateSubscriberRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+func (r CustomerAPICustomerUpdateSubscriberRequest) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
 	return r.ApiService.CustomerUpdateSubscriberExecute(r)
 }
 
@@ -7350,10 +8133,10 @@ func (r ApiCustomerUpdateSubscriberRequest) Execute() (*CustomerSubscriberRespon
 CustomerUpdateSubscriber Method for CustomerUpdateSubscriber
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUpdateSubscriberRequest
+ @return CustomerAPICustomerUpdateSubscriberRequest
 */
-func (a *CustomerAPIService) CustomerUpdateSubscriber(ctx context.Context) ApiCustomerUpdateSubscriberRequest {
-	return ApiCustomerUpdateSubscriberRequest{
+func (a *CustomerAPIService) CustomerUpdateSubscriber(ctx context.Context) CustomerAPICustomerUpdateSubscriberRequest {
+	return CustomerAPICustomerUpdateSubscriberRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -7361,7 +8144,7 @@ func (a *CustomerAPIService) CustomerUpdateSubscriber(ctx context.Context) ApiCu
 
 // Execute executes the request
 //  @return CustomerSubscriberResponse
-func (a *CustomerAPIService) CustomerUpdateSubscriberExecute(r ApiCustomerUpdateSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerUpdateSubscriberExecute(r CustomerAPICustomerUpdateSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -7447,18 +8230,18 @@ func (a *CustomerAPIService) CustomerUpdateSubscriberExecute(r ApiCustomerUpdate
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCustomerUpdateSubscriber2Request struct {
+type CustomerAPICustomerUpdateSubscriber2Request struct {
 	ctx context.Context
-	ApiService *CustomerAPIService
+	ApiService CustomerAPI
 	body *CustomerUpdateSubscriberRequest
 }
 
-func (r ApiCustomerUpdateSubscriber2Request) Body(body CustomerUpdateSubscriberRequest) ApiCustomerUpdateSubscriber2Request {
+func (r CustomerAPICustomerUpdateSubscriber2Request) Body(body CustomerUpdateSubscriberRequest) CustomerAPICustomerUpdateSubscriber2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiCustomerUpdateSubscriber2Request) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
+func (r CustomerAPICustomerUpdateSubscriber2Request) Execute() (*CustomerSubscriberResponse, *http.Response, error) {
 	return r.ApiService.CustomerUpdateSubscriber2Execute(r)
 }
 
@@ -7466,10 +8249,10 @@ func (r ApiCustomerUpdateSubscriber2Request) Execute() (*CustomerSubscriberRespo
 CustomerUpdateSubscriber2 Method for CustomerUpdateSubscriber2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUpdateSubscriber2Request
+ @return CustomerAPICustomerUpdateSubscriber2Request
 */
-func (a *CustomerAPIService) CustomerUpdateSubscriber2(ctx context.Context) ApiCustomerUpdateSubscriber2Request {
-	return ApiCustomerUpdateSubscriber2Request{
+func (a *CustomerAPIService) CustomerUpdateSubscriber2(ctx context.Context) CustomerAPICustomerUpdateSubscriber2Request {
+	return CustomerAPICustomerUpdateSubscriber2Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -7477,7 +8260,7 @@ func (a *CustomerAPIService) CustomerUpdateSubscriber2(ctx context.Context) ApiC
 
 // Execute executes the request
 //  @return CustomerSubscriberResponse
-func (a *CustomerAPIService) CustomerUpdateSubscriber2Execute(r ApiCustomerUpdateSubscriber2Request) (*CustomerSubscriberResponse, *http.Response, error) {
+func (a *CustomerAPIService) CustomerUpdateSubscriber2Execute(r CustomerAPICustomerUpdateSubscriber2Request) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}

@@ -31,7 +31,7 @@ type CustomerPassword struct {
 // will change when the set of required properties is changed
 func NewCustomerPassword() *CustomerPassword {
 	this := CustomerPassword{}
-	var type_ PasswordPasswordType = UNKNOWN
+	var type_ PasswordPasswordType = PASSWORDPASSWORDTYPE_UNKNOWN
 	this.Type = &type_
 	return &this
 }
@@ -41,7 +41,7 @@ func NewCustomerPassword() *CustomerPassword {
 // but it doesn't guarantee that properties required by API are set
 func NewCustomerPasswordWithDefaults() *CustomerPassword {
 	this := CustomerPassword{}
-	var type_ PasswordPasswordType = UNKNOWN
+	var type_ PasswordPasswordType = PASSWORDPASSWORDTYPE_UNKNOWN
 	this.Type = &type_
 	return &this
 }

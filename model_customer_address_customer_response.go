@@ -48,7 +48,7 @@ type CustomerAddressCustomerResponse struct {
 // will change when the set of required properties is changed
 func NewCustomerAddressCustomerResponse() *CustomerAddressCustomerResponse {
 	this := CustomerAddressCustomerResponse{}
-	var kind CustomerAddressCustomerResponseKind = SHIPPING
+	var kind CustomerAddressCustomerResponseKind = CUSTOMERADDRESSCUSTOMERRESPONSEKIND_SHIPPING
 	this.Kind = &kind
 	return &this
 }
@@ -58,7 +58,7 @@ func NewCustomerAddressCustomerResponse() *CustomerAddressCustomerResponse {
 // but it doesn't guarantee that properties required by API are set
 func NewCustomerAddressCustomerResponseWithDefaults() *CustomerAddressCustomerResponse {
 	this := CustomerAddressCustomerResponse{}
-	var kind CustomerAddressCustomerResponseKind = SHIPPING
+	var kind CustomerAddressCustomerResponseKind = CUSTOMERADDRESSCUSTOMERRESPONSEKIND_SHIPPING
 	this.Kind = &kind
 	return &this
 }

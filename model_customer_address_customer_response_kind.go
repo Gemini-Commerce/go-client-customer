@@ -21,9 +21,9 @@ type CustomerAddressCustomerResponseKind string
 
 // List of customerAddressCustomerResponseKind
 const (
-	SHIPPING CustomerAddressCustomerResponseKind = "SHIPPING"
-	BILLING CustomerAddressCustomerResponseKind = "BILLING"
-	BOTH CustomerAddressCustomerResponseKind = "BOTH"
+	CUSTOMERADDRESSCUSTOMERRESPONSEKIND_SHIPPING CustomerAddressCustomerResponseKind = "SHIPPING"
+	CUSTOMERADDRESSCUSTOMERRESPONSEKIND_BILLING CustomerAddressCustomerResponseKind = "BILLING"
+	CUSTOMERADDRESSCUSTOMERRESPONSEKIND_BOTH CustomerAddressCustomerResponseKind = "BOTH"
 )
 
 // All allowed values of CustomerAddressCustomerResponseKind enum

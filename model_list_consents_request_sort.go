@@ -30,9 +30,9 @@ type ListConsentsRequestSort struct {
 // will change when the set of required properties is changed
 func NewListConsentsRequestSort() *ListConsentsRequestSort {
 	this := ListConsentsRequestSort{}
-	var field SortSortField = UNKNOWN
+	var field SortSortField = SORTSORTFIELD_UNKNOWN
 	this.Field = &field
-	var order SortSortOrder = DESC
+	var order SortSortOrder = SORTSORTORDER_DESC
 	this.Order = &order
 	return &this
 }
@@ -42,9 +42,9 @@ func NewListConsentsRequestSort() *ListConsentsRequestSort {
 // but it doesn't guarantee that properties required by API are set
 func NewListConsentsRequestSortWithDefaults() *ListConsentsRequestSort {
 	this := ListConsentsRequestSort{}
-	var field SortSortField = UNKNOWN
+	var field SortSortField = SORTSORTFIELD_UNKNOWN
 	this.Field = &field
-	var order SortSortOrder = DESC
+	var order SortSortOrder = SORTSORTORDER_DESC
 	this.Order = &order
 	return &this
 }

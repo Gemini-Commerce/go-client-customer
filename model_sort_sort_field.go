@@ -21,8 +21,8 @@ type SortSortField string
 
 // List of SortSortField
 const (
-	UNKNOWN SortSortField = "UNKNOWN"
-	DATE SortSortField = "DATE"
+	SORTSORTFIELD_UNKNOWN SortSortField = "UNKNOWN"
+	SORTSORTFIELD_DATE SortSortField = "DATE"
 )
 
 // All allowed values of SortSortField enum

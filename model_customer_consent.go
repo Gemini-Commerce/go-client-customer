@@ -36,7 +36,7 @@ type CustomerConsent struct {
 // will change when the set of required properties is changed
 func NewCustomerConsent() *CustomerConsent {
 	this := CustomerConsent{}
-	var source CustomerConsentSource = UNKNOWN
+	var source CustomerConsentSource = CUSTOMERCONSENTSOURCE_UNKNOWN
 	this.Source = &source
 	return &this
 }
@@ -46,7 +46,7 @@ func NewCustomerConsent() *CustomerConsent {
 // but it doesn't guarantee that properties required by API are set
 func NewCustomerConsentWithDefaults() *CustomerConsent {
 	this := CustomerConsent{}
-	var source CustomerConsentSource = UNKNOWN
+	var source CustomerConsentSource = CUSTOMERCONSENTSOURCE_UNKNOWN
 	this.Source = &source
 	return &this
 }

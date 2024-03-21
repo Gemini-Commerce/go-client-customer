@@ -43,7 +43,7 @@ type CustomerAddressEntity struct {
 // will change when the set of required properties is changed
 func NewCustomerAddressEntity() *CustomerAddressEntity {
 	this := CustomerAddressEntity{}
-	var kind CustomerAddressEntityKind = SHIPPING
+	var kind CustomerAddressEntityKind = CUSTOMERADDRESSENTITYKIND_SHIPPING
 	this.Kind = &kind
 	return &this
 }
@@ -53,7 +53,7 @@ func NewCustomerAddressEntity() *CustomerAddressEntity {
 // but it doesn't guarantee that properties required by API are set
 func NewCustomerAddressEntityWithDefaults() *CustomerAddressEntity {
 	this := CustomerAddressEntity{}
-	var kind CustomerAddressEntityKind = SHIPPING
+	var kind CustomerAddressEntityKind = CUSTOMERADDRESSENTITYKIND_SHIPPING
 	this.Kind = &kind
 	return &this
 }

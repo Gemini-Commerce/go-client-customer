@@ -21,9 +21,9 @@ type CustomerAddressCreateRequestKind string
 
 // List of customerAddressCreateRequestKind
 const (
-	SHIPPING CustomerAddressCreateRequestKind = "SHIPPING"
-	BILLING CustomerAddressCreateRequestKind = "BILLING"
-	BOTH CustomerAddressCreateRequestKind = "BOTH"
+	CUSTOMERADDRESSCREATEREQUESTKIND_SHIPPING CustomerAddressCreateRequestKind = "SHIPPING"
+	CUSTOMERADDRESSCREATEREQUESTKIND_BILLING CustomerAddressCreateRequestKind = "BILLING"
+	CUSTOMERADDRESSCREATEREQUESTKIND_BOTH CustomerAddressCreateRequestKind = "BOTH"
 )
 
 // All allowed values of CustomerAddressCreateRequestKind enum
