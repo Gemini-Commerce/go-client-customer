@@ -10,6 +10,8 @@ info:
   version: v1
 servers:
 - url: https://cdp.api.gogemini.io/
+security:
+- Authorization: []
 tags:
 - externalDocs:
     url: https://gemini-commerce.com/api/cdp
@@ -3974,6 +3976,10 @@ components:
       - NULL_VALUE
       type: string
   securitySchemes:
+    Authorization:
+      in: header
+      name: Authorization
+      type: apiKey
     standardAuthorization:
       flows:
         implicit:
