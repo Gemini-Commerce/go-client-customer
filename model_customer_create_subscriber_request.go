@@ -22,7 +22,10 @@ var _ MappedNullable = &CustomerCreateSubscriberRequest{}
 type CustomerCreateSubscriberRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
 	Subscriber *CustomerSubscriberRequest `json:"subscriber,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerCreateSubscriberRequest CustomerCreateSubscriberRequest
 
 // NewCustomerCreateSubscriberRequest instantiates a new CustomerCreateSubscriberRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -59,8 +62,8 @@ func (o *CustomerCreateSubscriberRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerCreateSubscriberRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerCreateSubscriberRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -91,8 +94,8 @@ func (o *CustomerCreateSubscriberRequest) GetSubscriberOk() (*CustomerSubscriber
 	return o.Subscriber, true
 }
 
-// HasSubscriber returns a boolean if a field has been set.
-func (o *CustomerCreateSubscriberRequest) HasSubscriber() bool {
+// &#39;Has&#39;Subscriber returns a boolean if a field has been set.
+func (o *CustomerCreateSubscriberRequest) &#39;Has&#39;Subscriber() bool {
 	if o != nil && !IsNil(o.Subscriber) {
 		return true
 	}
@@ -121,9 +124,54 @@ func (o CustomerCreateSubscriberRequest) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Subscriber) {
 		toSerialize["subscriber"] = o.Subscriber
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerCreateSubscriberRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerCreateSubscriberRequest := _CustomerCreateSubscriberRequest{}
+
+	err = json.Unmarshal(data, &varCustomerCreateSubscriberRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerCreateSubscriberRequest(varCustomerCreateSubscriberRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "subscriber")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerCreateSubscriberRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerCreateSubscriberRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerCreateSubscriberRequest struct {
 	value *CustomerCreateSubscriberRequest
 	isSet bool

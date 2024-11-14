@@ -1,4 +1,4 @@
-# GeminiCommerce\Customer\CustomerAPI
+# \CustomerAPI
 
 All URIs are relative to *https://cdp.api.gogemini.io*
 

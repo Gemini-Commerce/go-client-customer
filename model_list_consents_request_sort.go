@@ -22,7 +22,10 @@ var _ MappedNullable = &ListConsentsRequestSort{}
 type ListConsentsRequestSort struct {
 	Field *SortSortField `json:"field,omitempty"`
 	Order *SortSortOrder `json:"order,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ListConsentsRequestSort ListConsentsRequestSort
 
 // NewListConsentsRequestSort instantiates a new ListConsentsRequestSort object
 // This constructor will assign default values to properties that have it defined,
@@ -67,8 +70,8 @@ func (o *ListConsentsRequestSort) GetFieldOk() (*SortSortField, bool) {
 	return o.Field, true
 }
 
-// HasField returns a boolean if a field has been set.
-func (o *ListConsentsRequestSort) HasField() bool {
+// &#39;Has&#39;Field returns a boolean if a field has been set.
+func (o *ListConsentsRequestSort) &#39;Has&#39;Field() bool {
 	if o != nil && !IsNil(o.Field) {
 		return true
 	}
@@ -99,8 +102,8 @@ func (o *ListConsentsRequestSort) GetOrderOk() (*SortSortOrder, bool) {
 	return o.Order, true
 }
 
-// HasOrder returns a boolean if a field has been set.
-func (o *ListConsentsRequestSort) HasOrder() bool {
+// &#39;Has&#39;Order returns a boolean if a field has been set.
+func (o *ListConsentsRequestSort) &#39;Has&#39;Order() bool {
 	if o != nil && !IsNil(o.Order) {
 		return true
 	}
@@ -129,9 +132,54 @@ func (o ListConsentsRequestSort) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Order) {
 		toSerialize["order"] = o.Order
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *ListConsentsRequestSort) UnmarshalJSON(data []byte) (err error) {
+	varListConsentsRequestSort := _ListConsentsRequestSort{}
+
+	err = json.Unmarshal(data, &varListConsentsRequestSort)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ListConsentsRequestSort(varListConsentsRequestSort)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "field")
+		delete(additionalProperties, "order")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *ListConsentsRequestSort) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *ListConsentsRequestSort) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableListConsentsRequestSort struct {
 	value *ListConsentsRequestSort
 	isSet bool

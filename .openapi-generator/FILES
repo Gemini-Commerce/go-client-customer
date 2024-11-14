@@ -162,5 +162,4 @@ model_protobuf_null_value.go
 model_sort_sort_field.go
 model_sort_sort_order.go
 response.go
-test/api_customer_test.go
 utils.go

@@ -25,7 +25,10 @@ type CustomerAddressUpdateRequest struct {
 	Id *string `json:"id,omitempty"`
 	Address *CustomerAddressEntity `json:"address,omitempty"`
 	FieldMask *string `json:"fieldMask,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerAddressUpdateRequest CustomerAddressUpdateRequest
 
 // NewCustomerAddressUpdateRequest instantiates a new CustomerAddressUpdateRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -62,8 +65,8 @@ func (o *CustomerAddressUpdateRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerAddressUpdateRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerAddressUpdateRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -94,8 +97,8 @@ func (o *CustomerAddressUpdateRequest) GetCustomerIdOk() (*string, bool) {
 	return o.CustomerId, true
 }
 
-// HasCustomerId returns a boolean if a field has been set.
-func (o *CustomerAddressUpdateRequest) HasCustomerId() bool {
+// &#39;Has&#39;CustomerId returns a boolean if a field has been set.
+func (o *CustomerAddressUpdateRequest) &#39;Has&#39;CustomerId() bool {
 	if o != nil && !IsNil(o.CustomerId) {
 		return true
 	}
@@ -126,8 +129,8 @@ func (o *CustomerAddressUpdateRequest) GetIdOk() (*string, bool) {
 	return o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *CustomerAddressUpdateRequest) HasId() bool {
+// &#39;Has&#39;Id returns a boolean if a field has been set.
+func (o *CustomerAddressUpdateRequest) &#39;Has&#39;Id() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -158,8 +161,8 @@ func (o *CustomerAddressUpdateRequest) GetAddressOk() (*CustomerAddressEntity, b
 	return o.Address, true
 }
 
-// HasAddress returns a boolean if a field has been set.
-func (o *CustomerAddressUpdateRequest) HasAddress() bool {
+// &#39;Has&#39;Address returns a boolean if a field has been set.
+func (o *CustomerAddressUpdateRequest) &#39;Has&#39;Address() bool {
 	if o != nil && !IsNil(o.Address) {
 		return true
 	}
@@ -190,8 +193,8 @@ func (o *CustomerAddressUpdateRequest) GetFieldMaskOk() (*string, bool) {
 	return o.FieldMask, true
 }
 
-// HasFieldMask returns a boolean if a field has been set.
-func (o *CustomerAddressUpdateRequest) HasFieldMask() bool {
+// &#39;Has&#39;FieldMask returns a boolean if a field has been set.
+func (o *CustomerAddressUpdateRequest) &#39;Has&#39;FieldMask() bool {
 	if o != nil && !IsNil(o.FieldMask) {
 		return true
 	}
@@ -229,9 +232,57 @@ func (o CustomerAddressUpdateRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FieldMask) {
 		toSerialize["fieldMask"] = o.FieldMask
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerAddressUpdateRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerAddressUpdateRequest := _CustomerAddressUpdateRequest{}
+
+	err = json.Unmarshal(data, &varCustomerAddressUpdateRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerAddressUpdateRequest(varCustomerAddressUpdateRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "customerId")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "address")
+		delete(additionalProperties, "fieldMask")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerAddressUpdateRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerAddressUpdateRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerAddressUpdateRequest struct {
 	value *CustomerAddressUpdateRequest
 	isSet bool

@@ -22,7 +22,10 @@ var _ MappedNullable = &CustomerSearchResponse{}
 type CustomerSearchResponse struct {
 	Customers []CustomerCustomerResponse `json:"customers,omitempty"`
 	NextPageToken *string `json:"nextPageToken,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerSearchResponse CustomerSearchResponse
 
 // NewCustomerSearchResponse instantiates a new CustomerSearchResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -59,8 +62,8 @@ func (o *CustomerSearchResponse) GetCustomersOk() ([]CustomerCustomerResponse, b
 	return o.Customers, true
 }
 
-// HasCustomers returns a boolean if a field has been set.
-func (o *CustomerSearchResponse) HasCustomers() bool {
+// &#39;Has&#39;Customers returns a boolean if a field has been set.
+func (o *CustomerSearchResponse) &#39;Has&#39;Customers() bool {
 	if o != nil && !IsNil(o.Customers) {
 		return true
 	}
@@ -91,8 +94,8 @@ func (o *CustomerSearchResponse) GetNextPageTokenOk() (*string, bool) {
 	return o.NextPageToken, true
 }
 
-// HasNextPageToken returns a boolean if a field has been set.
-func (o *CustomerSearchResponse) HasNextPageToken() bool {
+// &#39;Has&#39;NextPageToken returns a boolean if a field has been set.
+func (o *CustomerSearchResponse) &#39;Has&#39;NextPageToken() bool {
 	if o != nil && !IsNil(o.NextPageToken) {
 		return true
 	}
@@ -121,9 +124,54 @@ func (o CustomerSearchResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NextPageToken) {
 		toSerialize["nextPageToken"] = o.NextPageToken
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerSearchResponse) UnmarshalJSON(data []byte) (err error) {
+	varCustomerSearchResponse := _CustomerSearchResponse{}
+
+	err = json.Unmarshal(data, &varCustomerSearchResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerSearchResponse(varCustomerSearchResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "customers")
+		delete(additionalProperties, "nextPageToken")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerSearchResponse) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerSearchResponse) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerSearchResponse struct {
 	value *CustomerSearchResponse
 	isSet bool

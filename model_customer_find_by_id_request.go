@@ -22,7 +22,10 @@ var _ MappedNullable = &CustomerFindByIdRequest{}
 type CustomerFindByIdRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
 	Id *string `json:"id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerFindByIdRequest CustomerFindByIdRequest
 
 // NewCustomerFindByIdRequest instantiates a new CustomerFindByIdRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -59,8 +62,8 @@ func (o *CustomerFindByIdRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerFindByIdRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerFindByIdRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -91,8 +94,8 @@ func (o *CustomerFindByIdRequest) GetIdOk() (*string, bool) {
 	return o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *CustomerFindByIdRequest) HasId() bool {
+// &#39;Has&#39;Id returns a boolean if a field has been set.
+func (o *CustomerFindByIdRequest) &#39;Has&#39;Id() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -121,9 +124,54 @@ func (o CustomerFindByIdRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerFindByIdRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerFindByIdRequest := _CustomerFindByIdRequest{}
+
+	err = json.Unmarshal(data, &varCustomerFindByIdRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerFindByIdRequest(varCustomerFindByIdRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerFindByIdRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerFindByIdRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerFindByIdRequest struct {
 	value *CustomerFindByIdRequest
 	isSet bool

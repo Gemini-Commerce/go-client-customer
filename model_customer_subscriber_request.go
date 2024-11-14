@@ -35,7 +35,10 @@ type CustomerSubscriberRequest struct {
 	Market *string `json:"market,omitempty"`
 	PreferredLocale *string `json:"preferredLocale,omitempty"`
 	Consent *CustomerCreateConsentRequest `json:"consent,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerSubscriberRequest CustomerSubscriberRequest
 
 // NewCustomerSubscriberRequest instantiates a new CustomerSubscriberRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -72,8 +75,8 @@ func (o *CustomerSubscriberRequest) GetNameOk() (*string, bool) {
 	return o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *CustomerSubscriberRequest) HasName() bool {
+// &#39;Has&#39;Name returns a boolean if a field has been set.
+func (o *CustomerSubscriberRequest) &#39;Has&#39;Name() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -104,8 +107,8 @@ func (o *CustomerSubscriberRequest) GetLastnameOk() (*string, bool) {
 	return o.Lastname, true
 }
 
-// HasLastname returns a boolean if a field has been set.
-func (o *CustomerSubscriberRequest) HasLastname() bool {
+// &#39;Has&#39;Lastname returns a boolean if a field has been set.
+func (o *CustomerSubscriberRequest) &#39;Has&#39;Lastname() bool {
 	if o != nil && !IsNil(o.Lastname) {
 		return true
 	}
@@ -136,8 +139,8 @@ func (o *CustomerSubscriberRequest) GetEmailOk() (*string, bool) {
 	return o.Email, true
 }
 
-// HasEmail returns a boolean if a field has been set.
-func (o *CustomerSubscriberRequest) HasEmail() bool {
+// &#39;Has&#39;Email returns a boolean if a field has been set.
+func (o *CustomerSubscriberRequest) &#39;Has&#39;Email() bool {
 	if o != nil && !IsNil(o.Email) {
 		return true
 	}
@@ -168,8 +171,8 @@ func (o *CustomerSubscriberRequest) GetCountryOk() (*string, bool) {
 	return o.Country, true
 }
 
-// HasCountry returns a boolean if a field has been set.
-func (o *CustomerSubscriberRequest) HasCountry() bool {
+// &#39;Has&#39;Country returns a boolean if a field has been set.
+func (o *CustomerSubscriberRequest) &#39;Has&#39;Country() bool {
 	if o != nil && !IsNil(o.Country) {
 		return true
 	}
@@ -200,8 +203,8 @@ func (o *CustomerSubscriberRequest) GetGenderOk() (*string, bool) {
 	return o.Gender, true
 }
 
-// HasGender returns a boolean if a field has been set.
-func (o *CustomerSubscriberRequest) HasGender() bool {
+// &#39;Has&#39;Gender returns a boolean if a field has been set.
+func (o *CustomerSubscriberRequest) &#39;Has&#39;Gender() bool {
 	if o != nil && !IsNil(o.Gender) {
 		return true
 	}
@@ -232,8 +235,8 @@ func (o *CustomerSubscriberRequest) GetBirthdateOk() (*time.Time, bool) {
 	return o.Birthdate, true
 }
 
-// HasBirthdate returns a boolean if a field has been set.
-func (o *CustomerSubscriberRequest) HasBirthdate() bool {
+// &#39;Has&#39;Birthdate returns a boolean if a field has been set.
+func (o *CustomerSubscriberRequest) &#39;Has&#39;Birthdate() bool {
 	if o != nil && !IsNil(o.Birthdate) {
 		return true
 	}
@@ -264,8 +267,8 @@ func (o *CustomerSubscriberRequest) GetNationalityOk() (*string, bool) {
 	return o.Nationality, true
 }
 
-// HasNationality returns a boolean if a field has been set.
-func (o *CustomerSubscriberRequest) HasNationality() bool {
+// &#39;Has&#39;Nationality returns a boolean if a field has been set.
+func (o *CustomerSubscriberRequest) &#39;Has&#39;Nationality() bool {
 	if o != nil && !IsNil(o.Nationality) {
 		return true
 	}
@@ -296,8 +299,8 @@ func (o *CustomerSubscriberRequest) GetEmOk() (*CustomerEMFields, bool) {
 	return o.Em, true
 }
 
-// HasEm returns a boolean if a field has been set.
-func (o *CustomerSubscriberRequest) HasEm() bool {
+// &#39;Has&#39;Em returns a boolean if a field has been set.
+func (o *CustomerSubscriberRequest) &#39;Has&#39;Em() bool {
 	if o != nil && !IsNil(o.Em) {
 		return true
 	}
@@ -328,8 +331,8 @@ func (o *CustomerSubscriberRequest) GetCreatedAtOk() (*time.Time, bool) {
 	return o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *CustomerSubscriberRequest) HasCreatedAt() bool {
+// &#39;Has&#39;CreatedAt returns a boolean if a field has been set.
+func (o *CustomerSubscriberRequest) &#39;Has&#39;CreatedAt() bool {
 	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
@@ -360,8 +363,8 @@ func (o *CustomerSubscriberRequest) GetUpdatedAtOk() (*time.Time, bool) {
 	return o.UpdatedAt, true
 }
 
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *CustomerSubscriberRequest) HasUpdatedAt() bool {
+// &#39;Has&#39;UpdatedAt returns a boolean if a field has been set.
+func (o *CustomerSubscriberRequest) &#39;Has&#39;UpdatedAt() bool {
 	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
@@ -392,8 +395,8 @@ func (o *CustomerSubscriberRequest) GetNewslettersOk() ([]CustomerNewsletterRequ
 	return o.Newsletters, true
 }
 
-// HasNewsletters returns a boolean if a field has been set.
-func (o *CustomerSubscriberRequest) HasNewsletters() bool {
+// &#39;Has&#39;Newsletters returns a boolean if a field has been set.
+func (o *CustomerSubscriberRequest) &#39;Has&#39;Newsletters() bool {
 	if o != nil && !IsNil(o.Newsletters) {
 		return true
 	}
@@ -424,8 +427,8 @@ func (o *CustomerSubscriberRequest) GetMarketOk() (*string, bool) {
 	return o.Market, true
 }
 
-// HasMarket returns a boolean if a field has been set.
-func (o *CustomerSubscriberRequest) HasMarket() bool {
+// &#39;Has&#39;Market returns a boolean if a field has been set.
+func (o *CustomerSubscriberRequest) &#39;Has&#39;Market() bool {
 	if o != nil && !IsNil(o.Market) {
 		return true
 	}
@@ -456,8 +459,8 @@ func (o *CustomerSubscriberRequest) GetPreferredLocaleOk() (*string, bool) {
 	return o.PreferredLocale, true
 }
 
-// HasPreferredLocale returns a boolean if a field has been set.
-func (o *CustomerSubscriberRequest) HasPreferredLocale() bool {
+// &#39;Has&#39;PreferredLocale returns a boolean if a field has been set.
+func (o *CustomerSubscriberRequest) &#39;Has&#39;PreferredLocale() bool {
 	if o != nil && !IsNil(o.PreferredLocale) {
 		return true
 	}
@@ -488,8 +491,8 @@ func (o *CustomerSubscriberRequest) GetConsentOk() (*CustomerCreateConsentReques
 	return o.Consent, true
 }
 
-// HasConsent returns a boolean if a field has been set.
-func (o *CustomerSubscriberRequest) HasConsent() bool {
+// &#39;Has&#39;Consent returns a boolean if a field has been set.
+func (o *CustomerSubscriberRequest) &#39;Has&#39;Consent() bool {
 	if o != nil && !IsNil(o.Consent) {
 		return true
 	}
@@ -554,9 +557,66 @@ func (o CustomerSubscriberRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Consent) {
 		toSerialize["consent"] = o.Consent
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerSubscriberRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerSubscriberRequest := _CustomerSubscriberRequest{}
+
+	err = json.Unmarshal(data, &varCustomerSubscriberRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerSubscriberRequest(varCustomerSubscriberRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "lastname")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "country")
+		delete(additionalProperties, "gender")
+		delete(additionalProperties, "birthdate")
+		delete(additionalProperties, "nationality")
+		delete(additionalProperties, "em")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "updatedAt")
+		delete(additionalProperties, "newsletters")
+		delete(additionalProperties, "market")
+		delete(additionalProperties, "preferredLocale")
+		delete(additionalProperties, "consent")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerSubscriberRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerSubscriberRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerSubscriberRequest struct {
 	value *CustomerSubscriberRequest
 	isSet bool

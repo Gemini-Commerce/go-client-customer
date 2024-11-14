@@ -23,7 +23,10 @@ type CustomerAddressDeleteRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
 	CustomerId *string `json:"customerId,omitempty"`
 	AddressId *string `json:"addressId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerAddressDeleteRequest CustomerAddressDeleteRequest
 
 // NewCustomerAddressDeleteRequest instantiates a new CustomerAddressDeleteRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -60,8 +63,8 @@ func (o *CustomerAddressDeleteRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerAddressDeleteRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerAddressDeleteRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -92,8 +95,8 @@ func (o *CustomerAddressDeleteRequest) GetCustomerIdOk() (*string, bool) {
 	return o.CustomerId, true
 }
 
-// HasCustomerId returns a boolean if a field has been set.
-func (o *CustomerAddressDeleteRequest) HasCustomerId() bool {
+// &#39;Has&#39;CustomerId returns a boolean if a field has been set.
+func (o *CustomerAddressDeleteRequest) &#39;Has&#39;CustomerId() bool {
 	if o != nil && !IsNil(o.CustomerId) {
 		return true
 	}
@@ -124,8 +127,8 @@ func (o *CustomerAddressDeleteRequest) GetAddressIdOk() (*string, bool) {
 	return o.AddressId, true
 }
 
-// HasAddressId returns a boolean if a field has been set.
-func (o *CustomerAddressDeleteRequest) HasAddressId() bool {
+// &#39;Has&#39;AddressId returns a boolean if a field has been set.
+func (o *CustomerAddressDeleteRequest) &#39;Has&#39;AddressId() bool {
 	if o != nil && !IsNil(o.AddressId) {
 		return true
 	}
@@ -157,9 +160,55 @@ func (o CustomerAddressDeleteRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AddressId) {
 		toSerialize["addressId"] = o.AddressId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerAddressDeleteRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerAddressDeleteRequest := _CustomerAddressDeleteRequest{}
+
+	err = json.Unmarshal(data, &varCustomerAddressDeleteRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerAddressDeleteRequest(varCustomerAddressDeleteRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "customerId")
+		delete(additionalProperties, "addressId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerAddressDeleteRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerAddressDeleteRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerAddressDeleteRequest struct {
 	value *CustomerAddressDeleteRequest
 	isSet bool

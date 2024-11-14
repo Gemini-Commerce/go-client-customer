@@ -23,7 +23,10 @@ type CustomerBulkUpdateRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
 	CustomerIds []string `json:"customerIds,omitempty"`
 	Action *BulkUpdateRequestAction `json:"action,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerBulkUpdateRequest CustomerBulkUpdateRequest
 
 // NewCustomerBulkUpdateRequest instantiates a new CustomerBulkUpdateRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -64,8 +67,8 @@ func (o *CustomerBulkUpdateRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerBulkUpdateRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerBulkUpdateRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -96,8 +99,8 @@ func (o *CustomerBulkUpdateRequest) GetCustomerIdsOk() ([]string, bool) {
 	return o.CustomerIds, true
 }
 
-// HasCustomerIds returns a boolean if a field has been set.
-func (o *CustomerBulkUpdateRequest) HasCustomerIds() bool {
+// &#39;Has&#39;CustomerIds returns a boolean if a field has been set.
+func (o *CustomerBulkUpdateRequest) &#39;Has&#39;CustomerIds() bool {
 	if o != nil && !IsNil(o.CustomerIds) {
 		return true
 	}
@@ -128,8 +131,8 @@ func (o *CustomerBulkUpdateRequest) GetActionOk() (*BulkUpdateRequestAction, boo
 	return o.Action, true
 }
 
-// HasAction returns a boolean if a field has been set.
-func (o *CustomerBulkUpdateRequest) HasAction() bool {
+// &#39;Has&#39;Action returns a boolean if a field has been set.
+func (o *CustomerBulkUpdateRequest) &#39;Has&#39;Action() bool {
 	if o != nil && !IsNil(o.Action) {
 		return true
 	}
@@ -161,9 +164,55 @@ func (o CustomerBulkUpdateRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Action) {
 		toSerialize["action"] = o.Action
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerBulkUpdateRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerBulkUpdateRequest := _CustomerBulkUpdateRequest{}
+
+	err = json.Unmarshal(data, &varCustomerBulkUpdateRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerBulkUpdateRequest(varCustomerBulkUpdateRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "customerIds")
+		delete(additionalProperties, "action")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerBulkUpdateRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerBulkUpdateRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerBulkUpdateRequest struct {
 	value *CustomerBulkUpdateRequest
 	isSet bool

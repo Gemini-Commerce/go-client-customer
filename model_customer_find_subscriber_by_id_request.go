@@ -22,7 +22,10 @@ var _ MappedNullable = &CustomerFindSubscriberByIdRequest{}
 type CustomerFindSubscriberByIdRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
 	SubscriberId *string `json:"subscriberId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerFindSubscriberByIdRequest CustomerFindSubscriberByIdRequest
 
 // NewCustomerFindSubscriberByIdRequest instantiates a new CustomerFindSubscriberByIdRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -59,8 +62,8 @@ func (o *CustomerFindSubscriberByIdRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerFindSubscriberByIdRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerFindSubscriberByIdRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -91,8 +94,8 @@ func (o *CustomerFindSubscriberByIdRequest) GetSubscriberIdOk() (*string, bool) 
 	return o.SubscriberId, true
 }
 
-// HasSubscriberId returns a boolean if a field has been set.
-func (o *CustomerFindSubscriberByIdRequest) HasSubscriberId() bool {
+// &#39;Has&#39;SubscriberId returns a boolean if a field has been set.
+func (o *CustomerFindSubscriberByIdRequest) &#39;Has&#39;SubscriberId() bool {
 	if o != nil && !IsNil(o.SubscriberId) {
 		return true
 	}
@@ -121,9 +124,54 @@ func (o CustomerFindSubscriberByIdRequest) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.SubscriberId) {
 		toSerialize["subscriberId"] = o.SubscriberId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerFindSubscriberByIdRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerFindSubscriberByIdRequest := _CustomerFindSubscriberByIdRequest{}
+
+	err = json.Unmarshal(data, &varCustomerFindSubscriberByIdRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerFindSubscriberByIdRequest(varCustomerFindSubscriberByIdRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "subscriberId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerFindSubscriberByIdRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerFindSubscriberByIdRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerFindSubscriberByIdRequest struct {
 	value *CustomerFindSubscriberByIdRequest
 	isSet bool

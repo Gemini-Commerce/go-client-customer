@@ -21,7 +21,10 @@ var _ MappedNullable = &CustomerCreateConsentRequest{}
 // CustomerCreateConsentRequest struct for CustomerCreateConsentRequest
 type CustomerCreateConsentRequest struct {
 	Preferences *map[string]bool `json:"preferences,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerCreateConsentRequest CustomerCreateConsentRequest
 
 // NewCustomerCreateConsentRequest instantiates a new CustomerCreateConsentRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -58,8 +61,8 @@ func (o *CustomerCreateConsentRequest) GetPreferencesOk() (*map[string]bool, boo
 	return o.Preferences, true
 }
 
-// HasPreferences returns a boolean if a field has been set.
-func (o *CustomerCreateConsentRequest) HasPreferences() bool {
+// &#39;Has&#39;Preferences returns a boolean if a field has been set.
+func (o *CustomerCreateConsentRequest) &#39;Has&#39;Preferences() bool {
 	if o != nil && !IsNil(o.Preferences) {
 		return true
 	}
@@ -85,9 +88,53 @@ func (o CustomerCreateConsentRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Preferences) {
 		toSerialize["preferences"] = o.Preferences
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerCreateConsentRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerCreateConsentRequest := _CustomerCreateConsentRequest{}
+
+	err = json.Unmarshal(data, &varCustomerCreateConsentRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerCreateConsentRequest(varCustomerCreateConsentRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "preferences")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerCreateConsentRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerCreateConsentRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerCreateConsentRequest struct {
 	value *CustomerCreateConsentRequest
 	isSet bool

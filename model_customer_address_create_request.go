@@ -37,7 +37,10 @@ type CustomerAddressCreateRequest struct {
 	Default *bool `json:"default,omitempty"`
 	Country *string `json:"country,omitempty"`
 	Attributes *map[string]ProtobufAny `json:"attributes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerAddressCreateRequest CustomerAddressCreateRequest
 
 // NewCustomerAddressCreateRequest instantiates a new CustomerAddressCreateRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -78,8 +81,8 @@ func (o *CustomerAddressCreateRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -110,8 +113,8 @@ func (o *CustomerAddressCreateRequest) GetCustomerIdOk() (*string, bool) {
 	return o.CustomerId, true
 }
 
-// HasCustomerId returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasCustomerId() bool {
+// &#39;Has&#39;CustomerId returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;CustomerId() bool {
 	if o != nil && !IsNil(o.CustomerId) {
 		return true
 	}
@@ -142,8 +145,8 @@ func (o *CustomerAddressCreateRequest) GetEmOk() (*CustomerEMFields, bool) {
 	return o.Em, true
 }
 
-// HasEm returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasEm() bool {
+// &#39;Has&#39;Em returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;Em() bool {
 	if o != nil && !IsNil(o.Em) {
 		return true
 	}
@@ -174,8 +177,8 @@ func (o *CustomerAddressCreateRequest) GetNameOk() (*string, bool) {
 	return o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasName() bool {
+// &#39;Has&#39;Name returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;Name() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -206,8 +209,8 @@ func (o *CustomerAddressCreateRequest) GetSurnameOk() (*string, bool) {
 	return o.Surname, true
 }
 
-// HasSurname returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasSurname() bool {
+// &#39;Has&#39;Surname returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;Surname() bool {
 	if o != nil && !IsNil(o.Surname) {
 		return true
 	}
@@ -238,8 +241,8 @@ func (o *CustomerAddressCreateRequest) GetStreetOk() (*string, bool) {
 	return o.Street, true
 }
 
-// HasStreet returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasStreet() bool {
+// &#39;Has&#39;Street returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;Street() bool {
 	if o != nil && !IsNil(o.Street) {
 		return true
 	}
@@ -270,8 +273,8 @@ func (o *CustomerAddressCreateRequest) GetNumberOk() (*string, bool) {
 	return o.Number, true
 }
 
-// HasNumber returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasNumber() bool {
+// &#39;Has&#39;Number returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;Number() bool {
 	if o != nil && !IsNil(o.Number) {
 		return true
 	}
@@ -302,8 +305,8 @@ func (o *CustomerAddressCreateRequest) GetZipOk() (*string, bool) {
 	return o.Zip, true
 }
 
-// HasZip returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasZip() bool {
+// &#39;Has&#39;Zip returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;Zip() bool {
 	if o != nil && !IsNil(o.Zip) {
 		return true
 	}
@@ -334,8 +337,8 @@ func (o *CustomerAddressCreateRequest) GetCityOk() (*string, bool) {
 	return o.City, true
 }
 
-// HasCity returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasCity() bool {
+// &#39;Has&#39;City returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;City() bool {
 	if o != nil && !IsNil(o.City) {
 		return true
 	}
@@ -366,8 +369,8 @@ func (o *CustomerAddressCreateRequest) GetProvinceOk() (*string, bool) {
 	return o.Province, true
 }
 
-// HasProvince returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasProvince() bool {
+// &#39;Has&#39;Province returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;Province() bool {
 	if o != nil && !IsNil(o.Province) {
 		return true
 	}
@@ -398,8 +401,8 @@ func (o *CustomerAddressCreateRequest) GetPhoneNumberOk() (*string, bool) {
 	return o.PhoneNumber, true
 }
 
-// HasPhoneNumber returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasPhoneNumber() bool {
+// &#39;Has&#39;PhoneNumber returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;PhoneNumber() bool {
 	if o != nil && !IsNil(o.PhoneNumber) {
 		return true
 	}
@@ -430,8 +433,8 @@ func (o *CustomerAddressCreateRequest) GetFiscalCodeOk() (*string, bool) {
 	return o.FiscalCode, true
 }
 
-// HasFiscalCode returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasFiscalCode() bool {
+// &#39;Has&#39;FiscalCode returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;FiscalCode() bool {
 	if o != nil && !IsNil(o.FiscalCode) {
 		return true
 	}
@@ -462,8 +465,8 @@ func (o *CustomerAddressCreateRequest) GetVatNumberOk() (*string, bool) {
 	return o.VatNumber, true
 }
 
-// HasVatNumber returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasVatNumber() bool {
+// &#39;Has&#39;VatNumber returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;VatNumber() bool {
 	if o != nil && !IsNil(o.VatNumber) {
 		return true
 	}
@@ -494,8 +497,8 @@ func (o *CustomerAddressCreateRequest) GetKindOk() (*CustomerAddressCreateReques
 	return o.Kind, true
 }
 
-// HasKind returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasKind() bool {
+// &#39;Has&#39;Kind returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;Kind() bool {
 	if o != nil && !IsNil(o.Kind) {
 		return true
 	}
@@ -526,8 +529,8 @@ func (o *CustomerAddressCreateRequest) GetDefaultOk() (*bool, bool) {
 	return o.Default, true
 }
 
-// HasDefault returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasDefault() bool {
+// &#39;Has&#39;Default returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;Default() bool {
 	if o != nil && !IsNil(o.Default) {
 		return true
 	}
@@ -558,8 +561,8 @@ func (o *CustomerAddressCreateRequest) GetCountryOk() (*string, bool) {
 	return o.Country, true
 }
 
-// HasCountry returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasCountry() bool {
+// &#39;Has&#39;Country returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;Country() bool {
 	if o != nil && !IsNil(o.Country) {
 		return true
 	}
@@ -590,8 +593,8 @@ func (o *CustomerAddressCreateRequest) GetAttributesOk() (*map[string]ProtobufAn
 	return o.Attributes, true
 }
 
-// HasAttributes returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) HasAttributes() bool {
+// &#39;Has&#39;Attributes returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) &#39;Has&#39;Attributes() bool {
 	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
@@ -665,9 +668,69 @@ func (o CustomerAddressCreateRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerAddressCreateRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerAddressCreateRequest := _CustomerAddressCreateRequest{}
+
+	err = json.Unmarshal(data, &varCustomerAddressCreateRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerAddressCreateRequest(varCustomerAddressCreateRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "customerId")
+		delete(additionalProperties, "em")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "surname")
+		delete(additionalProperties, "street")
+		delete(additionalProperties, "number")
+		delete(additionalProperties, "zip")
+		delete(additionalProperties, "city")
+		delete(additionalProperties, "province")
+		delete(additionalProperties, "phoneNumber")
+		delete(additionalProperties, "fiscalCode")
+		delete(additionalProperties, "vatNumber")
+		delete(additionalProperties, "kind")
+		delete(additionalProperties, "default")
+		delete(additionalProperties, "country")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerAddressCreateRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerAddressCreateRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerAddressCreateRequest struct {
 	value *CustomerAddressCreateRequest
 	isSet bool

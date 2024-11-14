@@ -22,7 +22,10 @@ var _ MappedNullable = &CustomerFindManyRequestFilter{}
 type CustomerFindManyRequestFilter struct {
 	Newsletter *bool `json:"newsletter,omitempty"`
 	AgentGrn *string `json:"agentGrn,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerFindManyRequestFilter CustomerFindManyRequestFilter
 
 // NewCustomerFindManyRequestFilter instantiates a new CustomerFindManyRequestFilter object
 // This constructor will assign default values to properties that have it defined,
@@ -59,8 +62,8 @@ func (o *CustomerFindManyRequestFilter) GetNewsletterOk() (*bool, bool) {
 	return o.Newsletter, true
 }
 
-// HasNewsletter returns a boolean if a field has been set.
-func (o *CustomerFindManyRequestFilter) HasNewsletter() bool {
+// &#39;Has&#39;Newsletter returns a boolean if a field has been set.
+func (o *CustomerFindManyRequestFilter) &#39;Has&#39;Newsletter() bool {
 	if o != nil && !IsNil(o.Newsletter) {
 		return true
 	}
@@ -91,8 +94,8 @@ func (o *CustomerFindManyRequestFilter) GetAgentGrnOk() (*string, bool) {
 	return o.AgentGrn, true
 }
 
-// HasAgentGrn returns a boolean if a field has been set.
-func (o *CustomerFindManyRequestFilter) HasAgentGrn() bool {
+// &#39;Has&#39;AgentGrn returns a boolean if a field has been set.
+func (o *CustomerFindManyRequestFilter) &#39;Has&#39;AgentGrn() bool {
 	if o != nil && !IsNil(o.AgentGrn) {
 		return true
 	}
@@ -121,9 +124,54 @@ func (o CustomerFindManyRequestFilter) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AgentGrn) {
 		toSerialize["agentGrn"] = o.AgentGrn
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerFindManyRequestFilter) UnmarshalJSON(data []byte) (err error) {
+	varCustomerFindManyRequestFilter := _CustomerFindManyRequestFilter{}
+
+	err = json.Unmarshal(data, &varCustomerFindManyRequestFilter)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerFindManyRequestFilter(varCustomerFindManyRequestFilter)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "newsletter")
+		delete(additionalProperties, "agentGrn")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerFindManyRequestFilter) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerFindManyRequestFilter) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerFindManyRequestFilter struct {
 	value *CustomerFindManyRequestFilter
 	isSet bool

@@ -23,7 +23,10 @@ type CustomerRevokePermissionsRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
 	CustomerId *string `json:"customerId,omitempty"`
 	Permissions []CustomerPermission `json:"permissions,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerRevokePermissionsRequest CustomerRevokePermissionsRequest
 
 // NewCustomerRevokePermissionsRequest instantiates a new CustomerRevokePermissionsRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -60,8 +63,8 @@ func (o *CustomerRevokePermissionsRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerRevokePermissionsRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerRevokePermissionsRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -92,8 +95,8 @@ func (o *CustomerRevokePermissionsRequest) GetCustomerIdOk() (*string, bool) {
 	return o.CustomerId, true
 }
 
-// HasCustomerId returns a boolean if a field has been set.
-func (o *CustomerRevokePermissionsRequest) HasCustomerId() bool {
+// &#39;Has&#39;CustomerId returns a boolean if a field has been set.
+func (o *CustomerRevokePermissionsRequest) &#39;Has&#39;CustomerId() bool {
 	if o != nil && !IsNil(o.CustomerId) {
 		return true
 	}
@@ -124,8 +127,8 @@ func (o *CustomerRevokePermissionsRequest) GetPermissionsOk() ([]CustomerPermiss
 	return o.Permissions, true
 }
 
-// HasPermissions returns a boolean if a field has been set.
-func (o *CustomerRevokePermissionsRequest) HasPermissions() bool {
+// &#39;Has&#39;Permissions returns a boolean if a field has been set.
+func (o *CustomerRevokePermissionsRequest) &#39;Has&#39;Permissions() bool {
 	if o != nil && !IsNil(o.Permissions) {
 		return true
 	}
@@ -157,9 +160,55 @@ func (o CustomerRevokePermissionsRequest) ToMap() (map[string]interface{}, error
 	if !IsNil(o.Permissions) {
 		toSerialize["permissions"] = o.Permissions
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerRevokePermissionsRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerRevokePermissionsRequest := _CustomerRevokePermissionsRequest{}
+
+	err = json.Unmarshal(data, &varCustomerRevokePermissionsRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerRevokePermissionsRequest(varCustomerRevokePermissionsRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "customerId")
+		delete(additionalProperties, "permissions")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerRevokePermissionsRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerRevokePermissionsRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerRevokePermissionsRequest struct {
 	value *CustomerRevokePermissionsRequest
 	isSet bool

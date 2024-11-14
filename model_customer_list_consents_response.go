@@ -22,7 +22,10 @@ var _ MappedNullable = &CustomerListConsentsResponse{}
 type CustomerListConsentsResponse struct {
 	Consents []CustomerConsent `json:"consents,omitempty"`
 	NextPageToken *string `json:"nextPageToken,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerListConsentsResponse CustomerListConsentsResponse
 
 // NewCustomerListConsentsResponse instantiates a new CustomerListConsentsResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -59,8 +62,8 @@ func (o *CustomerListConsentsResponse) GetConsentsOk() ([]CustomerConsent, bool)
 	return o.Consents, true
 }
 
-// HasConsents returns a boolean if a field has been set.
-func (o *CustomerListConsentsResponse) HasConsents() bool {
+// &#39;Has&#39;Consents returns a boolean if a field has been set.
+func (o *CustomerListConsentsResponse) &#39;Has&#39;Consents() bool {
 	if o != nil && !IsNil(o.Consents) {
 		return true
 	}
@@ -91,8 +94,8 @@ func (o *CustomerListConsentsResponse) GetNextPageTokenOk() (*string, bool) {
 	return o.NextPageToken, true
 }
 
-// HasNextPageToken returns a boolean if a field has been set.
-func (o *CustomerListConsentsResponse) HasNextPageToken() bool {
+// &#39;Has&#39;NextPageToken returns a boolean if a field has been set.
+func (o *CustomerListConsentsResponse) &#39;Has&#39;NextPageToken() bool {
 	if o != nil && !IsNil(o.NextPageToken) {
 		return true
 	}
@@ -121,9 +124,54 @@ func (o CustomerListConsentsResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NextPageToken) {
 		toSerialize["nextPageToken"] = o.NextPageToken
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerListConsentsResponse) UnmarshalJSON(data []byte) (err error) {
+	varCustomerListConsentsResponse := _CustomerListConsentsResponse{}
+
+	err = json.Unmarshal(data, &varCustomerListConsentsResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerListConsentsResponse(varCustomerListConsentsResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "consents")
+		delete(additionalProperties, "nextPageToken")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerListConsentsResponse) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerListConsentsResponse) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerListConsentsResponse struct {
 	value *CustomerListConsentsResponse
 	isSet bool

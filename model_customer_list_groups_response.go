@@ -22,7 +22,10 @@ var _ MappedNullable = &CustomerListGroupsResponse{}
 type CustomerListGroupsResponse struct {
 	Groups []CustomerGroupResponse `json:"groups,omitempty"`
 	NextPageToken *string `json:"nextPageToken,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerListGroupsResponse CustomerListGroupsResponse
 
 // NewCustomerListGroupsResponse instantiates a new CustomerListGroupsResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -59,8 +62,8 @@ func (o *CustomerListGroupsResponse) GetGroupsOk() ([]CustomerGroupResponse, boo
 	return o.Groups, true
 }
 
-// HasGroups returns a boolean if a field has been set.
-func (o *CustomerListGroupsResponse) HasGroups() bool {
+// &#39;Has&#39;Groups returns a boolean if a field has been set.
+func (o *CustomerListGroupsResponse) &#39;Has&#39;Groups() bool {
 	if o != nil && !IsNil(o.Groups) {
 		return true
 	}
@@ -91,8 +94,8 @@ func (o *CustomerListGroupsResponse) GetNextPageTokenOk() (*string, bool) {
 	return o.NextPageToken, true
 }
 
-// HasNextPageToken returns a boolean if a field has been set.
-func (o *CustomerListGroupsResponse) HasNextPageToken() bool {
+// &#39;Has&#39;NextPageToken returns a boolean if a field has been set.
+func (o *CustomerListGroupsResponse) &#39;Has&#39;NextPageToken() bool {
 	if o != nil && !IsNil(o.NextPageToken) {
 		return true
 	}
@@ -121,9 +124,54 @@ func (o CustomerListGroupsResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NextPageToken) {
 		toSerialize["nextPageToken"] = o.NextPageToken
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerListGroupsResponse) UnmarshalJSON(data []byte) (err error) {
+	varCustomerListGroupsResponse := _CustomerListGroupsResponse{}
+
+	err = json.Unmarshal(data, &varCustomerListGroupsResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerListGroupsResponse(varCustomerListGroupsResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "groups")
+		delete(additionalProperties, "nextPageToken")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerListGroupsResponse) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerListGroupsResponse) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerListGroupsResponse struct {
 	value *CustomerListGroupsResponse
 	isSet bool

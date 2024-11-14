@@ -23,7 +23,10 @@ var _ MappedNullable = &ListCustomersRequestFilterDate{}
 type ListCustomersRequestFilterDate struct {
 	From *time.Time `json:"from,omitempty"`
 	To *time.Time `json:"to,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ListCustomersRequestFilterDate ListCustomersRequestFilterDate
 
 // NewListCustomersRequestFilterDate instantiates a new ListCustomersRequestFilterDate object
 // This constructor will assign default values to properties that have it defined,
@@ -60,8 +63,8 @@ func (o *ListCustomersRequestFilterDate) GetFromOk() (*time.Time, bool) {
 	return o.From, true
 }
 
-// HasFrom returns a boolean if a field has been set.
-func (o *ListCustomersRequestFilterDate) HasFrom() bool {
+// &#39;Has&#39;From returns a boolean if a field has been set.
+func (o *ListCustomersRequestFilterDate) &#39;Has&#39;From() bool {
 	if o != nil && !IsNil(o.From) {
 		return true
 	}
@@ -92,8 +95,8 @@ func (o *ListCustomersRequestFilterDate) GetToOk() (*time.Time, bool) {
 	return o.To, true
 }
 
-// HasTo returns a boolean if a field has been set.
-func (o *ListCustomersRequestFilterDate) HasTo() bool {
+// &#39;Has&#39;To returns a boolean if a field has been set.
+func (o *ListCustomersRequestFilterDate) &#39;Has&#39;To() bool {
 	if o != nil && !IsNil(o.To) {
 		return true
 	}
@@ -122,9 +125,54 @@ func (o ListCustomersRequestFilterDate) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.To) {
 		toSerialize["to"] = o.To
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *ListCustomersRequestFilterDate) UnmarshalJSON(data []byte) (err error) {
+	varListCustomersRequestFilterDate := _ListCustomersRequestFilterDate{}
+
+	err = json.Unmarshal(data, &varListCustomersRequestFilterDate)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ListCustomersRequestFilterDate(varListCustomersRequestFilterDate)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "from")
+		delete(additionalProperties, "to")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *ListCustomersRequestFilterDate) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *ListCustomersRequestFilterDate) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableListCustomersRequestFilterDate struct {
 	value *ListCustomersRequestFilterDate
 	isSet bool

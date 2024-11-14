@@ -28,7 +28,10 @@ type CustomerConsent struct {
 	Source *CustomerConsentSource `json:"source,omitempty"`
 	Author *string `json:"author,omitempty"`
 	SubjectId *string `json:"subjectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerConsent CustomerConsent
 
 // NewCustomerConsent instantiates a new CustomerConsent object
 // This constructor will assign default values to properties that have it defined,
@@ -69,8 +72,8 @@ func (o *CustomerConsent) GetIdOk() (*string, bool) {
 	return o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *CustomerConsent) HasId() bool {
+// &#39;Has&#39;Id returns a boolean if a field has been set.
+func (o *CustomerConsent) &#39;Has&#39;Id() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -101,8 +104,8 @@ func (o *CustomerConsent) GetGrnOk() (*string, bool) {
 	return o.Grn, true
 }
 
-// HasGrn returns a boolean if a field has been set.
-func (o *CustomerConsent) HasGrn() bool {
+// &#39;Has&#39;Grn returns a boolean if a field has been set.
+func (o *CustomerConsent) &#39;Has&#39;Grn() bool {
 	if o != nil && !IsNil(o.Grn) {
 		return true
 	}
@@ -133,8 +136,8 @@ func (o *CustomerConsent) GetPreferencesOk() (*map[string]bool, bool) {
 	return o.Preferences, true
 }
 
-// HasPreferences returns a boolean if a field has been set.
-func (o *CustomerConsent) HasPreferences() bool {
+// &#39;Has&#39;Preferences returns a boolean if a field has been set.
+func (o *CustomerConsent) &#39;Has&#39;Preferences() bool {
 	if o != nil && !IsNil(o.Preferences) {
 		return true
 	}
@@ -165,8 +168,8 @@ func (o *CustomerConsent) GetCreatedAtOk() (*time.Time, bool) {
 	return o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *CustomerConsent) HasCreatedAt() bool {
+// &#39;Has&#39;CreatedAt returns a boolean if a field has been set.
+func (o *CustomerConsent) &#39;Has&#39;CreatedAt() bool {
 	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
@@ -197,8 +200,8 @@ func (o *CustomerConsent) GetSourceOk() (*CustomerConsentSource, bool) {
 	return o.Source, true
 }
 
-// HasSource returns a boolean if a field has been set.
-func (o *CustomerConsent) HasSource() bool {
+// &#39;Has&#39;Source returns a boolean if a field has been set.
+func (o *CustomerConsent) &#39;Has&#39;Source() bool {
 	if o != nil && !IsNil(o.Source) {
 		return true
 	}
@@ -229,8 +232,8 @@ func (o *CustomerConsent) GetAuthorOk() (*string, bool) {
 	return o.Author, true
 }
 
-// HasAuthor returns a boolean if a field has been set.
-func (o *CustomerConsent) HasAuthor() bool {
+// &#39;Has&#39;Author returns a boolean if a field has been set.
+func (o *CustomerConsent) &#39;Has&#39;Author() bool {
 	if o != nil && !IsNil(o.Author) {
 		return true
 	}
@@ -261,8 +264,8 @@ func (o *CustomerConsent) GetSubjectIdOk() (*string, bool) {
 	return o.SubjectId, true
 }
 
-// HasSubjectId returns a boolean if a field has been set.
-func (o *CustomerConsent) HasSubjectId() bool {
+// &#39;Has&#39;SubjectId returns a boolean if a field has been set.
+func (o *CustomerConsent) &#39;Has&#39;SubjectId() bool {
 	if o != nil && !IsNil(o.SubjectId) {
 		return true
 	}
@@ -306,9 +309,59 @@ func (o CustomerConsent) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SubjectId) {
 		toSerialize["subjectId"] = o.SubjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerConsent) UnmarshalJSON(data []byte) (err error) {
+	varCustomerConsent := _CustomerConsent{}
+
+	err = json.Unmarshal(data, &varCustomerConsent)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerConsent(varCustomerConsent)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "grn")
+		delete(additionalProperties, "preferences")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "author")
+		delete(additionalProperties, "subjectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerConsent) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerConsent) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerConsent struct {
 	value *CustomerConsent
 	isSet bool

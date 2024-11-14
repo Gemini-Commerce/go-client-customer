@@ -24,7 +24,10 @@ type CustomerUpdateGroupRequest struct {
 	GroupId *string `json:"groupId,omitempty"`
 	Payload *CustomerUpdateGroupRequestPayload `json:"payload,omitempty"`
 	FieldMask *string `json:"fieldMask,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerUpdateGroupRequest CustomerUpdateGroupRequest
 
 // NewCustomerUpdateGroupRequest instantiates a new CustomerUpdateGroupRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -61,8 +64,8 @@ func (o *CustomerUpdateGroupRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerUpdateGroupRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerUpdateGroupRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -93,8 +96,8 @@ func (o *CustomerUpdateGroupRequest) GetGroupIdOk() (*string, bool) {
 	return o.GroupId, true
 }
 
-// HasGroupId returns a boolean if a field has been set.
-func (o *CustomerUpdateGroupRequest) HasGroupId() bool {
+// &#39;Has&#39;GroupId returns a boolean if a field has been set.
+func (o *CustomerUpdateGroupRequest) &#39;Has&#39;GroupId() bool {
 	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
@@ -125,8 +128,8 @@ func (o *CustomerUpdateGroupRequest) GetPayloadOk() (*CustomerUpdateGroupRequest
 	return o.Payload, true
 }
 
-// HasPayload returns a boolean if a field has been set.
-func (o *CustomerUpdateGroupRequest) HasPayload() bool {
+// &#39;Has&#39;Payload returns a boolean if a field has been set.
+func (o *CustomerUpdateGroupRequest) &#39;Has&#39;Payload() bool {
 	if o != nil && !IsNil(o.Payload) {
 		return true
 	}
@@ -157,8 +160,8 @@ func (o *CustomerUpdateGroupRequest) GetFieldMaskOk() (*string, bool) {
 	return o.FieldMask, true
 }
 
-// HasFieldMask returns a boolean if a field has been set.
-func (o *CustomerUpdateGroupRequest) HasFieldMask() bool {
+// &#39;Has&#39;FieldMask returns a boolean if a field has been set.
+func (o *CustomerUpdateGroupRequest) &#39;Has&#39;FieldMask() bool {
 	if o != nil && !IsNil(o.FieldMask) {
 		return true
 	}
@@ -193,9 +196,56 @@ func (o CustomerUpdateGroupRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FieldMask) {
 		toSerialize["fieldMask"] = o.FieldMask
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerUpdateGroupRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerUpdateGroupRequest := _CustomerUpdateGroupRequest{}
+
+	err = json.Unmarshal(data, &varCustomerUpdateGroupRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerUpdateGroupRequest(varCustomerUpdateGroupRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "groupId")
+		delete(additionalProperties, "payload")
+		delete(additionalProperties, "fieldMask")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerUpdateGroupRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerUpdateGroupRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerUpdateGroupRequest struct {
 	value *CustomerUpdateGroupRequest
 	isSet bool

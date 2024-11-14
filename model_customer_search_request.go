@@ -27,7 +27,10 @@ type CustomerSearchRequest struct {
 	PageToken *string `json:"pageToken,omitempty"`
 	Filter *CustomerSearchRequestFilter `json:"filter,omitempty"`
 	FilterMask *string `json:"filterMask,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerSearchRequest CustomerSearchRequest
 
 // NewCustomerSearchRequest instantiates a new CustomerSearchRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -64,8 +67,8 @@ func (o *CustomerSearchRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerSearchRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerSearchRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -96,8 +99,8 @@ func (o *CustomerSearchRequest) GetQueryOk() (*string, bool) {
 	return o.Query, true
 }
 
-// HasQuery returns a boolean if a field has been set.
-func (o *CustomerSearchRequest) HasQuery() bool {
+// &#39;Has&#39;Query returns a boolean if a field has been set.
+func (o *CustomerSearchRequest) &#39;Has&#39;Query() bool {
 	if o != nil && !IsNil(o.Query) {
 		return true
 	}
@@ -128,8 +131,8 @@ func (o *CustomerSearchRequest) GetGroupIdOk() (*string, bool) {
 	return o.GroupId, true
 }
 
-// HasGroupId returns a boolean if a field has been set.
-func (o *CustomerSearchRequest) HasGroupId() bool {
+// &#39;Has&#39;GroupId returns a boolean if a field has been set.
+func (o *CustomerSearchRequest) &#39;Has&#39;GroupId() bool {
 	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
@@ -160,8 +163,8 @@ func (o *CustomerSearchRequest) GetPageSizeOk() (*int64, bool) {
 	return o.PageSize, true
 }
 
-// HasPageSize returns a boolean if a field has been set.
-func (o *CustomerSearchRequest) HasPageSize() bool {
+// &#39;Has&#39;PageSize returns a boolean if a field has been set.
+func (o *CustomerSearchRequest) &#39;Has&#39;PageSize() bool {
 	if o != nil && !IsNil(o.PageSize) {
 		return true
 	}
@@ -192,8 +195,8 @@ func (o *CustomerSearchRequest) GetPageTokenOk() (*string, bool) {
 	return o.PageToken, true
 }
 
-// HasPageToken returns a boolean if a field has been set.
-func (o *CustomerSearchRequest) HasPageToken() bool {
+// &#39;Has&#39;PageToken returns a boolean if a field has been set.
+func (o *CustomerSearchRequest) &#39;Has&#39;PageToken() bool {
 	if o != nil && !IsNil(o.PageToken) {
 		return true
 	}
@@ -224,8 +227,8 @@ func (o *CustomerSearchRequest) GetFilterOk() (*CustomerSearchRequestFilter, boo
 	return o.Filter, true
 }
 
-// HasFilter returns a boolean if a field has been set.
-func (o *CustomerSearchRequest) HasFilter() bool {
+// &#39;Has&#39;Filter returns a boolean if a field has been set.
+func (o *CustomerSearchRequest) &#39;Has&#39;Filter() bool {
 	if o != nil && !IsNil(o.Filter) {
 		return true
 	}
@@ -256,8 +259,8 @@ func (o *CustomerSearchRequest) GetFilterMaskOk() (*string, bool) {
 	return o.FilterMask, true
 }
 
-// HasFilterMask returns a boolean if a field has been set.
-func (o *CustomerSearchRequest) HasFilterMask() bool {
+// &#39;Has&#39;FilterMask returns a boolean if a field has been set.
+func (o *CustomerSearchRequest) &#39;Has&#39;FilterMask() bool {
 	if o != nil && !IsNil(o.FilterMask) {
 		return true
 	}
@@ -301,9 +304,59 @@ func (o CustomerSearchRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FilterMask) {
 		toSerialize["filterMask"] = o.FilterMask
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerSearchRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerSearchRequest := _CustomerSearchRequest{}
+
+	err = json.Unmarshal(data, &varCustomerSearchRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerSearchRequest(varCustomerSearchRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "query")
+		delete(additionalProperties, "groupId")
+		delete(additionalProperties, "pageSize")
+		delete(additionalProperties, "pageToken")
+		delete(additionalProperties, "filter")
+		delete(additionalProperties, "filterMask")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerSearchRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerSearchRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerSearchRequest struct {
 	value *CustomerSearchRequest
 	isSet bool

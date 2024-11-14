@@ -21,7 +21,10 @@ var _ MappedNullable = &ListConsentsRequestFilters{}
 // ListConsentsRequestFilters struct for ListConsentsRequestFilters
 type ListConsentsRequestFilters struct {
 	SubjectIds []string `json:"subjectIds,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ListConsentsRequestFilters ListConsentsRequestFilters
 
 // NewListConsentsRequestFilters instantiates a new ListConsentsRequestFilters object
 // This constructor will assign default values to properties that have it defined,
@@ -58,8 +61,8 @@ func (o *ListConsentsRequestFilters) GetSubjectIdsOk() ([]string, bool) {
 	return o.SubjectIds, true
 }
 
-// HasSubjectIds returns a boolean if a field has been set.
-func (o *ListConsentsRequestFilters) HasSubjectIds() bool {
+// &#39;Has&#39;SubjectIds returns a boolean if a field has been set.
+func (o *ListConsentsRequestFilters) &#39;Has&#39;SubjectIds() bool {
 	if o != nil && !IsNil(o.SubjectIds) {
 		return true
 	}
@@ -85,9 +88,53 @@ func (o ListConsentsRequestFilters) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SubjectIds) {
 		toSerialize["subjectIds"] = o.SubjectIds
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *ListConsentsRequestFilters) UnmarshalJSON(data []byte) (err error) {
+	varListConsentsRequestFilters := _ListConsentsRequestFilters{}
+
+	err = json.Unmarshal(data, &varListConsentsRequestFilters)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ListConsentsRequestFilters(varListConsentsRequestFilters)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "subjectIds")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *ListConsentsRequestFilters) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *ListConsentsRequestFilters) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableListConsentsRequestFilters struct {
 	value *ListConsentsRequestFilters
 	isSet bool

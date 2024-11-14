@@ -23,7 +23,10 @@ type CustomerUnassignAgentRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
 	AgentGrn *string `json:"agentGrn,omitempty"`
 	CustomerIds []string `json:"customerIds,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerUnassignAgentRequest CustomerUnassignAgentRequest
 
 // NewCustomerUnassignAgentRequest instantiates a new CustomerUnassignAgentRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -60,8 +63,8 @@ func (o *CustomerUnassignAgentRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerUnassignAgentRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerUnassignAgentRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -92,8 +95,8 @@ func (o *CustomerUnassignAgentRequest) GetAgentGrnOk() (*string, bool) {
 	return o.AgentGrn, true
 }
 
-// HasAgentGrn returns a boolean if a field has been set.
-func (o *CustomerUnassignAgentRequest) HasAgentGrn() bool {
+// &#39;Has&#39;AgentGrn returns a boolean if a field has been set.
+func (o *CustomerUnassignAgentRequest) &#39;Has&#39;AgentGrn() bool {
 	if o != nil && !IsNil(o.AgentGrn) {
 		return true
 	}
@@ -124,8 +127,8 @@ func (o *CustomerUnassignAgentRequest) GetCustomerIdsOk() ([]string, bool) {
 	return o.CustomerIds, true
 }
 
-// HasCustomerIds returns a boolean if a field has been set.
-func (o *CustomerUnassignAgentRequest) HasCustomerIds() bool {
+// &#39;Has&#39;CustomerIds returns a boolean if a field has been set.
+func (o *CustomerUnassignAgentRequest) &#39;Has&#39;CustomerIds() bool {
 	if o != nil && !IsNil(o.CustomerIds) {
 		return true
 	}
@@ -157,9 +160,55 @@ func (o CustomerUnassignAgentRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CustomerIds) {
 		toSerialize["customerIds"] = o.CustomerIds
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerUnassignAgentRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerUnassignAgentRequest := _CustomerUnassignAgentRequest{}
+
+	err = json.Unmarshal(data, &varCustomerUnassignAgentRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerUnassignAgentRequest(varCustomerUnassignAgentRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "agentGrn")
+		delete(additionalProperties, "customerIds")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerUnassignAgentRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerUnassignAgentRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerUnassignAgentRequest struct {
 	value *CustomerUnassignAgentRequest
 	isSet bool

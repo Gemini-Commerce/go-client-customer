@@ -24,7 +24,10 @@ type CustomerListCustomersRequestFilter struct {
 	CreatedAt []ListCustomersRequestFilterDate `json:"createdAt,omitempty"`
 	Countries []string `json:"countries,omitempty"`
 	AgentGrn *string `json:"agentGrn,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerListCustomersRequestFilter CustomerListCustomersRequestFilter
 
 // NewCustomerListCustomersRequestFilter instantiates a new CustomerListCustomersRequestFilter object
 // This constructor will assign default values to properties that have it defined,
@@ -61,8 +64,8 @@ func (o *CustomerListCustomersRequestFilter) GetGendersOk() ([]string, bool) {
 	return o.Genders, true
 }
 
-// HasGenders returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequestFilter) HasGenders() bool {
+// &#39;Has&#39;Genders returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequestFilter) &#39;Has&#39;Genders() bool {
 	if o != nil && !IsNil(o.Genders) {
 		return true
 	}
@@ -93,8 +96,8 @@ func (o *CustomerListCustomersRequestFilter) GetCreatedAtOk() ([]ListCustomersRe
 	return o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequestFilter) HasCreatedAt() bool {
+// &#39;Has&#39;CreatedAt returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequestFilter) &#39;Has&#39;CreatedAt() bool {
 	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
@@ -125,8 +128,8 @@ func (o *CustomerListCustomersRequestFilter) GetCountriesOk() ([]string, bool) {
 	return o.Countries, true
 }
 
-// HasCountries returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequestFilter) HasCountries() bool {
+// &#39;Has&#39;Countries returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequestFilter) &#39;Has&#39;Countries() bool {
 	if o != nil && !IsNil(o.Countries) {
 		return true
 	}
@@ -157,8 +160,8 @@ func (o *CustomerListCustomersRequestFilter) GetAgentGrnOk() (*string, bool) {
 	return o.AgentGrn, true
 }
 
-// HasAgentGrn returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequestFilter) HasAgentGrn() bool {
+// &#39;Has&#39;AgentGrn returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequestFilter) &#39;Has&#39;AgentGrn() bool {
 	if o != nil && !IsNil(o.AgentGrn) {
 		return true
 	}
@@ -193,9 +196,56 @@ func (o CustomerListCustomersRequestFilter) ToMap() (map[string]interface{}, err
 	if !IsNil(o.AgentGrn) {
 		toSerialize["agentGrn"] = o.AgentGrn
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerListCustomersRequestFilter) UnmarshalJSON(data []byte) (err error) {
+	varCustomerListCustomersRequestFilter := _CustomerListCustomersRequestFilter{}
+
+	err = json.Unmarshal(data, &varCustomerListCustomersRequestFilter)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerListCustomersRequestFilter(varCustomerListCustomersRequestFilter)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "genders")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "countries")
+		delete(additionalProperties, "agentGrn")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerListCustomersRequestFilter) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerListCustomersRequestFilter) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerListCustomersRequestFilter struct {
 	value *CustomerListCustomersRequestFilter
 	isSet bool

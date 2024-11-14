@@ -23,7 +23,10 @@ type CustomerUnsubscribeResponse struct {
 	Response *bool `json:"response,omitempty"`
 	SubscriberExist *bool `json:"subscriberExist,omitempty"`
 	ActiveNewsletterGrn []string `json:"activeNewsletterGrn,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerUnsubscribeResponse CustomerUnsubscribeResponse
 
 // NewCustomerUnsubscribeResponse instantiates a new CustomerUnsubscribeResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -60,8 +63,8 @@ func (o *CustomerUnsubscribeResponse) GetResponseOk() (*bool, bool) {
 	return o.Response, true
 }
 
-// HasResponse returns a boolean if a field has been set.
-func (o *CustomerUnsubscribeResponse) HasResponse() bool {
+// &#39;Has&#39;Response returns a boolean if a field has been set.
+func (o *CustomerUnsubscribeResponse) &#39;Has&#39;Response() bool {
 	if o != nil && !IsNil(o.Response) {
 		return true
 	}
@@ -92,8 +95,8 @@ func (o *CustomerUnsubscribeResponse) GetSubscriberExistOk() (*bool, bool) {
 	return o.SubscriberExist, true
 }
 
-// HasSubscriberExist returns a boolean if a field has been set.
-func (o *CustomerUnsubscribeResponse) HasSubscriberExist() bool {
+// &#39;Has&#39;SubscriberExist returns a boolean if a field has been set.
+func (o *CustomerUnsubscribeResponse) &#39;Has&#39;SubscriberExist() bool {
 	if o != nil && !IsNil(o.SubscriberExist) {
 		return true
 	}
@@ -124,8 +127,8 @@ func (o *CustomerUnsubscribeResponse) GetActiveNewsletterGrnOk() ([]string, bool
 	return o.ActiveNewsletterGrn, true
 }
 
-// HasActiveNewsletterGrn returns a boolean if a field has been set.
-func (o *CustomerUnsubscribeResponse) HasActiveNewsletterGrn() bool {
+// &#39;Has&#39;ActiveNewsletterGrn returns a boolean if a field has been set.
+func (o *CustomerUnsubscribeResponse) &#39;Has&#39;ActiveNewsletterGrn() bool {
 	if o != nil && !IsNil(o.ActiveNewsletterGrn) {
 		return true
 	}
@@ -157,9 +160,55 @@ func (o CustomerUnsubscribeResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ActiveNewsletterGrn) {
 		toSerialize["activeNewsletterGrn"] = o.ActiveNewsletterGrn
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerUnsubscribeResponse) UnmarshalJSON(data []byte) (err error) {
+	varCustomerUnsubscribeResponse := _CustomerUnsubscribeResponse{}
+
+	err = json.Unmarshal(data, &varCustomerUnsubscribeResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerUnsubscribeResponse(varCustomerUnsubscribeResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "response")
+		delete(additionalProperties, "subscriberExist")
+		delete(additionalProperties, "activeNewsletterGrn")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerUnsubscribeResponse) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerUnsubscribeResponse) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerUnsubscribeResponse struct {
 	value *CustomerUnsubscribeResponse
 	isSet bool

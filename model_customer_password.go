@@ -23,7 +23,10 @@ type CustomerPassword struct {
 	Data *map[string]string `json:"data,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
 	Type *PasswordPasswordType `json:"type,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerPassword CustomerPassword
 
 // NewCustomerPassword instantiates a new CustomerPassword object
 // This constructor will assign default values to properties that have it defined,
@@ -64,8 +67,8 @@ func (o *CustomerPassword) GetDataOk() (*map[string]string, bool) {
 	return o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *CustomerPassword) HasData() bool {
+// &#39;Has&#39;Data returns a boolean if a field has been set.
+func (o *CustomerPassword) &#39;Has&#39;Data() bool {
 	if o != nil && !IsNil(o.Data) {
 		return true
 	}
@@ -96,8 +99,8 @@ func (o *CustomerPassword) GetEnabledOk() (*bool, bool) {
 	return o.Enabled, true
 }
 
-// HasEnabled returns a boolean if a field has been set.
-func (o *CustomerPassword) HasEnabled() bool {
+// &#39;Has&#39;Enabled returns a boolean if a field has been set.
+func (o *CustomerPassword) &#39;Has&#39;Enabled() bool {
 	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
@@ -128,8 +131,8 @@ func (o *CustomerPassword) GetTypeOk() (*PasswordPasswordType, bool) {
 	return o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *CustomerPassword) HasType() bool {
+// &#39;Has&#39;Type returns a boolean if a field has been set.
+func (o *CustomerPassword) &#39;Has&#39;Type() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -161,9 +164,55 @@ func (o CustomerPassword) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerPassword) UnmarshalJSON(data []byte) (err error) {
+	varCustomerPassword := _CustomerPassword{}
+
+	err = json.Unmarshal(data, &varCustomerPassword)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerPassword(varCustomerPassword)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "type")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerPassword) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerPassword) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerPassword struct {
 	value *CustomerPassword
 	isSet bool

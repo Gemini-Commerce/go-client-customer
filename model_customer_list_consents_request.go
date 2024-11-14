@@ -26,7 +26,10 @@ type CustomerListConsentsRequest struct {
 	Sorts []ListConsentsRequestSort `json:"sorts,omitempty"`
 	FiltersMask *string `json:"filtersMask,omitempty"`
 	Filters *ListConsentsRequestFilters `json:"filters,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerListConsentsRequest CustomerListConsentsRequest
 
 // NewCustomerListConsentsRequest instantiates a new CustomerListConsentsRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -63,8 +66,8 @@ func (o *CustomerListConsentsRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerListConsentsRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerListConsentsRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -95,8 +98,8 @@ func (o *CustomerListConsentsRequest) GetPageSizeOk() (*int64, bool) {
 	return o.PageSize, true
 }
 
-// HasPageSize returns a boolean if a field has been set.
-func (o *CustomerListConsentsRequest) HasPageSize() bool {
+// &#39;Has&#39;PageSize returns a boolean if a field has been set.
+func (o *CustomerListConsentsRequest) &#39;Has&#39;PageSize() bool {
 	if o != nil && !IsNil(o.PageSize) {
 		return true
 	}
@@ -127,8 +130,8 @@ func (o *CustomerListConsentsRequest) GetPageTokenOk() (*string, bool) {
 	return o.PageToken, true
 }
 
-// HasPageToken returns a boolean if a field has been set.
-func (o *CustomerListConsentsRequest) HasPageToken() bool {
+// &#39;Has&#39;PageToken returns a boolean if a field has been set.
+func (o *CustomerListConsentsRequest) &#39;Has&#39;PageToken() bool {
 	if o != nil && !IsNil(o.PageToken) {
 		return true
 	}
@@ -159,8 +162,8 @@ func (o *CustomerListConsentsRequest) GetSortsOk() ([]ListConsentsRequestSort, b
 	return o.Sorts, true
 }
 
-// HasSorts returns a boolean if a field has been set.
-func (o *CustomerListConsentsRequest) HasSorts() bool {
+// &#39;Has&#39;Sorts returns a boolean if a field has been set.
+func (o *CustomerListConsentsRequest) &#39;Has&#39;Sorts() bool {
 	if o != nil && !IsNil(o.Sorts) {
 		return true
 	}
@@ -191,8 +194,8 @@ func (o *CustomerListConsentsRequest) GetFiltersMaskOk() (*string, bool) {
 	return o.FiltersMask, true
 }
 
-// HasFiltersMask returns a boolean if a field has been set.
-func (o *CustomerListConsentsRequest) HasFiltersMask() bool {
+// &#39;Has&#39;FiltersMask returns a boolean if a field has been set.
+func (o *CustomerListConsentsRequest) &#39;Has&#39;FiltersMask() bool {
 	if o != nil && !IsNil(o.FiltersMask) {
 		return true
 	}
@@ -223,8 +226,8 @@ func (o *CustomerListConsentsRequest) GetFiltersOk() (*ListConsentsRequestFilter
 	return o.Filters, true
 }
 
-// HasFilters returns a boolean if a field has been set.
-func (o *CustomerListConsentsRequest) HasFilters() bool {
+// &#39;Has&#39;Filters returns a boolean if a field has been set.
+func (o *CustomerListConsentsRequest) &#39;Has&#39;Filters() bool {
 	if o != nil && !IsNil(o.Filters) {
 		return true
 	}
@@ -265,9 +268,58 @@ func (o CustomerListConsentsRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Filters) {
 		toSerialize["filters"] = o.Filters
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerListConsentsRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerListConsentsRequest := _CustomerListConsentsRequest{}
+
+	err = json.Unmarshal(data, &varCustomerListConsentsRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerListConsentsRequest(varCustomerListConsentsRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "pageSize")
+		delete(additionalProperties, "pageToken")
+		delete(additionalProperties, "sorts")
+		delete(additionalProperties, "filtersMask")
+		delete(additionalProperties, "filters")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerListConsentsRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerListConsentsRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerListConsentsRequest struct {
 	value *CustomerListConsentsRequest
 	isSet bool

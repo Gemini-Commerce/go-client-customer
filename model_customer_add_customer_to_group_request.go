@@ -23,7 +23,10 @@ type CustomerAddCustomerToGroupRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
 	GroupId *string `json:"groupId,omitempty"`
 	CustomerId *string `json:"customerId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerAddCustomerToGroupRequest CustomerAddCustomerToGroupRequest
 
 // NewCustomerAddCustomerToGroupRequest instantiates a new CustomerAddCustomerToGroupRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -60,8 +63,8 @@ func (o *CustomerAddCustomerToGroupRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerAddCustomerToGroupRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerAddCustomerToGroupRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -92,8 +95,8 @@ func (o *CustomerAddCustomerToGroupRequest) GetGroupIdOk() (*string, bool) {
 	return o.GroupId, true
 }
 
-// HasGroupId returns a boolean if a field has been set.
-func (o *CustomerAddCustomerToGroupRequest) HasGroupId() bool {
+// &#39;Has&#39;GroupId returns a boolean if a field has been set.
+func (o *CustomerAddCustomerToGroupRequest) &#39;Has&#39;GroupId() bool {
 	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
@@ -124,8 +127,8 @@ func (o *CustomerAddCustomerToGroupRequest) GetCustomerIdOk() (*string, bool) {
 	return o.CustomerId, true
 }
 
-// HasCustomerId returns a boolean if a field has been set.
-func (o *CustomerAddCustomerToGroupRequest) HasCustomerId() bool {
+// &#39;Has&#39;CustomerId returns a boolean if a field has been set.
+func (o *CustomerAddCustomerToGroupRequest) &#39;Has&#39;CustomerId() bool {
 	if o != nil && !IsNil(o.CustomerId) {
 		return true
 	}
@@ -157,9 +160,55 @@ func (o CustomerAddCustomerToGroupRequest) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.CustomerId) {
 		toSerialize["customerId"] = o.CustomerId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerAddCustomerToGroupRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerAddCustomerToGroupRequest := _CustomerAddCustomerToGroupRequest{}
+
+	err = json.Unmarshal(data, &varCustomerAddCustomerToGroupRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerAddCustomerToGroupRequest(varCustomerAddCustomerToGroupRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "groupId")
+		delete(additionalProperties, "customerId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerAddCustomerToGroupRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerAddCustomerToGroupRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerAddCustomerToGroupRequest struct {
 	value *CustomerAddCustomerToGroupRequest
 	isSet bool

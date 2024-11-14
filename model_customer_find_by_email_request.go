@@ -22,7 +22,10 @@ var _ MappedNullable = &CustomerFindByEmailRequest{}
 type CustomerFindByEmailRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
 	Email *string `json:"email,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerFindByEmailRequest CustomerFindByEmailRequest
 
 // NewCustomerFindByEmailRequest instantiates a new CustomerFindByEmailRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -59,8 +62,8 @@ func (o *CustomerFindByEmailRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerFindByEmailRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerFindByEmailRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -91,8 +94,8 @@ func (o *CustomerFindByEmailRequest) GetEmailOk() (*string, bool) {
 	return o.Email, true
 }
 
-// HasEmail returns a boolean if a field has been set.
-func (o *CustomerFindByEmailRequest) HasEmail() bool {
+// &#39;Has&#39;Email returns a boolean if a field has been set.
+func (o *CustomerFindByEmailRequest) &#39;Has&#39;Email() bool {
 	if o != nil && !IsNil(o.Email) {
 		return true
 	}
@@ -121,9 +124,54 @@ func (o CustomerFindByEmailRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerFindByEmailRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerFindByEmailRequest := _CustomerFindByEmailRequest{}
+
+	err = json.Unmarshal(data, &varCustomerFindByEmailRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerFindByEmailRequest(varCustomerFindByEmailRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "email")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerFindByEmailRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerFindByEmailRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerFindByEmailRequest struct {
 	value *CustomerFindByEmailRequest
 	isSet bool

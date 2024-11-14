@@ -25,7 +25,10 @@ type CustomerListCustomersRequest struct {
 	PageToken *string `json:"pageToken,omitempty"`
 	Filters *CustomerListCustomersRequestFilter `json:"filters,omitempty"`
 	FilterMask *string `json:"filterMask,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerListCustomersRequest CustomerListCustomersRequest
 
 // NewCustomerListCustomersRequest instantiates a new CustomerListCustomersRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -62,8 +65,8 @@ func (o *CustomerListCustomersRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -94,8 +97,8 @@ func (o *CustomerListCustomersRequest) GetPageSizeOk() (*int64, bool) {
 	return o.PageSize, true
 }
 
-// HasPageSize returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequest) HasPageSize() bool {
+// &#39;Has&#39;PageSize returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequest) &#39;Has&#39;PageSize() bool {
 	if o != nil && !IsNil(o.PageSize) {
 		return true
 	}
@@ -126,8 +129,8 @@ func (o *CustomerListCustomersRequest) GetPageTokenOk() (*string, bool) {
 	return o.PageToken, true
 }
 
-// HasPageToken returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequest) HasPageToken() bool {
+// &#39;Has&#39;PageToken returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequest) &#39;Has&#39;PageToken() bool {
 	if o != nil && !IsNil(o.PageToken) {
 		return true
 	}
@@ -158,8 +161,8 @@ func (o *CustomerListCustomersRequest) GetFiltersOk() (*CustomerListCustomersReq
 	return o.Filters, true
 }
 
-// HasFilters returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequest) HasFilters() bool {
+// &#39;Has&#39;Filters returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequest) &#39;Has&#39;Filters() bool {
 	if o != nil && !IsNil(o.Filters) {
 		return true
 	}
@@ -190,8 +193,8 @@ func (o *CustomerListCustomersRequest) GetFilterMaskOk() (*string, bool) {
 	return o.FilterMask, true
 }
 
-// HasFilterMask returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequest) HasFilterMask() bool {
+// &#39;Has&#39;FilterMask returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequest) &#39;Has&#39;FilterMask() bool {
 	if o != nil && !IsNil(o.FilterMask) {
 		return true
 	}
@@ -229,9 +232,57 @@ func (o CustomerListCustomersRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FilterMask) {
 		toSerialize["filterMask"] = o.FilterMask
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerListCustomersRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerListCustomersRequest := _CustomerListCustomersRequest{}
+
+	err = json.Unmarshal(data, &varCustomerListCustomersRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerListCustomersRequest(varCustomerListCustomersRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "pageSize")
+		delete(additionalProperties, "pageToken")
+		delete(additionalProperties, "filters")
+		delete(additionalProperties, "filterMask")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerListCustomersRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerListCustomersRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerListCustomersRequest struct {
 	value *CustomerListCustomersRequest
 	isSet bool

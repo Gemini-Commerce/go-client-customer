@@ -22,7 +22,10 @@ var _ MappedNullable = &CustomerGetGroupByIdRequest{}
 type CustomerGetGroupByIdRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
 	GroupId *string `json:"groupId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerGetGroupByIdRequest CustomerGetGroupByIdRequest
 
 // NewCustomerGetGroupByIdRequest instantiates a new CustomerGetGroupByIdRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -59,8 +62,8 @@ func (o *CustomerGetGroupByIdRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerGetGroupByIdRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerGetGroupByIdRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -91,8 +94,8 @@ func (o *CustomerGetGroupByIdRequest) GetGroupIdOk() (*string, bool) {
 	return o.GroupId, true
 }
 
-// HasGroupId returns a boolean if a field has been set.
-func (o *CustomerGetGroupByIdRequest) HasGroupId() bool {
+// &#39;Has&#39;GroupId returns a boolean if a field has been set.
+func (o *CustomerGetGroupByIdRequest) &#39;Has&#39;GroupId() bool {
 	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
@@ -121,9 +124,54 @@ func (o CustomerGetGroupByIdRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GroupId) {
 		toSerialize["groupId"] = o.GroupId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerGetGroupByIdRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerGetGroupByIdRequest := _CustomerGetGroupByIdRequest{}
+
+	err = json.Unmarshal(data, &varCustomerGetGroupByIdRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerGetGroupByIdRequest(varCustomerGetGroupByIdRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "groupId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerGetGroupByIdRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerGetGroupByIdRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerGetGroupByIdRequest struct {
 	value *CustomerGetGroupByIdRequest
 	isSet bool

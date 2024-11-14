@@ -21,7 +21,10 @@ var _ MappedNullable = &CustomerDeleteGroupResponse{}
 // CustomerDeleteGroupResponse struct for CustomerDeleteGroupResponse
 type CustomerDeleteGroupResponse struct {
 	GroupId *string `json:"groupId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerDeleteGroupResponse CustomerDeleteGroupResponse
 
 // NewCustomerDeleteGroupResponse instantiates a new CustomerDeleteGroupResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -58,8 +61,8 @@ func (o *CustomerDeleteGroupResponse) GetGroupIdOk() (*string, bool) {
 	return o.GroupId, true
 }
 
-// HasGroupId returns a boolean if a field has been set.
-func (o *CustomerDeleteGroupResponse) HasGroupId() bool {
+// &#39;Has&#39;GroupId returns a boolean if a field has been set.
+func (o *CustomerDeleteGroupResponse) &#39;Has&#39;GroupId() bool {
 	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
@@ -85,9 +88,53 @@ func (o CustomerDeleteGroupResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GroupId) {
 		toSerialize["groupId"] = o.GroupId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerDeleteGroupResponse) UnmarshalJSON(data []byte) (err error) {
+	varCustomerDeleteGroupResponse := _CustomerDeleteGroupResponse{}
+
+	err = json.Unmarshal(data, &varCustomerDeleteGroupResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerDeleteGroupResponse(varCustomerDeleteGroupResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "groupId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerDeleteGroupResponse) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerDeleteGroupResponse) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerDeleteGroupResponse struct {
 	value *CustomerDeleteGroupResponse
 	isSet bool

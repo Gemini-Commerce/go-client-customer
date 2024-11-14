@@ -23,7 +23,10 @@ type CustomerUpdateSubscriberRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
 	Subscriber *CustomerSubscriberResponseWithNewsletterRequest `json:"subscriber,omitempty"`
 	FieldMask *string `json:"fieldMask,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerUpdateSubscriberRequest CustomerUpdateSubscriberRequest
 
 // NewCustomerUpdateSubscriberRequest instantiates a new CustomerUpdateSubscriberRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -60,8 +63,8 @@ func (o *CustomerUpdateSubscriberRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerUpdateSubscriberRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerUpdateSubscriberRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -92,8 +95,8 @@ func (o *CustomerUpdateSubscriberRequest) GetSubscriberOk() (*CustomerSubscriber
 	return o.Subscriber, true
 }
 
-// HasSubscriber returns a boolean if a field has been set.
-func (o *CustomerUpdateSubscriberRequest) HasSubscriber() bool {
+// &#39;Has&#39;Subscriber returns a boolean if a field has been set.
+func (o *CustomerUpdateSubscriberRequest) &#39;Has&#39;Subscriber() bool {
 	if o != nil && !IsNil(o.Subscriber) {
 		return true
 	}
@@ -124,8 +127,8 @@ func (o *CustomerUpdateSubscriberRequest) GetFieldMaskOk() (*string, bool) {
 	return o.FieldMask, true
 }
 
-// HasFieldMask returns a boolean if a field has been set.
-func (o *CustomerUpdateSubscriberRequest) HasFieldMask() bool {
+// &#39;Has&#39;FieldMask returns a boolean if a field has been set.
+func (o *CustomerUpdateSubscriberRequest) &#39;Has&#39;FieldMask() bool {
 	if o != nil && !IsNil(o.FieldMask) {
 		return true
 	}
@@ -157,9 +160,55 @@ func (o CustomerUpdateSubscriberRequest) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.FieldMask) {
 		toSerialize["fieldMask"] = o.FieldMask
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerUpdateSubscriberRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerUpdateSubscriberRequest := _CustomerUpdateSubscriberRequest{}
+
+	err = json.Unmarshal(data, &varCustomerUpdateSubscriberRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerUpdateSubscriberRequest(varCustomerUpdateSubscriberRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "subscriber")
+		delete(additionalProperties, "fieldMask")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerUpdateSubscriberRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerUpdateSubscriberRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerUpdateSubscriberRequest struct {
 	value *CustomerUpdateSubscriberRequest
 	isSet bool

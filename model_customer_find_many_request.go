@@ -26,7 +26,10 @@ type CustomerFindManyRequest struct {
 	PageToken *string `json:"pageToken,omitempty"`
 	Filter *CustomerFindManyRequestFilter `json:"filter,omitempty"`
 	FilterMask *string `json:"filterMask,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerFindManyRequest CustomerFindManyRequest
 
 // NewCustomerFindManyRequest instantiates a new CustomerFindManyRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -63,8 +66,8 @@ func (o *CustomerFindManyRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerFindManyRequest) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerFindManyRequest) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -95,8 +98,8 @@ func (o *CustomerFindManyRequest) GetGroupIdOk() (*string, bool) {
 	return o.GroupId, true
 }
 
-// HasGroupId returns a boolean if a field has been set.
-func (o *CustomerFindManyRequest) HasGroupId() bool {
+// &#39;Has&#39;GroupId returns a boolean if a field has been set.
+func (o *CustomerFindManyRequest) &#39;Has&#39;GroupId() bool {
 	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
@@ -127,8 +130,8 @@ func (o *CustomerFindManyRequest) GetPageSizeOk() (*int64, bool) {
 	return o.PageSize, true
 }
 
-// HasPageSize returns a boolean if a field has been set.
-func (o *CustomerFindManyRequest) HasPageSize() bool {
+// &#39;Has&#39;PageSize returns a boolean if a field has been set.
+func (o *CustomerFindManyRequest) &#39;Has&#39;PageSize() bool {
 	if o != nil && !IsNil(o.PageSize) {
 		return true
 	}
@@ -159,8 +162,8 @@ func (o *CustomerFindManyRequest) GetPageTokenOk() (*string, bool) {
 	return o.PageToken, true
 }
 
-// HasPageToken returns a boolean if a field has been set.
-func (o *CustomerFindManyRequest) HasPageToken() bool {
+// &#39;Has&#39;PageToken returns a boolean if a field has been set.
+func (o *CustomerFindManyRequest) &#39;Has&#39;PageToken() bool {
 	if o != nil && !IsNil(o.PageToken) {
 		return true
 	}
@@ -191,8 +194,8 @@ func (o *CustomerFindManyRequest) GetFilterOk() (*CustomerFindManyRequestFilter,
 	return o.Filter, true
 }
 
-// HasFilter returns a boolean if a field has been set.
-func (o *CustomerFindManyRequest) HasFilter() bool {
+// &#39;Has&#39;Filter returns a boolean if a field has been set.
+func (o *CustomerFindManyRequest) &#39;Has&#39;Filter() bool {
 	if o != nil && !IsNil(o.Filter) {
 		return true
 	}
@@ -223,8 +226,8 @@ func (o *CustomerFindManyRequest) GetFilterMaskOk() (*string, bool) {
 	return o.FilterMask, true
 }
 
-// HasFilterMask returns a boolean if a field has been set.
-func (o *CustomerFindManyRequest) HasFilterMask() bool {
+// &#39;Has&#39;FilterMask returns a boolean if a field has been set.
+func (o *CustomerFindManyRequest) &#39;Has&#39;FilterMask() bool {
 	if o != nil && !IsNil(o.FilterMask) {
 		return true
 	}
@@ -265,9 +268,58 @@ func (o CustomerFindManyRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FilterMask) {
 		toSerialize["filterMask"] = o.FilterMask
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerFindManyRequest) UnmarshalJSON(data []byte) (err error) {
+	varCustomerFindManyRequest := _CustomerFindManyRequest{}
+
+	err = json.Unmarshal(data, &varCustomerFindManyRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerFindManyRequest(varCustomerFindManyRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "groupId")
+		delete(additionalProperties, "pageSize")
+		delete(additionalProperties, "pageToken")
+		delete(additionalProperties, "filter")
+		delete(additionalProperties, "filterMask")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerFindManyRequest) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerFindManyRequest) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerFindManyRequest struct {
 	value *CustomerFindManyRequest
 	isSet bool

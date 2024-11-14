@@ -21,7 +21,10 @@ var _ MappedNullable = &CustomerUpdateGroupRequestPayload{}
 // CustomerUpdateGroupRequestPayload struct for CustomerUpdateGroupRequestPayload
 type CustomerUpdateGroupRequestPayload struct {
 	Name *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerUpdateGroupRequestPayload CustomerUpdateGroupRequestPayload
 
 // NewCustomerUpdateGroupRequestPayload instantiates a new CustomerUpdateGroupRequestPayload object
 // This constructor will assign default values to properties that have it defined,
@@ -58,8 +61,8 @@ func (o *CustomerUpdateGroupRequestPayload) GetNameOk() (*string, bool) {
 	return o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *CustomerUpdateGroupRequestPayload) HasName() bool {
+// &#39;Has&#39;Name returns a boolean if a field has been set.
+func (o *CustomerUpdateGroupRequestPayload) &#39;Has&#39;Name() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -85,9 +88,53 @@ func (o CustomerUpdateGroupRequestPayload) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerUpdateGroupRequestPayload) UnmarshalJSON(data []byte) (err error) {
+	varCustomerUpdateGroupRequestPayload := _CustomerUpdateGroupRequestPayload{}
+
+	err = json.Unmarshal(data, &varCustomerUpdateGroupRequestPayload)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerUpdateGroupRequestPayload(varCustomerUpdateGroupRequestPayload)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerUpdateGroupRequestPayload) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerUpdateGroupRequestPayload) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerUpdateGroupRequestPayload struct {
 	value *CustomerUpdateGroupRequestPayload
 	isSet bool

@@ -21,7 +21,10 @@ var _ MappedNullable = &CustomerListGroupsRequestFilter{}
 // CustomerListGroupsRequestFilter struct for CustomerListGroupsRequestFilter
 type CustomerListGroupsRequestFilter struct {
 	SearchTerm *string `json:"searchTerm,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerListGroupsRequestFilter CustomerListGroupsRequestFilter
 
 // NewCustomerListGroupsRequestFilter instantiates a new CustomerListGroupsRequestFilter object
 // This constructor will assign default values to properties that have it defined,
@@ -58,8 +61,8 @@ func (o *CustomerListGroupsRequestFilter) GetSearchTermOk() (*string, bool) {
 	return o.SearchTerm, true
 }
 
-// HasSearchTerm returns a boolean if a field has been set.
-func (o *CustomerListGroupsRequestFilter) HasSearchTerm() bool {
+// &#39;Has&#39;SearchTerm returns a boolean if a field has been set.
+func (o *CustomerListGroupsRequestFilter) &#39;Has&#39;SearchTerm() bool {
 	if o != nil && !IsNil(o.SearchTerm) {
 		return true
 	}
@@ -85,9 +88,53 @@ func (o CustomerListGroupsRequestFilter) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.SearchTerm) {
 		toSerialize["searchTerm"] = o.SearchTerm
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerListGroupsRequestFilter) UnmarshalJSON(data []byte) (err error) {
+	varCustomerListGroupsRequestFilter := _CustomerListGroupsRequestFilter{}
+
+	err = json.Unmarshal(data, &varCustomerListGroupsRequestFilter)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerListGroupsRequestFilter(varCustomerListGroupsRequestFilter)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "searchTerm")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerListGroupsRequestFilter) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerListGroupsRequestFilter) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerListGroupsRequestFilter struct {
 	value *CustomerListGroupsRequestFilter
 	isSet bool

@@ -29,7 +29,10 @@ type CustomerGroupResponse struct {
 	Grn *string `json:"grn,omitempty"`
 	Code *string `json:"code,omitempty"`
 	CustomerCount *string `json:"customerCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerGroupResponse CustomerGroupResponse
 
 // NewCustomerGroupResponse instantiates a new CustomerGroupResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -66,8 +69,8 @@ func (o *CustomerGroupResponse) GetIdOk() (*string, bool) {
 	return o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *CustomerGroupResponse) HasId() bool {
+// &#39;Has&#39;Id returns a boolean if a field has been set.
+func (o *CustomerGroupResponse) &#39;Has&#39;Id() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -98,8 +101,8 @@ func (o *CustomerGroupResponse) GetNameOk() (*string, bool) {
 	return o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *CustomerGroupResponse) HasName() bool {
+// &#39;Has&#39;Name returns a boolean if a field has been set.
+func (o *CustomerGroupResponse) &#39;Has&#39;Name() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -130,8 +133,8 @@ func (o *CustomerGroupResponse) GetCustomerIdsOk() ([]string, bool) {
 	return o.CustomerIds, true
 }
 
-// HasCustomerIds returns a boolean if a field has been set.
-func (o *CustomerGroupResponse) HasCustomerIds() bool {
+// &#39;Has&#39;CustomerIds returns a boolean if a field has been set.
+func (o *CustomerGroupResponse) &#39;Has&#39;CustomerIds() bool {
 	if o != nil && !IsNil(o.CustomerIds) {
 		return true
 	}
@@ -162,8 +165,8 @@ func (o *CustomerGroupResponse) GetCreatedAtOk() (*time.Time, bool) {
 	return o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *CustomerGroupResponse) HasCreatedAt() bool {
+// &#39;Has&#39;CreatedAt returns a boolean if a field has been set.
+func (o *CustomerGroupResponse) &#39;Has&#39;CreatedAt() bool {
 	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
@@ -194,8 +197,8 @@ func (o *CustomerGroupResponse) GetUpdatedAtOk() (*time.Time, bool) {
 	return o.UpdatedAt, true
 }
 
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *CustomerGroupResponse) HasUpdatedAt() bool {
+// &#39;Has&#39;UpdatedAt returns a boolean if a field has been set.
+func (o *CustomerGroupResponse) &#39;Has&#39;UpdatedAt() bool {
 	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
@@ -226,8 +229,8 @@ func (o *CustomerGroupResponse) GetGrnOk() (*string, bool) {
 	return o.Grn, true
 }
 
-// HasGrn returns a boolean if a field has been set.
-func (o *CustomerGroupResponse) HasGrn() bool {
+// &#39;Has&#39;Grn returns a boolean if a field has been set.
+func (o *CustomerGroupResponse) &#39;Has&#39;Grn() bool {
 	if o != nil && !IsNil(o.Grn) {
 		return true
 	}
@@ -258,8 +261,8 @@ func (o *CustomerGroupResponse) GetCodeOk() (*string, bool) {
 	return o.Code, true
 }
 
-// HasCode returns a boolean if a field has been set.
-func (o *CustomerGroupResponse) HasCode() bool {
+// &#39;Has&#39;Code returns a boolean if a field has been set.
+func (o *CustomerGroupResponse) &#39;Has&#39;Code() bool {
 	if o != nil && !IsNil(o.Code) {
 		return true
 	}
@@ -290,8 +293,8 @@ func (o *CustomerGroupResponse) GetCustomerCountOk() (*string, bool) {
 	return o.CustomerCount, true
 }
 
-// HasCustomerCount returns a boolean if a field has been set.
-func (o *CustomerGroupResponse) HasCustomerCount() bool {
+// &#39;Has&#39;CustomerCount returns a boolean if a field has been set.
+func (o *CustomerGroupResponse) &#39;Has&#39;CustomerCount() bool {
 	if o != nil && !IsNil(o.CustomerCount) {
 		return true
 	}
@@ -338,9 +341,60 @@ func (o CustomerGroupResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CustomerCount) {
 		toSerialize["customerCount"] = o.CustomerCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerGroupResponse) UnmarshalJSON(data []byte) (err error) {
+	varCustomerGroupResponse := _CustomerGroupResponse{}
+
+	err = json.Unmarshal(data, &varCustomerGroupResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerGroupResponse(varCustomerGroupResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "customerIds")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "updatedAt")
+		delete(additionalProperties, "grn")
+		delete(additionalProperties, "code")
+		delete(additionalProperties, "customerCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerGroupResponse) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerGroupResponse) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerGroupResponse struct {
 	value *CustomerGroupResponse
 	isSet bool

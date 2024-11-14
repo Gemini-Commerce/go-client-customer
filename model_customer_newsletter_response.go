@@ -23,7 +23,10 @@ type CustomerNewsletterResponse struct {
 	Id *string `json:"id,omitempty"`
 	NewsletterGrn *string `json:"newsletterGrn,omitempty"`
 	Name *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerNewsletterResponse CustomerNewsletterResponse
 
 // NewCustomerNewsletterResponse instantiates a new CustomerNewsletterResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -60,8 +63,8 @@ func (o *CustomerNewsletterResponse) GetIdOk() (*string, bool) {
 	return o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *CustomerNewsletterResponse) HasId() bool {
+// &#39;Has&#39;Id returns a boolean if a field has been set.
+func (o *CustomerNewsletterResponse) &#39;Has&#39;Id() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -92,8 +95,8 @@ func (o *CustomerNewsletterResponse) GetNewsletterGrnOk() (*string, bool) {
 	return o.NewsletterGrn, true
 }
 
-// HasNewsletterGrn returns a boolean if a field has been set.
-func (o *CustomerNewsletterResponse) HasNewsletterGrn() bool {
+// &#39;Has&#39;NewsletterGrn returns a boolean if a field has been set.
+func (o *CustomerNewsletterResponse) &#39;Has&#39;NewsletterGrn() bool {
 	if o != nil && !IsNil(o.NewsletterGrn) {
 		return true
 	}
@@ -124,8 +127,8 @@ func (o *CustomerNewsletterResponse) GetNameOk() (*string, bool) {
 	return o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *CustomerNewsletterResponse) HasName() bool {
+// &#39;Has&#39;Name returns a boolean if a field has been set.
+func (o *CustomerNewsletterResponse) &#39;Has&#39;Name() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -157,9 +160,55 @@ func (o CustomerNewsletterResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerNewsletterResponse) UnmarshalJSON(data []byte) (err error) {
+	varCustomerNewsletterResponse := _CustomerNewsletterResponse{}
+
+	err = json.Unmarshal(data, &varCustomerNewsletterResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerNewsletterResponse(varCustomerNewsletterResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "newsletterGrn")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerNewsletterResponse) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerNewsletterResponse) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerNewsletterResponse struct {
 	value *CustomerNewsletterResponse
 	isSet bool

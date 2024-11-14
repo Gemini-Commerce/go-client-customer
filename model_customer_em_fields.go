@@ -23,7 +23,10 @@ type CustomerEMFields struct {
 	TenantId *string `json:"tenantId,omitempty"`
 	EntityType *string `json:"entityType,omitempty"`
 	EntityCode *string `json:"entityCode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomerEMFields CustomerEMFields
 
 // NewCustomerEMFields instantiates a new CustomerEMFields object
 // This constructor will assign default values to properties that have it defined,
@@ -60,8 +63,8 @@ func (o *CustomerEMFields) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *CustomerEMFields) HasTenantId() bool {
+// &#39;Has&#39;TenantId returns a boolean if a field has been set.
+func (o *CustomerEMFields) &#39;Has&#39;TenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -92,8 +95,8 @@ func (o *CustomerEMFields) GetEntityTypeOk() (*string, bool) {
 	return o.EntityType, true
 }
 
-// HasEntityType returns a boolean if a field has been set.
-func (o *CustomerEMFields) HasEntityType() bool {
+// &#39;Has&#39;EntityType returns a boolean if a field has been set.
+func (o *CustomerEMFields) &#39;Has&#39;EntityType() bool {
 	if o != nil && !IsNil(o.EntityType) {
 		return true
 	}
@@ -124,8 +127,8 @@ func (o *CustomerEMFields) GetEntityCodeOk() (*string, bool) {
 	return o.EntityCode, true
 }
 
-// HasEntityCode returns a boolean if a field has been set.
-func (o *CustomerEMFields) HasEntityCode() bool {
+// &#39;Has&#39;EntityCode returns a boolean if a field has been set.
+func (o *CustomerEMFields) &#39;Has&#39;EntityCode() bool {
 	if o != nil && !IsNil(o.EntityCode) {
 		return true
 	}
@@ -157,9 +160,55 @@ func (o CustomerEMFields) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EntityCode) {
 		toSerialize["entityCode"] = o.EntityCode
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
+func (o *CustomerEMFields) UnmarshalJSON(data []byte) (err error) {
+	varCustomerEMFields := _CustomerEMFields{}
+
+	err = json.Unmarshal(data, &varCustomerEMFields)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomerEMFields(varCustomerEMFields)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "entityType")
+		delete(additionalProperties, "entityCode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
+}
+
+// GetValue returns the value of well-known types
+func (o *CustomerEMFields) GetValue() interface{} {
+	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+		return nil
+	}
+	return o.AdditionalProperties["value"]
+}
+// SetValue populate the value of well-known types
+func (o *CustomerEMFields) SetValue(value interface{}) {
+	if o == nil || IsNil(o.Type) || IsNil(value) {
+		return
+	}
+    if IsNil(o.AdditionalProperties) {
+        o.AdditionalProperties = map[string]interface{}{}
+    }
+	o.AdditionalProperties["value"] = value
+	return
+}
 type NullableCustomerEMFields struct {
 	value *CustomerEMFields
 	isSet bool
