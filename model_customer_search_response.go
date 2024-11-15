@@ -62,8 +62,8 @@ func (o *CustomerSearchResponse) GetCustomersOk() ([]CustomerCustomerResponse, b
 	return o.Customers, true
 }
 
-// &#39;Has&#39;Customers returns a boolean if a field has been set.
-func (o *CustomerSearchResponse) &#39;Has&#39;Customers() bool {
+// HasCustomers returns a boolean if a field has been set.
+func (o *CustomerSearchResponse) HasCustomers() bool {
 	if o != nil && !IsNil(o.Customers) {
 		return true
 	}
@@ -94,8 +94,8 @@ func (o *CustomerSearchResponse) GetNextPageTokenOk() (*string, bool) {
 	return o.NextPageToken, true
 }
 
-// &#39;Has&#39;NextPageToken returns a boolean if a field has been set.
-func (o *CustomerSearchResponse) &#39;Has&#39;NextPageToken() bool {
+// HasNextPageToken returns a boolean if a field has been set.
+func (o *CustomerSearchResponse) HasNextPageToken() bool {
 	if o != nil && !IsNil(o.NextPageToken) {
 		return true
 	}

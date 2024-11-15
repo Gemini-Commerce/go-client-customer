@@ -61,8 +61,8 @@ func (o *CustomerAddressDeleteResponse) GetCustomerOk() (*CustomerCustomerRespon
 	return o.Customer, true
 }
 
-// &#39;Has&#39;Customer returns a boolean if a field has been set.
-func (o *CustomerAddressDeleteResponse) &#39;Has&#39;Customer() bool {
+// HasCustomer returns a boolean if a field has been set.
+func (o *CustomerAddressDeleteResponse) HasCustomer() bool {
 	if o != nil && !IsNil(o.Customer) {
 		return true
 	}

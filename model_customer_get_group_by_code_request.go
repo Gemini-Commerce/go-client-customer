@@ -62,8 +62,8 @@ func (o *CustomerGetGroupByCodeRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// &#39;Has&#39;TenantId returns a boolean if a field has been set.
-func (o *CustomerGetGroupByCodeRequest) &#39;Has&#39;TenantId() bool {
+// HasTenantId returns a boolean if a field has been set.
+func (o *CustomerGetGroupByCodeRequest) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -94,8 +94,8 @@ func (o *CustomerGetGroupByCodeRequest) GetCodeOk() (*string, bool) {
 	return o.Code, true
 }
 
-// &#39;Has&#39;Code returns a boolean if a field has been set.
-func (o *CustomerGetGroupByCodeRequest) &#39;Has&#39;Code() bool {
+// HasCode returns a boolean if a field has been set.
+func (o *CustomerGetGroupByCodeRequest) HasCode() bool {
 	if o != nil && !IsNil(o.Code) {
 		return true
 	}

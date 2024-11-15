@@ -63,8 +63,8 @@ func (o *CustomerAddressDeleteRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// &#39;Has&#39;TenantId returns a boolean if a field has been set.
-func (o *CustomerAddressDeleteRequest) &#39;Has&#39;TenantId() bool {
+// HasTenantId returns a boolean if a field has been set.
+func (o *CustomerAddressDeleteRequest) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -95,8 +95,8 @@ func (o *CustomerAddressDeleteRequest) GetCustomerIdOk() (*string, bool) {
 	return o.CustomerId, true
 }
 
-// &#39;Has&#39;CustomerId returns a boolean if a field has been set.
-func (o *CustomerAddressDeleteRequest) &#39;Has&#39;CustomerId() bool {
+// HasCustomerId returns a boolean if a field has been set.
+func (o *CustomerAddressDeleteRequest) HasCustomerId() bool {
 	if o != nil && !IsNil(o.CustomerId) {
 		return true
 	}
@@ -127,8 +127,8 @@ func (o *CustomerAddressDeleteRequest) GetAddressIdOk() (*string, bool) {
 	return o.AddressId, true
 }
 
-// &#39;Has&#39;AddressId returns a boolean if a field has been set.
-func (o *CustomerAddressDeleteRequest) &#39;Has&#39;AddressId() bool {
+// HasAddressId returns a boolean if a field has been set.
+func (o *CustomerAddressDeleteRequest) HasAddressId() bool {
 	if o != nil && !IsNil(o.AddressId) {
 		return true
 	}

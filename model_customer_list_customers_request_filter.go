@@ -64,8 +64,8 @@ func (o *CustomerListCustomersRequestFilter) GetGendersOk() ([]string, bool) {
 	return o.Genders, true
 }
 
-// &#39;Has&#39;Genders returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequestFilter) &#39;Has&#39;Genders() bool {
+// HasGenders returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequestFilter) HasGenders() bool {
 	if o != nil && !IsNil(o.Genders) {
 		return true
 	}
@@ -96,8 +96,8 @@ func (o *CustomerListCustomersRequestFilter) GetCreatedAtOk() ([]ListCustomersRe
 	return o.CreatedAt, true
 }
 
-// &#39;Has&#39;CreatedAt returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequestFilter) &#39;Has&#39;CreatedAt() bool {
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequestFilter) HasCreatedAt() bool {
 	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
@@ -128,8 +128,8 @@ func (o *CustomerListCustomersRequestFilter) GetCountriesOk() ([]string, bool) {
 	return o.Countries, true
 }
 
-// &#39;Has&#39;Countries returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequestFilter) &#39;Has&#39;Countries() bool {
+// HasCountries returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequestFilter) HasCountries() bool {
 	if o != nil && !IsNil(o.Countries) {
 		return true
 	}
@@ -160,8 +160,8 @@ func (o *CustomerListCustomersRequestFilter) GetAgentGrnOk() (*string, bool) {
 	return o.AgentGrn, true
 }
 
-// &#39;Has&#39;AgentGrn returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequestFilter) &#39;Has&#39;AgentGrn() bool {
+// HasAgentGrn returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequestFilter) HasAgentGrn() bool {
 	if o != nil && !IsNil(o.AgentGrn) {
 		return true
 	}

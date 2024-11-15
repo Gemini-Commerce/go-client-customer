@@ -67,8 +67,8 @@ func (o *CustomerBulkUpdateRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// &#39;Has&#39;TenantId returns a boolean if a field has been set.
-func (o *CustomerBulkUpdateRequest) &#39;Has&#39;TenantId() bool {
+// HasTenantId returns a boolean if a field has been set.
+func (o *CustomerBulkUpdateRequest) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -99,8 +99,8 @@ func (o *CustomerBulkUpdateRequest) GetCustomerIdsOk() ([]string, bool) {
 	return o.CustomerIds, true
 }
 
-// &#39;Has&#39;CustomerIds returns a boolean if a field has been set.
-func (o *CustomerBulkUpdateRequest) &#39;Has&#39;CustomerIds() bool {
+// HasCustomerIds returns a boolean if a field has been set.
+func (o *CustomerBulkUpdateRequest) HasCustomerIds() bool {
 	if o != nil && !IsNil(o.CustomerIds) {
 		return true
 	}
@@ -131,8 +131,8 @@ func (o *CustomerBulkUpdateRequest) GetActionOk() (*BulkUpdateRequestAction, boo
 	return o.Action, true
 }
 
-// &#39;Has&#39;Action returns a boolean if a field has been set.
-func (o *CustomerBulkUpdateRequest) &#39;Has&#39;Action() bool {
+// HasAction returns a boolean if a field has been set.
+func (o *CustomerBulkUpdateRequest) HasAction() bool {
 	if o != nil && !IsNil(o.Action) {
 		return true
 	}

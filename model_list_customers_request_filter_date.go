@@ -63,8 +63,8 @@ func (o *ListCustomersRequestFilterDate) GetFromOk() (*time.Time, bool) {
 	return o.From, true
 }
 
-// &#39;Has&#39;From returns a boolean if a field has been set.
-func (o *ListCustomersRequestFilterDate) &#39;Has&#39;From() bool {
+// HasFrom returns a boolean if a field has been set.
+func (o *ListCustomersRequestFilterDate) HasFrom() bool {
 	if o != nil && !IsNil(o.From) {
 		return true
 	}
@@ -95,8 +95,8 @@ func (o *ListCustomersRequestFilterDate) GetToOk() (*time.Time, bool) {
 	return o.To, true
 }
 
-// &#39;Has&#39;To returns a boolean if a field has been set.
-func (o *ListCustomersRequestFilterDate) &#39;Has&#39;To() bool {
+// HasTo returns a boolean if a field has been set.
+func (o *ListCustomersRequestFilterDate) HasTo() bool {
 	if o != nil && !IsNil(o.To) {
 		return true
 	}

@@ -81,8 +81,8 @@ func (o *CustomerAddressCreateRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// &#39;Has&#39;TenantId returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;TenantId() bool {
+// HasTenantId returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -113,8 +113,8 @@ func (o *CustomerAddressCreateRequest) GetCustomerIdOk() (*string, bool) {
 	return o.CustomerId, true
 }
 
-// &#39;Has&#39;CustomerId returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;CustomerId() bool {
+// HasCustomerId returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasCustomerId() bool {
 	if o != nil && !IsNil(o.CustomerId) {
 		return true
 	}
@@ -145,8 +145,8 @@ func (o *CustomerAddressCreateRequest) GetEmOk() (*CustomerEMFields, bool) {
 	return o.Em, true
 }
 
-// &#39;Has&#39;Em returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;Em() bool {
+// HasEm returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasEm() bool {
 	if o != nil && !IsNil(o.Em) {
 		return true
 	}
@@ -177,8 +177,8 @@ func (o *CustomerAddressCreateRequest) GetNameOk() (*string, bool) {
 	return o.Name, true
 }
 
-// &#39;Has&#39;Name returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;Name() bool {
+// HasName returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -209,8 +209,8 @@ func (o *CustomerAddressCreateRequest) GetSurnameOk() (*string, bool) {
 	return o.Surname, true
 }
 
-// &#39;Has&#39;Surname returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;Surname() bool {
+// HasSurname returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasSurname() bool {
 	if o != nil && !IsNil(o.Surname) {
 		return true
 	}
@@ -241,8 +241,8 @@ func (o *CustomerAddressCreateRequest) GetStreetOk() (*string, bool) {
 	return o.Street, true
 }
 
-// &#39;Has&#39;Street returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;Street() bool {
+// HasStreet returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasStreet() bool {
 	if o != nil && !IsNil(o.Street) {
 		return true
 	}
@@ -273,8 +273,8 @@ func (o *CustomerAddressCreateRequest) GetNumberOk() (*string, bool) {
 	return o.Number, true
 }
 
-// &#39;Has&#39;Number returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;Number() bool {
+// HasNumber returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasNumber() bool {
 	if o != nil && !IsNil(o.Number) {
 		return true
 	}
@@ -305,8 +305,8 @@ func (o *CustomerAddressCreateRequest) GetZipOk() (*string, bool) {
 	return o.Zip, true
 }
 
-// &#39;Has&#39;Zip returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;Zip() bool {
+// HasZip returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasZip() bool {
 	if o != nil && !IsNil(o.Zip) {
 		return true
 	}
@@ -337,8 +337,8 @@ func (o *CustomerAddressCreateRequest) GetCityOk() (*string, bool) {
 	return o.City, true
 }
 
-// &#39;Has&#39;City returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;City() bool {
+// HasCity returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasCity() bool {
 	if o != nil && !IsNil(o.City) {
 		return true
 	}
@@ -369,8 +369,8 @@ func (o *CustomerAddressCreateRequest) GetProvinceOk() (*string, bool) {
 	return o.Province, true
 }
 
-// &#39;Has&#39;Province returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;Province() bool {
+// HasProvince returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasProvince() bool {
 	if o != nil && !IsNil(o.Province) {
 		return true
 	}
@@ -401,8 +401,8 @@ func (o *CustomerAddressCreateRequest) GetPhoneNumberOk() (*string, bool) {
 	return o.PhoneNumber, true
 }
 
-// &#39;Has&#39;PhoneNumber returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;PhoneNumber() bool {
+// HasPhoneNumber returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasPhoneNumber() bool {
 	if o != nil && !IsNil(o.PhoneNumber) {
 		return true
 	}
@@ -433,8 +433,8 @@ func (o *CustomerAddressCreateRequest) GetFiscalCodeOk() (*string, bool) {
 	return o.FiscalCode, true
 }
 
-// &#39;Has&#39;FiscalCode returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;FiscalCode() bool {
+// HasFiscalCode returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasFiscalCode() bool {
 	if o != nil && !IsNil(o.FiscalCode) {
 		return true
 	}
@@ -465,8 +465,8 @@ func (o *CustomerAddressCreateRequest) GetVatNumberOk() (*string, bool) {
 	return o.VatNumber, true
 }
 
-// &#39;Has&#39;VatNumber returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;VatNumber() bool {
+// HasVatNumber returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasVatNumber() bool {
 	if o != nil && !IsNil(o.VatNumber) {
 		return true
 	}
@@ -497,8 +497,8 @@ func (o *CustomerAddressCreateRequest) GetKindOk() (*CustomerAddressCreateReques
 	return o.Kind, true
 }
 
-// &#39;Has&#39;Kind returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;Kind() bool {
+// HasKind returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasKind() bool {
 	if o != nil && !IsNil(o.Kind) {
 		return true
 	}
@@ -529,8 +529,8 @@ func (o *CustomerAddressCreateRequest) GetDefaultOk() (*bool, bool) {
 	return o.Default, true
 }
 
-// &#39;Has&#39;Default returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;Default() bool {
+// HasDefault returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasDefault() bool {
 	if o != nil && !IsNil(o.Default) {
 		return true
 	}
@@ -561,8 +561,8 @@ func (o *CustomerAddressCreateRequest) GetCountryOk() (*string, bool) {
 	return o.Country, true
 }
 
-// &#39;Has&#39;Country returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;Country() bool {
+// HasCountry returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasCountry() bool {
 	if o != nil && !IsNil(o.Country) {
 		return true
 	}
@@ -593,8 +593,8 @@ func (o *CustomerAddressCreateRequest) GetAttributesOk() (*map[string]ProtobufAn
 	return o.Attributes, true
 }
 
-// &#39;Has&#39;Attributes returns a boolean if a field has been set.
-func (o *CustomerAddressCreateRequest) &#39;Has&#39;Attributes() bool {
+// HasAttributes returns a boolean if a field has been set.
+func (o *CustomerAddressCreateRequest) HasAttributes() bool {
 	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}

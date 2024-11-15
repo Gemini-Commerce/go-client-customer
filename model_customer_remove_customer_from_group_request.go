@@ -63,8 +63,8 @@ func (o *CustomerRemoveCustomerFromGroupRequest) GetTenantIdOk() (*string, bool)
 	return o.TenantId, true
 }
 
-// &#39;Has&#39;TenantId returns a boolean if a field has been set.
-func (o *CustomerRemoveCustomerFromGroupRequest) &#39;Has&#39;TenantId() bool {
+// HasTenantId returns a boolean if a field has been set.
+func (o *CustomerRemoveCustomerFromGroupRequest) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -95,8 +95,8 @@ func (o *CustomerRemoveCustomerFromGroupRequest) GetGroupIdOk() (*string, bool) 
 	return o.GroupId, true
 }
 
-// &#39;Has&#39;GroupId returns a boolean if a field has been set.
-func (o *CustomerRemoveCustomerFromGroupRequest) &#39;Has&#39;GroupId() bool {
+// HasGroupId returns a boolean if a field has been set.
+func (o *CustomerRemoveCustomerFromGroupRequest) HasGroupId() bool {
 	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
@@ -127,8 +127,8 @@ func (o *CustomerRemoveCustomerFromGroupRequest) GetCustomerIdOk() (*string, boo
 	return o.CustomerId, true
 }
 
-// &#39;Has&#39;CustomerId returns a boolean if a field has been set.
-func (o *CustomerRemoveCustomerFromGroupRequest) &#39;Has&#39;CustomerId() bool {
+// HasCustomerId returns a boolean if a field has been set.
+func (o *CustomerRemoveCustomerFromGroupRequest) HasCustomerId() bool {
 	if o != nil && !IsNil(o.CustomerId) {
 		return true
 	}

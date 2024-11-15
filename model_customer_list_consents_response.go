@@ -62,8 +62,8 @@ func (o *CustomerListConsentsResponse) GetConsentsOk() ([]CustomerConsent, bool)
 	return o.Consents, true
 }
 
-// &#39;Has&#39;Consents returns a boolean if a field has been set.
-func (o *CustomerListConsentsResponse) &#39;Has&#39;Consents() bool {
+// HasConsents returns a boolean if a field has been set.
+func (o *CustomerListConsentsResponse) HasConsents() bool {
 	if o != nil && !IsNil(o.Consents) {
 		return true
 	}
@@ -94,8 +94,8 @@ func (o *CustomerListConsentsResponse) GetNextPageTokenOk() (*string, bool) {
 	return o.NextPageToken, true
 }
 
-// &#39;Has&#39;NextPageToken returns a boolean if a field has been set.
-func (o *CustomerListConsentsResponse) &#39;Has&#39;NextPageToken() bool {
+// HasNextPageToken returns a boolean if a field has been set.
+func (o *CustomerListConsentsResponse) HasNextPageToken() bool {
 	if o != nil && !IsNil(o.NextPageToken) {
 		return true
 	}

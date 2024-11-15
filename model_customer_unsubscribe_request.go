@@ -63,8 +63,8 @@ func (o *CustomerUnsubscribeRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// &#39;Has&#39;TenantId returns a boolean if a field has been set.
-func (o *CustomerUnsubscribeRequest) &#39;Has&#39;TenantId() bool {
+// HasTenantId returns a boolean if a field has been set.
+func (o *CustomerUnsubscribeRequest) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -95,8 +95,8 @@ func (o *CustomerUnsubscribeRequest) GetEmailOk() (*string, bool) {
 	return o.Email, true
 }
 
-// &#39;Has&#39;Email returns a boolean if a field has been set.
-func (o *CustomerUnsubscribeRequest) &#39;Has&#39;Email() bool {
+// HasEmail returns a boolean if a field has been set.
+func (o *CustomerUnsubscribeRequest) HasEmail() bool {
 	if o != nil && !IsNil(o.Email) {
 		return true
 	}
@@ -127,8 +127,8 @@ func (o *CustomerUnsubscribeRequest) GetNewsletterGrnOk() ([]string, bool) {
 	return o.NewsletterGrn, true
 }
 
-// &#39;Has&#39;NewsletterGrn returns a boolean if a field has been set.
-func (o *CustomerUnsubscribeRequest) &#39;Has&#39;NewsletterGrn() bool {
+// HasNewsletterGrn returns a boolean if a field has been set.
+func (o *CustomerUnsubscribeRequest) HasNewsletterGrn() bool {
 	if o != nil && !IsNil(o.NewsletterGrn) {
 		return true
 	}

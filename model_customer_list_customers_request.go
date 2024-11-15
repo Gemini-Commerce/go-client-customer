@@ -65,8 +65,8 @@ func (o *CustomerListCustomersRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// &#39;Has&#39;TenantId returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequest) &#39;Has&#39;TenantId() bool {
+// HasTenantId returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequest) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -97,8 +97,8 @@ func (o *CustomerListCustomersRequest) GetPageSizeOk() (*int64, bool) {
 	return o.PageSize, true
 }
 
-// &#39;Has&#39;PageSize returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequest) &#39;Has&#39;PageSize() bool {
+// HasPageSize returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequest) HasPageSize() bool {
 	if o != nil && !IsNil(o.PageSize) {
 		return true
 	}
@@ -129,8 +129,8 @@ func (o *CustomerListCustomersRequest) GetPageTokenOk() (*string, bool) {
 	return o.PageToken, true
 }
 
-// &#39;Has&#39;PageToken returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequest) &#39;Has&#39;PageToken() bool {
+// HasPageToken returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequest) HasPageToken() bool {
 	if o != nil && !IsNil(o.PageToken) {
 		return true
 	}
@@ -161,8 +161,8 @@ func (o *CustomerListCustomersRequest) GetFiltersOk() (*CustomerListCustomersReq
 	return o.Filters, true
 }
 
-// &#39;Has&#39;Filters returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequest) &#39;Has&#39;Filters() bool {
+// HasFilters returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequest) HasFilters() bool {
 	if o != nil && !IsNil(o.Filters) {
 		return true
 	}
@@ -193,8 +193,8 @@ func (o *CustomerListCustomersRequest) GetFilterMaskOk() (*string, bool) {
 	return o.FilterMask, true
 }
 
-// &#39;Has&#39;FilterMask returns a boolean if a field has been set.
-func (o *CustomerListCustomersRequest) &#39;Has&#39;FilterMask() bool {
+// HasFilterMask returns a boolean if a field has been set.
+func (o *CustomerListCustomersRequest) HasFilterMask() bool {
 	if o != nil && !IsNil(o.FilterMask) {
 		return true
 	}

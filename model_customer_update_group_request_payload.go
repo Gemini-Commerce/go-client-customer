@@ -61,8 +61,8 @@ func (o *CustomerUpdateGroupRequestPayload) GetNameOk() (*string, bool) {
 	return o.Name, true
 }
 
-// &#39;Has&#39;Name returns a boolean if a field has been set.
-func (o *CustomerUpdateGroupRequestPayload) &#39;Has&#39;Name() bool {
+// HasName returns a boolean if a field has been set.
+func (o *CustomerUpdateGroupRequestPayload) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}

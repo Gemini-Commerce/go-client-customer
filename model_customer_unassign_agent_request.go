@@ -63,8 +63,8 @@ func (o *CustomerUnassignAgentRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// &#39;Has&#39;TenantId returns a boolean if a field has been set.
-func (o *CustomerUnassignAgentRequest) &#39;Has&#39;TenantId() bool {
+// HasTenantId returns a boolean if a field has been set.
+func (o *CustomerUnassignAgentRequest) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -95,8 +95,8 @@ func (o *CustomerUnassignAgentRequest) GetAgentGrnOk() (*string, bool) {
 	return o.AgentGrn, true
 }
 
-// &#39;Has&#39;AgentGrn returns a boolean if a field has been set.
-func (o *CustomerUnassignAgentRequest) &#39;Has&#39;AgentGrn() bool {
+// HasAgentGrn returns a boolean if a field has been set.
+func (o *CustomerUnassignAgentRequest) HasAgentGrn() bool {
 	if o != nil && !IsNil(o.AgentGrn) {
 		return true
 	}
@@ -127,8 +127,8 @@ func (o *CustomerUnassignAgentRequest) GetCustomerIdsOk() ([]string, bool) {
 	return o.CustomerIds, true
 }
 
-// &#39;Has&#39;CustomerIds returns a boolean if a field has been set.
-func (o *CustomerUnassignAgentRequest) &#39;Has&#39;CustomerIds() bool {
+// HasCustomerIds returns a boolean if a field has been set.
+func (o *CustomerUnassignAgentRequest) HasCustomerIds() bool {
 	if o != nil && !IsNil(o.CustomerIds) {
 		return true
 	}

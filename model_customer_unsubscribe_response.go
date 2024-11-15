@@ -63,8 +63,8 @@ func (o *CustomerUnsubscribeResponse) GetResponseOk() (*bool, bool) {
 	return o.Response, true
 }
 
-// &#39;Has&#39;Response returns a boolean if a field has been set.
-func (o *CustomerUnsubscribeResponse) &#39;Has&#39;Response() bool {
+// HasResponse returns a boolean if a field has been set.
+func (o *CustomerUnsubscribeResponse) HasResponse() bool {
 	if o != nil && !IsNil(o.Response) {
 		return true
 	}
@@ -95,8 +95,8 @@ func (o *CustomerUnsubscribeResponse) GetSubscriberExistOk() (*bool, bool) {
 	return o.SubscriberExist, true
 }
 
-// &#39;Has&#39;SubscriberExist returns a boolean if a field has been set.
-func (o *CustomerUnsubscribeResponse) &#39;Has&#39;SubscriberExist() bool {
+// HasSubscriberExist returns a boolean if a field has been set.
+func (o *CustomerUnsubscribeResponse) HasSubscriberExist() bool {
 	if o != nil && !IsNil(o.SubscriberExist) {
 		return true
 	}
@@ -127,8 +127,8 @@ func (o *CustomerUnsubscribeResponse) GetActiveNewsletterGrnOk() ([]string, bool
 	return o.ActiveNewsletterGrn, true
 }
 
-// &#39;Has&#39;ActiveNewsletterGrn returns a boolean if a field has been set.
-func (o *CustomerUnsubscribeResponse) &#39;Has&#39;ActiveNewsletterGrn() bool {
+// HasActiveNewsletterGrn returns a boolean if a field has been set.
+func (o *CustomerUnsubscribeResponse) HasActiveNewsletterGrn() bool {
 	if o != nil && !IsNil(o.ActiveNewsletterGrn) {
 		return true
 	}

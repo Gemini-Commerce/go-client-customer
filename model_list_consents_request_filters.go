@@ -61,8 +61,8 @@ func (o *ListConsentsRequestFilters) GetSubjectIdsOk() ([]string, bool) {
 	return o.SubjectIds, true
 }
 
-// &#39;Has&#39;SubjectIds returns a boolean if a field has been set.
-func (o *ListConsentsRequestFilters) &#39;Has&#39;SubjectIds() bool {
+// HasSubjectIds returns a boolean if a field has been set.
+func (o *ListConsentsRequestFilters) HasSubjectIds() bool {
 	if o != nil && !IsNil(o.SubjectIds) {
 		return true
 	}

@@ -63,8 +63,8 @@ func (o *CustomerEMFields) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// &#39;Has&#39;TenantId returns a boolean if a field has been set.
-func (o *CustomerEMFields) &#39;Has&#39;TenantId() bool {
+// HasTenantId returns a boolean if a field has been set.
+func (o *CustomerEMFields) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -95,8 +95,8 @@ func (o *CustomerEMFields) GetEntityTypeOk() (*string, bool) {
 	return o.EntityType, true
 }
 
-// &#39;Has&#39;EntityType returns a boolean if a field has been set.
-func (o *CustomerEMFields) &#39;Has&#39;EntityType() bool {
+// HasEntityType returns a boolean if a field has been set.
+func (o *CustomerEMFields) HasEntityType() bool {
 	if o != nil && !IsNil(o.EntityType) {
 		return true
 	}
@@ -127,8 +127,8 @@ func (o *CustomerEMFields) GetEntityCodeOk() (*string, bool) {
 	return o.EntityCode, true
 }
 
-// &#39;Has&#39;EntityCode returns a boolean if a field has been set.
-func (o *CustomerEMFields) &#39;Has&#39;EntityCode() bool {
+// HasEntityCode returns a boolean if a field has been set.
+func (o *CustomerEMFields) HasEntityCode() bool {
 	if o != nil && !IsNil(o.EntityCode) {
 		return true
 	}

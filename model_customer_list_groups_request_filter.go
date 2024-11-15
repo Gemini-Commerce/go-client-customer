@@ -61,8 +61,8 @@ func (o *CustomerListGroupsRequestFilter) GetSearchTermOk() (*string, bool) {
 	return o.SearchTerm, true
 }
 
-// &#39;Has&#39;SearchTerm returns a boolean if a field has been set.
-func (o *CustomerListGroupsRequestFilter) &#39;Has&#39;SearchTerm() bool {
+// HasSearchTerm returns a boolean if a field has been set.
+func (o *CustomerListGroupsRequestFilter) HasSearchTerm() bool {
 	if o != nil && !IsNil(o.SearchTerm) {
 		return true
 	}

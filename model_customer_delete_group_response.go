@@ -61,8 +61,8 @@ func (o *CustomerDeleteGroupResponse) GetGroupIdOk() (*string, bool) {
 	return o.GroupId, true
 }
 
-// &#39;Has&#39;GroupId returns a boolean if a field has been set.
-func (o *CustomerDeleteGroupResponse) &#39;Has&#39;GroupId() bool {
+// HasGroupId returns a boolean if a field has been set.
+func (o *CustomerDeleteGroupResponse) HasGroupId() bool {
 	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}

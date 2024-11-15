@@ -61,8 +61,8 @@ func (o *CustomerBulkUpdateResponse) GetCustomerIdsOk() ([]string, bool) {
 	return o.CustomerIds, true
 }
 
-// &#39;Has&#39;CustomerIds returns a boolean if a field has been set.
-func (o *CustomerBulkUpdateResponse) &#39;Has&#39;CustomerIds() bool {
+// HasCustomerIds returns a boolean if a field has been set.
+func (o *CustomerBulkUpdateResponse) HasCustomerIds() bool {
 	if o != nil && !IsNil(o.CustomerIds) {
 		return true
 	}

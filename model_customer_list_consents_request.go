@@ -66,8 +66,8 @@ func (o *CustomerListConsentsRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// &#39;Has&#39;TenantId returns a boolean if a field has been set.
-func (o *CustomerListConsentsRequest) &#39;Has&#39;TenantId() bool {
+// HasTenantId returns a boolean if a field has been set.
+func (o *CustomerListConsentsRequest) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -98,8 +98,8 @@ func (o *CustomerListConsentsRequest) GetPageSizeOk() (*int64, bool) {
 	return o.PageSize, true
 }
 
-// &#39;Has&#39;PageSize returns a boolean if a field has been set.
-func (o *CustomerListConsentsRequest) &#39;Has&#39;PageSize() bool {
+// HasPageSize returns a boolean if a field has been set.
+func (o *CustomerListConsentsRequest) HasPageSize() bool {
 	if o != nil && !IsNil(o.PageSize) {
 		return true
 	}
@@ -130,8 +130,8 @@ func (o *CustomerListConsentsRequest) GetPageTokenOk() (*string, bool) {
 	return o.PageToken, true
 }
 
-// &#39;Has&#39;PageToken returns a boolean if a field has been set.
-func (o *CustomerListConsentsRequest) &#39;Has&#39;PageToken() bool {
+// HasPageToken returns a boolean if a field has been set.
+func (o *CustomerListConsentsRequest) HasPageToken() bool {
 	if o != nil && !IsNil(o.PageToken) {
 		return true
 	}
@@ -162,8 +162,8 @@ func (o *CustomerListConsentsRequest) GetSortsOk() ([]ListConsentsRequestSort, b
 	return o.Sorts, true
 }
 
-// &#39;Has&#39;Sorts returns a boolean if a field has been set.
-func (o *CustomerListConsentsRequest) &#39;Has&#39;Sorts() bool {
+// HasSorts returns a boolean if a field has been set.
+func (o *CustomerListConsentsRequest) HasSorts() bool {
 	if o != nil && !IsNil(o.Sorts) {
 		return true
 	}
@@ -194,8 +194,8 @@ func (o *CustomerListConsentsRequest) GetFiltersMaskOk() (*string, bool) {
 	return o.FiltersMask, true
 }
 
-// &#39;Has&#39;FiltersMask returns a boolean if a field has been set.
-func (o *CustomerListConsentsRequest) &#39;Has&#39;FiltersMask() bool {
+// HasFiltersMask returns a boolean if a field has been set.
+func (o *CustomerListConsentsRequest) HasFiltersMask() bool {
 	if o != nil && !IsNil(o.FiltersMask) {
 		return true
 	}
@@ -226,8 +226,8 @@ func (o *CustomerListConsentsRequest) GetFiltersOk() (*ListConsentsRequestFilter
 	return o.Filters, true
 }
 
-// &#39;Has&#39;Filters returns a boolean if a field has been set.
-func (o *CustomerListConsentsRequest) &#39;Has&#39;Filters() bool {
+// HasFilters returns a boolean if a field has been set.
+func (o *CustomerListConsentsRequest) HasFilters() bool {
 	if o != nil && !IsNil(o.Filters) {
 		return true
 	}

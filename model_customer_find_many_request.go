@@ -66,8 +66,8 @@ func (o *CustomerFindManyRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// &#39;Has&#39;TenantId returns a boolean if a field has been set.
-func (o *CustomerFindManyRequest) &#39;Has&#39;TenantId() bool {
+// HasTenantId returns a boolean if a field has been set.
+func (o *CustomerFindManyRequest) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -98,8 +98,8 @@ func (o *CustomerFindManyRequest) GetGroupIdOk() (*string, bool) {
 	return o.GroupId, true
 }
 
-// &#39;Has&#39;GroupId returns a boolean if a field has been set.
-func (o *CustomerFindManyRequest) &#39;Has&#39;GroupId() bool {
+// HasGroupId returns a boolean if a field has been set.
+func (o *CustomerFindManyRequest) HasGroupId() bool {
 	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
@@ -130,8 +130,8 @@ func (o *CustomerFindManyRequest) GetPageSizeOk() (*int64, bool) {
 	return o.PageSize, true
 }
 
-// &#39;Has&#39;PageSize returns a boolean if a field has been set.
-func (o *CustomerFindManyRequest) &#39;Has&#39;PageSize() bool {
+// HasPageSize returns a boolean if a field has been set.
+func (o *CustomerFindManyRequest) HasPageSize() bool {
 	if o != nil && !IsNil(o.PageSize) {
 		return true
 	}
@@ -162,8 +162,8 @@ func (o *CustomerFindManyRequest) GetPageTokenOk() (*string, bool) {
 	return o.PageToken, true
 }
 
-// &#39;Has&#39;PageToken returns a boolean if a field has been set.
-func (o *CustomerFindManyRequest) &#39;Has&#39;PageToken() bool {
+// HasPageToken returns a boolean if a field has been set.
+func (o *CustomerFindManyRequest) HasPageToken() bool {
 	if o != nil && !IsNil(o.PageToken) {
 		return true
 	}
@@ -194,8 +194,8 @@ func (o *CustomerFindManyRequest) GetFilterOk() (*CustomerFindManyRequestFilter,
 	return o.Filter, true
 }
 
-// &#39;Has&#39;Filter returns a boolean if a field has been set.
-func (o *CustomerFindManyRequest) &#39;Has&#39;Filter() bool {
+// HasFilter returns a boolean if a field has been set.
+func (o *CustomerFindManyRequest) HasFilter() bool {
 	if o != nil && !IsNil(o.Filter) {
 		return true
 	}
@@ -226,8 +226,8 @@ func (o *CustomerFindManyRequest) GetFilterMaskOk() (*string, bool) {
 	return o.FilterMask, true
 }
 
-// &#39;Has&#39;FilterMask returns a boolean if a field has been set.
-func (o *CustomerFindManyRequest) &#39;Has&#39;FilterMask() bool {
+// HasFilterMask returns a boolean if a field has been set.
+func (o *CustomerFindManyRequest) HasFilterMask() bool {
 	if o != nil && !IsNil(o.FilterMask) {
 		return true
 	}

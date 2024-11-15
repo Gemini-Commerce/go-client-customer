@@ -65,8 +65,8 @@ func (o *CustomerAddressUpdateRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// &#39;Has&#39;TenantId returns a boolean if a field has been set.
-func (o *CustomerAddressUpdateRequest) &#39;Has&#39;TenantId() bool {
+// HasTenantId returns a boolean if a field has been set.
+func (o *CustomerAddressUpdateRequest) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -97,8 +97,8 @@ func (o *CustomerAddressUpdateRequest) GetCustomerIdOk() (*string, bool) {
 	return o.CustomerId, true
 }
 
-// &#39;Has&#39;CustomerId returns a boolean if a field has been set.
-func (o *CustomerAddressUpdateRequest) &#39;Has&#39;CustomerId() bool {
+// HasCustomerId returns a boolean if a field has been set.
+func (o *CustomerAddressUpdateRequest) HasCustomerId() bool {
 	if o != nil && !IsNil(o.CustomerId) {
 		return true
 	}
@@ -129,8 +129,8 @@ func (o *CustomerAddressUpdateRequest) GetIdOk() (*string, bool) {
 	return o.Id, true
 }
 
-// &#39;Has&#39;Id returns a boolean if a field has been set.
-func (o *CustomerAddressUpdateRequest) &#39;Has&#39;Id() bool {
+// HasId returns a boolean if a field has been set.
+func (o *CustomerAddressUpdateRequest) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -161,8 +161,8 @@ func (o *CustomerAddressUpdateRequest) GetAddressOk() (*CustomerAddressEntity, b
 	return o.Address, true
 }
 
-// &#39;Has&#39;Address returns a boolean if a field has been set.
-func (o *CustomerAddressUpdateRequest) &#39;Has&#39;Address() bool {
+// HasAddress returns a boolean if a field has been set.
+func (o *CustomerAddressUpdateRequest) HasAddress() bool {
 	if o != nil && !IsNil(o.Address) {
 		return true
 	}
@@ -193,8 +193,8 @@ func (o *CustomerAddressUpdateRequest) GetFieldMaskOk() (*string, bool) {
 	return o.FieldMask, true
 }
 
-// &#39;Has&#39;FieldMask returns a boolean if a field has been set.
-func (o *CustomerAddressUpdateRequest) &#39;Has&#39;FieldMask() bool {
+// HasFieldMask returns a boolean if a field has been set.
+func (o *CustomerAddressUpdateRequest) HasFieldMask() bool {
 	if o != nil && !IsNil(o.FieldMask) {
 		return true
 	}

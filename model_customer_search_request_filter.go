@@ -62,8 +62,8 @@ func (o *CustomerSearchRequestFilter) GetNewsletterOk() (*bool, bool) {
 	return o.Newsletter, true
 }
 
-// &#39;Has&#39;Newsletter returns a boolean if a field has been set.
-func (o *CustomerSearchRequestFilter) &#39;Has&#39;Newsletter() bool {
+// HasNewsletter returns a boolean if a field has been set.
+func (o *CustomerSearchRequestFilter) HasNewsletter() bool {
 	if o != nil && !IsNil(o.Newsletter) {
 		return true
 	}
@@ -94,8 +94,8 @@ func (o *CustomerSearchRequestFilter) GetAgentGrnOk() (*string, bool) {
 	return o.AgentGrn, true
 }
 
-// &#39;Has&#39;AgentGrn returns a boolean if a field has been set.
-func (o *CustomerSearchRequestFilter) &#39;Has&#39;AgentGrn() bool {
+// HasAgentGrn returns a boolean if a field has been set.
+func (o *CustomerSearchRequestFilter) HasAgentGrn() bool {
 	if o != nil && !IsNil(o.AgentGrn) {
 		return true
 	}

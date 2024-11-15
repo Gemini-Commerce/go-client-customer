@@ -79,8 +79,8 @@ func (o *CustomerAddressEntity) GetEmOk() (*CustomerEMFields, bool) {
 	return o.Em, true
 }
 
-// &#39;Has&#39;Em returns a boolean if a field has been set.
-func (o *CustomerAddressEntity) &#39;Has&#39;Em() bool {
+// HasEm returns a boolean if a field has been set.
+func (o *CustomerAddressEntity) HasEm() bool {
 	if o != nil && !IsNil(o.Em) {
 		return true
 	}
@@ -111,8 +111,8 @@ func (o *CustomerAddressEntity) GetNameOk() (*string, bool) {
 	return o.Name, true
 }
 
-// &#39;Has&#39;Name returns a boolean if a field has been set.
-func (o *CustomerAddressEntity) &#39;Has&#39;Name() bool {
+// HasName returns a boolean if a field has been set.
+func (o *CustomerAddressEntity) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -143,8 +143,8 @@ func (o *CustomerAddressEntity) GetSurnameOk() (*string, bool) {
 	return o.Surname, true
 }
 
-// &#39;Has&#39;Surname returns a boolean if a field has been set.
-func (o *CustomerAddressEntity) &#39;Has&#39;Surname() bool {
+// HasSurname returns a boolean if a field has been set.
+func (o *CustomerAddressEntity) HasSurname() bool {
 	if o != nil && !IsNil(o.Surname) {
 		return true
 	}
@@ -175,8 +175,8 @@ func (o *CustomerAddressEntity) GetStreetOk() (*string, bool) {
 	return o.Street, true
 }
 
-// &#39;Has&#39;Street returns a boolean if a field has been set.
-func (o *CustomerAddressEntity) &#39;Has&#39;Street() bool {
+// HasStreet returns a boolean if a field has been set.
+func (o *CustomerAddressEntity) HasStreet() bool {
 	if o != nil && !IsNil(o.Street) {
 		return true
 	}
@@ -207,8 +207,8 @@ func (o *CustomerAddressEntity) GetNumberOk() (*string, bool) {
 	return o.Number, true
 }
 
-// &#39;Has&#39;Number returns a boolean if a field has been set.
-func (o *CustomerAddressEntity) &#39;Has&#39;Number() bool {
+// HasNumber returns a boolean if a field has been set.
+func (o *CustomerAddressEntity) HasNumber() bool {
 	if o != nil && !IsNil(o.Number) {
 		return true
 	}
@@ -239,8 +239,8 @@ func (o *CustomerAddressEntity) GetZipOk() (*string, bool) {
 	return o.Zip, true
 }
 
-// &#39;Has&#39;Zip returns a boolean if a field has been set.
-func (o *CustomerAddressEntity) &#39;Has&#39;Zip() bool {
+// HasZip returns a boolean if a field has been set.
+func (o *CustomerAddressEntity) HasZip() bool {
 	if o != nil && !IsNil(o.Zip) {
 		return true
 	}
@@ -271,8 +271,8 @@ func (o *CustomerAddressEntity) GetCityOk() (*string, bool) {
 	return o.City, true
 }
 
-// &#39;Has&#39;City returns a boolean if a field has been set.
-func (o *CustomerAddressEntity) &#39;Has&#39;City() bool {
+// HasCity returns a boolean if a field has been set.
+func (o *CustomerAddressEntity) HasCity() bool {
 	if o != nil && !IsNil(o.City) {
 		return true
 	}
@@ -303,8 +303,8 @@ func (o *CustomerAddressEntity) GetProvinceOk() (*string, bool) {
 	return o.Province, true
 }
 
-// &#39;Has&#39;Province returns a boolean if a field has been set.
-func (o *CustomerAddressEntity) &#39;Has&#39;Province() bool {
+// HasProvince returns a boolean if a field has been set.
+func (o *CustomerAddressEntity) HasProvince() bool {
 	if o != nil && !IsNil(o.Province) {
 		return true
 	}
@@ -335,8 +335,8 @@ func (o *CustomerAddressEntity) GetPhoneNumberOk() (*string, bool) {
 	return o.PhoneNumber, true
 }
 
-// &#39;Has&#39;PhoneNumber returns a boolean if a field has been set.
-func (o *CustomerAddressEntity) &#39;Has&#39;PhoneNumber() bool {
+// HasPhoneNumber returns a boolean if a field has been set.
+func (o *CustomerAddressEntity) HasPhoneNumber() bool {
 	if o != nil && !IsNil(o.PhoneNumber) {
 		return true
 	}
@@ -367,8 +367,8 @@ func (o *CustomerAddressEntity) GetFiscalCodeOk() (*string, bool) {
 	return o.FiscalCode, true
 }
 
-// &#39;Has&#39;FiscalCode returns a boolean if a field has been set.
-func (o *CustomerAddressEntity) &#39;Has&#39;FiscalCode() bool {
+// HasFiscalCode returns a boolean if a field has been set.
+func (o *CustomerAddressEntity) HasFiscalCode() bool {
 	if o != nil && !IsNil(o.FiscalCode) {
 		return true
 	}
@@ -399,8 +399,8 @@ func (o *CustomerAddressEntity) GetVatNumberOk() (*string, bool) {
 	return o.VatNumber, true
 }
 
-// &#39;Has&#39;VatNumber returns a boolean if a field has been set.
-func (o *CustomerAddressEntity) &#39;Has&#39;VatNumber() bool {
+// HasVatNumber returns a boolean if a field has been set.
+func (o *CustomerAddressEntity) HasVatNumber() bool {
 	if o != nil && !IsNil(o.VatNumber) {
 		return true
 	}
@@ -431,8 +431,8 @@ func (o *CustomerAddressEntity) GetKindOk() (*CustomerAddressEntityKind, bool) {
 	return o.Kind, true
 }
 
-// &#39;Has&#39;Kind returns a boolean if a field has been set.
-func (o *CustomerAddressEntity) &#39;Has&#39;Kind() bool {
+// HasKind returns a boolean if a field has been set.
+func (o *CustomerAddressEntity) HasKind() bool {
 	if o != nil && !IsNil(o.Kind) {
 		return true
 	}
@@ -463,8 +463,8 @@ func (o *CustomerAddressEntity) GetDefaultOk() (*bool, bool) {
 	return o.Default, true
 }
 
-// &#39;Has&#39;Default returns a boolean if a field has been set.
-func (o *CustomerAddressEntity) &#39;Has&#39;Default() bool {
+// HasDefault returns a boolean if a field has been set.
+func (o *CustomerAddressEntity) HasDefault() bool {
 	if o != nil && !IsNil(o.Default) {
 		return true
 	}
@@ -495,8 +495,8 @@ func (o *CustomerAddressEntity) GetCountryOk() (*string, bool) {
 	return o.Country, true
 }
 
-// &#39;Has&#39;Country returns a boolean if a field has been set.
-func (o *CustomerAddressEntity) &#39;Has&#39;Country() bool {
+// HasCountry returns a boolean if a field has been set.
+func (o *CustomerAddressEntity) HasCountry() bool {
 	if o != nil && !IsNil(o.Country) {
 		return true
 	}
@@ -527,8 +527,8 @@ func (o *CustomerAddressEntity) GetAttributesOk() (*map[string]ProtobufAny, bool
 	return o.Attributes, true
 }
 
-// &#39;Has&#39;Attributes returns a boolean if a field has been set.
-func (o *CustomerAddressEntity) &#39;Has&#39;Attributes() bool {
+// HasAttributes returns a boolean if a field has been set.
+func (o *CustomerAddressEntity) HasAttributes() bool {
 	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}

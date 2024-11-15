@@ -67,8 +67,8 @@ func (o *CustomerSearchRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// &#39;Has&#39;TenantId returns a boolean if a field has been set.
-func (o *CustomerSearchRequest) &#39;Has&#39;TenantId() bool {
+// HasTenantId returns a boolean if a field has been set.
+func (o *CustomerSearchRequest) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -99,8 +99,8 @@ func (o *CustomerSearchRequest) GetQueryOk() (*string, bool) {
 	return o.Query, true
 }
 
-// &#39;Has&#39;Query returns a boolean if a field has been set.
-func (o *CustomerSearchRequest) &#39;Has&#39;Query() bool {
+// HasQuery returns a boolean if a field has been set.
+func (o *CustomerSearchRequest) HasQuery() bool {
 	if o != nil && !IsNil(o.Query) {
 		return true
 	}
@@ -131,8 +131,8 @@ func (o *CustomerSearchRequest) GetGroupIdOk() (*string, bool) {
 	return o.GroupId, true
 }
 
-// &#39;Has&#39;GroupId returns a boolean if a field has been set.
-func (o *CustomerSearchRequest) &#39;Has&#39;GroupId() bool {
+// HasGroupId returns a boolean if a field has been set.
+func (o *CustomerSearchRequest) HasGroupId() bool {
 	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
@@ -163,8 +163,8 @@ func (o *CustomerSearchRequest) GetPageSizeOk() (*int64, bool) {
 	return o.PageSize, true
 }
 
-// &#39;Has&#39;PageSize returns a boolean if a field has been set.
-func (o *CustomerSearchRequest) &#39;Has&#39;PageSize() bool {
+// HasPageSize returns a boolean if a field has been set.
+func (o *CustomerSearchRequest) HasPageSize() bool {
 	if o != nil && !IsNil(o.PageSize) {
 		return true
 	}
@@ -195,8 +195,8 @@ func (o *CustomerSearchRequest) GetPageTokenOk() (*string, bool) {
 	return o.PageToken, true
 }
 
-// &#39;Has&#39;PageToken returns a boolean if a field has been set.
-func (o *CustomerSearchRequest) &#39;Has&#39;PageToken() bool {
+// HasPageToken returns a boolean if a field has been set.
+func (o *CustomerSearchRequest) HasPageToken() bool {
 	if o != nil && !IsNil(o.PageToken) {
 		return true
 	}
@@ -227,8 +227,8 @@ func (o *CustomerSearchRequest) GetFilterOk() (*CustomerSearchRequestFilter, boo
 	return o.Filter, true
 }
 
-// &#39;Has&#39;Filter returns a boolean if a field has been set.
-func (o *CustomerSearchRequest) &#39;Has&#39;Filter() bool {
+// HasFilter returns a boolean if a field has been set.
+func (o *CustomerSearchRequest) HasFilter() bool {
 	if o != nil && !IsNil(o.Filter) {
 		return true
 	}
@@ -259,8 +259,8 @@ func (o *CustomerSearchRequest) GetFilterMaskOk() (*string, bool) {
 	return o.FilterMask, true
 }
 
-// &#39;Has&#39;FilterMask returns a boolean if a field has been set.
-func (o *CustomerSearchRequest) &#39;Has&#39;FilterMask() bool {
+// HasFilterMask returns a boolean if a field has been set.
+func (o *CustomerSearchRequest) HasFilterMask() bool {
 	if o != nil && !IsNil(o.FilterMask) {
 		return true
 	}

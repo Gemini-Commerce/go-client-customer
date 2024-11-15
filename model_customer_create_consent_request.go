@@ -61,8 +61,8 @@ func (o *CustomerCreateConsentRequest) GetPreferencesOk() (*map[string]bool, boo
 	return o.Preferences, true
 }
 
-// &#39;Has&#39;Preferences returns a boolean if a field has been set.
-func (o *CustomerCreateConsentRequest) &#39;Has&#39;Preferences() bool {
+// HasPreferences returns a boolean if a field has been set.
+func (o *CustomerCreateConsentRequest) HasPreferences() bool {
 	if o != nil && !IsNil(o.Preferences) {
 		return true
 	}

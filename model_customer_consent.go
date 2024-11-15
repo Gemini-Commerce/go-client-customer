@@ -72,8 +72,8 @@ func (o *CustomerConsent) GetIdOk() (*string, bool) {
 	return o.Id, true
 }
 
-// &#39;Has&#39;Id returns a boolean if a field has been set.
-func (o *CustomerConsent) &#39;Has&#39;Id() bool {
+// HasId returns a boolean if a field has been set.
+func (o *CustomerConsent) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -104,8 +104,8 @@ func (o *CustomerConsent) GetGrnOk() (*string, bool) {
 	return o.Grn, true
 }
 
-// &#39;Has&#39;Grn returns a boolean if a field has been set.
-func (o *CustomerConsent) &#39;Has&#39;Grn() bool {
+// HasGrn returns a boolean if a field has been set.
+func (o *CustomerConsent) HasGrn() bool {
 	if o != nil && !IsNil(o.Grn) {
 		return true
 	}
@@ -136,8 +136,8 @@ func (o *CustomerConsent) GetPreferencesOk() (*map[string]bool, bool) {
 	return o.Preferences, true
 }
 
-// &#39;Has&#39;Preferences returns a boolean if a field has been set.
-func (o *CustomerConsent) &#39;Has&#39;Preferences() bool {
+// HasPreferences returns a boolean if a field has been set.
+func (o *CustomerConsent) HasPreferences() bool {
 	if o != nil && !IsNil(o.Preferences) {
 		return true
 	}
@@ -168,8 +168,8 @@ func (o *CustomerConsent) GetCreatedAtOk() (*time.Time, bool) {
 	return o.CreatedAt, true
 }
 
-// &#39;Has&#39;CreatedAt returns a boolean if a field has been set.
-func (o *CustomerConsent) &#39;Has&#39;CreatedAt() bool {
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *CustomerConsent) HasCreatedAt() bool {
 	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
@@ -200,8 +200,8 @@ func (o *CustomerConsent) GetSourceOk() (*CustomerConsentSource, bool) {
 	return o.Source, true
 }
 
-// &#39;Has&#39;Source returns a boolean if a field has been set.
-func (o *CustomerConsent) &#39;Has&#39;Source() bool {
+// HasSource returns a boolean if a field has been set.
+func (o *CustomerConsent) HasSource() bool {
 	if o != nil && !IsNil(o.Source) {
 		return true
 	}
@@ -232,8 +232,8 @@ func (o *CustomerConsent) GetAuthorOk() (*string, bool) {
 	return o.Author, true
 }
 
-// &#39;Has&#39;Author returns a boolean if a field has been set.
-func (o *CustomerConsent) &#39;Has&#39;Author() bool {
+// HasAuthor returns a boolean if a field has been set.
+func (o *CustomerConsent) HasAuthor() bool {
 	if o != nil && !IsNil(o.Author) {
 		return true
 	}
@@ -264,8 +264,8 @@ func (o *CustomerConsent) GetSubjectIdOk() (*string, bool) {
 	return o.SubjectId, true
 }
 
-// &#39;Has&#39;SubjectId returns a boolean if a field has been set.
-func (o *CustomerConsent) &#39;Has&#39;SubjectId() bool {
+// HasSubjectId returns a boolean if a field has been set.
+func (o *CustomerConsent) HasSubjectId() bool {
 	if o != nil && !IsNil(o.SubjectId) {
 		return true
 	}

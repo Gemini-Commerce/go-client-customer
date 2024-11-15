@@ -65,8 +65,8 @@ func (o *CustomerListGroupsRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// &#39;Has&#39;TenantId returns a boolean if a field has been set.
-func (o *CustomerListGroupsRequest) &#39;Has&#39;TenantId() bool {
+// HasTenantId returns a boolean if a field has been set.
+func (o *CustomerListGroupsRequest) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -97,8 +97,8 @@ func (o *CustomerListGroupsRequest) GetPageSizeOk() (*int64, bool) {
 	return o.PageSize, true
 }
 
-// &#39;Has&#39;PageSize returns a boolean if a field has been set.
-func (o *CustomerListGroupsRequest) &#39;Has&#39;PageSize() bool {
+// HasPageSize returns a boolean if a field has been set.
+func (o *CustomerListGroupsRequest) HasPageSize() bool {
 	if o != nil && !IsNil(o.PageSize) {
 		return true
 	}
@@ -129,8 +129,8 @@ func (o *CustomerListGroupsRequest) GetPageTokenOk() (*string, bool) {
 	return o.PageToken, true
 }
 
-// &#39;Has&#39;PageToken returns a boolean if a field has been set.
-func (o *CustomerListGroupsRequest) &#39;Has&#39;PageToken() bool {
+// HasPageToken returns a boolean if a field has been set.
+func (o *CustomerListGroupsRequest) HasPageToken() bool {
 	if o != nil && !IsNil(o.PageToken) {
 		return true
 	}
@@ -161,8 +161,8 @@ func (o *CustomerListGroupsRequest) GetFilterOk() (*CustomerListGroupsRequestFil
 	return o.Filter, true
 }
 
-// &#39;Has&#39;Filter returns a boolean if a field has been set.
-func (o *CustomerListGroupsRequest) &#39;Has&#39;Filter() bool {
+// HasFilter returns a boolean if a field has been set.
+func (o *CustomerListGroupsRequest) HasFilter() bool {
 	if o != nil && !IsNil(o.Filter) {
 		return true
 	}
@@ -193,8 +193,8 @@ func (o *CustomerListGroupsRequest) GetFiltersMaskOk() (*string, bool) {
 	return o.FiltersMask, true
 }
 
-// &#39;Has&#39;FiltersMask returns a boolean if a field has been set.
-func (o *CustomerListGroupsRequest) &#39;Has&#39;FiltersMask() bool {
+// HasFiltersMask returns a boolean if a field has been set.
+func (o *CustomerListGroupsRequest) HasFiltersMask() bool {
 	if o != nil && !IsNil(o.FiltersMask) {
 		return true
 	}

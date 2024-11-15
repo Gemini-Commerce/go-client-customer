@@ -70,8 +70,8 @@ func (o *ListConsentsRequestSort) GetFieldOk() (*SortSortField, bool) {
 	return o.Field, true
 }
 
-// &#39;Has&#39;Field returns a boolean if a field has been set.
-func (o *ListConsentsRequestSort) &#39;Has&#39;Field() bool {
+// HasField returns a boolean if a field has been set.
+func (o *ListConsentsRequestSort) HasField() bool {
 	if o != nil && !IsNil(o.Field) {
 		return true
 	}
@@ -102,8 +102,8 @@ func (o *ListConsentsRequestSort) GetOrderOk() (*SortSortOrder, bool) {
 	return o.Order, true
 }
 
-// &#39;Has&#39;Order returns a boolean if a field has been set.
-func (o *ListConsentsRequestSort) &#39;Has&#39;Order() bool {
+// HasOrder returns a boolean if a field has been set.
+func (o *ListConsentsRequestSort) HasOrder() bool {
 	if o != nil && !IsNil(o.Order) {
 		return true
 	}

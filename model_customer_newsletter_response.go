@@ -63,8 +63,8 @@ func (o *CustomerNewsletterResponse) GetIdOk() (*string, bool) {
 	return o.Id, true
 }
 
-// &#39;Has&#39;Id returns a boolean if a field has been set.
-func (o *CustomerNewsletterResponse) &#39;Has&#39;Id() bool {
+// HasId returns a boolean if a field has been set.
+func (o *CustomerNewsletterResponse) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -95,8 +95,8 @@ func (o *CustomerNewsletterResponse) GetNewsletterGrnOk() (*string, bool) {
 	return o.NewsletterGrn, true
 }
 
-// &#39;Has&#39;NewsletterGrn returns a boolean if a field has been set.
-func (o *CustomerNewsletterResponse) &#39;Has&#39;NewsletterGrn() bool {
+// HasNewsletterGrn returns a boolean if a field has been set.
+func (o *CustomerNewsletterResponse) HasNewsletterGrn() bool {
 	if o != nil && !IsNil(o.NewsletterGrn) {
 		return true
 	}
@@ -127,8 +127,8 @@ func (o *CustomerNewsletterResponse) GetNameOk() (*string, bool) {
 	return o.Name, true
 }
 
-// &#39;Has&#39;Name returns a boolean if a field has been set.
-func (o *CustomerNewsletterResponse) &#39;Has&#39;Name() bool {
+// HasName returns a boolean if a field has been set.
+func (o *CustomerNewsletterResponse) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}

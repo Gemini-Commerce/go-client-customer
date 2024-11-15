@@ -69,8 +69,8 @@ func (o *CustomerGroupResponse) GetIdOk() (*string, bool) {
 	return o.Id, true
 }
 
-// &#39;Has&#39;Id returns a boolean if a field has been set.
-func (o *CustomerGroupResponse) &#39;Has&#39;Id() bool {
+// HasId returns a boolean if a field has been set.
+func (o *CustomerGroupResponse) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -101,8 +101,8 @@ func (o *CustomerGroupResponse) GetNameOk() (*string, bool) {
 	return o.Name, true
 }
 
-// &#39;Has&#39;Name returns a boolean if a field has been set.
-func (o *CustomerGroupResponse) &#39;Has&#39;Name() bool {
+// HasName returns a boolean if a field has been set.
+func (o *CustomerGroupResponse) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -133,8 +133,8 @@ func (o *CustomerGroupResponse) GetCustomerIdsOk() ([]string, bool) {
 	return o.CustomerIds, true
 }
 
-// &#39;Has&#39;CustomerIds returns a boolean if a field has been set.
-func (o *CustomerGroupResponse) &#39;Has&#39;CustomerIds() bool {
+// HasCustomerIds returns a boolean if a field has been set.
+func (o *CustomerGroupResponse) HasCustomerIds() bool {
 	if o != nil && !IsNil(o.CustomerIds) {
 		return true
 	}
@@ -165,8 +165,8 @@ func (o *CustomerGroupResponse) GetCreatedAtOk() (*time.Time, bool) {
 	return o.CreatedAt, true
 }
 
-// &#39;Has&#39;CreatedAt returns a boolean if a field has been set.
-func (o *CustomerGroupResponse) &#39;Has&#39;CreatedAt() bool {
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *CustomerGroupResponse) HasCreatedAt() bool {
 	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
@@ -197,8 +197,8 @@ func (o *CustomerGroupResponse) GetUpdatedAtOk() (*time.Time, bool) {
 	return o.UpdatedAt, true
 }
 
-// &#39;Has&#39;UpdatedAt returns a boolean if a field has been set.
-func (o *CustomerGroupResponse) &#39;Has&#39;UpdatedAt() bool {
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *CustomerGroupResponse) HasUpdatedAt() bool {
 	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
@@ -229,8 +229,8 @@ func (o *CustomerGroupResponse) GetGrnOk() (*string, bool) {
 	return o.Grn, true
 }
 
-// &#39;Has&#39;Grn returns a boolean if a field has been set.
-func (o *CustomerGroupResponse) &#39;Has&#39;Grn() bool {
+// HasGrn returns a boolean if a field has been set.
+func (o *CustomerGroupResponse) HasGrn() bool {
 	if o != nil && !IsNil(o.Grn) {
 		return true
 	}
@@ -261,8 +261,8 @@ func (o *CustomerGroupResponse) GetCodeOk() (*string, bool) {
 	return o.Code, true
 }
 
-// &#39;Has&#39;Code returns a boolean if a field has been set.
-func (o *CustomerGroupResponse) &#39;Has&#39;Code() bool {
+// HasCode returns a boolean if a field has been set.
+func (o *CustomerGroupResponse) HasCode() bool {
 	if o != nil && !IsNil(o.Code) {
 		return true
 	}
@@ -293,8 +293,8 @@ func (o *CustomerGroupResponse) GetCustomerCountOk() (*string, bool) {
 	return o.CustomerCount, true
 }
 
-// &#39;Has&#39;CustomerCount returns a boolean if a field has been set.
-func (o *CustomerGroupResponse) &#39;Has&#39;CustomerCount() bool {
+// HasCustomerCount returns a boolean if a field has been set.
+func (o *CustomerGroupResponse) HasCustomerCount() bool {
 	if o != nil && !IsNil(o.CustomerCount) {
 		return true
 	}

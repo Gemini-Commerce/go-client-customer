@@ -62,8 +62,8 @@ func (o *CustomerListGroupsResponse) GetGroupsOk() ([]CustomerGroupResponse, boo
 	return o.Groups, true
 }
 
-// &#39;Has&#39;Groups returns a boolean if a field has been set.
-func (o *CustomerListGroupsResponse) &#39;Has&#39;Groups() bool {
+// HasGroups returns a boolean if a field has been set.
+func (o *CustomerListGroupsResponse) HasGroups() bool {
 	if o != nil && !IsNil(o.Groups) {
 		return true
 	}
@@ -94,8 +94,8 @@ func (o *CustomerListGroupsResponse) GetNextPageTokenOk() (*string, bool) {
 	return o.NextPageToken, true
 }
 
-// &#39;Has&#39;NextPageToken returns a boolean if a field has been set.
-func (o *CustomerListGroupsResponse) &#39;Has&#39;NextPageToken() bool {
+// HasNextPageToken returns a boolean if a field has been set.
+func (o *CustomerListGroupsResponse) HasNextPageToken() bool {
 	if o != nil && !IsNil(o.NextPageToken) {
 		return true
 	}

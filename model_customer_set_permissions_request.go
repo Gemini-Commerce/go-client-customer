@@ -63,8 +63,8 @@ func (o *CustomerSetPermissionsRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// &#39;Has&#39;TenantId returns a boolean if a field has been set.
-func (o *CustomerSetPermissionsRequest) &#39;Has&#39;TenantId() bool {
+// HasTenantId returns a boolean if a field has been set.
+func (o *CustomerSetPermissionsRequest) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -95,8 +95,8 @@ func (o *CustomerSetPermissionsRequest) GetCustomerIdOk() (*string, bool) {
 	return o.CustomerId, true
 }
 
-// &#39;Has&#39;CustomerId returns a boolean if a field has been set.
-func (o *CustomerSetPermissionsRequest) &#39;Has&#39;CustomerId() bool {
+// HasCustomerId returns a boolean if a field has been set.
+func (o *CustomerSetPermissionsRequest) HasCustomerId() bool {
 	if o != nil && !IsNil(o.CustomerId) {
 		return true
 	}
@@ -127,8 +127,8 @@ func (o *CustomerSetPermissionsRequest) GetPermissionsOk() ([]CustomerPermission
 	return o.Permissions, true
 }
 
-// &#39;Has&#39;Permissions returns a boolean if a field has been set.
-func (o *CustomerSetPermissionsRequest) &#39;Has&#39;Permissions() bool {
+// HasPermissions returns a boolean if a field has been set.
+func (o *CustomerSetPermissionsRequest) HasPermissions() bool {
 	if o != nil && !IsNil(o.Permissions) {
 		return true
 	}

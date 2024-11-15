@@ -67,8 +67,8 @@ func (o *CustomerPassword) GetDataOk() (*map[string]string, bool) {
 	return o.Data, true
 }
 
-// &#39;Has&#39;Data returns a boolean if a field has been set.
-func (o *CustomerPassword) &#39;Has&#39;Data() bool {
+// HasData returns a boolean if a field has been set.
+func (o *CustomerPassword) HasData() bool {
 	if o != nil && !IsNil(o.Data) {
 		return true
 	}
@@ -99,8 +99,8 @@ func (o *CustomerPassword) GetEnabledOk() (*bool, bool) {
 	return o.Enabled, true
 }
 
-// &#39;Has&#39;Enabled returns a boolean if a field has been set.
-func (o *CustomerPassword) &#39;Has&#39;Enabled() bool {
+// HasEnabled returns a boolean if a field has been set.
+func (o *CustomerPassword) HasEnabled() bool {
 	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
@@ -131,8 +131,8 @@ func (o *CustomerPassword) GetTypeOk() (*PasswordPasswordType, bool) {
 	return o.Type, true
 }
 
-// &#39;Has&#39;Type returns a boolean if a field has been set.
-func (o *CustomerPassword) &#39;Has&#39;Type() bool {
+// HasType returns a boolean if a field has been set.
+func (o *CustomerPassword) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}

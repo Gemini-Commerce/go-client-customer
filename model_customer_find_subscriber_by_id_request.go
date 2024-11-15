@@ -62,8 +62,8 @@ func (o *CustomerFindSubscriberByIdRequest) GetTenantIdOk() (*string, bool) {
 	return o.TenantId, true
 }
 
-// &#39;Has&#39;TenantId returns a boolean if a field has been set.
-func (o *CustomerFindSubscriberByIdRequest) &#39;Has&#39;TenantId() bool {
+// HasTenantId returns a boolean if a field has been set.
+func (o *CustomerFindSubscriberByIdRequest) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -94,8 +94,8 @@ func (o *CustomerFindSubscriberByIdRequest) GetSubscriberIdOk() (*string, bool) 
 	return o.SubscriberId, true
 }
 
-// &#39;Has&#39;SubscriberId returns a boolean if a field has been set.
-func (o *CustomerFindSubscriberByIdRequest) &#39;Has&#39;SubscriberId() bool {
+// HasSubscriberId returns a boolean if a field has been set.
+func (o *CustomerFindSubscriberByIdRequest) HasSubscriberId() bool {
 	if o != nil && !IsNil(o.SubscriberId) {
 		return true
 	}

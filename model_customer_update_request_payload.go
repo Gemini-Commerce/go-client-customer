@@ -89,8 +89,8 @@ func (o *CustomerUpdateRequestPayload) GetEmOk() (*CustomerEMFields, bool) {
 	return o.Em, true
 }
 
-// &#39;Has&#39;Em returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;Em() bool {
+// HasEm returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasEm() bool {
 	if o != nil && !IsNil(o.Em) {
 		return true
 	}
@@ -121,8 +121,8 @@ func (o *CustomerUpdateRequestPayload) GetNameOk() (*string, bool) {
 	return o.Name, true
 }
 
-// &#39;Has&#39;Name returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;Name() bool {
+// HasName returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -153,8 +153,8 @@ func (o *CustomerUpdateRequestPayload) GetSurnameOk() (*string, bool) {
 	return o.Surname, true
 }
 
-// &#39;Has&#39;Surname returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;Surname() bool {
+// HasSurname returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasSurname() bool {
 	if o != nil && !IsNil(o.Surname) {
 		return true
 	}
@@ -185,8 +185,8 @@ func (o *CustomerUpdateRequestPayload) GetEmailOk() (*string, bool) {
 	return o.Email, true
 }
 
-// &#39;Has&#39;Email returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;Email() bool {
+// HasEmail returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasEmail() bool {
 	if o != nil && !IsNil(o.Email) {
 		return true
 	}
@@ -217,8 +217,8 @@ func (o *CustomerUpdateRequestPayload) GetBirthdateOk() (*time.Time, bool) {
 	return o.Birthdate, true
 }
 
-// &#39;Has&#39;Birthdate returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;Birthdate() bool {
+// HasBirthdate returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasBirthdate() bool {
 	if o != nil && !IsNil(o.Birthdate) {
 		return true
 	}
@@ -249,8 +249,8 @@ func (o *CustomerUpdateRequestPayload) GetGenderOk() (*string, bool) {
 	return o.Gender, true
 }
 
-// &#39;Has&#39;Gender returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;Gender() bool {
+// HasGender returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasGender() bool {
 	if o != nil && !IsNil(o.Gender) {
 		return true
 	}
@@ -281,8 +281,8 @@ func (o *CustomerUpdateRequestPayload) GetEnabledOk() (*bool, bool) {
 	return o.Enabled, true
 }
 
-// &#39;Has&#39;Enabled returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;Enabled() bool {
+// HasEnabled returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasEnabled() bool {
 	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
@@ -313,8 +313,8 @@ func (o *CustomerUpdateRequestPayload) GetSourceOk() (*string, bool) {
 	return o.Source, true
 }
 
-// &#39;Has&#39;Source returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;Source() bool {
+// HasSource returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasSource() bool {
 	if o != nil && !IsNil(o.Source) {
 		return true
 	}
@@ -345,8 +345,8 @@ func (o *CustomerUpdateRequestPayload) GetAddressesOk() ([]CustomerAddressEntity
 	return o.Addresses, true
 }
 
-// &#39;Has&#39;Addresses returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;Addresses() bool {
+// HasAddresses returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasAddresses() bool {
 	if o != nil && !IsNil(o.Addresses) {
 		return true
 	}
@@ -377,8 +377,8 @@ func (o *CustomerUpdateRequestPayload) GetDefaultBillingAddressIdOk() (*string, 
 	return o.DefaultBillingAddressId, true
 }
 
-// &#39;Has&#39;DefaultBillingAddressId returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;DefaultBillingAddressId() bool {
+// HasDefaultBillingAddressId returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasDefaultBillingAddressId() bool {
 	if o != nil && !IsNil(o.DefaultBillingAddressId) {
 		return true
 	}
@@ -409,8 +409,8 @@ func (o *CustomerUpdateRequestPayload) GetDefaultShippingAddressIdOk() (*string,
 	return o.DefaultShippingAddressId, true
 }
 
-// &#39;Has&#39;DefaultShippingAddressId returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;DefaultShippingAddressId() bool {
+// HasDefaultShippingAddressId returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasDefaultShippingAddressId() bool {
 	if o != nil && !IsNil(o.DefaultShippingAddressId) {
 		return true
 	}
@@ -441,8 +441,8 @@ func (o *CustomerUpdateRequestPayload) GetPhoneNumberOk() (*string, bool) {
 	return o.PhoneNumber, true
 }
 
-// &#39;Has&#39;PhoneNumber returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;PhoneNumber() bool {
+// HasPhoneNumber returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasPhoneNumber() bool {
 	if o != nil && !IsNil(o.PhoneNumber) {
 		return true
 	}
@@ -473,8 +473,8 @@ func (o *CustomerUpdateRequestPayload) GetNationalityOk() (*string, bool) {
 	return o.Nationality, true
 }
 
-// &#39;Has&#39;Nationality returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;Nationality() bool {
+// HasNationality returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasNationality() bool {
 	if o != nil && !IsNil(o.Nationality) {
 		return true
 	}
@@ -505,8 +505,8 @@ func (o *CustomerUpdateRequestPayload) GetGroupsOk() ([]string, bool) {
 	return o.Groups, true
 }
 
-// &#39;Has&#39;Groups returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;Groups() bool {
+// HasGroups returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasGroups() bool {
 	if o != nil && !IsNil(o.Groups) {
 		return true
 	}
@@ -537,8 +537,8 @@ func (o *CustomerUpdateRequestPayload) GetDeletedOk() (*bool, bool) {
 	return o.Deleted, true
 }
 
-// &#39;Has&#39;Deleted returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;Deleted() bool {
+// HasDeleted returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasDeleted() bool {
 	if o != nil && !IsNil(o.Deleted) {
 		return true
 	}
@@ -569,8 +569,8 @@ func (o *CustomerUpdateRequestPayload) GetNewslettersOk() ([]CustomerNewsletterR
 	return o.Newsletters, true
 }
 
-// &#39;Has&#39;Newsletters returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;Newsletters() bool {
+// HasNewsletters returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasNewsletters() bool {
 	if o != nil && !IsNil(o.Newsletters) {
 		return true
 	}
@@ -601,8 +601,8 @@ func (o *CustomerUpdateRequestPayload) GetAttributesOk() (*map[string]ProtobufAn
 	return o.Attributes, true
 }
 
-// &#39;Has&#39;Attributes returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;Attributes() bool {
+// HasAttributes returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasAttributes() bool {
 	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
@@ -633,8 +633,8 @@ func (o *CustomerUpdateRequestPayload) GetMigratedPasswordOk() (*CustomerPasswor
 	return o.MigratedPassword, true
 }
 
-// &#39;Has&#39;MigratedPassword returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;MigratedPassword() bool {
+// HasMigratedPassword returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasMigratedPassword() bool {
 	if o != nil && !IsNil(o.MigratedPassword) {
 		return true
 	}
@@ -665,8 +665,8 @@ func (o *CustomerUpdateRequestPayload) GetPreferredLocaleOk() (*string, bool) {
 	return o.PreferredLocale, true
 }
 
-// &#39;Has&#39;PreferredLocale returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;PreferredLocale() bool {
+// HasPreferredLocale returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasPreferredLocale() bool {
 	if o != nil && !IsNil(o.PreferredLocale) {
 		return true
 	}
@@ -697,8 +697,8 @@ func (o *CustomerUpdateRequestPayload) GetTaxCodeOk() (*string, bool) {
 	return o.TaxCode, true
 }
 
-// &#39;Has&#39;TaxCode returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;TaxCode() bool {
+// HasTaxCode returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasTaxCode() bool {
 	if o != nil && !IsNil(o.TaxCode) {
 		return true
 	}
@@ -729,8 +729,8 @@ func (o *CustomerUpdateRequestPayload) GetCertifiedEmailOk() (*string, bool) {
 	return o.CertifiedEmail, true
 }
 
-// &#39;Has&#39;CertifiedEmail returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;CertifiedEmail() bool {
+// HasCertifiedEmail returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasCertifiedEmail() bool {
 	if o != nil && !IsNil(o.CertifiedEmail) {
 		return true
 	}
@@ -761,8 +761,8 @@ func (o *CustomerUpdateRequestPayload) GetSdiCodeOk() (*string, bool) {
 	return o.SdiCode, true
 }
 
-// &#39;Has&#39;SdiCode returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;SdiCode() bool {
+// HasSdiCode returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasSdiCode() bool {
 	if o != nil && !IsNil(o.SdiCode) {
 		return true
 	}
@@ -793,8 +793,8 @@ func (o *CustomerUpdateRequestPayload) GetFiscalCodeOk() (*string, bool) {
 	return o.FiscalCode, true
 }
 
-// &#39;Has&#39;FiscalCode returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;FiscalCode() bool {
+// HasFiscalCode returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasFiscalCode() bool {
 	if o != nil && !IsNil(o.FiscalCode) {
 		return true
 	}
@@ -825,8 +825,8 @@ func (o *CustomerUpdateRequestPayload) GetCompanyNameOk() (*string, bool) {
 	return o.CompanyName, true
 }
 
-// &#39;Has&#39;CompanyName returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;CompanyName() bool {
+// HasCompanyName returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasCompanyName() bool {
 	if o != nil && !IsNil(o.CompanyName) {
 		return true
 	}
@@ -857,8 +857,8 @@ func (o *CustomerUpdateRequestPayload) GetAdditionalInfoOk() (map[string]interfa
 	return o.AdditionalInfo, true
 }
 
-// &#39;Has&#39;AdditionalInfo returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;AdditionalInfo() bool {
+// HasAdditionalInfo returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasAdditionalInfo() bool {
 	if o != nil && !IsNil(o.AdditionalInfo) {
 		return true
 	}
@@ -889,8 +889,8 @@ func (o *CustomerUpdateRequestPayload) GetMarketOk() (*string, bool) {
 	return o.Market, true
 }
 
-// &#39;Has&#39;Market returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;Market() bool {
+// HasMarket returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasMarket() bool {
 	if o != nil && !IsNil(o.Market) {
 		return true
 	}
@@ -921,8 +921,8 @@ func (o *CustomerUpdateRequestPayload) GetExternalIdsOk() (*map[string]string, b
 	return o.ExternalIds, true
 }
 
-// &#39;Has&#39;ExternalIds returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;ExternalIds() bool {
+// HasExternalIds returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasExternalIds() bool {
 	if o != nil && !IsNil(o.ExternalIds) {
 		return true
 	}
@@ -953,8 +953,8 @@ func (o *CustomerUpdateRequestPayload) GetConsentOk() (*CustomerCreateConsentReq
 	return o.Consent, true
 }
 
-// &#39;Has&#39;Consent returns a boolean if a field has been set.
-func (o *CustomerUpdateRequestPayload) &#39;Has&#39;Consent() bool {
+// HasConsent returns a boolean if a field has been set.
+func (o *CustomerUpdateRequestPayload) HasConsent() bool {
 	if o != nil && !IsNil(o.Consent) {
 		return true
 	}
