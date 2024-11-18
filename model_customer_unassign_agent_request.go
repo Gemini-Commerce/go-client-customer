@@ -20,9 +20,9 @@ var _ MappedNullable = &CustomerUnassignAgentRequest{}
 
 // CustomerUnassignAgentRequest struct for CustomerUnassignAgentRequest
 type CustomerUnassignAgentRequest struct {
-	TenantId *string `json:"tenantId,omitempty"`
-	AgentGrn *string `json:"agentGrn,omitempty"`
-	CustomerIds []string `json:"customerIds,omitempty"`
+	TenantId             *string  `json:"tenantId,omitempty"`
+	AgentGrn             *string  `json:"agentGrn,omitempty"`
+	CustomerIds          []string `json:"customerIds,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -142,7 +142,7 @@ func (o *CustomerUnassignAgentRequest) SetCustomerIds(v []string) {
 }
 
 func (o CustomerUnassignAgentRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -193,22 +193,24 @@ func (o *CustomerUnassignAgentRequest) UnmarshalJSON(data []byte) (err error) {
 
 // GetValue returns the value of well-known types
 func (o *CustomerUnassignAgentRequest) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerUnassignAgentRequest) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerUnassignAgentRequest struct {
 	value *CustomerUnassignAgentRequest
 	isSet bool
@@ -244,5 +246,3 @@ func (v *NullableCustomerUnassignAgentRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

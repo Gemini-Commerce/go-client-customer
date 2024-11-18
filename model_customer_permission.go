@@ -22,8 +22,8 @@ type CustomerPermission string
 // List of customerPermission
 const (
 	CUSTOMERPERMISSION_UNKNOWN CustomerPermission = "PERMISSION_UNKNOWN"
-	CUSTOMERPERMISSION_LOGIN CustomerPermission = "PERMISSION_LOGIN"
-	CUSTOMERPERMISSION_BUY CustomerPermission = "PERMISSION_BUY"
+	CUSTOMERPERMISSION_LOGIN   CustomerPermission = "PERMISSION_LOGIN"
+	CUSTOMERPERMISSION_BUY     CustomerPermission = "PERMISSION_BUY"
 )
 
 // All allowed values of CustomerPermission enum
@@ -111,4 +111,3 @@ func (v *NullableCustomerPermission) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -20,11 +20,11 @@ var _ MappedNullable = &CustomerListGroupsRequest{}
 
 // CustomerListGroupsRequest struct for CustomerListGroupsRequest
 type CustomerListGroupsRequest struct {
-	TenantId *string `json:"tenantId,omitempty"`
-	PageSize *int64 `json:"pageSize,omitempty"`
-	PageToken *string `json:"pageToken,omitempty"`
-	Filter *CustomerListGroupsRequestFilter `json:"filter,omitempty"`
-	FiltersMask *string `json:"filtersMask,omitempty"`
+	TenantId             *string                          `json:"tenantId,omitempty"`
+	PageSize             *int64                           `json:"pageSize,omitempty"`
+	PageToken            *string                          `json:"pageToken,omitempty"`
+	Filter               *CustomerListGroupsRequestFilter `json:"filter,omitempty"`
+	FiltersMask          *string                          `json:"filtersMask,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -208,7 +208,7 @@ func (o *CustomerListGroupsRequest) SetFiltersMask(v string) {
 }
 
 func (o CustomerListGroupsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -267,22 +267,24 @@ func (o *CustomerListGroupsRequest) UnmarshalJSON(data []byte) (err error) {
 
 // GetValue returns the value of well-known types
 func (o *CustomerListGroupsRequest) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerListGroupsRequest) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerListGroupsRequest struct {
 	value *CustomerListGroupsRequest
 	isSet bool
@@ -318,5 +320,3 @@ func (v *NullableCustomerListGroupsRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

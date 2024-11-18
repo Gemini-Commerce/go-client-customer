@@ -21,35 +21,35 @@ var _ MappedNullable = &CustomerUpdateRequestPayload{}
 
 // CustomerUpdateRequestPayload struct for CustomerUpdateRequestPayload
 type CustomerUpdateRequestPayload struct {
-	Em *CustomerEMFields `json:"em,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Surname *string `json:"surname,omitempty"`
-	Email *string `json:"email,omitempty"`
-	Birthdate *time.Time `json:"birthdate,omitempty"`
-	Gender *string `json:"gender,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Source *string `json:"source,omitempty"`
-	Addresses []CustomerAddressEntity `json:"addresses,omitempty"`
-	DefaultBillingAddressId *string `json:"defaultBillingAddressId,omitempty"`
-	DefaultShippingAddressId *string `json:"defaultShippingAddressId,omitempty"`
-	PhoneNumber *string `json:"phoneNumber,omitempty"`
-	Nationality *string `json:"nationality,omitempty"`
-	Groups []string `json:"groups,omitempty"`
-	Deleted *bool `json:"deleted,omitempty"`
-	Newsletters []CustomerNewsletterRequest `json:"newsletters,omitempty"`
-	Attributes *map[string]ProtobufAny `json:"attributes,omitempty"`
-	MigratedPassword *CustomerPassword `json:"migratedPassword,omitempty"`
-	PreferredLocale *string `json:"preferredLocale,omitempty"`
-	TaxCode *string `json:"taxCode,omitempty"`
-	CertifiedEmail *string `json:"certifiedEmail,omitempty"`
-	SdiCode *string `json:"sdiCode,omitempty"`
-	FiscalCode *string `json:"fiscalCode,omitempty"`
-	CompanyName *string `json:"companyName,omitempty"`
-	AdditionalInfo map[string]interface{} `json:"additionalInfo,omitempty"`
-	Market *string `json:"market,omitempty"`
-	ExternalIds *map[string]string `json:"externalIds,omitempty"`
-	Consent *CustomerCreateConsentRequest `json:"consent,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Em                       *CustomerEMFields             `json:"em,omitempty"`
+	Name                     *string                       `json:"name,omitempty"`
+	Surname                  *string                       `json:"surname,omitempty"`
+	Email                    *string                       `json:"email,omitempty"`
+	Birthdate                *time.Time                    `json:"birthdate,omitempty"`
+	Gender                   *string                       `json:"gender,omitempty"`
+	Enabled                  *bool                         `json:"enabled,omitempty"`
+	Source                   *string                       `json:"source,omitempty"`
+	Addresses                []CustomerAddressEntity       `json:"addresses,omitempty"`
+	DefaultBillingAddressId  *string                       `json:"defaultBillingAddressId,omitempty"`
+	DefaultShippingAddressId *string                       `json:"defaultShippingAddressId,omitempty"`
+	PhoneNumber              *string                       `json:"phoneNumber,omitempty"`
+	Nationality              *string                       `json:"nationality,omitempty"`
+	Groups                   []string                      `json:"groups,omitempty"`
+	Deleted                  *bool                         `json:"deleted,omitempty"`
+	Newsletters              []CustomerNewsletterRequest   `json:"newsletters,omitempty"`
+	Attributes               *map[string]ProtobufAny       `json:"attributes,omitempty"`
+	MigratedPassword         *CustomerPassword             `json:"migratedPassword,omitempty"`
+	PreferredLocale          *string                       `json:"preferredLocale,omitempty"`
+	TaxCode                  *string                       `json:"taxCode,omitempty"`
+	CertifiedEmail           *string                       `json:"certifiedEmail,omitempty"`
+	SdiCode                  *string                       `json:"sdiCode,omitempty"`
+	FiscalCode               *string                       `json:"fiscalCode,omitempty"`
+	CompanyName              *string                       `json:"companyName,omitempty"`
+	AdditionalInfo           map[string]interface{}        `json:"additionalInfo,omitempty"`
+	Market                   *string                       `json:"market,omitempty"`
+	ExternalIds              *map[string]string            `json:"externalIds,omitempty"`
+	Consent                  *CustomerCreateConsentRequest `json:"consent,omitempty"`
+	AdditionalProperties     map[string]interface{}
 }
 
 type _CustomerUpdateRequestPayload CustomerUpdateRequestPayload
@@ -968,7 +968,7 @@ func (o *CustomerUpdateRequestPayload) SetConsent(v CustomerCreateConsentRequest
 }
 
 func (o CustomerUpdateRequestPayload) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1119,22 +1119,24 @@ func (o *CustomerUpdateRequestPayload) UnmarshalJSON(data []byte) (err error) {
 
 // GetValue returns the value of well-known types
 func (o *CustomerUpdateRequestPayload) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerUpdateRequestPayload) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerUpdateRequestPayload struct {
 	value *CustomerUpdateRequestPayload
 	isSet bool
@@ -1170,5 +1172,3 @@ func (v *NullableCustomerUpdateRequestPayload) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,8 +20,8 @@ var _ MappedNullable = &CustomerSearchRequestFilter{}
 
 // CustomerSearchRequestFilter struct for CustomerSearchRequestFilter
 type CustomerSearchRequestFilter struct {
-	Newsletter *bool `json:"newsletter,omitempty"`
-	AgentGrn *string `json:"agentGrn,omitempty"`
+	Newsletter           *bool   `json:"newsletter,omitempty"`
+	AgentGrn             *string `json:"agentGrn,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,7 +109,7 @@ func (o *CustomerSearchRequestFilter) SetAgentGrn(v string) {
 }
 
 func (o CustomerSearchRequestFilter) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -156,22 +156,24 @@ func (o *CustomerSearchRequestFilter) UnmarshalJSON(data []byte) (err error) {
 
 // GetValue returns the value of well-known types
 func (o *CustomerSearchRequestFilter) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerSearchRequestFilter) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerSearchRequestFilter struct {
 	value *CustomerSearchRequestFilter
 	isSet bool
@@ -207,5 +209,3 @@ func (v *NullableCustomerSearchRequestFilter) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

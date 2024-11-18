@@ -21,25 +21,25 @@ var _ MappedNullable = &CustomerAddressCustomerResponse{}
 
 // CustomerAddressCustomerResponse struct for CustomerAddressCustomerResponse
 type CustomerAddressCustomerResponse struct {
-	Em *CustomerEMFields `json:"em,omitempty"`
-	Grn *string `json:"grn,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Surname *string `json:"surname,omitempty"`
-	Street *string `json:"street,omitempty"`
-	Number *string `json:"number,omitempty"`
-	Zip *string `json:"zip,omitempty"`
-	City *string `json:"city,omitempty"`
-	Province *string `json:"province,omitempty"`
-	PhoneNumber *string `json:"phoneNumber,omitempty"`
-	FiscalCode *string `json:"fiscalCode,omitempty"`
-	VatNumber *string `json:"vatNumber,omitempty"`
-	Kind *CustomerAddressCustomerResponseKind `json:"kind,omitempty"`
-	Default *bool `json:"default,omitempty"`
-	Country *string `json:"country,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	Attributes *map[string]ProtobufAny `json:"attributes,omitempty"`
+	Em                   *CustomerEMFields                    `json:"em,omitempty"`
+	Grn                  *string                              `json:"grn,omitempty"`
+	Id                   *string                              `json:"id,omitempty"`
+	Name                 *string                              `json:"name,omitempty"`
+	Surname              *string                              `json:"surname,omitempty"`
+	Street               *string                              `json:"street,omitempty"`
+	Number               *string                              `json:"number,omitempty"`
+	Zip                  *string                              `json:"zip,omitempty"`
+	City                 *string                              `json:"city,omitempty"`
+	Province             *string                              `json:"province,omitempty"`
+	PhoneNumber          *string                              `json:"phoneNumber,omitempty"`
+	FiscalCode           *string                              `json:"fiscalCode,omitempty"`
+	VatNumber            *string                              `json:"vatNumber,omitempty"`
+	Kind                 *CustomerAddressCustomerResponseKind `json:"kind,omitempty"`
+	Default              *bool                                `json:"default,omitempty"`
+	Country              *string                              `json:"country,omitempty"`
+	CreatedAt            *time.Time                           `json:"createdAt,omitempty"`
+	UpdatedAt            *time.Time                           `json:"updatedAt,omitempty"`
+	Attributes           *map[string]ProtobufAny              `json:"attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -675,7 +675,7 @@ func (o *CustomerAddressCustomerResponse) SetAttributes(v map[string]ProtobufAny
 }
 
 func (o CustomerAddressCustomerResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -790,22 +790,24 @@ func (o *CustomerAddressCustomerResponse) UnmarshalJSON(data []byte) (err error)
 
 // GetValue returns the value of well-known types
 func (o *CustomerAddressCustomerResponse) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerAddressCustomerResponse) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerAddressCustomerResponse struct {
 	value *CustomerAddressCustomerResponse
 	isSet bool
@@ -841,5 +843,3 @@ func (v *NullableCustomerAddressCustomerResponse) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

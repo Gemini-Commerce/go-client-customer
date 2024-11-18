@@ -20,13 +20,13 @@ var _ MappedNullable = &CustomerSearchRequest{}
 
 // CustomerSearchRequest struct for CustomerSearchRequest
 type CustomerSearchRequest struct {
-	TenantId *string `json:"tenantId,omitempty"`
-	Query *string `json:"query,omitempty"`
-	GroupId *string `json:"groupId,omitempty"`
-	PageSize *int64 `json:"pageSize,omitempty"`
-	PageToken *string `json:"pageToken,omitempty"`
-	Filter *CustomerSearchRequestFilter `json:"filter,omitempty"`
-	FilterMask *string `json:"filterMask,omitempty"`
+	TenantId             *string                      `json:"tenantId,omitempty"`
+	Query                *string                      `json:"query,omitempty"`
+	GroupId              *string                      `json:"groupId,omitempty"`
+	PageSize             *int64                       `json:"pageSize,omitempty"`
+	PageToken            *string                      `json:"pageToken,omitempty"`
+	Filter               *CustomerSearchRequestFilter `json:"filter,omitempty"`
+	FilterMask           *string                      `json:"filterMask,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -274,7 +274,7 @@ func (o *CustomerSearchRequest) SetFilterMask(v string) {
 }
 
 func (o CustomerSearchRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -341,22 +341,24 @@ func (o *CustomerSearchRequest) UnmarshalJSON(data []byte) (err error) {
 
 // GetValue returns the value of well-known types
 func (o *CustomerSearchRequest) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerSearchRequest) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerSearchRequest struct {
 	value *CustomerSearchRequest
 	isSet bool
@@ -392,5 +394,3 @@ func (v *NullableCustomerSearchRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

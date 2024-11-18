@@ -22,7 +22,7 @@ type SortSortField string
 // List of SortSortField
 const (
 	SORTSORTFIELD_UNKNOWN SortSortField = "UNKNOWN"
-	SORTSORTFIELD_DATE SortSortField = "DATE"
+	SORTSORTFIELD_DATE    SortSortField = "DATE"
 )
 
 // All allowed values of SortSortField enum
@@ -109,4 +109,3 @@ func (v *NullableSortSortField) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

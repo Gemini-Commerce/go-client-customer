@@ -22,7 +22,7 @@ type SortSortOrder string
 // List of SortSortOrder
 const (
 	SORTSORTORDER_DESC SortSortOrder = "DESC"
-	SORTSORTORDER_ASC SortSortOrder = "ASC"
+	SORTSORTORDER_ASC  SortSortOrder = "ASC"
 )
 
 // All allowed values of SortSortOrder enum
@@ -109,4 +109,3 @@ func (v *NullableSortSortOrder) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -20,12 +20,12 @@ var _ MappedNullable = &CustomerFindManyRequest{}
 
 // CustomerFindManyRequest struct for CustomerFindManyRequest
 type CustomerFindManyRequest struct {
-	TenantId *string `json:"tenantId,omitempty"`
-	GroupId *string `json:"groupId,omitempty"`
-	PageSize *int64 `json:"pageSize,omitempty"`
-	PageToken *string `json:"pageToken,omitempty"`
-	Filter *CustomerFindManyRequestFilter `json:"filter,omitempty"`
-	FilterMask *string `json:"filterMask,omitempty"`
+	TenantId             *string                        `json:"tenantId,omitempty"`
+	GroupId              *string                        `json:"groupId,omitempty"`
+	PageSize             *int64                         `json:"pageSize,omitempty"`
+	PageToken            *string                        `json:"pageToken,omitempty"`
+	Filter               *CustomerFindManyRequestFilter `json:"filter,omitempty"`
+	FilterMask           *string                        `json:"filterMask,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -241,7 +241,7 @@ func (o *CustomerFindManyRequest) SetFilterMask(v string) {
 }
 
 func (o CustomerFindManyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -304,22 +304,24 @@ func (o *CustomerFindManyRequest) UnmarshalJSON(data []byte) (err error) {
 
 // GetValue returns the value of well-known types
 func (o *CustomerFindManyRequest) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerFindManyRequest) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerFindManyRequest struct {
 	value *CustomerFindManyRequest
 	isSet bool
@@ -355,5 +357,3 @@ func (v *NullableCustomerFindManyRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

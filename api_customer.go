@@ -19,14 +19,13 @@ import (
 	"net/url"
 )
 
-
 // CustomerAPIService CustomerAPI service
 type CustomerAPIService service
 
 type ApiCustomerAcquireSubscriberRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerCreateSubscriberRequest
+	body       *CustomerCreateSubscriberRequest
 }
 
 func (r ApiCustomerAcquireSubscriberRequest) Body(body CustomerCreateSubscriberRequest) ApiCustomerAcquireSubscriberRequest {
@@ -41,24 +40,25 @@ func (r ApiCustomerAcquireSubscriberRequest) Execute() (*CustomerSubscriberRespo
 /*
 CustomerAcquireSubscriber Method for CustomerAcquireSubscriber
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerAcquireSubscriberRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerAcquireSubscriberRequest
 */
 func (a *CustomerAPIService) CustomerAcquireSubscriber(ctx context.Context) ApiCustomerAcquireSubscriberRequest {
 	return ApiCustomerAcquireSubscriberRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerSubscriberResponse
+//
+//	@return CustomerSubscriberResponse
 func (a *CustomerAPIService) CustomerAcquireSubscriberExecute(r ApiCustomerAcquireSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerSubscriberResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerSubscriberResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerAcquireSubscriber")
@@ -130,14 +130,14 @@ func (a *CustomerAPIService) CustomerAcquireSubscriberExecute(r ApiCustomerAcqui
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -154,9 +154,9 @@ func (a *CustomerAPIService) CustomerAcquireSubscriberExecute(r ApiCustomerAcqui
 }
 
 type ApiCustomerAcquireSubscriber2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerCreateSubscriberRequest
+	body       *CustomerCreateSubscriberRequest
 }
 
 func (r ApiCustomerAcquireSubscriber2Request) Body(body CustomerCreateSubscriberRequest) ApiCustomerAcquireSubscriber2Request {
@@ -171,24 +171,25 @@ func (r ApiCustomerAcquireSubscriber2Request) Execute() (*CustomerSubscriberResp
 /*
 CustomerAcquireSubscriber2 Method for CustomerAcquireSubscriber2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerAcquireSubscriber2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerAcquireSubscriber2Request
 */
 func (a *CustomerAPIService) CustomerAcquireSubscriber2(ctx context.Context) ApiCustomerAcquireSubscriber2Request {
 	return ApiCustomerAcquireSubscriber2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerSubscriberResponse
+//
+//	@return CustomerSubscriberResponse
 func (a *CustomerAPIService) CustomerAcquireSubscriber2Execute(r ApiCustomerAcquireSubscriber2Request) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerSubscriberResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerSubscriberResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerAcquireSubscriber2")
@@ -260,14 +261,14 @@ func (a *CustomerAPIService) CustomerAcquireSubscriber2Execute(r ApiCustomerAcqu
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -284,9 +285,9 @@ func (a *CustomerAPIService) CustomerAcquireSubscriber2Execute(r ApiCustomerAcqu
 }
 
 type ApiCustomerAcquireUnsubscriberRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerUnsubscribeRequest
+	body       *CustomerUnsubscribeRequest
 }
 
 func (r ApiCustomerAcquireUnsubscriberRequest) Body(body CustomerUnsubscribeRequest) ApiCustomerAcquireUnsubscriberRequest {
@@ -301,24 +302,25 @@ func (r ApiCustomerAcquireUnsubscriberRequest) Execute() (*CustomerUnsubscribeRe
 /*
 CustomerAcquireUnsubscriber Method for CustomerAcquireUnsubscriber
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerAcquireUnsubscriberRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerAcquireUnsubscriberRequest
 */
 func (a *CustomerAPIService) CustomerAcquireUnsubscriber(ctx context.Context) ApiCustomerAcquireUnsubscriberRequest {
 	return ApiCustomerAcquireUnsubscriberRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerUnsubscribeResponse
+//
+//	@return CustomerUnsubscribeResponse
 func (a *CustomerAPIService) CustomerAcquireUnsubscriberExecute(r ApiCustomerAcquireUnsubscriberRequest) (*CustomerUnsubscribeResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerUnsubscribeResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerUnsubscribeResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerAcquireUnsubscriber")
@@ -390,14 +392,14 @@ func (a *CustomerAPIService) CustomerAcquireUnsubscriberExecute(r ApiCustomerAcq
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -414,9 +416,9 @@ func (a *CustomerAPIService) CustomerAcquireUnsubscriberExecute(r ApiCustomerAcq
 }
 
 type ApiCustomerAcquireUnsubscriber2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerUnsubscribeRequest
+	body       *CustomerUnsubscribeRequest
 }
 
 func (r ApiCustomerAcquireUnsubscriber2Request) Body(body CustomerUnsubscribeRequest) ApiCustomerAcquireUnsubscriber2Request {
@@ -431,24 +433,25 @@ func (r ApiCustomerAcquireUnsubscriber2Request) Execute() (*CustomerUnsubscribeR
 /*
 CustomerAcquireUnsubscriber2 Method for CustomerAcquireUnsubscriber2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerAcquireUnsubscriber2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerAcquireUnsubscriber2Request
 */
 func (a *CustomerAPIService) CustomerAcquireUnsubscriber2(ctx context.Context) ApiCustomerAcquireUnsubscriber2Request {
 	return ApiCustomerAcquireUnsubscriber2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerUnsubscribeResponse
+//
+//	@return CustomerUnsubscribeResponse
 func (a *CustomerAPIService) CustomerAcquireUnsubscriber2Execute(r ApiCustomerAcquireUnsubscriber2Request) (*CustomerUnsubscribeResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerUnsubscribeResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerUnsubscribeResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerAcquireUnsubscriber2")
@@ -520,14 +523,14 @@ func (a *CustomerAPIService) CustomerAcquireUnsubscriber2Execute(r ApiCustomerAc
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -544,9 +547,9 @@ func (a *CustomerAPIService) CustomerAcquireUnsubscriber2Execute(r ApiCustomerAc
 }
 
 type ApiCustomerAddCustomerToGroupRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerAddCustomerToGroupRequest
+	body       *CustomerAddCustomerToGroupRequest
 }
 
 func (r ApiCustomerAddCustomerToGroupRequest) Body(body CustomerAddCustomerToGroupRequest) ApiCustomerAddCustomerToGroupRequest {
@@ -561,24 +564,25 @@ func (r ApiCustomerAddCustomerToGroupRequest) Execute() (*CustomerGroupResponse,
 /*
 CustomerAddCustomerToGroup Method for CustomerAddCustomerToGroup
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerAddCustomerToGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerAddCustomerToGroupRequest
 */
 func (a *CustomerAPIService) CustomerAddCustomerToGroup(ctx context.Context) ApiCustomerAddCustomerToGroupRequest {
 	return ApiCustomerAddCustomerToGroupRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerGroupResponse
+//
+//	@return CustomerGroupResponse
 func (a *CustomerAPIService) CustomerAddCustomerToGroupExecute(r ApiCustomerAddCustomerToGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerGroupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerAddCustomerToGroup")
@@ -650,14 +654,14 @@ func (a *CustomerAPIService) CustomerAddCustomerToGroupExecute(r ApiCustomerAddC
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -674,9 +678,9 @@ func (a *CustomerAPIService) CustomerAddCustomerToGroupExecute(r ApiCustomerAddC
 }
 
 type ApiCustomerAddCustomerToGroup2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerAddCustomerToGroupRequest
+	body       *CustomerAddCustomerToGroupRequest
 }
 
 func (r ApiCustomerAddCustomerToGroup2Request) Body(body CustomerAddCustomerToGroupRequest) ApiCustomerAddCustomerToGroup2Request {
@@ -691,24 +695,25 @@ func (r ApiCustomerAddCustomerToGroup2Request) Execute() (*CustomerGroupResponse
 /*
 CustomerAddCustomerToGroup2 Method for CustomerAddCustomerToGroup2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerAddCustomerToGroup2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerAddCustomerToGroup2Request
 */
 func (a *CustomerAPIService) CustomerAddCustomerToGroup2(ctx context.Context) ApiCustomerAddCustomerToGroup2Request {
 	return ApiCustomerAddCustomerToGroup2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerGroupResponse
+//
+//	@return CustomerGroupResponse
 func (a *CustomerAPIService) CustomerAddCustomerToGroup2Execute(r ApiCustomerAddCustomerToGroup2Request) (*CustomerGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerGroupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerAddCustomerToGroup2")
@@ -780,14 +785,14 @@ func (a *CustomerAPIService) CustomerAddCustomerToGroup2Execute(r ApiCustomerAdd
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -804,9 +809,9 @@ func (a *CustomerAPIService) CustomerAddCustomerToGroup2Execute(r ApiCustomerAdd
 }
 
 type ApiCustomerAssignAgentRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerAssignAgentRequest
+	body       *CustomerAssignAgentRequest
 }
 
 func (r ApiCustomerAssignAgentRequest) Body(body CustomerAssignAgentRequest) ApiCustomerAssignAgentRequest {
@@ -821,24 +826,25 @@ func (r ApiCustomerAssignAgentRequest) Execute() (map[string]interface{}, *http.
 /*
 CustomerAssignAgent Method for CustomerAssignAgent
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerAssignAgentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerAssignAgentRequest
 */
 func (a *CustomerAPIService) CustomerAssignAgent(ctx context.Context) ApiCustomerAssignAgentRequest {
 	return ApiCustomerAssignAgentRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *CustomerAPIService) CustomerAssignAgentExecute(r ApiCustomerAssignAgentRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerAssignAgent")
@@ -910,14 +916,14 @@ func (a *CustomerAPIService) CustomerAssignAgentExecute(r ApiCustomerAssignAgent
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -934,9 +940,9 @@ func (a *CustomerAPIService) CustomerAssignAgentExecute(r ApiCustomerAssignAgent
 }
 
 type ApiCustomerBulkUpdateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerBulkUpdateRequest
+	body       *CustomerBulkUpdateRequest
 }
 
 func (r ApiCustomerBulkUpdateRequest) Body(body CustomerBulkUpdateRequest) ApiCustomerBulkUpdateRequest {
@@ -951,24 +957,25 @@ func (r ApiCustomerBulkUpdateRequest) Execute() (*CustomerBulkUpdateResponse, *h
 /*
 CustomerBulkUpdate Method for CustomerBulkUpdate
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerBulkUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerBulkUpdateRequest
 */
 func (a *CustomerAPIService) CustomerBulkUpdate(ctx context.Context) ApiCustomerBulkUpdateRequest {
 	return ApiCustomerBulkUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerBulkUpdateResponse
+//
+//	@return CustomerBulkUpdateResponse
 func (a *CustomerAPIService) CustomerBulkUpdateExecute(r ApiCustomerBulkUpdateRequest) (*CustomerBulkUpdateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerBulkUpdateResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerBulkUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerBulkUpdate")
@@ -1040,14 +1047,14 @@ func (a *CustomerAPIService) CustomerBulkUpdateExecute(r ApiCustomerBulkUpdateRe
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1064,9 +1071,9 @@ func (a *CustomerAPIService) CustomerBulkUpdateExecute(r ApiCustomerBulkUpdateRe
 }
 
 type ApiCustomerBulkUpdate2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerBulkUpdateRequest
+	body       *CustomerBulkUpdateRequest
 }
 
 func (r ApiCustomerBulkUpdate2Request) Body(body CustomerBulkUpdateRequest) ApiCustomerBulkUpdate2Request {
@@ -1081,24 +1088,25 @@ func (r ApiCustomerBulkUpdate2Request) Execute() (*CustomerBulkUpdateResponse, *
 /*
 CustomerBulkUpdate2 Method for CustomerBulkUpdate2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerBulkUpdate2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerBulkUpdate2Request
 */
 func (a *CustomerAPIService) CustomerBulkUpdate2(ctx context.Context) ApiCustomerBulkUpdate2Request {
 	return ApiCustomerBulkUpdate2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerBulkUpdateResponse
+//
+//	@return CustomerBulkUpdateResponse
 func (a *CustomerAPIService) CustomerBulkUpdate2Execute(r ApiCustomerBulkUpdate2Request) (*CustomerBulkUpdateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerBulkUpdateResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerBulkUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerBulkUpdate2")
@@ -1170,14 +1178,14 @@ func (a *CustomerAPIService) CustomerBulkUpdate2Execute(r ApiCustomerBulkUpdate2
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1194,9 +1202,9 @@ func (a *CustomerAPIService) CustomerBulkUpdate2Execute(r ApiCustomerBulkUpdate2
 }
 
 type ApiCustomerCreateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerCreateRequest
+	body       *CustomerCreateRequest
 }
 
 func (r ApiCustomerCreateRequest) Body(body CustomerCreateRequest) ApiCustomerCreateRequest {
@@ -1211,24 +1219,25 @@ func (r ApiCustomerCreateRequest) Execute() (*CustomerCustomerResponse, *http.Re
 /*
 CustomerCreate Method for CustomerCreate
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerCreateRequest
 */
 func (a *CustomerAPIService) CustomerCreate(ctx context.Context) ApiCustomerCreateRequest {
 	return ApiCustomerCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerCustomerResponse
+//
+//	@return CustomerCustomerResponse
 func (a *CustomerAPIService) CustomerCreateExecute(r ApiCustomerCreateRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerCustomerResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerCustomerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCreate")
@@ -1300,14 +1309,14 @@ func (a *CustomerAPIService) CustomerCreateExecute(r ApiCustomerCreateRequest) (
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1324,9 +1333,9 @@ func (a *CustomerAPIService) CustomerCreateExecute(r ApiCustomerCreateRequest) (
 }
 
 type ApiCustomerCreate2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerCreateRequest
+	body       *CustomerCreateRequest
 }
 
 func (r ApiCustomerCreate2Request) Body(body CustomerCreateRequest) ApiCustomerCreate2Request {
@@ -1341,24 +1350,25 @@ func (r ApiCustomerCreate2Request) Execute() (*CustomerCustomerResponse, *http.R
 /*
 CustomerCreate2 Method for CustomerCreate2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerCreate2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerCreate2Request
 */
 func (a *CustomerAPIService) CustomerCreate2(ctx context.Context) ApiCustomerCreate2Request {
 	return ApiCustomerCreate2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerCustomerResponse
+//
+//	@return CustomerCustomerResponse
 func (a *CustomerAPIService) CustomerCreate2Execute(r ApiCustomerCreate2Request) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerCustomerResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerCustomerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCreate2")
@@ -1430,14 +1440,14 @@ func (a *CustomerAPIService) CustomerCreate2Execute(r ApiCustomerCreate2Request)
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1454,9 +1464,9 @@ func (a *CustomerAPIService) CustomerCreate2Execute(r ApiCustomerCreate2Request)
 }
 
 type ApiCustomerCreateAddressRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerAddressCreateRequest
+	body       *CustomerAddressCreateRequest
 }
 
 func (r ApiCustomerCreateAddressRequest) Body(body CustomerAddressCreateRequest) ApiCustomerCreateAddressRequest {
@@ -1471,24 +1481,25 @@ func (r ApiCustomerCreateAddressRequest) Execute() (*CustomerAddressCustomerResp
 /*
 CustomerCreateAddress Method for CustomerCreateAddress
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerCreateAddressRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerCreateAddressRequest
 */
 func (a *CustomerAPIService) CustomerCreateAddress(ctx context.Context) ApiCustomerCreateAddressRequest {
 	return ApiCustomerCreateAddressRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerAddressCustomerResponse
+//
+//	@return CustomerAddressCustomerResponse
 func (a *CustomerAPIService) CustomerCreateAddressExecute(r ApiCustomerCreateAddressRequest) (*CustomerAddressCustomerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerAddressCustomerResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerAddressCustomerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCreateAddress")
@@ -1560,14 +1571,14 @@ func (a *CustomerAPIService) CustomerCreateAddressExecute(r ApiCustomerCreateAdd
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1584,9 +1595,9 @@ func (a *CustomerAPIService) CustomerCreateAddressExecute(r ApiCustomerCreateAdd
 }
 
 type ApiCustomerCreateAddress2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerAddressCreateRequest
+	body       *CustomerAddressCreateRequest
 }
 
 func (r ApiCustomerCreateAddress2Request) Body(body CustomerAddressCreateRequest) ApiCustomerCreateAddress2Request {
@@ -1601,24 +1612,25 @@ func (r ApiCustomerCreateAddress2Request) Execute() (*CustomerAddressCustomerRes
 /*
 CustomerCreateAddress2 Method for CustomerCreateAddress2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerCreateAddress2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerCreateAddress2Request
 */
 func (a *CustomerAPIService) CustomerCreateAddress2(ctx context.Context) ApiCustomerCreateAddress2Request {
 	return ApiCustomerCreateAddress2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerAddressCustomerResponse
+//
+//	@return CustomerAddressCustomerResponse
 func (a *CustomerAPIService) CustomerCreateAddress2Execute(r ApiCustomerCreateAddress2Request) (*CustomerAddressCustomerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerAddressCustomerResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerAddressCustomerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCreateAddress2")
@@ -1690,14 +1702,14 @@ func (a *CustomerAPIService) CustomerCreateAddress2Execute(r ApiCustomerCreateAd
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1714,9 +1726,9 @@ func (a *CustomerAPIService) CustomerCreateAddress2Execute(r ApiCustomerCreateAd
 }
 
 type ApiCustomerCreateGroupRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerCreateGroupRequest
+	body       *CustomerCreateGroupRequest
 }
 
 func (r ApiCustomerCreateGroupRequest) Body(body CustomerCreateGroupRequest) ApiCustomerCreateGroupRequest {
@@ -1731,24 +1743,25 @@ func (r ApiCustomerCreateGroupRequest) Execute() (*CustomerGroupResponse, *http.
 /*
 CustomerCreateGroup Method for CustomerCreateGroup
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerCreateGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerCreateGroupRequest
 */
 func (a *CustomerAPIService) CustomerCreateGroup(ctx context.Context) ApiCustomerCreateGroupRequest {
 	return ApiCustomerCreateGroupRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerGroupResponse
+//
+//	@return CustomerGroupResponse
 func (a *CustomerAPIService) CustomerCreateGroupExecute(r ApiCustomerCreateGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerGroupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCreateGroup")
@@ -1820,14 +1833,14 @@ func (a *CustomerAPIService) CustomerCreateGroupExecute(r ApiCustomerCreateGroup
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1844,9 +1857,9 @@ func (a *CustomerAPIService) CustomerCreateGroupExecute(r ApiCustomerCreateGroup
 }
 
 type ApiCustomerCreateGroup2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerCreateGroupRequest
+	body       *CustomerCreateGroupRequest
 }
 
 func (r ApiCustomerCreateGroup2Request) Body(body CustomerCreateGroupRequest) ApiCustomerCreateGroup2Request {
@@ -1861,24 +1874,25 @@ func (r ApiCustomerCreateGroup2Request) Execute() (*CustomerGroupResponse, *http
 /*
 CustomerCreateGroup2 Method for CustomerCreateGroup2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerCreateGroup2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerCreateGroup2Request
 */
 func (a *CustomerAPIService) CustomerCreateGroup2(ctx context.Context) ApiCustomerCreateGroup2Request {
 	return ApiCustomerCreateGroup2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerGroupResponse
+//
+//	@return CustomerGroupResponse
 func (a *CustomerAPIService) CustomerCreateGroup2Execute(r ApiCustomerCreateGroup2Request) (*CustomerGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerGroupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCreateGroup2")
@@ -1950,14 +1964,14 @@ func (a *CustomerAPIService) CustomerCreateGroup2Execute(r ApiCustomerCreateGrou
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1974,9 +1988,9 @@ func (a *CustomerAPIService) CustomerCreateGroup2Execute(r ApiCustomerCreateGrou
 }
 
 type ApiCustomerCreateSubscriberRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerCreateSubscriberRequest
+	body       *CustomerCreateSubscriberRequest
 }
 
 func (r ApiCustomerCreateSubscriberRequest) Body(body CustomerCreateSubscriberRequest) ApiCustomerCreateSubscriberRequest {
@@ -1991,24 +2005,25 @@ func (r ApiCustomerCreateSubscriberRequest) Execute() (*CustomerSubscriberRespon
 /*
 CustomerCreateSubscriber Method for CustomerCreateSubscriber
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerCreateSubscriberRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerCreateSubscriberRequest
 */
 func (a *CustomerAPIService) CustomerCreateSubscriber(ctx context.Context) ApiCustomerCreateSubscriberRequest {
 	return ApiCustomerCreateSubscriberRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerSubscriberResponse
+//
+//	@return CustomerSubscriberResponse
 func (a *CustomerAPIService) CustomerCreateSubscriberExecute(r ApiCustomerCreateSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerSubscriberResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerSubscriberResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCreateSubscriber")
@@ -2080,14 +2095,14 @@ func (a *CustomerAPIService) CustomerCreateSubscriberExecute(r ApiCustomerCreate
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2104,9 +2119,9 @@ func (a *CustomerAPIService) CustomerCreateSubscriberExecute(r ApiCustomerCreate
 }
 
 type ApiCustomerCreateSubscriber2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerCreateSubscriberRequest
+	body       *CustomerCreateSubscriberRequest
 }
 
 func (r ApiCustomerCreateSubscriber2Request) Body(body CustomerCreateSubscriberRequest) ApiCustomerCreateSubscriber2Request {
@@ -2121,24 +2136,25 @@ func (r ApiCustomerCreateSubscriber2Request) Execute() (*CustomerSubscriberRespo
 /*
 CustomerCreateSubscriber2 Method for CustomerCreateSubscriber2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerCreateSubscriber2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerCreateSubscriber2Request
 */
 func (a *CustomerAPIService) CustomerCreateSubscriber2(ctx context.Context) ApiCustomerCreateSubscriber2Request {
 	return ApiCustomerCreateSubscriber2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerSubscriberResponse
+//
+//	@return CustomerSubscriberResponse
 func (a *CustomerAPIService) CustomerCreateSubscriber2Execute(r ApiCustomerCreateSubscriber2Request) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerSubscriberResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerSubscriberResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCreateSubscriber2")
@@ -2210,14 +2226,14 @@ func (a *CustomerAPIService) CustomerCreateSubscriber2Execute(r ApiCustomerCreat
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2234,9 +2250,9 @@ func (a *CustomerAPIService) CustomerCreateSubscriber2Execute(r ApiCustomerCreat
 }
 
 type ApiCustomerDeleteAddressRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerAddressDeleteRequest
+	body       *CustomerAddressDeleteRequest
 }
 
 func (r ApiCustomerDeleteAddressRequest) Body(body CustomerAddressDeleteRequest) ApiCustomerDeleteAddressRequest {
@@ -2251,24 +2267,25 @@ func (r ApiCustomerDeleteAddressRequest) Execute() (*CustomerAddressDeleteRespon
 /*
 CustomerDeleteAddress Method for CustomerDeleteAddress
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerDeleteAddressRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerDeleteAddressRequest
 */
 func (a *CustomerAPIService) CustomerDeleteAddress(ctx context.Context) ApiCustomerDeleteAddressRequest {
 	return ApiCustomerDeleteAddressRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerAddressDeleteResponse
+//
+//	@return CustomerAddressDeleteResponse
 func (a *CustomerAPIService) CustomerDeleteAddressExecute(r ApiCustomerDeleteAddressRequest) (*CustomerAddressDeleteResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerAddressDeleteResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerAddressDeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerDeleteAddress")
@@ -2340,14 +2357,14 @@ func (a *CustomerAPIService) CustomerDeleteAddressExecute(r ApiCustomerDeleteAdd
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2364,9 +2381,9 @@ func (a *CustomerAPIService) CustomerDeleteAddressExecute(r ApiCustomerDeleteAdd
 }
 
 type ApiCustomerDeleteAddress2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerAddressDeleteRequest
+	body       *CustomerAddressDeleteRequest
 }
 
 func (r ApiCustomerDeleteAddress2Request) Body(body CustomerAddressDeleteRequest) ApiCustomerDeleteAddress2Request {
@@ -2381,24 +2398,25 @@ func (r ApiCustomerDeleteAddress2Request) Execute() (*CustomerAddressDeleteRespo
 /*
 CustomerDeleteAddress2 Method for CustomerDeleteAddress2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerDeleteAddress2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerDeleteAddress2Request
 */
 func (a *CustomerAPIService) CustomerDeleteAddress2(ctx context.Context) ApiCustomerDeleteAddress2Request {
 	return ApiCustomerDeleteAddress2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerAddressDeleteResponse
+//
+//	@return CustomerAddressDeleteResponse
 func (a *CustomerAPIService) CustomerDeleteAddress2Execute(r ApiCustomerDeleteAddress2Request) (*CustomerAddressDeleteResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerAddressDeleteResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerAddressDeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerDeleteAddress2")
@@ -2470,14 +2488,14 @@ func (a *CustomerAPIService) CustomerDeleteAddress2Execute(r ApiCustomerDeleteAd
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2494,9 +2512,9 @@ func (a *CustomerAPIService) CustomerDeleteAddress2Execute(r ApiCustomerDeleteAd
 }
 
 type ApiCustomerDeleteGroupRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerDeleteGroupRequest
+	body       *CustomerDeleteGroupRequest
 }
 
 func (r ApiCustomerDeleteGroupRequest) Body(body CustomerDeleteGroupRequest) ApiCustomerDeleteGroupRequest {
@@ -2511,24 +2529,25 @@ func (r ApiCustomerDeleteGroupRequest) Execute() (*CustomerDeleteGroupResponse, 
 /*
 CustomerDeleteGroup Method for CustomerDeleteGroup
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerDeleteGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerDeleteGroupRequest
 */
 func (a *CustomerAPIService) CustomerDeleteGroup(ctx context.Context) ApiCustomerDeleteGroupRequest {
 	return ApiCustomerDeleteGroupRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerDeleteGroupResponse
+//
+//	@return CustomerDeleteGroupResponse
 func (a *CustomerAPIService) CustomerDeleteGroupExecute(r ApiCustomerDeleteGroupRequest) (*CustomerDeleteGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerDeleteGroupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerDeleteGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerDeleteGroup")
@@ -2600,14 +2619,14 @@ func (a *CustomerAPIService) CustomerDeleteGroupExecute(r ApiCustomerDeleteGroup
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2624,9 +2643,9 @@ func (a *CustomerAPIService) CustomerDeleteGroupExecute(r ApiCustomerDeleteGroup
 }
 
 type ApiCustomerDeleteGroup2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerDeleteGroupRequest
+	body       *CustomerDeleteGroupRequest
 }
 
 func (r ApiCustomerDeleteGroup2Request) Body(body CustomerDeleteGroupRequest) ApiCustomerDeleteGroup2Request {
@@ -2641,24 +2660,25 @@ func (r ApiCustomerDeleteGroup2Request) Execute() (*CustomerDeleteGroupResponse,
 /*
 CustomerDeleteGroup2 Method for CustomerDeleteGroup2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerDeleteGroup2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerDeleteGroup2Request
 */
 func (a *CustomerAPIService) CustomerDeleteGroup2(ctx context.Context) ApiCustomerDeleteGroup2Request {
 	return ApiCustomerDeleteGroup2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerDeleteGroupResponse
+//
+//	@return CustomerDeleteGroupResponse
 func (a *CustomerAPIService) CustomerDeleteGroup2Execute(r ApiCustomerDeleteGroup2Request) (*CustomerDeleteGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerDeleteGroupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerDeleteGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerDeleteGroup2")
@@ -2730,14 +2750,14 @@ func (a *CustomerAPIService) CustomerDeleteGroup2Execute(r ApiCustomerDeleteGrou
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2754,9 +2774,9 @@ func (a *CustomerAPIService) CustomerDeleteGroup2Execute(r ApiCustomerDeleteGrou
 }
 
 type ApiCustomerFindRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerFindManyRequest
+	body       *CustomerFindManyRequest
 }
 
 func (r ApiCustomerFindRequest) Body(body CustomerFindManyRequest) ApiCustomerFindRequest {
@@ -2771,24 +2791,25 @@ func (r ApiCustomerFindRequest) Execute() (*CustomerFindManyResponse, *http.Resp
 /*
 CustomerFind Method for CustomerFind
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerFindRequest
 */
 func (a *CustomerAPIService) CustomerFind(ctx context.Context) ApiCustomerFindRequest {
 	return ApiCustomerFindRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerFindManyResponse
+//
+//	@return CustomerFindManyResponse
 func (a *CustomerAPIService) CustomerFindExecute(r ApiCustomerFindRequest) (*CustomerFindManyResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerFindManyResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerFindManyResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFind")
@@ -2860,14 +2881,14 @@ func (a *CustomerAPIService) CustomerFindExecute(r ApiCustomerFindRequest) (*Cus
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2884,9 +2905,9 @@ func (a *CustomerAPIService) CustomerFindExecute(r ApiCustomerFindRequest) (*Cus
 }
 
 type ApiCustomerFind2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerFindManyRequest
+	body       *CustomerFindManyRequest
 }
 
 func (r ApiCustomerFind2Request) Body(body CustomerFindManyRequest) ApiCustomerFind2Request {
@@ -2901,24 +2922,25 @@ func (r ApiCustomerFind2Request) Execute() (*CustomerFindManyResponse, *http.Res
 /*
 CustomerFind2 Method for CustomerFind2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFind2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerFind2Request
 */
 func (a *CustomerAPIService) CustomerFind2(ctx context.Context) ApiCustomerFind2Request {
 	return ApiCustomerFind2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerFindManyResponse
+//
+//	@return CustomerFindManyResponse
 func (a *CustomerAPIService) CustomerFind2Execute(r ApiCustomerFind2Request) (*CustomerFindManyResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerFindManyResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerFindManyResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFind2")
@@ -2990,14 +3012,14 @@ func (a *CustomerAPIService) CustomerFind2Execute(r ApiCustomerFind2Request) (*C
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -3014,9 +3036,9 @@ func (a *CustomerAPIService) CustomerFind2Execute(r ApiCustomerFind2Request) (*C
 }
 
 type ApiCustomerFindByEmailRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerFindByEmailRequest
+	body       *CustomerFindByEmailRequest
 }
 
 func (r ApiCustomerFindByEmailRequest) Body(body CustomerFindByEmailRequest) ApiCustomerFindByEmailRequest {
@@ -3031,24 +3053,25 @@ func (r ApiCustomerFindByEmailRequest) Execute() (*CustomerCustomerResponse, *ht
 /*
 CustomerFindByEmail Method for CustomerFindByEmail
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindByEmailRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerFindByEmailRequest
 */
 func (a *CustomerAPIService) CustomerFindByEmail(ctx context.Context) ApiCustomerFindByEmailRequest {
 	return ApiCustomerFindByEmailRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerCustomerResponse
+//
+//	@return CustomerCustomerResponse
 func (a *CustomerAPIService) CustomerFindByEmailExecute(r ApiCustomerFindByEmailRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerCustomerResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerCustomerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFindByEmail")
@@ -3120,14 +3143,14 @@ func (a *CustomerAPIService) CustomerFindByEmailExecute(r ApiCustomerFindByEmail
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -3144,9 +3167,9 @@ func (a *CustomerAPIService) CustomerFindByEmailExecute(r ApiCustomerFindByEmail
 }
 
 type ApiCustomerFindByEmail2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerFindByEmailRequest
+	body       *CustomerFindByEmailRequest
 }
 
 func (r ApiCustomerFindByEmail2Request) Body(body CustomerFindByEmailRequest) ApiCustomerFindByEmail2Request {
@@ -3161,24 +3184,25 @@ func (r ApiCustomerFindByEmail2Request) Execute() (*CustomerCustomerResponse, *h
 /*
 CustomerFindByEmail2 Method for CustomerFindByEmail2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindByEmail2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerFindByEmail2Request
 */
 func (a *CustomerAPIService) CustomerFindByEmail2(ctx context.Context) ApiCustomerFindByEmail2Request {
 	return ApiCustomerFindByEmail2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerCustomerResponse
+//
+//	@return CustomerCustomerResponse
 func (a *CustomerAPIService) CustomerFindByEmail2Execute(r ApiCustomerFindByEmail2Request) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerCustomerResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerCustomerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFindByEmail2")
@@ -3250,14 +3274,14 @@ func (a *CustomerAPIService) CustomerFindByEmail2Execute(r ApiCustomerFindByEmai
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -3274,9 +3298,9 @@ func (a *CustomerAPIService) CustomerFindByEmail2Execute(r ApiCustomerFindByEmai
 }
 
 type ApiCustomerFindByIdRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerFindByIdRequest
+	body       *CustomerFindByIdRequest
 }
 
 func (r ApiCustomerFindByIdRequest) Body(body CustomerFindByIdRequest) ApiCustomerFindByIdRequest {
@@ -3291,24 +3315,25 @@ func (r ApiCustomerFindByIdRequest) Execute() (*CustomerCustomerResponse, *http.
 /*
 CustomerFindById Method for CustomerFindById
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindByIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerFindByIdRequest
 */
 func (a *CustomerAPIService) CustomerFindById(ctx context.Context) ApiCustomerFindByIdRequest {
 	return ApiCustomerFindByIdRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerCustomerResponse
+//
+//	@return CustomerCustomerResponse
 func (a *CustomerAPIService) CustomerFindByIdExecute(r ApiCustomerFindByIdRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerCustomerResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerCustomerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFindById")
@@ -3380,14 +3405,14 @@ func (a *CustomerAPIService) CustomerFindByIdExecute(r ApiCustomerFindByIdReques
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -3404,9 +3429,9 @@ func (a *CustomerAPIService) CustomerFindByIdExecute(r ApiCustomerFindByIdReques
 }
 
 type ApiCustomerFindById2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerFindByIdRequest
+	body       *CustomerFindByIdRequest
 }
 
 func (r ApiCustomerFindById2Request) Body(body CustomerFindByIdRequest) ApiCustomerFindById2Request {
@@ -3421,24 +3446,25 @@ func (r ApiCustomerFindById2Request) Execute() (*CustomerCustomerResponse, *http
 /*
 CustomerFindById2 Method for CustomerFindById2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindById2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerFindById2Request
 */
 func (a *CustomerAPIService) CustomerFindById2(ctx context.Context) ApiCustomerFindById2Request {
 	return ApiCustomerFindById2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerCustomerResponse
+//
+//	@return CustomerCustomerResponse
 func (a *CustomerAPIService) CustomerFindById2Execute(r ApiCustomerFindById2Request) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerCustomerResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerCustomerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFindById2")
@@ -3510,14 +3536,14 @@ func (a *CustomerAPIService) CustomerFindById2Execute(r ApiCustomerFindById2Requ
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -3534,9 +3560,9 @@ func (a *CustomerAPIService) CustomerFindById2Execute(r ApiCustomerFindById2Requ
 }
 
 type ApiCustomerFindSubscriberByEmailRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerFindSubscriberByEmailRequest
+	body       *CustomerFindSubscriberByEmailRequest
 }
 
 func (r ApiCustomerFindSubscriberByEmailRequest) Body(body CustomerFindSubscriberByEmailRequest) ApiCustomerFindSubscriberByEmailRequest {
@@ -3551,24 +3577,25 @@ func (r ApiCustomerFindSubscriberByEmailRequest) Execute() (*CustomerSubscriberR
 /*
 CustomerFindSubscriberByEmail Method for CustomerFindSubscriberByEmail
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindSubscriberByEmailRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerFindSubscriberByEmailRequest
 */
 func (a *CustomerAPIService) CustomerFindSubscriberByEmail(ctx context.Context) ApiCustomerFindSubscriberByEmailRequest {
 	return ApiCustomerFindSubscriberByEmailRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerSubscriberResponse
+//
+//	@return CustomerSubscriberResponse
 func (a *CustomerAPIService) CustomerFindSubscriberByEmailExecute(r ApiCustomerFindSubscriberByEmailRequest) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerSubscriberResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerSubscriberResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFindSubscriberByEmail")
@@ -3640,14 +3667,14 @@ func (a *CustomerAPIService) CustomerFindSubscriberByEmailExecute(r ApiCustomerF
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -3664,9 +3691,9 @@ func (a *CustomerAPIService) CustomerFindSubscriberByEmailExecute(r ApiCustomerF
 }
 
 type ApiCustomerFindSubscriberByEmail2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerFindSubscriberByEmailRequest
+	body       *CustomerFindSubscriberByEmailRequest
 }
 
 func (r ApiCustomerFindSubscriberByEmail2Request) Body(body CustomerFindSubscriberByEmailRequest) ApiCustomerFindSubscriberByEmail2Request {
@@ -3681,24 +3708,25 @@ func (r ApiCustomerFindSubscriberByEmail2Request) Execute() (*CustomerSubscriber
 /*
 CustomerFindSubscriberByEmail2 Method for CustomerFindSubscriberByEmail2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindSubscriberByEmail2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerFindSubscriberByEmail2Request
 */
 func (a *CustomerAPIService) CustomerFindSubscriberByEmail2(ctx context.Context) ApiCustomerFindSubscriberByEmail2Request {
 	return ApiCustomerFindSubscriberByEmail2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerSubscriberResponse
+//
+//	@return CustomerSubscriberResponse
 func (a *CustomerAPIService) CustomerFindSubscriberByEmail2Execute(r ApiCustomerFindSubscriberByEmail2Request) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerSubscriberResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerSubscriberResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFindSubscriberByEmail2")
@@ -3770,14 +3798,14 @@ func (a *CustomerAPIService) CustomerFindSubscriberByEmail2Execute(r ApiCustomer
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -3794,9 +3822,9 @@ func (a *CustomerAPIService) CustomerFindSubscriberByEmail2Execute(r ApiCustomer
 }
 
 type ApiCustomerFindSubscriberByIdRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerFindSubscriberByIdRequest
+	body       *CustomerFindSubscriberByIdRequest
 }
 
 func (r ApiCustomerFindSubscriberByIdRequest) Body(body CustomerFindSubscriberByIdRequest) ApiCustomerFindSubscriberByIdRequest {
@@ -3811,24 +3839,25 @@ func (r ApiCustomerFindSubscriberByIdRequest) Execute() (*CustomerSubscriberResp
 /*
 CustomerFindSubscriberById Method for CustomerFindSubscriberById
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindSubscriberByIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerFindSubscriberByIdRequest
 */
 func (a *CustomerAPIService) CustomerFindSubscriberById(ctx context.Context) ApiCustomerFindSubscriberByIdRequest {
 	return ApiCustomerFindSubscriberByIdRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerSubscriberResponse
+//
+//	@return CustomerSubscriberResponse
 func (a *CustomerAPIService) CustomerFindSubscriberByIdExecute(r ApiCustomerFindSubscriberByIdRequest) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerSubscriberResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerSubscriberResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFindSubscriberById")
@@ -3900,14 +3929,14 @@ func (a *CustomerAPIService) CustomerFindSubscriberByIdExecute(r ApiCustomerFind
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -3924,9 +3953,9 @@ func (a *CustomerAPIService) CustomerFindSubscriberByIdExecute(r ApiCustomerFind
 }
 
 type ApiCustomerFindSubscriberById2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerFindSubscriberByIdRequest
+	body       *CustomerFindSubscriberByIdRequest
 }
 
 func (r ApiCustomerFindSubscriberById2Request) Body(body CustomerFindSubscriberByIdRequest) ApiCustomerFindSubscriberById2Request {
@@ -3941,24 +3970,25 @@ func (r ApiCustomerFindSubscriberById2Request) Execute() (*CustomerSubscriberRes
 /*
 CustomerFindSubscriberById2 Method for CustomerFindSubscriberById2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerFindSubscriberById2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerFindSubscriberById2Request
 */
 func (a *CustomerAPIService) CustomerFindSubscriberById2(ctx context.Context) ApiCustomerFindSubscriberById2Request {
 	return ApiCustomerFindSubscriberById2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerSubscriberResponse
+//
+//	@return CustomerSubscriberResponse
 func (a *CustomerAPIService) CustomerFindSubscriberById2Execute(r ApiCustomerFindSubscriberById2Request) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerSubscriberResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerSubscriberResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFindSubscriberById2")
@@ -4030,14 +4060,14 @@ func (a *CustomerAPIService) CustomerFindSubscriberById2Execute(r ApiCustomerFin
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -4054,9 +4084,9 @@ func (a *CustomerAPIService) CustomerFindSubscriberById2Execute(r ApiCustomerFin
 }
 
 type ApiCustomerGetGroupByCodeRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerGetGroupByCodeRequest
+	body       *CustomerGetGroupByCodeRequest
 }
 
 func (r ApiCustomerGetGroupByCodeRequest) Body(body CustomerGetGroupByCodeRequest) ApiCustomerGetGroupByCodeRequest {
@@ -4071,24 +4101,25 @@ func (r ApiCustomerGetGroupByCodeRequest) Execute() (*CustomerGroupResponse, *ht
 /*
 CustomerGetGroupByCode Method for CustomerGetGroupByCode
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerGetGroupByCodeRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerGetGroupByCodeRequest
 */
 func (a *CustomerAPIService) CustomerGetGroupByCode(ctx context.Context) ApiCustomerGetGroupByCodeRequest {
 	return ApiCustomerGetGroupByCodeRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerGroupResponse
+//
+//	@return CustomerGroupResponse
 func (a *CustomerAPIService) CustomerGetGroupByCodeExecute(r ApiCustomerGetGroupByCodeRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerGroupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerGetGroupByCode")
@@ -4160,14 +4191,14 @@ func (a *CustomerAPIService) CustomerGetGroupByCodeExecute(r ApiCustomerGetGroup
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -4184,9 +4215,9 @@ func (a *CustomerAPIService) CustomerGetGroupByCodeExecute(r ApiCustomerGetGroup
 }
 
 type ApiCustomerGetGroupByCode2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerGetGroupByCodeRequest
+	body       *CustomerGetGroupByCodeRequest
 }
 
 func (r ApiCustomerGetGroupByCode2Request) Body(body CustomerGetGroupByCodeRequest) ApiCustomerGetGroupByCode2Request {
@@ -4201,24 +4232,25 @@ func (r ApiCustomerGetGroupByCode2Request) Execute() (*CustomerGroupResponse, *h
 /*
 CustomerGetGroupByCode2 Method for CustomerGetGroupByCode2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerGetGroupByCode2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerGetGroupByCode2Request
 */
 func (a *CustomerAPIService) CustomerGetGroupByCode2(ctx context.Context) ApiCustomerGetGroupByCode2Request {
 	return ApiCustomerGetGroupByCode2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerGroupResponse
+//
+//	@return CustomerGroupResponse
 func (a *CustomerAPIService) CustomerGetGroupByCode2Execute(r ApiCustomerGetGroupByCode2Request) (*CustomerGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerGroupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerGetGroupByCode2")
@@ -4290,14 +4322,14 @@ func (a *CustomerAPIService) CustomerGetGroupByCode2Execute(r ApiCustomerGetGrou
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -4314,9 +4346,9 @@ func (a *CustomerAPIService) CustomerGetGroupByCode2Execute(r ApiCustomerGetGrou
 }
 
 type ApiCustomerGetGroupByIdRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerGetGroupByIdRequest
+	body       *CustomerGetGroupByIdRequest
 }
 
 func (r ApiCustomerGetGroupByIdRequest) Body(body CustomerGetGroupByIdRequest) ApiCustomerGetGroupByIdRequest {
@@ -4331,24 +4363,25 @@ func (r ApiCustomerGetGroupByIdRequest) Execute() (*CustomerGroupResponse, *http
 /*
 CustomerGetGroupById Method for CustomerGetGroupById
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerGetGroupByIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerGetGroupByIdRequest
 */
 func (a *CustomerAPIService) CustomerGetGroupById(ctx context.Context) ApiCustomerGetGroupByIdRequest {
 	return ApiCustomerGetGroupByIdRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerGroupResponse
+//
+//	@return CustomerGroupResponse
 func (a *CustomerAPIService) CustomerGetGroupByIdExecute(r ApiCustomerGetGroupByIdRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerGroupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerGetGroupById")
@@ -4420,14 +4453,14 @@ func (a *CustomerAPIService) CustomerGetGroupByIdExecute(r ApiCustomerGetGroupBy
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -4444,9 +4477,9 @@ func (a *CustomerAPIService) CustomerGetGroupByIdExecute(r ApiCustomerGetGroupBy
 }
 
 type ApiCustomerGetGroupById2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerGetGroupByIdRequest
+	body       *CustomerGetGroupByIdRequest
 }
 
 func (r ApiCustomerGetGroupById2Request) Body(body CustomerGetGroupByIdRequest) ApiCustomerGetGroupById2Request {
@@ -4461,24 +4494,25 @@ func (r ApiCustomerGetGroupById2Request) Execute() (*CustomerGroupResponse, *htt
 /*
 CustomerGetGroupById2 Method for CustomerGetGroupById2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerGetGroupById2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerGetGroupById2Request
 */
 func (a *CustomerAPIService) CustomerGetGroupById2(ctx context.Context) ApiCustomerGetGroupById2Request {
 	return ApiCustomerGetGroupById2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerGroupResponse
+//
+//	@return CustomerGroupResponse
 func (a *CustomerAPIService) CustomerGetGroupById2Execute(r ApiCustomerGetGroupById2Request) (*CustomerGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerGroupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerGetGroupById2")
@@ -4550,14 +4584,14 @@ func (a *CustomerAPIService) CustomerGetGroupById2Execute(r ApiCustomerGetGroupB
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -4574,9 +4608,9 @@ func (a *CustomerAPIService) CustomerGetGroupById2Execute(r ApiCustomerGetGroupB
 }
 
 type ApiCustomerGrantPermissionsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerGrantPermissionsRequest
+	body       *CustomerGrantPermissionsRequest
 }
 
 func (r ApiCustomerGrantPermissionsRequest) Body(body CustomerGrantPermissionsRequest) ApiCustomerGrantPermissionsRequest {
@@ -4591,24 +4625,25 @@ func (r ApiCustomerGrantPermissionsRequest) Execute() (map[string]interface{}, *
 /*
 CustomerGrantPermissions Method for CustomerGrantPermissions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerGrantPermissionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerGrantPermissionsRequest
 */
 func (a *CustomerAPIService) CustomerGrantPermissions(ctx context.Context) ApiCustomerGrantPermissionsRequest {
 	return ApiCustomerGrantPermissionsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *CustomerAPIService) CustomerGrantPermissionsExecute(r ApiCustomerGrantPermissionsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerGrantPermissions")
@@ -4680,14 +4715,14 @@ func (a *CustomerAPIService) CustomerGrantPermissionsExecute(r ApiCustomerGrantP
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -4704,9 +4739,9 @@ func (a *CustomerAPIService) CustomerGrantPermissionsExecute(r ApiCustomerGrantP
 }
 
 type ApiCustomerGrantPermissions2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerGrantPermissionsRequest
+	body       *CustomerGrantPermissionsRequest
 }
 
 func (r ApiCustomerGrantPermissions2Request) Body(body CustomerGrantPermissionsRequest) ApiCustomerGrantPermissions2Request {
@@ -4721,24 +4756,25 @@ func (r ApiCustomerGrantPermissions2Request) Execute() (map[string]interface{}, 
 /*
 CustomerGrantPermissions2 Method for CustomerGrantPermissions2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerGrantPermissions2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerGrantPermissions2Request
 */
 func (a *CustomerAPIService) CustomerGrantPermissions2(ctx context.Context) ApiCustomerGrantPermissions2Request {
 	return ApiCustomerGrantPermissions2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *CustomerAPIService) CustomerGrantPermissions2Execute(r ApiCustomerGrantPermissions2Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerGrantPermissions2")
@@ -4810,14 +4846,14 @@ func (a *CustomerAPIService) CustomerGrantPermissions2Execute(r ApiCustomerGrant
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -4834,9 +4870,9 @@ func (a *CustomerAPIService) CustomerGrantPermissions2Execute(r ApiCustomerGrant
 }
 
 type ApiCustomerListConsentsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerListConsentsRequest
+	body       *CustomerListConsentsRequest
 }
 
 func (r ApiCustomerListConsentsRequest) Body(body CustomerListConsentsRequest) ApiCustomerListConsentsRequest {
@@ -4851,24 +4887,25 @@ func (r ApiCustomerListConsentsRequest) Execute() (*CustomerListConsentsResponse
 /*
 CustomerListConsents ListConsents list all consents of a customer
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerListConsentsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerListConsentsRequest
 */
 func (a *CustomerAPIService) CustomerListConsents(ctx context.Context) ApiCustomerListConsentsRequest {
 	return ApiCustomerListConsentsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerListConsentsResponse
+//
+//	@return CustomerListConsentsResponse
 func (a *CustomerAPIService) CustomerListConsentsExecute(r ApiCustomerListConsentsRequest) (*CustomerListConsentsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerListConsentsResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerListConsentsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerListConsents")
@@ -4940,14 +4977,14 @@ func (a *CustomerAPIService) CustomerListConsentsExecute(r ApiCustomerListConsen
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -4964,9 +5001,9 @@ func (a *CustomerAPIService) CustomerListConsentsExecute(r ApiCustomerListConsen
 }
 
 type ApiCustomerListCustomersRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerListCustomersRequest
+	body       *CustomerListCustomersRequest
 }
 
 func (r ApiCustomerListCustomersRequest) Body(body CustomerListCustomersRequest) ApiCustomerListCustomersRequest {
@@ -4981,24 +5018,25 @@ func (r ApiCustomerListCustomersRequest) Execute() (*CustomerListCustomersRespon
 /*
 CustomerListCustomers Method for CustomerListCustomers
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerListCustomersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerListCustomersRequest
 */
 func (a *CustomerAPIService) CustomerListCustomers(ctx context.Context) ApiCustomerListCustomersRequest {
 	return ApiCustomerListCustomersRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerListCustomersResponse
+//
+//	@return CustomerListCustomersResponse
 func (a *CustomerAPIService) CustomerListCustomersExecute(r ApiCustomerListCustomersRequest) (*CustomerListCustomersResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerListCustomersResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerListCustomersResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerListCustomers")
@@ -5070,14 +5108,14 @@ func (a *CustomerAPIService) CustomerListCustomersExecute(r ApiCustomerListCusto
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -5094,9 +5132,9 @@ func (a *CustomerAPIService) CustomerListCustomersExecute(r ApiCustomerListCusto
 }
 
 type ApiCustomerListCustomers2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerListCustomersRequest
+	body       *CustomerListCustomersRequest
 }
 
 func (r ApiCustomerListCustomers2Request) Body(body CustomerListCustomersRequest) ApiCustomerListCustomers2Request {
@@ -5111,24 +5149,25 @@ func (r ApiCustomerListCustomers2Request) Execute() (*CustomerListCustomersRespo
 /*
 CustomerListCustomers2 Method for CustomerListCustomers2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerListCustomers2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerListCustomers2Request
 */
 func (a *CustomerAPIService) CustomerListCustomers2(ctx context.Context) ApiCustomerListCustomers2Request {
 	return ApiCustomerListCustomers2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerListCustomersResponse
+//
+//	@return CustomerListCustomersResponse
 func (a *CustomerAPIService) CustomerListCustomers2Execute(r ApiCustomerListCustomers2Request) (*CustomerListCustomersResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerListCustomersResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerListCustomersResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerListCustomers2")
@@ -5200,14 +5239,14 @@ func (a *CustomerAPIService) CustomerListCustomers2Execute(r ApiCustomerListCust
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -5224,9 +5263,9 @@ func (a *CustomerAPIService) CustomerListCustomers2Execute(r ApiCustomerListCust
 }
 
 type ApiCustomerListGroupsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerListGroupsRequest
+	body       *CustomerListGroupsRequest
 }
 
 func (r ApiCustomerListGroupsRequest) Body(body CustomerListGroupsRequest) ApiCustomerListGroupsRequest {
@@ -5241,24 +5280,25 @@ func (r ApiCustomerListGroupsRequest) Execute() (*CustomerListGroupsResponse, *h
 /*
 CustomerListGroups Method for CustomerListGroups
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerListGroupsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerListGroupsRequest
 */
 func (a *CustomerAPIService) CustomerListGroups(ctx context.Context) ApiCustomerListGroupsRequest {
 	return ApiCustomerListGroupsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerListGroupsResponse
+//
+//	@return CustomerListGroupsResponse
 func (a *CustomerAPIService) CustomerListGroupsExecute(r ApiCustomerListGroupsRequest) (*CustomerListGroupsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerListGroupsResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerListGroupsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerListGroups")
@@ -5330,14 +5370,14 @@ func (a *CustomerAPIService) CustomerListGroupsExecute(r ApiCustomerListGroupsRe
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -5354,9 +5394,9 @@ func (a *CustomerAPIService) CustomerListGroupsExecute(r ApiCustomerListGroupsRe
 }
 
 type ApiCustomerListGroups2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerListGroupsRequest
+	body       *CustomerListGroupsRequest
 }
 
 func (r ApiCustomerListGroups2Request) Body(body CustomerListGroupsRequest) ApiCustomerListGroups2Request {
@@ -5371,24 +5411,25 @@ func (r ApiCustomerListGroups2Request) Execute() (*CustomerListGroupsResponse, *
 /*
 CustomerListGroups2 Method for CustomerListGroups2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerListGroups2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerListGroups2Request
 */
 func (a *CustomerAPIService) CustomerListGroups2(ctx context.Context) ApiCustomerListGroups2Request {
 	return ApiCustomerListGroups2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerListGroupsResponse
+//
+//	@return CustomerListGroupsResponse
 func (a *CustomerAPIService) CustomerListGroups2Execute(r ApiCustomerListGroups2Request) (*CustomerListGroupsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerListGroupsResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerListGroupsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerListGroups2")
@@ -5460,14 +5501,14 @@ func (a *CustomerAPIService) CustomerListGroups2Execute(r ApiCustomerListGroups2
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -5484,9 +5525,9 @@ func (a *CustomerAPIService) CustomerListGroups2Execute(r ApiCustomerListGroups2
 }
 
 type ApiCustomerRemoveCustomerFromGroupRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerRemoveCustomerFromGroupRequest
+	body       *CustomerRemoveCustomerFromGroupRequest
 }
 
 func (r ApiCustomerRemoveCustomerFromGroupRequest) Body(body CustomerRemoveCustomerFromGroupRequest) ApiCustomerRemoveCustomerFromGroupRequest {
@@ -5501,24 +5542,25 @@ func (r ApiCustomerRemoveCustomerFromGroupRequest) Execute() (*CustomerGroupResp
 /*
 CustomerRemoveCustomerFromGroup Method for CustomerRemoveCustomerFromGroup
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerRemoveCustomerFromGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerRemoveCustomerFromGroupRequest
 */
 func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup(ctx context.Context) ApiCustomerRemoveCustomerFromGroupRequest {
 	return ApiCustomerRemoveCustomerFromGroupRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerGroupResponse
+//
+//	@return CustomerGroupResponse
 func (a *CustomerAPIService) CustomerRemoveCustomerFromGroupExecute(r ApiCustomerRemoveCustomerFromGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerGroupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerRemoveCustomerFromGroup")
@@ -5590,14 +5632,14 @@ func (a *CustomerAPIService) CustomerRemoveCustomerFromGroupExecute(r ApiCustome
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -5614,9 +5656,9 @@ func (a *CustomerAPIService) CustomerRemoveCustomerFromGroupExecute(r ApiCustome
 }
 
 type ApiCustomerRemoveCustomerFromGroup2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerRemoveCustomerFromGroupRequest
+	body       *CustomerRemoveCustomerFromGroupRequest
 }
 
 func (r ApiCustomerRemoveCustomerFromGroup2Request) Body(body CustomerRemoveCustomerFromGroupRequest) ApiCustomerRemoveCustomerFromGroup2Request {
@@ -5631,24 +5673,25 @@ func (r ApiCustomerRemoveCustomerFromGroup2Request) Execute() (*CustomerGroupRes
 /*
 CustomerRemoveCustomerFromGroup2 Method for CustomerRemoveCustomerFromGroup2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerRemoveCustomerFromGroup2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerRemoveCustomerFromGroup2Request
 */
 func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup2(ctx context.Context) ApiCustomerRemoveCustomerFromGroup2Request {
 	return ApiCustomerRemoveCustomerFromGroup2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerGroupResponse
+//
+//	@return CustomerGroupResponse
 func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup2Execute(r ApiCustomerRemoveCustomerFromGroup2Request) (*CustomerGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerGroupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerRemoveCustomerFromGroup2")
@@ -5720,14 +5763,14 @@ func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup2Execute(r ApiCustom
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -5744,9 +5787,9 @@ func (a *CustomerAPIService) CustomerRemoveCustomerFromGroup2Execute(r ApiCustom
 }
 
 type ApiCustomerRemoveDefaultAddressRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerRemoveDefaultAddressRequest
+	body       *CustomerRemoveDefaultAddressRequest
 }
 
 func (r ApiCustomerRemoveDefaultAddressRequest) Body(body CustomerRemoveDefaultAddressRequest) ApiCustomerRemoveDefaultAddressRequest {
@@ -5761,24 +5804,25 @@ func (r ApiCustomerRemoveDefaultAddressRequest) Execute() (*CustomerCustomerResp
 /*
 CustomerRemoveDefaultAddress Method for CustomerRemoveDefaultAddress
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerRemoveDefaultAddressRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerRemoveDefaultAddressRequest
 */
 func (a *CustomerAPIService) CustomerRemoveDefaultAddress(ctx context.Context) ApiCustomerRemoveDefaultAddressRequest {
 	return ApiCustomerRemoveDefaultAddressRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerCustomerResponse
+//
+//	@return CustomerCustomerResponse
 func (a *CustomerAPIService) CustomerRemoveDefaultAddressExecute(r ApiCustomerRemoveDefaultAddressRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerCustomerResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerCustomerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerRemoveDefaultAddress")
@@ -5850,14 +5894,14 @@ func (a *CustomerAPIService) CustomerRemoveDefaultAddressExecute(r ApiCustomerRe
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -5874,9 +5918,9 @@ func (a *CustomerAPIService) CustomerRemoveDefaultAddressExecute(r ApiCustomerRe
 }
 
 type ApiCustomerRemoveDefaultAddress2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerRemoveDefaultAddressRequest
+	body       *CustomerRemoveDefaultAddressRequest
 }
 
 func (r ApiCustomerRemoveDefaultAddress2Request) Body(body CustomerRemoveDefaultAddressRequest) ApiCustomerRemoveDefaultAddress2Request {
@@ -5891,24 +5935,25 @@ func (r ApiCustomerRemoveDefaultAddress2Request) Execute() (*CustomerCustomerRes
 /*
 CustomerRemoveDefaultAddress2 Method for CustomerRemoveDefaultAddress2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerRemoveDefaultAddress2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerRemoveDefaultAddress2Request
 */
 func (a *CustomerAPIService) CustomerRemoveDefaultAddress2(ctx context.Context) ApiCustomerRemoveDefaultAddress2Request {
 	return ApiCustomerRemoveDefaultAddress2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerCustomerResponse
+//
+//	@return CustomerCustomerResponse
 func (a *CustomerAPIService) CustomerRemoveDefaultAddress2Execute(r ApiCustomerRemoveDefaultAddress2Request) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerCustomerResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerCustomerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerRemoveDefaultAddress2")
@@ -5980,14 +6025,14 @@ func (a *CustomerAPIService) CustomerRemoveDefaultAddress2Execute(r ApiCustomerR
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -6004,9 +6049,9 @@ func (a *CustomerAPIService) CustomerRemoveDefaultAddress2Execute(r ApiCustomerR
 }
 
 type ApiCustomerRevokePermissionsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerRevokePermissionsRequest
+	body       *CustomerRevokePermissionsRequest
 }
 
 func (r ApiCustomerRevokePermissionsRequest) Body(body CustomerRevokePermissionsRequest) ApiCustomerRevokePermissionsRequest {
@@ -6021,24 +6066,25 @@ func (r ApiCustomerRevokePermissionsRequest) Execute() (map[string]interface{}, 
 /*
 CustomerRevokePermissions Method for CustomerRevokePermissions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerRevokePermissionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerRevokePermissionsRequest
 */
 func (a *CustomerAPIService) CustomerRevokePermissions(ctx context.Context) ApiCustomerRevokePermissionsRequest {
 	return ApiCustomerRevokePermissionsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *CustomerAPIService) CustomerRevokePermissionsExecute(r ApiCustomerRevokePermissionsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerRevokePermissions")
@@ -6110,14 +6156,14 @@ func (a *CustomerAPIService) CustomerRevokePermissionsExecute(r ApiCustomerRevok
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -6134,9 +6180,9 @@ func (a *CustomerAPIService) CustomerRevokePermissionsExecute(r ApiCustomerRevok
 }
 
 type ApiCustomerRevokePermissions2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerRevokePermissionsRequest
+	body       *CustomerRevokePermissionsRequest
 }
 
 func (r ApiCustomerRevokePermissions2Request) Body(body CustomerRevokePermissionsRequest) ApiCustomerRevokePermissions2Request {
@@ -6151,24 +6197,25 @@ func (r ApiCustomerRevokePermissions2Request) Execute() (map[string]interface{},
 /*
 CustomerRevokePermissions2 Method for CustomerRevokePermissions2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerRevokePermissions2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerRevokePermissions2Request
 */
 func (a *CustomerAPIService) CustomerRevokePermissions2(ctx context.Context) ApiCustomerRevokePermissions2Request {
 	return ApiCustomerRevokePermissions2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *CustomerAPIService) CustomerRevokePermissions2Execute(r ApiCustomerRevokePermissions2Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerRevokePermissions2")
@@ -6240,14 +6287,14 @@ func (a *CustomerAPIService) CustomerRevokePermissions2Execute(r ApiCustomerRevo
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -6264,9 +6311,9 @@ func (a *CustomerAPIService) CustomerRevokePermissions2Execute(r ApiCustomerRevo
 }
 
 type ApiCustomerSearchRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerSearchRequest
+	body       *CustomerSearchRequest
 }
 
 func (r ApiCustomerSearchRequest) Body(body CustomerSearchRequest) ApiCustomerSearchRequest {
@@ -6281,24 +6328,25 @@ func (r ApiCustomerSearchRequest) Execute() (*CustomerSearchResponse, *http.Resp
 /*
 CustomerSearch Method for CustomerSearch
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerSearchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerSearchRequest
 */
 func (a *CustomerAPIService) CustomerSearch(ctx context.Context) ApiCustomerSearchRequest {
 	return ApiCustomerSearchRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerSearchResponse
+//
+//	@return CustomerSearchResponse
 func (a *CustomerAPIService) CustomerSearchExecute(r ApiCustomerSearchRequest) (*CustomerSearchResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerSearchResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerSearchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerSearch")
@@ -6370,14 +6418,14 @@ func (a *CustomerAPIService) CustomerSearchExecute(r ApiCustomerSearchRequest) (
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -6394,9 +6442,9 @@ func (a *CustomerAPIService) CustomerSearchExecute(r ApiCustomerSearchRequest) (
 }
 
 type ApiCustomerSearch2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerSearchRequest
+	body       *CustomerSearchRequest
 }
 
 func (r ApiCustomerSearch2Request) Body(body CustomerSearchRequest) ApiCustomerSearch2Request {
@@ -6411,24 +6459,25 @@ func (r ApiCustomerSearch2Request) Execute() (*CustomerSearchResponse, *http.Res
 /*
 CustomerSearch2 Method for CustomerSearch2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerSearch2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerSearch2Request
 */
 func (a *CustomerAPIService) CustomerSearch2(ctx context.Context) ApiCustomerSearch2Request {
 	return ApiCustomerSearch2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerSearchResponse
+//
+//	@return CustomerSearchResponse
 func (a *CustomerAPIService) CustomerSearch2Execute(r ApiCustomerSearch2Request) (*CustomerSearchResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerSearchResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerSearchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerSearch2")
@@ -6500,14 +6549,14 @@ func (a *CustomerAPIService) CustomerSearch2Execute(r ApiCustomerSearch2Request)
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -6524,9 +6573,9 @@ func (a *CustomerAPIService) CustomerSearch2Execute(r ApiCustomerSearch2Request)
 }
 
 type ApiCustomerSetDefaultAddressRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerSetDefaultAddressRequest
+	body       *CustomerSetDefaultAddressRequest
 }
 
 func (r ApiCustomerSetDefaultAddressRequest) Body(body CustomerSetDefaultAddressRequest) ApiCustomerSetDefaultAddressRequest {
@@ -6541,24 +6590,25 @@ func (r ApiCustomerSetDefaultAddressRequest) Execute() (*CustomerCustomerRespons
 /*
 CustomerSetDefaultAddress Method for CustomerSetDefaultAddress
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerSetDefaultAddressRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerSetDefaultAddressRequest
 */
 func (a *CustomerAPIService) CustomerSetDefaultAddress(ctx context.Context) ApiCustomerSetDefaultAddressRequest {
 	return ApiCustomerSetDefaultAddressRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerCustomerResponse
+//
+//	@return CustomerCustomerResponse
 func (a *CustomerAPIService) CustomerSetDefaultAddressExecute(r ApiCustomerSetDefaultAddressRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerCustomerResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerCustomerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerSetDefaultAddress")
@@ -6630,14 +6680,14 @@ func (a *CustomerAPIService) CustomerSetDefaultAddressExecute(r ApiCustomerSetDe
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -6654,9 +6704,9 @@ func (a *CustomerAPIService) CustomerSetDefaultAddressExecute(r ApiCustomerSetDe
 }
 
 type ApiCustomerSetDefaultAddress2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerSetDefaultAddressRequest
+	body       *CustomerSetDefaultAddressRequest
 }
 
 func (r ApiCustomerSetDefaultAddress2Request) Body(body CustomerSetDefaultAddressRequest) ApiCustomerSetDefaultAddress2Request {
@@ -6671,24 +6721,25 @@ func (r ApiCustomerSetDefaultAddress2Request) Execute() (*CustomerCustomerRespon
 /*
 CustomerSetDefaultAddress2 Method for CustomerSetDefaultAddress2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerSetDefaultAddress2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerSetDefaultAddress2Request
 */
 func (a *CustomerAPIService) CustomerSetDefaultAddress2(ctx context.Context) ApiCustomerSetDefaultAddress2Request {
 	return ApiCustomerSetDefaultAddress2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerCustomerResponse
+//
+//	@return CustomerCustomerResponse
 func (a *CustomerAPIService) CustomerSetDefaultAddress2Execute(r ApiCustomerSetDefaultAddress2Request) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerCustomerResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerCustomerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerSetDefaultAddress2")
@@ -6760,14 +6811,14 @@ func (a *CustomerAPIService) CustomerSetDefaultAddress2Execute(r ApiCustomerSetD
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -6784,9 +6835,9 @@ func (a *CustomerAPIService) CustomerSetDefaultAddress2Execute(r ApiCustomerSetD
 }
 
 type ApiCustomerSetPermissionsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerSetPermissionsRequest
+	body       *CustomerSetPermissionsRequest
 }
 
 func (r ApiCustomerSetPermissionsRequest) Body(body CustomerSetPermissionsRequest) ApiCustomerSetPermissionsRequest {
@@ -6801,24 +6852,25 @@ func (r ApiCustomerSetPermissionsRequest) Execute() (map[string]interface{}, *ht
 /*
 CustomerSetPermissions Method for CustomerSetPermissions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerSetPermissionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerSetPermissionsRequest
 */
 func (a *CustomerAPIService) CustomerSetPermissions(ctx context.Context) ApiCustomerSetPermissionsRequest {
 	return ApiCustomerSetPermissionsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *CustomerAPIService) CustomerSetPermissionsExecute(r ApiCustomerSetPermissionsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerSetPermissions")
@@ -6890,14 +6942,14 @@ func (a *CustomerAPIService) CustomerSetPermissionsExecute(r ApiCustomerSetPermi
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -6914,9 +6966,9 @@ func (a *CustomerAPIService) CustomerSetPermissionsExecute(r ApiCustomerSetPermi
 }
 
 type ApiCustomerSetPermissions2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerSetPermissionsRequest
+	body       *CustomerSetPermissionsRequest
 }
 
 func (r ApiCustomerSetPermissions2Request) Body(body CustomerSetPermissionsRequest) ApiCustomerSetPermissions2Request {
@@ -6931,24 +6983,25 @@ func (r ApiCustomerSetPermissions2Request) Execute() (map[string]interface{}, *h
 /*
 CustomerSetPermissions2 Method for CustomerSetPermissions2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerSetPermissions2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerSetPermissions2Request
 */
 func (a *CustomerAPIService) CustomerSetPermissions2(ctx context.Context) ApiCustomerSetPermissions2Request {
 	return ApiCustomerSetPermissions2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *CustomerAPIService) CustomerSetPermissions2Execute(r ApiCustomerSetPermissions2Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerSetPermissions2")
@@ -7020,14 +7073,14 @@ func (a *CustomerAPIService) CustomerSetPermissions2Execute(r ApiCustomerSetPerm
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -7044,9 +7097,9 @@ func (a *CustomerAPIService) CustomerSetPermissions2Execute(r ApiCustomerSetPerm
 }
 
 type ApiCustomerUnassignAgentRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerUnassignAgentRequest
+	body       *CustomerUnassignAgentRequest
 }
 
 func (r ApiCustomerUnassignAgentRequest) Body(body CustomerUnassignAgentRequest) ApiCustomerUnassignAgentRequest {
@@ -7061,24 +7114,25 @@ func (r ApiCustomerUnassignAgentRequest) Execute() (map[string]interface{}, *htt
 /*
 CustomerUnassignAgent Method for CustomerUnassignAgent
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUnassignAgentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerUnassignAgentRequest
 */
 func (a *CustomerAPIService) CustomerUnassignAgent(ctx context.Context) ApiCustomerUnassignAgentRequest {
 	return ApiCustomerUnassignAgentRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *CustomerAPIService) CustomerUnassignAgentExecute(r ApiCustomerUnassignAgentRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUnassignAgent")
@@ -7150,14 +7204,14 @@ func (a *CustomerAPIService) CustomerUnassignAgentExecute(r ApiCustomerUnassignA
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -7174,9 +7228,9 @@ func (a *CustomerAPIService) CustomerUnassignAgentExecute(r ApiCustomerUnassignA
 }
 
 type ApiCustomerUnsubscribeRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerUnsubscribeRequest
+	body       *CustomerUnsubscribeRequest
 }
 
 func (r ApiCustomerUnsubscribeRequest) Body(body CustomerUnsubscribeRequest) ApiCustomerUnsubscribeRequest {
@@ -7191,24 +7245,25 @@ func (r ApiCustomerUnsubscribeRequest) Execute() (*CustomerUnsubscribeResponse, 
 /*
 CustomerUnsubscribe Method for CustomerUnsubscribe
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUnsubscribeRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerUnsubscribeRequest
 */
 func (a *CustomerAPIService) CustomerUnsubscribe(ctx context.Context) ApiCustomerUnsubscribeRequest {
 	return ApiCustomerUnsubscribeRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerUnsubscribeResponse
+//
+//	@return CustomerUnsubscribeResponse
 func (a *CustomerAPIService) CustomerUnsubscribeExecute(r ApiCustomerUnsubscribeRequest) (*CustomerUnsubscribeResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerUnsubscribeResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerUnsubscribeResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUnsubscribe")
@@ -7280,14 +7335,14 @@ func (a *CustomerAPIService) CustomerUnsubscribeExecute(r ApiCustomerUnsubscribe
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -7304,9 +7359,9 @@ func (a *CustomerAPIService) CustomerUnsubscribeExecute(r ApiCustomerUnsubscribe
 }
 
 type ApiCustomerUnsubscribe2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerUnsubscribeRequest
+	body       *CustomerUnsubscribeRequest
 }
 
 func (r ApiCustomerUnsubscribe2Request) Body(body CustomerUnsubscribeRequest) ApiCustomerUnsubscribe2Request {
@@ -7321,24 +7376,25 @@ func (r ApiCustomerUnsubscribe2Request) Execute() (*CustomerUnsubscribeResponse,
 /*
 CustomerUnsubscribe2 Method for CustomerUnsubscribe2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUnsubscribe2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerUnsubscribe2Request
 */
 func (a *CustomerAPIService) CustomerUnsubscribe2(ctx context.Context) ApiCustomerUnsubscribe2Request {
 	return ApiCustomerUnsubscribe2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerUnsubscribeResponse
+//
+//	@return CustomerUnsubscribeResponse
 func (a *CustomerAPIService) CustomerUnsubscribe2Execute(r ApiCustomerUnsubscribe2Request) (*CustomerUnsubscribeResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerUnsubscribeResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerUnsubscribeResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUnsubscribe2")
@@ -7410,14 +7466,14 @@ func (a *CustomerAPIService) CustomerUnsubscribe2Execute(r ApiCustomerUnsubscrib
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -7434,9 +7490,9 @@ func (a *CustomerAPIService) CustomerUnsubscribe2Execute(r ApiCustomerUnsubscrib
 }
 
 type ApiCustomerUpdateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerUpdateRequest
+	body       *CustomerUpdateRequest
 }
 
 func (r ApiCustomerUpdateRequest) Body(body CustomerUpdateRequest) ApiCustomerUpdateRequest {
@@ -7451,24 +7507,25 @@ func (r ApiCustomerUpdateRequest) Execute() (*CustomerCustomerResponse, *http.Re
 /*
 CustomerUpdate Method for CustomerUpdate
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerUpdateRequest
 */
 func (a *CustomerAPIService) CustomerUpdate(ctx context.Context) ApiCustomerUpdateRequest {
 	return ApiCustomerUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerCustomerResponse
+//
+//	@return CustomerCustomerResponse
 func (a *CustomerAPIService) CustomerUpdateExecute(r ApiCustomerUpdateRequest) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerCustomerResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerCustomerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdate")
@@ -7540,14 +7597,14 @@ func (a *CustomerAPIService) CustomerUpdateExecute(r ApiCustomerUpdateRequest) (
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -7564,9 +7621,9 @@ func (a *CustomerAPIService) CustomerUpdateExecute(r ApiCustomerUpdateRequest) (
 }
 
 type ApiCustomerUpdate2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerUpdateRequest
+	body       *CustomerUpdateRequest
 }
 
 func (r ApiCustomerUpdate2Request) Body(body CustomerUpdateRequest) ApiCustomerUpdate2Request {
@@ -7581,24 +7638,25 @@ func (r ApiCustomerUpdate2Request) Execute() (*CustomerCustomerResponse, *http.R
 /*
 CustomerUpdate2 Method for CustomerUpdate2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUpdate2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerUpdate2Request
 */
 func (a *CustomerAPIService) CustomerUpdate2(ctx context.Context) ApiCustomerUpdate2Request {
 	return ApiCustomerUpdate2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerCustomerResponse
+//
+//	@return CustomerCustomerResponse
 func (a *CustomerAPIService) CustomerUpdate2Execute(r ApiCustomerUpdate2Request) (*CustomerCustomerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerCustomerResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerCustomerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdate2")
@@ -7670,14 +7728,14 @@ func (a *CustomerAPIService) CustomerUpdate2Execute(r ApiCustomerUpdate2Request)
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -7694,9 +7752,9 @@ func (a *CustomerAPIService) CustomerUpdate2Execute(r ApiCustomerUpdate2Request)
 }
 
 type ApiCustomerUpdateAddressRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerAddressUpdateRequest
+	body       *CustomerAddressUpdateRequest
 }
 
 func (r ApiCustomerUpdateAddressRequest) Body(body CustomerAddressUpdateRequest) ApiCustomerUpdateAddressRequest {
@@ -7711,24 +7769,25 @@ func (r ApiCustomerUpdateAddressRequest) Execute() (*CustomerAddressUpdateRespon
 /*
 CustomerUpdateAddress Method for CustomerUpdateAddress
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUpdateAddressRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerUpdateAddressRequest
 */
 func (a *CustomerAPIService) CustomerUpdateAddress(ctx context.Context) ApiCustomerUpdateAddressRequest {
 	return ApiCustomerUpdateAddressRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerAddressUpdateResponse
+//
+//	@return CustomerAddressUpdateResponse
 func (a *CustomerAPIService) CustomerUpdateAddressExecute(r ApiCustomerUpdateAddressRequest) (*CustomerAddressUpdateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerAddressUpdateResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerAddressUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdateAddress")
@@ -7800,14 +7859,14 @@ func (a *CustomerAPIService) CustomerUpdateAddressExecute(r ApiCustomerUpdateAdd
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -7824,9 +7883,9 @@ func (a *CustomerAPIService) CustomerUpdateAddressExecute(r ApiCustomerUpdateAdd
 }
 
 type ApiCustomerUpdateAddress2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerAddressUpdateRequest
+	body       *CustomerAddressUpdateRequest
 }
 
 func (r ApiCustomerUpdateAddress2Request) Body(body CustomerAddressUpdateRequest) ApiCustomerUpdateAddress2Request {
@@ -7841,24 +7900,25 @@ func (r ApiCustomerUpdateAddress2Request) Execute() (*CustomerAddressUpdateRespo
 /*
 CustomerUpdateAddress2 Method for CustomerUpdateAddress2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUpdateAddress2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerUpdateAddress2Request
 */
 func (a *CustomerAPIService) CustomerUpdateAddress2(ctx context.Context) ApiCustomerUpdateAddress2Request {
 	return ApiCustomerUpdateAddress2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerAddressUpdateResponse
+//
+//	@return CustomerAddressUpdateResponse
 func (a *CustomerAPIService) CustomerUpdateAddress2Execute(r ApiCustomerUpdateAddress2Request) (*CustomerAddressUpdateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerAddressUpdateResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerAddressUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdateAddress2")
@@ -7930,14 +7990,14 @@ func (a *CustomerAPIService) CustomerUpdateAddress2Execute(r ApiCustomerUpdateAd
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -7954,9 +8014,9 @@ func (a *CustomerAPIService) CustomerUpdateAddress2Execute(r ApiCustomerUpdateAd
 }
 
 type ApiCustomerUpdateGroupRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerUpdateGroupRequest
+	body       *CustomerUpdateGroupRequest
 }
 
 func (r ApiCustomerUpdateGroupRequest) Body(body CustomerUpdateGroupRequest) ApiCustomerUpdateGroupRequest {
@@ -7971,24 +8031,25 @@ func (r ApiCustomerUpdateGroupRequest) Execute() (*CustomerGroupResponse, *http.
 /*
 CustomerUpdateGroup Method for CustomerUpdateGroup
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUpdateGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerUpdateGroupRequest
 */
 func (a *CustomerAPIService) CustomerUpdateGroup(ctx context.Context) ApiCustomerUpdateGroupRequest {
 	return ApiCustomerUpdateGroupRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerGroupResponse
+//
+//	@return CustomerGroupResponse
 func (a *CustomerAPIService) CustomerUpdateGroupExecute(r ApiCustomerUpdateGroupRequest) (*CustomerGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerGroupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdateGroup")
@@ -8060,14 +8121,14 @@ func (a *CustomerAPIService) CustomerUpdateGroupExecute(r ApiCustomerUpdateGroup
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -8084,9 +8145,9 @@ func (a *CustomerAPIService) CustomerUpdateGroupExecute(r ApiCustomerUpdateGroup
 }
 
 type ApiCustomerUpdateGroup2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerUpdateGroupRequest
+	body       *CustomerUpdateGroupRequest
 }
 
 func (r ApiCustomerUpdateGroup2Request) Body(body CustomerUpdateGroupRequest) ApiCustomerUpdateGroup2Request {
@@ -8101,24 +8162,25 @@ func (r ApiCustomerUpdateGroup2Request) Execute() (*CustomerGroupResponse, *http
 /*
 CustomerUpdateGroup2 Method for CustomerUpdateGroup2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUpdateGroup2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerUpdateGroup2Request
 */
 func (a *CustomerAPIService) CustomerUpdateGroup2(ctx context.Context) ApiCustomerUpdateGroup2Request {
 	return ApiCustomerUpdateGroup2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerGroupResponse
+//
+//	@return CustomerGroupResponse
 func (a *CustomerAPIService) CustomerUpdateGroup2Execute(r ApiCustomerUpdateGroup2Request) (*CustomerGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerGroupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdateGroup2")
@@ -8190,14 +8252,14 @@ func (a *CustomerAPIService) CustomerUpdateGroup2Execute(r ApiCustomerUpdateGrou
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -8214,9 +8276,9 @@ func (a *CustomerAPIService) CustomerUpdateGroup2Execute(r ApiCustomerUpdateGrou
 }
 
 type ApiCustomerUpdateSubscriberRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerUpdateSubscriberRequest
+	body       *CustomerUpdateSubscriberRequest
 }
 
 func (r ApiCustomerUpdateSubscriberRequest) Body(body CustomerUpdateSubscriberRequest) ApiCustomerUpdateSubscriberRequest {
@@ -8231,24 +8293,25 @@ func (r ApiCustomerUpdateSubscriberRequest) Execute() (*CustomerSubscriberRespon
 /*
 CustomerUpdateSubscriber Method for CustomerUpdateSubscriber
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUpdateSubscriberRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerUpdateSubscriberRequest
 */
 func (a *CustomerAPIService) CustomerUpdateSubscriber(ctx context.Context) ApiCustomerUpdateSubscriberRequest {
 	return ApiCustomerUpdateSubscriberRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerSubscriberResponse
+//
+//	@return CustomerSubscriberResponse
 func (a *CustomerAPIService) CustomerUpdateSubscriberExecute(r ApiCustomerUpdateSubscriberRequest) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerSubscriberResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerSubscriberResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdateSubscriber")
@@ -8320,14 +8383,14 @@ func (a *CustomerAPIService) CustomerUpdateSubscriberExecute(r ApiCustomerUpdate
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -8344,9 +8407,9 @@ func (a *CustomerAPIService) CustomerUpdateSubscriberExecute(r ApiCustomerUpdate
 }
 
 type ApiCustomerUpdateSubscriber2Request struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CustomerAPIService
-	body *CustomerUpdateSubscriberRequest
+	body       *CustomerUpdateSubscriberRequest
 }
 
 func (r ApiCustomerUpdateSubscriber2Request) Body(body CustomerUpdateSubscriberRequest) ApiCustomerUpdateSubscriber2Request {
@@ -8361,24 +8424,25 @@ func (r ApiCustomerUpdateSubscriber2Request) Execute() (*CustomerSubscriberRespo
 /*
 CustomerUpdateSubscriber2 Method for CustomerUpdateSubscriber2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCustomerUpdateSubscriber2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCustomerUpdateSubscriber2Request
 */
 func (a *CustomerAPIService) CustomerUpdateSubscriber2(ctx context.Context) ApiCustomerUpdateSubscriber2Request {
 	return ApiCustomerUpdateSubscriber2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CustomerSubscriberResponse
+//
+//	@return CustomerSubscriberResponse
 func (a *CustomerAPIService) CustomerUpdateSubscriber2Execute(r ApiCustomerUpdateSubscriber2Request) (*CustomerSubscriberResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CustomerSubscriberResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CustomerSubscriberResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerUpdateSubscriber2")
@@ -8450,14 +8514,14 @@ func (a *CustomerAPIService) CustomerUpdateSubscriber2Execute(r ApiCustomerUpdat
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		var v GooglerpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

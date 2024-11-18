@@ -20,9 +20,9 @@ var _ MappedNullable = &CustomerRevokePermissionsRequest{}
 
 // CustomerRevokePermissionsRequest struct for CustomerRevokePermissionsRequest
 type CustomerRevokePermissionsRequest struct {
-	TenantId *string `json:"tenantId,omitempty"`
-	CustomerId *string `json:"customerId,omitempty"`
-	Permissions []CustomerPermission `json:"permissions,omitempty"`
+	TenantId             *string              `json:"tenantId,omitempty"`
+	CustomerId           *string              `json:"customerId,omitempty"`
+	Permissions          []CustomerPermission `json:"permissions,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -142,7 +142,7 @@ func (o *CustomerRevokePermissionsRequest) SetPermissions(v []CustomerPermission
 }
 
 func (o CustomerRevokePermissionsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -193,22 +193,24 @@ func (o *CustomerRevokePermissionsRequest) UnmarshalJSON(data []byte) (err error
 
 // GetValue returns the value of well-known types
 func (o *CustomerRevokePermissionsRequest) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerRevokePermissionsRequest) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerRevokePermissionsRequest struct {
 	value *CustomerRevokePermissionsRequest
 	isSet bool
@@ -244,5 +246,3 @@ func (v *NullableCustomerRevokePermissionsRequest) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

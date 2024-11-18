@@ -20,9 +20,9 @@ var _ MappedNullable = &CustomerNewsletterResponse{}
 
 // CustomerNewsletterResponse struct for CustomerNewsletterResponse
 type CustomerNewsletterResponse struct {
-	Id *string `json:"id,omitempty"`
-	NewsletterGrn *string `json:"newsletterGrn,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Id                   *string `json:"id,omitempty"`
+	NewsletterGrn        *string `json:"newsletterGrn,omitempty"`
+	Name                 *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -142,7 +142,7 @@ func (o *CustomerNewsletterResponse) SetName(v string) {
 }
 
 func (o CustomerNewsletterResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -193,22 +193,24 @@ func (o *CustomerNewsletterResponse) UnmarshalJSON(data []byte) (err error) {
 
 // GetValue returns the value of well-known types
 func (o *CustomerNewsletterResponse) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerNewsletterResponse) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerNewsletterResponse struct {
 	value *CustomerNewsletterResponse
 	isSet bool
@@ -244,5 +246,3 @@ func (v *NullableCustomerNewsletterResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,12 +20,12 @@ var _ MappedNullable = &CustomerListConsentsRequest{}
 
 // CustomerListConsentsRequest struct for CustomerListConsentsRequest
 type CustomerListConsentsRequest struct {
-	TenantId *string `json:"tenantId,omitempty"`
-	PageSize *int64 `json:"pageSize,omitempty"`
-	PageToken *string `json:"pageToken,omitempty"`
-	Sorts []ListConsentsRequestSort `json:"sorts,omitempty"`
-	FiltersMask *string `json:"filtersMask,omitempty"`
-	Filters *ListConsentsRequestFilters `json:"filters,omitempty"`
+	TenantId             *string                     `json:"tenantId,omitempty"`
+	PageSize             *int64                      `json:"pageSize,omitempty"`
+	PageToken            *string                     `json:"pageToken,omitempty"`
+	Sorts                []ListConsentsRequestSort   `json:"sorts,omitempty"`
+	FiltersMask          *string                     `json:"filtersMask,omitempty"`
+	Filters              *ListConsentsRequestFilters `json:"filters,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -241,7 +241,7 @@ func (o *CustomerListConsentsRequest) SetFilters(v ListConsentsRequestFilters) {
 }
 
 func (o CustomerListConsentsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -304,22 +304,24 @@ func (o *CustomerListConsentsRequest) UnmarshalJSON(data []byte) (err error) {
 
 // GetValue returns the value of well-known types
 func (o *CustomerListConsentsRequest) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerListConsentsRequest) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerListConsentsRequest struct {
 	value *CustomerListConsentsRequest
 	isSet bool
@@ -355,5 +357,3 @@ func (v *NullableCustomerListConsentsRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

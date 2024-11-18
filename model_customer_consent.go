@@ -21,13 +21,13 @@ var _ MappedNullable = &CustomerConsent{}
 
 // CustomerConsent struct for CustomerConsent
 type CustomerConsent struct {
-	Id *string `json:"id,omitempty"`
-	Grn *string `json:"grn,omitempty"`
-	Preferences *map[string]bool `json:"preferences,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	Source *CustomerConsentSource `json:"source,omitempty"`
-	Author *string `json:"author,omitempty"`
-	SubjectId *string `json:"subjectId,omitempty"`
+	Id                   *string                `json:"id,omitempty"`
+	Grn                  *string                `json:"grn,omitempty"`
+	Preferences          *map[string]bool       `json:"preferences,omitempty"`
+	CreatedAt            *time.Time             `json:"createdAt,omitempty"`
+	Source               *CustomerConsentSource `json:"source,omitempty"`
+	Author               *string                `json:"author,omitempty"`
+	SubjectId            *string                `json:"subjectId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -279,7 +279,7 @@ func (o *CustomerConsent) SetSubjectId(v string) {
 }
 
 func (o CustomerConsent) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -346,22 +346,24 @@ func (o *CustomerConsent) UnmarshalJSON(data []byte) (err error) {
 
 // GetValue returns the value of well-known types
 func (o *CustomerConsent) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerConsent) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerConsent struct {
 	value *CustomerConsent
 	isSet bool
@@ -397,5 +399,3 @@ func (v *NullableCustomerConsent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

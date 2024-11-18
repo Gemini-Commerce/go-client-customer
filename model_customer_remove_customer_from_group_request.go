@@ -20,9 +20,9 @@ var _ MappedNullable = &CustomerRemoveCustomerFromGroupRequest{}
 
 // CustomerRemoveCustomerFromGroupRequest struct for CustomerRemoveCustomerFromGroupRequest
 type CustomerRemoveCustomerFromGroupRequest struct {
-	TenantId *string `json:"tenantId,omitempty"`
-	GroupId *string `json:"groupId,omitempty"`
-	CustomerId *string `json:"customerId,omitempty"`
+	TenantId             *string `json:"tenantId,omitempty"`
+	GroupId              *string `json:"groupId,omitempty"`
+	CustomerId           *string `json:"customerId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -142,7 +142,7 @@ func (o *CustomerRemoveCustomerFromGroupRequest) SetCustomerId(v string) {
 }
 
 func (o CustomerRemoveCustomerFromGroupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -193,22 +193,24 @@ func (o *CustomerRemoveCustomerFromGroupRequest) UnmarshalJSON(data []byte) (err
 
 // GetValue returns the value of well-known types
 func (o *CustomerRemoveCustomerFromGroupRequest) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerRemoveCustomerFromGroupRequest) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerRemoveCustomerFromGroupRequest struct {
 	value *CustomerRemoveCustomerFromGroupRequest
 	isSet bool
@@ -244,5 +246,3 @@ func (v *NullableCustomerRemoveCustomerFromGroupRequest) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,9 +21,9 @@ type BulkUpdateRequestAction string
 
 // List of BulkUpdateRequestAction
 const (
-	BULKUPDATEREQUESTACTION_ENABLE BulkUpdateRequestAction = "ENABLE"
+	BULKUPDATEREQUESTACTION_ENABLE  BulkUpdateRequestAction = "ENABLE"
 	BULKUPDATEREQUESTACTION_DISABLE BulkUpdateRequestAction = "DISABLE"
-	BULKUPDATEREQUESTACTION_DELETE BulkUpdateRequestAction = "DELETE"
+	BULKUPDATEREQUESTACTION_DELETE  BulkUpdateRequestAction = "DELETE"
 )
 
 // All allowed values of BulkUpdateRequestAction enum
@@ -111,4 +111,3 @@ func (v *NullableBulkUpdateRequestAction) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

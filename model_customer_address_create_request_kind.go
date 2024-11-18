@@ -22,8 +22,8 @@ type CustomerAddressCreateRequestKind string
 // List of customerAddressCreateRequestKind
 const (
 	CUSTOMERADDRESSCREATEREQUESTKIND_SHIPPING CustomerAddressCreateRequestKind = "SHIPPING"
-	CUSTOMERADDRESSCREATEREQUESTKIND_BILLING CustomerAddressCreateRequestKind = "BILLING"
-	CUSTOMERADDRESSCREATEREQUESTKIND_BOTH CustomerAddressCreateRequestKind = "BOTH"
+	CUSTOMERADDRESSCREATEREQUESTKIND_BILLING  CustomerAddressCreateRequestKind = "BILLING"
+	CUSTOMERADDRESSCREATEREQUESTKIND_BOTH     CustomerAddressCreateRequestKind = "BOTH"
 )
 
 // All allowed values of CustomerAddressCreateRequestKind enum
@@ -111,4 +111,3 @@ func (v *NullableCustomerAddressCreateRequestKind) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

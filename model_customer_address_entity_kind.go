@@ -22,8 +22,8 @@ type CustomerAddressEntityKind string
 // List of customerAddressEntityKind
 const (
 	CUSTOMERADDRESSENTITYKIND_SHIPPING CustomerAddressEntityKind = "SHIPPING"
-	CUSTOMERADDRESSENTITYKIND_BILLING CustomerAddressEntityKind = "BILLING"
-	CUSTOMERADDRESSENTITYKIND_BOTH CustomerAddressEntityKind = "BOTH"
+	CUSTOMERADDRESSENTITYKIND_BILLING  CustomerAddressEntityKind = "BILLING"
+	CUSTOMERADDRESSENTITYKIND_BOTH     CustomerAddressEntityKind = "BOTH"
 )
 
 // All allowed values of CustomerAddressEntityKind enum
@@ -111,4 +111,3 @@ func (v *NullableCustomerAddressEntityKind) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

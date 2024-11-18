@@ -21,9 +21,9 @@ type PasswordPasswordType string
 
 // List of PasswordPasswordType
 const (
-	PASSWORDPASSWORDTYPE_UNKNOWN PasswordPasswordType = "PASSWORD_TYPE_UNKNOWN"
+	PASSWORDPASSWORDTYPE_UNKNOWN  PasswordPasswordType = "PASSWORD_TYPE_UNKNOWN"
 	PASSWORDPASSWORDTYPE_MAGENTO1 PasswordPasswordType = "PASSWORD_TYPE_MAGENTO1"
-	PASSWORDPASSWORDTYPE_SYLIUS PasswordPasswordType = "PASSWORD_TYPE_SYLIUS"
+	PASSWORDPASSWORDTYPE_SYLIUS   PasswordPasswordType = "PASSWORD_TYPE_SYLIUS"
 	PASSWORDPASSWORDTYPE_MAGENTO2 PasswordPasswordType = "PASSWORD_TYPE_MAGENTO2"
 )
 
@@ -113,4 +113,3 @@ func (v *NullablePasswordPasswordType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

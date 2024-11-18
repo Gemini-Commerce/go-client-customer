@@ -21,10 +21,10 @@ type CustomerConsentSource string
 
 // List of customerConsentSource
 const (
-	CUSTOMERCONSENTSOURCE_UNKNOWN CustomerConsentSource = "CONSENT_SOURCE_UNKNOWN"
-	CUSTOMERCONSENTSOURCE_FRONTEND CustomerConsentSource = "CONSENT_SOURCE_FRONTEND"
+	CUSTOMERCONSENTSOURCE_UNKNOWN    CustomerConsentSource = "CONSENT_SOURCE_UNKNOWN"
+	CUSTOMERCONSENTSOURCE_FRONTEND   CustomerConsentSource = "CONSENT_SOURCE_FRONTEND"
 	CUSTOMERCONSENTSOURCE_BACKOFFICE CustomerConsentSource = "CONSENT_SOURCE_BACKOFFICE"
-	CUSTOMERCONSENTSOURCE_BACKEND CustomerConsentSource = "CONSENT_SOURCE_BACKEND"
+	CUSTOMERCONSENTSOURCE_BACKEND    CustomerConsentSource = "CONSENT_SOURCE_BACKEND"
 )
 
 // All allowed values of CustomerConsentSource enum
@@ -113,4 +113,3 @@ func (v *NullableCustomerConsentSource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -22,8 +22,8 @@ type CustomerAddressCustomerResponseKind string
 // List of customerAddressCustomerResponseKind
 const (
 	CUSTOMERADDRESSCUSTOMERRESPONSEKIND_SHIPPING CustomerAddressCustomerResponseKind = "SHIPPING"
-	CUSTOMERADDRESSCUSTOMERRESPONSEKIND_BILLING CustomerAddressCustomerResponseKind = "BILLING"
-	CUSTOMERADDRESSCUSTOMERRESPONSEKIND_BOTH CustomerAddressCustomerResponseKind = "BOTH"
+	CUSTOMERADDRESSCUSTOMERRESPONSEKIND_BILLING  CustomerAddressCustomerResponseKind = "BILLING"
+	CUSTOMERADDRESSCUSTOMERRESPONSEKIND_BOTH     CustomerAddressCustomerResponseKind = "BOTH"
 )
 
 // All allowed values of CustomerAddressCustomerResponseKind enum
@@ -111,4 +111,3 @@ func (v *NullableCustomerAddressCustomerResponseKind) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -21,20 +21,20 @@ var _ MappedNullable = &CustomerSubscriberResponseWithNewsletterRequest{}
 
 // CustomerSubscriberResponseWithNewsletterRequest struct for CustomerSubscriberResponseWithNewsletterRequest
 type CustomerSubscriberResponseWithNewsletterRequest struct {
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Lastname *string `json:"lastname,omitempty"`
-	Email *string `json:"email,omitempty"`
-	Country *string `json:"country,omitempty"`
-	Gender *string `json:"gender,omitempty"`
-	Birthdate *time.Time `json:"birthdate,omitempty"`
-	Nationality *string `json:"nationality,omitempty"`
-	Em *CustomerEMFields `json:"em,omitempty"`
-	PreferredLocale *string `json:"preferredLocale,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	Newsletters []CustomerNewsletterRequest `json:"newsletters,omitempty"`
-	Consent *CustomerCreateConsentRequest `json:"consent,omitempty"`
+	Id                   *string                       `json:"id,omitempty"`
+	Name                 *string                       `json:"name,omitempty"`
+	Lastname             *string                       `json:"lastname,omitempty"`
+	Email                *string                       `json:"email,omitempty"`
+	Country              *string                       `json:"country,omitempty"`
+	Gender               *string                       `json:"gender,omitempty"`
+	Birthdate            *time.Time                    `json:"birthdate,omitempty"`
+	Nationality          *string                       `json:"nationality,omitempty"`
+	Em                   *CustomerEMFields             `json:"em,omitempty"`
+	PreferredLocale      *string                       `json:"preferredLocale,omitempty"`
+	CreatedAt            *time.Time                    `json:"createdAt,omitempty"`
+	UpdatedAt            *time.Time                    `json:"updatedAt,omitempty"`
+	Newsletters          []CustomerNewsletterRequest   `json:"newsletters,omitempty"`
+	Consent              *CustomerCreateConsentRequest `json:"consent,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -506,7 +506,7 @@ func (o *CustomerSubscriberResponseWithNewsletterRequest) SetConsent(v CustomerC
 }
 
 func (o CustomerSubscriberResponseWithNewsletterRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -601,22 +601,24 @@ func (o *CustomerSubscriberResponseWithNewsletterRequest) UnmarshalJSON(data []b
 
 // GetValue returns the value of well-known types
 func (o *CustomerSubscriberResponseWithNewsletterRequest) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerSubscriberResponseWithNewsletterRequest) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerSubscriberResponseWithNewsletterRequest struct {
 	value *CustomerSubscriberResponseWithNewsletterRequest
 	isSet bool
@@ -652,5 +654,3 @@ func (v *NullableCustomerSubscriberResponseWithNewsletterRequest) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,10 +20,10 @@ var _ MappedNullable = &CustomerUpdateGroupRequest{}
 
 // CustomerUpdateGroupRequest struct for CustomerUpdateGroupRequest
 type CustomerUpdateGroupRequest struct {
-	TenantId *string `json:"tenantId,omitempty"`
-	GroupId *string `json:"groupId,omitempty"`
-	Payload *CustomerUpdateGroupRequestPayload `json:"payload,omitempty"`
-	FieldMask *string `json:"fieldMask,omitempty"`
+	TenantId             *string                            `json:"tenantId,omitempty"`
+	GroupId              *string                            `json:"groupId,omitempty"`
+	Payload              *CustomerUpdateGroupRequestPayload `json:"payload,omitempty"`
+	FieldMask            *string                            `json:"fieldMask,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -175,7 +175,7 @@ func (o *CustomerUpdateGroupRequest) SetFieldMask(v string) {
 }
 
 func (o CustomerUpdateGroupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,22 +230,24 @@ func (o *CustomerUpdateGroupRequest) UnmarshalJSON(data []byte) (err error) {
 
 // GetValue returns the value of well-known types
 func (o *CustomerUpdateGroupRequest) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerUpdateGroupRequest) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerUpdateGroupRequest struct {
 	value *CustomerUpdateGroupRequest
 	isSet bool
@@ -281,5 +283,3 @@ func (v *NullableCustomerUpdateGroupRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

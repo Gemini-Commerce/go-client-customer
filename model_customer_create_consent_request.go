@@ -20,7 +20,7 @@ var _ MappedNullable = &CustomerCreateConsentRequest{}
 
 // CustomerCreateConsentRequest struct for CustomerCreateConsentRequest
 type CustomerCreateConsentRequest struct {
-	Preferences *map[string]bool `json:"preferences,omitempty"`
+	Preferences          *map[string]bool `json:"preferences,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *CustomerCreateConsentRequest) SetPreferences(v map[string]bool) {
 }
 
 func (o CustomerCreateConsentRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -119,22 +119,24 @@ func (o *CustomerCreateConsentRequest) UnmarshalJSON(data []byte) (err error) {
 
 // GetValue returns the value of well-known types
 func (o *CustomerCreateConsentRequest) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerCreateConsentRequest) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerCreateConsentRequest struct {
 	value *CustomerCreateConsentRequest
 	isSet bool
@@ -170,5 +172,3 @@ func (v *NullableCustomerCreateConsentRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

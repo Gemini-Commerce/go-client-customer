@@ -20,8 +20,8 @@ var _ MappedNullable = &CustomerFindByEmailRequest{}
 
 // CustomerFindByEmailRequest struct for CustomerFindByEmailRequest
 type CustomerFindByEmailRequest struct {
-	TenantId *string `json:"tenantId,omitempty"`
-	Email *string `json:"email,omitempty"`
+	TenantId             *string `json:"tenantId,omitempty"`
+	Email                *string `json:"email,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,7 +109,7 @@ func (o *CustomerFindByEmailRequest) SetEmail(v string) {
 }
 
 func (o CustomerFindByEmailRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -156,22 +156,24 @@ func (o *CustomerFindByEmailRequest) UnmarshalJSON(data []byte) (err error) {
 
 // GetValue returns the value of well-known types
 func (o *CustomerFindByEmailRequest) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerFindByEmailRequest) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerFindByEmailRequest struct {
 	value *CustomerFindByEmailRequest
 	isSet bool
@@ -207,5 +209,3 @@ func (v *NullableCustomerFindByEmailRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

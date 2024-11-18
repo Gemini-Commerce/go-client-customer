@@ -21,14 +21,14 @@ var _ MappedNullable = &CustomerGroupResponse{}
 
 // CustomerGroupResponse struct for CustomerGroupResponse
 type CustomerGroupResponse struct {
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	CustomerIds []string `json:"customerIds,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	Grn *string `json:"grn,omitempty"`
-	Code *string `json:"code,omitempty"`
-	CustomerCount *string `json:"customerCount,omitempty"`
+	Id                   *string    `json:"id,omitempty"`
+	Name                 *string    `json:"name,omitempty"`
+	CustomerIds          []string   `json:"customerIds,omitempty"`
+	CreatedAt            *time.Time `json:"createdAt,omitempty"`
+	UpdatedAt            *time.Time `json:"updatedAt,omitempty"`
+	Grn                  *string    `json:"grn,omitempty"`
+	Code                 *string    `json:"code,omitempty"`
+	CustomerCount        *string    `json:"customerCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -308,7 +308,7 @@ func (o *CustomerGroupResponse) SetCustomerCount(v string) {
 }
 
 func (o CustomerGroupResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -379,22 +379,24 @@ func (o *CustomerGroupResponse) UnmarshalJSON(data []byte) (err error) {
 
 // GetValue returns the value of well-known types
 func (o *CustomerGroupResponse) GetValue() interface{} {
-	if o == nil || IsNil(o.Type) || IsNil(o.AdditionalProperties) {
+	if o == nil || IsNil(o.AdditionalProperties) {
 		return nil
 	}
 	return o.AdditionalProperties["value"]
 }
-// SetValue populate the value of well-known types
+
+// SetValue populates the value of well-known types
 func (o *CustomerGroupResponse) SetValue(value interface{}) {
-	if o == nil || IsNil(o.Type) || IsNil(value) {
+	if o == nil || IsNil(value) {
 		return
 	}
-    if IsNil(o.AdditionalProperties) {
-        o.AdditionalProperties = map[string]interface{}{}
-    }
+	if IsNil(o.AdditionalProperties) {
+		o.AdditionalProperties = map[string]interface{}{}
+	}
 	o.AdditionalProperties["value"] = value
 	return
 }
+
 type NullableCustomerGroupResponse struct {
 	value *CustomerGroupResponse
 	isSet bool
@@ -430,5 +432,3 @@ func (v *NullableCustomerGroupResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
